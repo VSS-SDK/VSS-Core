@@ -23,12 +23,11 @@
 *.a
 *.lib
 
-# Remove Visual Code Junk Files
-*.vscode
-
-# Remove Proto
+# Remove Junk Files
+*.vscode/.browse.VC.*
 *.pb.cc
 *.pb.h
+
 
 # Executables
 *.exe
