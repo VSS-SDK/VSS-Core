@@ -32,7 +32,7 @@ private:
     zmq::socket_t *socket_command_blue;
 
 	zmq::context_t *context_debug;
-	zmq::socket_t *socket_Debug;
+	zmq::socket_t *socket_debug;
     
 	vss_state::Global_State *global_state;
 	vss_command::Global_Commands *global_commands;
