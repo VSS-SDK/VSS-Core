@@ -1,0 +1,27 @@
+/*
+ * This file is part of the VSS-SDK project.
+ *
+ * This Source Code Form is subject to the terms of the GNU GENERAL PUBLIC LICENSE,
+ * v. 3.0. If a copy of the GPL was not distributed with this
+ * file, You can obtain one at http://www.gnu.org/licenses/gpl-3.0/.
+ */
+
+package vss_debug;
+
+message Pose{
+    required uint32 id = 1;
+	required float  x = 2;
+	required float  y = 3;
+	optional float  yaw = 4;
+}
+
+message Path{
+    required uint32 id = 1;
+    repeated Pose   poses = 2;
+}
+
+message Global_Debug{
+    repeated Pose   step_poses;     // If wanted, plot where the robot must go at specific time
+    repeated Pose   final_poses;    // If wanted, plot the final pose that one robot should go
+    repeated Path   poses;          // If wanted, plot a path that one robot must follow
+}

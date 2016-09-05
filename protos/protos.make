@@ -3,6 +3,7 @@ all:
 	# CPP OUTPUT FILES
 	@protoc -I=. --cpp_out=. state.proto
 	@protoc -I=. --cpp_out=. command.proto
+	@protoc -I=. --cpp_out=. debug.proto
 
 	# JAVA OUTPUT FILES
 	#@protoc -I=. --java_out=. state.proto

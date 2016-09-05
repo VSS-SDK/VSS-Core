@@ -1,5 +1,5 @@
 /*
- * This file is part of the VSS-Vision project.
+ * This file is part of the VSS-SDK project.
  *
  * This Source Code Form is subject to the terms of the GNU GENERAL PUBLIC LICENSE,
  * v. 3.0. If a copy of the GPL was not distributed with this

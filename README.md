@@ -1,2 +1,4 @@
-# SirSoccer-COM
-Communication module from SirSoccer Robots
+VSS-Interface
+-------------
+Interface que possibilita a comunicação entre os projetos do VSS-SDK.
+
