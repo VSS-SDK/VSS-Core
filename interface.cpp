@@ -139,8 +139,8 @@ void Interface::createSendDebugTeam1(vss_debug::Global_Debug* global_debug){
 	context_debug = new zmq::context_t(1);
 	socket_debug = new zmq::socket_t(*context_debug, ZMQ_PAIR);
 
-	std::cout << "Connecting Server Sender Debug Team 1: " << addr_server_debug_team1 << "(yellow team)" << std::endl << std::endl;
-	socket_debug->connect(addr_server_debug_team1);
+	std::cout << "Connecting Server Sender Debug Team 1: " << addr_client_debug_team1 << "(yellow team)" << std::endl << std::endl;
+	socket_debug->connect(addr_client_debug_team1);
 }
 
 void Interface::sendDebugTeam1(){
@@ -160,7 +160,7 @@ void Interface::createReceiveDebugTeam1(vss_debug::Global_Debug* global_debug){
 	context_debug = new zmq::context_t(1);
 	socket_debug = new zmq::socket_t(*context_debug, ZMQ_PAIR);
 
-	std::cout << "Connecting Client Receiver Debug Team 1: " << addr_client_debug_team1 << std::endl;
+	std::cout << "Connecting Client Receiver Debug Team 1: " << addr_server_debug_team1 << std::endl;
 	socket_debug->bind(addr_server_debug_team1);
 }
 
