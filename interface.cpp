@@ -133,6 +133,63 @@ void Interface::receiveCommandTeam2(){
 	//printCommand();
 }
 
+void Interface::createSendDebugTeam1(vss_debug::Global_Debug* global_debug){
+	this->global_debug = global_debug;
+	
+	context_debug = new zmq::context_t(1);
+	socket_debug = new zmq::socket_t(*context_debug, ZMQ_PAIR);
+
+	std::cout << "Connecting Server Sender Debug Team 1: " << addr_server_debug_team1 << "(yellow team)" << std::endl << std::endl;
+	socket_debug->connect(addr_server_debug_team1);
+}
+
+void Interface::sendDebugTeam1(){
+	std::string msg_str;
+	global_debug->SerializeToString(&msg_str);
+
+	zmq::message_t request (msg_str.size());
+	memcpy ((void *) request.data (), msg_str.c_str(), msg_str.size());
+	//std::cout << "Sending State data ..." << std::endl;
+	socket_debug->send(request);
+	//printCommand();
+}
+
+void Interface::createReceiveDebugTeam1(vss_debug::Global_Debug* global_debug){
+	this->global_debug = global_debug;
+
+	context_debug = new zmq::context_t(1);
+	socket_debug = new zmq::socket_t(*context_debug, ZMQ_PAIR);
+
+	std::cout << "Connecting Client Receiver Debug Team 1: " << addr_client_debug_team1 << std::endl;
+	socket_debug->bind(addr_server_debug_team1);
+}
+
+void Interface::receiveDebugTeam1(){
+	zmq::message_t request;
+	socket_debug->recv(&request);
+	//std::cout << "Received" << std::endl;
+	std::string msg_str(static_cast<char*>(request.data()), request.size());
+	global_debug->ParseFromString(msg_str);
+	//printCommand();
+	//socket.close();
+}
+
+void Interface::createSendDebugTeam2(vss_debug::Global_Debug*){
+
+}
+
+void Interface::sendDebugTeam2(){
+
+}
+
+void Interface::createReceiveDebugTeam2(vss_debug::Global_Debug*){
+
+}
+
+void Interface::receiveDebugTeam2(){
+
+}
+
 void Interface::printState(){
 	std::string text_str;
     google::protobuf::TextFormat::PrintToString(*global_state, &text_str);
@@ -142,5 +199,11 @@ void Interface::printState(){
 void Interface::printCommand(){
 	std::string text_str;
     google::protobuf::TextFormat::PrintToString(*global_commands, &text_str);
+    std::cout << text_str << std::endl;
+}
+
+void Interface::printDebug(){
+	std::string text_str;
+    google::protobuf::TextFormat::PrintToString(*global_debug, &text_str);
     std::cout << text_str << std::endl;
 }
