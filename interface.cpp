@@ -174,20 +174,45 @@ void Interface::receiveDebugTeam1(){
 	//socket.close();
 }
 
-void Interface::createSendDebugTeam2(vss_debug::Global_Debug*){
+void Interface::createSendDebugTeam2(vss_debug::Global_Debug* global_debug){
+	this->global_debug = global_debug;
+	
+	context_debug = new zmq::context_t(1);
+	socket_debug = new zmq::socket_t(*context_debug, ZMQ_PAIR);
 
+	std::cout << "Connecting Server Sender Debug Team 2: " << addr_client_debug_team2 << " (blue team)" << std::endl << std::endl;
+	socket_debug->connect(addr_client_debug_team2);
 }
 
 void Interface::sendDebugTeam2(){
+	std::string msg_str;
+	global_debug->SerializeToString(&msg_str);
 
+	zmq::message_t request (msg_str.size());
+	memcpy ((void *) request.data (), msg_str.c_str(), msg_str.size());
+	//std::cout << "Sending State data ..." << std::endl;
+	socket_debug->send(request);
+	//printCommand();
 }
 
-void Interface::createReceiveDebugTeam2(vss_debug::Global_Debug*){
+void Interface::createReceiveDebugTeam2(vss_debug::Global_Debug* global_debug){
+	this->global_debug = global_debug;
 
+	context_debug = new zmq::context_t(1);
+	socket_debug = new zmq::socket_t(*context_debug, ZMQ_PAIR);
+
+	std::cout << "Connecting Client Receiver Debug Team 2: " << addr_server_debug_team2 << std::endl;
+	socket_debug->bind(addr_server_debug_team2);
 }
 
 void Interface::receiveDebugTeam2(){
-
+	zmq::message_t request;
+	socket_debug->recv(&request);
+	//std::cout << "Received" << std::endl;
+	std::string msg_str(static_cast<char*>(request.data()), request.size());
+	global_debug->ParseFromString(msg_str);
+	//printCommand();
+	//socket.close();
 }
 
 void Interface::printState(){
