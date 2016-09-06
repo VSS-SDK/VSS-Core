@@ -16,8 +16,7 @@ message Pose{
 }
 
 message Path{
-    required uint32 id = 1;
-    repeated Pose   poses = 2;
+    repeated Pose   poses = 1;
 }
 
 message Global_Debug{
