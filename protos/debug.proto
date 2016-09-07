@@ -16,14 +16,12 @@ message Pose{
 }
 
 message Path{
-    repeated Pose   poses = 1;
+    required uint32 id = 1;
+    repeated Pose   poses = 2;
 }
 
 message Global_Debug{
-    repeated Pose   step_poses      = 1;    // If wanted, plot where the robot must go at specific time
-    repeated Pose   final_poses     = 2;    // If wanted, plot the final pose that one robot should go
-    optional Path   path_robot_1    = 3;    // If wanted, plot a path that one robot must follow
-    optional Path   path_robot_2    = 4;    // If wanted, plot a path that one robot must follow
-    optional Path   path_robot_3    = 5;    // If wanted, plot a path that one robot must follow
-
+    repeated Pose   step_poses  = 1;    // If wanted, plot where the robot must go at specific time
+    repeated Pose   final_poses = 2;    // If wanted, plot the final pose that one robot should go
+    repeated Path   paths       = 3;    // If wanted, plot a path of robots must follow
 }
