@@ -67,24 +67,24 @@ public:
 	void createSocketReceiveState(vss_state::Global_State*, string addr_client_multicast = "tcp://localhost:5555");
 	void receiveState();
 
-	void createSendCommandsTeam1(vss_command::Global_Commands*, string addr_server_simulator_team1 = "tcp://*:5556");
+	void createSendCommandsTeam1(vss_command::Global_Commands*, string addr_client_simulator_team1 = "tcp://localhost:5556");
 	void sendCommandTeam1();
-	void createReceiveCommandsTeam1(vss_command::Global_Commands*, string addr_client_simulator_team1 = "tcp://localhost:5556");
+	void createReceiveCommandsTeam1(vss_command::Global_Commands*, string addr_server_simulator_team1 = "tcp://*:5556");
 	void receiveCommandTeam1();
 
-	void createSendCommandsTeam2(vss_command::Global_Commands*, string addr_server_simulator_team2 = "tcp://*:5557");
+	void createSendCommandsTeam2(vss_command::Global_Commands*, string addr_client_simulator_team2 = "tcp://localhost:5557");
 	void sendCommandTeam2();
-	void createReceiveCommandsTeam2(vss_command::Global_Commands*, string addr_client_simulator_team2 = "tcp://localhost:5557");	
+	void createReceiveCommandsTeam2(vss_command::Global_Commands*, string addr_server_simulator_team2 = "tcp://*:5557");	
 	void receiveCommandTeam2();
 
-	void createSendDebugTeam1(vss_debug::Global_Debug*, string addr_server_debug_team1 = "tcp://*:5558");
+	void createSendDebugTeam1(vss_debug::Global_Debug*, string addr_client_debug_team1 = "tcp://localhost:5558");
 	void sendDebugTeam1();
-	void createReceiveDebugTeam1(vss_debug::Global_Debug*, string addr_client_debug_team1 = "tcp://localhost:5558");
+	void createReceiveDebugTeam1(vss_debug::Global_Debug*, string addr_server_debug_team1 = "tcp://*:5558");
 	void receiveDebugTeam1();
 
-	void createSendDebugTeam2(vss_debug::Global_Debug*, string addr_server_debug_team2 = "tcp://*:5559");
+	void createSendDebugTeam2(vss_debug::Global_Debug*, string addr_client_debug_team2 = "tcp://localhost:5559");
 	void sendDebugTeam2();
-	void createReceiveDebugTeam2(vss_debug::Global_Debug*, string addr_client_debug_team2 = "tcp://localhost:5559");	
+	void createReceiveDebugTeam2(vss_debug::Global_Debug*, string addr_server_debug_team2 = "tcp://*:5559");	
 	void receiveDebugTeam2();
 
 	void printState();

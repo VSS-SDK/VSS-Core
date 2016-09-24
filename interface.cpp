@@ -54,9 +54,9 @@ void Interface::receiveState(){
 	//printState();
 }
 
-void Interface::createSendCommandsTeam1(vss_command::Global_Commands* global_commands, string addr_server_simulator_team1){
+void Interface::createSendCommandsTeam1(vss_command::Global_Commands* global_commands, string addr_client_simulator_team1){
 	this->global_commands = global_commands;
-	this->addr_server_simulator_team1 = addr_server_simulator_team1;
+	this->addr_client_simulator_team1 = addr_client_simulator_team1;
 	
 	context_command_yellow = new zmq::context_t(1);
 	socket_command_yellow = new zmq::socket_t(*context_command_yellow, ZMQ_PAIR);
@@ -76,9 +76,9 @@ void Interface::sendCommandTeam1(){
 	//printCommand();
 }
 
-void Interface::createSendCommandsTeam2(vss_command::Global_Commands* global_commands, string addr_server_simulator_team2){
+void Interface::createSendCommandsTeam2(vss_command::Global_Commands* global_commands, string addr_client_simulator_team2){
 	this->global_commands = global_commands;
-	this->addr_server_simulator_team2 = addr_server_simulator_team2;
+	this->addr_client_simulator_team2 = addr_client_simulator_team2;
 	
 	context_command_blue = new zmq::context_t(1);
 	socket_command_blue = new zmq::socket_t(*context_command_blue, ZMQ_PAIR);
@@ -98,9 +98,9 @@ void Interface::sendCommandTeam2(){
 	//printCommand();
 }
 
-void Interface::createReceiveCommandsTeam1(vss_command::Global_Commands* global_commands, string addr_client_simulator_team1){
+void Interface::createReceiveCommandsTeam1(vss_command::Global_Commands* global_commands, string addr_server_simulator_team1){
 	this->global_commands = global_commands;
-	this->addr_client_simulator_team1 = addr_client_simulator_team1;
+	this->addr_server_simulator_team1 = addr_server_simulator_team1;
 
 	context_command_yellow = new zmq::context_t(1);
 	socket_command_yellow = new zmq::socket_t(*context_command_yellow, ZMQ_PAIR);
@@ -119,9 +119,9 @@ void Interface::receiveCommandTeam1(){
 	//socket.close();
 }
 
-void Interface::createReceiveCommandsTeam2(vss_command::Global_Commands* global_commands, string addr_client_simulator_team2){
+void Interface::createReceiveCommandsTeam2(vss_command::Global_Commands* global_commands, string addr_server_simulator_team2){
 	this->global_commands = global_commands;
-	this->addr_client_simulator_team2 = addr_client_simulator_team2;
+	this->addr_server_simulator_team2 = addr_server_simulator_team2;
 
 	context_command_blue = new zmq::context_t(1);
 	socket_command_blue = new zmq::socket_t(*context_command_blue, ZMQ_PAIR);
@@ -139,9 +139,9 @@ void Interface::receiveCommandTeam2(){
 	//printCommand();
 }
 
-void Interface::createSendDebugTeam1(vss_debug::Global_Debug* global_debug, string addr_server_debug_team1){
+void Interface::createSendDebugTeam1(vss_debug::Global_Debug* global_debug, string addr_client_debug_team1){
 	this->global_debug = global_debug;
-	this->addr_server_debug_team1 = addr_server_debug_team1;
+	this->addr_client_debug_team1 = addr_client_debug_team1;
 	
 	context_debug = new zmq::context_t(1);
 	socket_debug = new zmq::socket_t(*context_debug, ZMQ_PAIR);
@@ -161,9 +161,9 @@ void Interface::sendDebugTeam1(){
 	//printCommand();
 }
 
-void Interface::createReceiveDebugTeam1(vss_debug::Global_Debug* global_debug, string addr_client_debug_team1){
+void Interface::createReceiveDebugTeam1(vss_debug::Global_Debug* global_debug, string addr_server_debug_team1){
 	this->global_debug = global_debug;
-	this->addr_client_debug_team1 = addr_client_debug_team1;
+	this->addr_server_debug_team1 = addr_server_debug_team1;
 
 	context_debug = new zmq::context_t(1);
 	socket_debug = new zmq::socket_t(*context_debug, ZMQ_PAIR);
@@ -182,9 +182,9 @@ void Interface::receiveDebugTeam1(){
 	//socket.close();
 }
 
-void Interface::createSendDebugTeam2(vss_debug::Global_Debug* global_debug, string addr_server_debug_team2){
+void Interface::createSendDebugTeam2(vss_debug::Global_Debug* global_debug, string addr_client_debug_team2){
 	this->global_debug = global_debug;
-	this->addr_server_debug_team2 = addr_server_debug_team2;
+	this->addr_client_debug_team2 = addr_cliet_debug_team2;
 	
 	context_debug = new zmq::context_t(1);
 	socket_debug = new zmq::socket_t(*context_debug, ZMQ_PAIR);
@@ -204,9 +204,9 @@ void Interface::sendDebugTeam2(){
 	//printCommand();
 }
 
-void Interface::createReceiveDebugTeam2(vss_debug::Global_Debug* global_debug, string addr_client_debug_team2){
+void Interface::createReceiveDebugTeam2(vss_debug::Global_Debug* global_debug, string addr_server_debug_team2){
 	this->global_debug = global_debug;
-	this->addr_client_debug_team2 = addr_client_debug_team2;
+	this->addr_server_debug_team2 = addr_server_debug_team2;
 
 	context_debug = new zmq::context_t(1);
 	socket_debug = new zmq::socket_t(*context_debug, ZMQ_PAIR);
