@@ -19,7 +19,7 @@ void Interface::createSocketSendState(vss_state::Global_State *global_state, str
 	socket = new zmq::socket_t(*context, ZMQ_PUB);
 
 	std::cout << "Connecting Server Multicast Sender: " << addr_server_multicast << std::endl;
-	socket->bind(addr_server_multicast);
+	socket->bind(addr_server_multicast.c_str());
 }
 
 void Interface::sendState(){
@@ -40,7 +40,7 @@ void Interface::createSocketReceiveState(vss_state::Global_State *global_state, 
 	socket = new zmq::socket_t(*context, ZMQ_SUB);
 
 	std::cout << "Connecting Client Multicast Receiver: " << addr_client_multicast << std::endl;
-	socket->connect(addr_client_multicast);
+	socket->connect(addr_client_multicast.c_str());
 
 	socket->setsockopt(ZMQ_SUBSCRIBE, "", 0);
 }
@@ -62,7 +62,7 @@ void Interface::createSendCommandsTeam1(vss_command::Global_Commands* global_com
 	socket_command_yellow = new zmq::socket_t(*context_command_yellow, ZMQ_PAIR);
 
 	std::cout << "Connecting Client Sender Team 1: " << addr_client_simulator_team1 << "(yellow team)" << std::endl << std::endl;
-	socket_command_yellow->connect(addr_client_simulator_team1);
+	socket_command_yellow->connect(addr_client_simulator_team1.c_str());
 }
 
 void Interface::sendCommandTeam1(){
@@ -84,7 +84,7 @@ void Interface::createSendCommandsTeam2(vss_command::Global_Commands* global_com
 	socket_command_blue = new zmq::socket_t(*context_command_blue, ZMQ_PAIR);
 
 	std::cout << "Connecting Client Sender Team 2: " << addr_client_simulator_team2 << "(blue team)" << std::endl << std::endl;
-	socket_command_blue->connect(addr_client_simulator_team2);
+	socket_command_blue->connect(addr_client_simulator_team2.c_str());
 }
 
 void Interface::sendCommandTeam2(){
@@ -106,7 +106,7 @@ void Interface::createReceiveCommandsTeam1(vss_command::Global_Commands* global_
 	socket_command_yellow = new zmq::socket_t(*context_command_yellow, ZMQ_PAIR);
 
 	std::cout << "Connecting Server Receiver Team 1: " << addr_server_simulator_team1 << std::endl;
-	socket_command_yellow->bind(addr_server_simulator_team1);
+	socket_command_yellow->bind(addr_server_simulator_team1.c_str());
 }
 
 void Interface::receiveCommandTeam1(){
@@ -127,7 +127,7 @@ void Interface::createReceiveCommandsTeam2(vss_command::Global_Commands* global_
 	socket_command_blue = new zmq::socket_t(*context_command_blue, ZMQ_PAIR);
 
 	std::cout << "Connecting Server Receiver Team 2: " << addr_server_simulator_team2 << std::endl;
-	socket_command_blue->bind(addr_server_simulator_team2);
+	socket_command_blue->bind(addr_server_simulator_team2.c_str());
 }
 
 void Interface::receiveCommandTeam2(){
@@ -147,7 +147,7 @@ void Interface::createSendDebugTeam1(vss_debug::Global_Debug* global_debug, stri
 	socket_debug = new zmq::socket_t(*context_debug, ZMQ_PAIR);
 
 	std::cout << "Connecting Server Sender Debug Team 1: " << addr_client_debug_team1 << "(yellow team)" << std::endl << std::endl;
-	socket_debug->connect(addr_client_debug_team1);
+	socket_debug->connect(addr_client_debug_team1.c_str());
 }
 
 void Interface::sendDebugTeam1(){
@@ -169,7 +169,7 @@ void Interface::createReceiveDebugTeam1(vss_debug::Global_Debug* global_debug, s
 	socket_debug = new zmq::socket_t(*context_debug, ZMQ_PAIR);
 
 	std::cout << "Connecting Client Receiver Debug Team 1: " << addr_server_debug_team1 << std::endl;
-	socket_debug->bind(addr_server_debug_team1);
+	socket_debug->bind(addr_server_debug_team1.c_str());
 }
 
 void Interface::receiveDebugTeam1(){
@@ -190,7 +190,7 @@ void Interface::createSendDebugTeam2(vss_debug::Global_Debug* global_debug, stri
 	socket_debug = new zmq::socket_t(*context_debug, ZMQ_PAIR);
 
 	std::cout << "Connecting Server Sender Debug Team 2: " << addr_client_debug_team2 << " (blue team)" << std::endl << std::endl;
-	socket_debug->connect(addr_client_debug_team2);
+	socket_debug->connect(addr_client_debug_team2.c_str());
 }
 
 void Interface::sendDebugTeam2(){
@@ -212,7 +212,7 @@ void Interface::createReceiveDebugTeam2(vss_debug::Global_Debug* global_debug, s
 	socket_debug = new zmq::socket_t(*context_debug, ZMQ_PAIR);
 
 	std::cout << "Connecting Client Receiver Debug Team 2: " << addr_server_debug_team2 << std::endl;
-	socket_debug->bind(addr_server_debug_team2);
+	socket_debug->bind(addr_server_debug_team2.c_str());
 }
 
 void Interface::receiveDebugTeam2(){
