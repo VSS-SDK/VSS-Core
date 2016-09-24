@@ -20,6 +20,8 @@
 #include "protos/command.pb.h"
 #include "protos/debug.pb.h"
 
+using namespace std;
+
 class Interface{
 private:
 	zmq::context_t *context;
