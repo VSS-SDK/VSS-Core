@@ -184,7 +184,7 @@ void Interface::receiveDebugTeam1(){
 
 void Interface::createSendDebugTeam2(vss_debug::Global_Debug* global_debug, string addr_client_debug_team2){
 	this->global_debug = global_debug;
-	this->addr_client_debug_team2 = addr_cliet_debug_team2;
+	this->addr_client_debug_team2 = addr_client_debug_team2;
 	
 	context_debug = new zmq::context_t(1);
 	socket_debug = new zmq::socket_t(*context_debug, ZMQ_PAIR);
