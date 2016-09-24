@@ -34,7 +34,7 @@ void Interface::sendState(){
 
 void Interface::createSocketReceiveState(vss_state::Global_State *global_state, string addr_client_multicast){
 	this->global_state = global_state;
-	this->string addr_client_multicast = string addr_client_multicast;
+	this->addr_client_multicast = addr_client_multicast;
 	
 	context = new zmq::context_t(1);
 	socket = new zmq::socket_t(*context, ZMQ_SUB);
