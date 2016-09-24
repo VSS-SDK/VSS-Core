@@ -32,7 +32,7 @@ void Interface::sendState(){
     socket->send(request);
 }
 
-void Interface::createSocketReceiveState(vss_state::Global_State *global_state), string addr_client_multicast{
+void Interface::createSocketReceiveState(vss_state::Global_State *global_state, string addr_client_multicast){
 	this->global_state = global_state;
 	this->string addr_client_multicast = string addr_client_multicast;
 	
