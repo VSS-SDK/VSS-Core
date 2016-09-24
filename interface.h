@@ -37,52 +37,52 @@ private:
 	vss_state::Global_State *global_state;
 	vss_command::Global_Commands *global_commands;
 	vss_debug::Global_Debug *global_debug;
-	
+
 	// Simulator and VSS -> Strategies
-	const char *addr_server_multicast = "tcp://*:5555";
-	const char *addr_client_multicast = "tcp://localhost:5555";
+	string addr_server_multicast;
+	string addr_client_multicast;
 
 	// Strategy Team 1 -> Simulator
-	const char *addr_server_simulator_team1 = "tcp://*:5556";
-	const char *addr_client_simulator_team1 = "tcp://localhost:5556";
+	string addr_server_simulator_team1;
+	string addr_client_simulator_team1;
 
 	// Strategy Team 2 -> Simulator
-	const char *addr_server_simulator_team2 = "tcp://*:5557";
-	const char *addr_client_simulator_team2 = "tcp://localhost:5557";
+	string addr_server_simulator_team2;
+	string addr_client_simulator_team2;
 
 	// Strategy Team 1 -> Viewer
-	const char *addr_server_debug_team1 = "tcp://*:5558";
-	const char *addr_client_debug_team1 = "tcp://localhost:5558";
+	string addr_server_debug_team1;
+	string addr_client_debug_team1;
 
 	// Strategy Team 2 -> Viewer
-	const char *addr_server_debug_team2 = "tcp://*:5559";
-	const char *addr_client_debug_team2 = "tcp://localhost:5559";
+	string addr_server_debug_team2;
+	string addr_client_debug_team2;
 public:
 	Interface();
 
-	void createSocketSendState(vss_state::Global_State*);
+	void createSocketSendState(vss_state::Global_State*, string addr_server_multicast = "tcp://*:5555");
 	void sendState();
-	void createSocketReceiveState(vss_state::Global_State*);
+	void createSocketReceiveState(vss_state::Global_State*, string addr_client_multicast = "tcp://localhost:5555");
 	void receiveState();
 
-	void createSendCommandsTeam1(vss_command::Global_Commands*);
+	void createSendCommandsTeam1(vss_command::Global_Commands*, string addr_server_simulator_team1 = "tcp://*:5556");
 	void sendCommandTeam1();
-	void createReceiveCommandsTeam1(vss_command::Global_Commands*);
+	void createReceiveCommandsTeam1(vss_command::Global_Commands*, string addr_client_simulator_team1 = "tcp://localhost:5556");
 	void receiveCommandTeam1();
 
-	void createSendCommandsTeam2(vss_command::Global_Commands*);
+	void createSendCommandsTeam2(vss_command::Global_Commands*, string addr_server_simulator_team2 = "tcp://*:5557");
 	void sendCommandTeam2();
-	void createReceiveCommandsTeam2(vss_command::Global_Commands*);	
+	void createReceiveCommandsTeam2(vss_command::Global_Commands*, string addr_client_simulator_team2 = "tcp://localhost:5557");	
 	void receiveCommandTeam2();
 
-	void createSendDebugTeam1(vss_debug::Global_Debug*);
+	void createSendDebugTeam1(vss_debug::Global_Debug*, string addr_server_debug_team1 = "tcp://*:5558");
 	void sendDebugTeam1();
-	void createReceiveDebugTeam1(vss_debug::Global_Debug*);
+	void createReceiveDebugTeam1(vss_debug::Global_Debug*, string addr_client_debug_team1 = "tcp://localhost:5558");
 	void receiveDebugTeam1();
 
-	void createSendDebugTeam2(vss_debug::Global_Debug*);
+	void createSendDebugTeam2(vss_debug::Global_Debug*, string addr_server_debug_team2 = "tcp://*:5559");
 	void sendDebugTeam2();
-	void createReceiveDebugTeam2(vss_debug::Global_Debug*);	
+	void createReceiveDebugTeam2(vss_debug::Global_Debug*, string addr_client_debug_team2 = "tcp://localhost:5559");	
 	void receiveDebugTeam2();
 
 	void printState();
