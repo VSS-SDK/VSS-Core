@@ -38,6 +38,7 @@ void Interface::sendState(){
 
 //! Esse método deve ser chamado apenas uma vez
 void Interface::createSocketReceiveState(vss_state::Global_State *global_state, string addr_client_multicast){
+	//! Global_State é recebido como ponteiro, assim facilitando o recebimento de novos estados
 	this->global_state = global_state;
 	this->addr_client_multicast = addr_client_multicast;
 	
@@ -63,6 +64,7 @@ void Interface::receiveState(){
 
 //! Esse método deve ser chamado apenas uma vez
 void Interface::createSendCommandsTeam1(vss_command::Global_Commands* global_commands, string addr_client_simulator_team1){
+	//! Global_Commands é recebido como ponteiro, assim facilitando o envio de novos comandos
 	this->global_commands = global_commands;
 	this->addr_client_simulator_team1 = addr_client_simulator_team1;
 	
@@ -88,6 +90,7 @@ void Interface::sendCommandTeam1(){
 
 //! Esse método deve ser chamado apenas uma vez
 void Interface::createSendCommandsTeam2(vss_command::Global_Commands* global_commands, string addr_client_simulator_team2){
+	//! Global_Commands é recebido como ponteiro, assim facilitando o envio de novos comandos
 	this->global_commands = global_commands;
 	this->addr_client_simulator_team2 = addr_client_simulator_team2;
 	
@@ -113,6 +116,7 @@ void Interface::sendCommandTeam2(){
 
 //! Esse método deve ser chamado apenas uma vez
 void Interface::createReceiveCommandsTeam1(vss_command::Global_Commands* global_commands, string addr_server_simulator_team1){
+	//! Global_Commands é recebido como ponteiro, assim facilitando o recebimento de novos comandos
 	this->global_commands = global_commands;
 	this->addr_server_simulator_team1 = addr_server_simulator_team1;
 
@@ -137,6 +141,7 @@ void Interface::receiveCommandTeam1(){
 
 //! Esse método deve ser chamado apenas uma vez
 void Interface::createReceiveCommandsTeam2(vss_command::Global_Commands* global_commands, string addr_server_simulator_team2){
+	//! Global_Commands é recebido como ponteiro, assim facilitando o envio de novos comandos
 	this->global_commands = global_commands;
 	this->addr_server_simulator_team2 = addr_server_simulator_team2;
 
@@ -160,6 +165,7 @@ void Interface::receiveCommandTeam2(){
 
 //! Esse método deve ser chamado apenas uma vez
 void Interface::createSendDebugTeam1(vss_debug::Global_Debug* global_debug, string addr_client_debug_team1){
+	//! Global_Debug é recebido como ponteiro, assim facilitando o envio de novas informações de debug
 	this->global_debug = global_debug;
 	this->addr_client_debug_team1 = addr_client_debug_team1;
 	
@@ -185,6 +191,7 @@ void Interface::sendDebugTeam1(){
 
 //! Esse método deve ser chamado apenas uma vez
 void Interface::createReceiveDebugTeam1(vss_debug::Global_Debug* global_debug, string addr_server_debug_team1){
+	//! Global_Debug é recebido como ponteiro, assim facilitando o recebimento de novas informações de debug
 	this->global_debug = global_debug;
 	this->addr_server_debug_team1 = addr_server_debug_team1;
 
@@ -209,6 +216,7 @@ void Interface::receiveDebugTeam1(){
 
 //! Esse método deve ser chamado apenas uma vez
 void Interface::createSendDebugTeam2(vss_debug::Global_Debug* global_debug, string addr_client_debug_team2){
+	//! Global_Debug é recebido como ponteiro, assim facilitando o envio de novas informações de debug
 	this->global_debug = global_debug;
 	this->addr_client_debug_team2 = addr_client_debug_team2;
 	
@@ -234,6 +242,7 @@ void Interface::sendDebugTeam2(){
 
 //! Esse método deve ser chamado apenas uma vez
 void Interface::createReceiveDebugTeam2(vss_debug::Global_Debug* global_debug, string addr_server_debug_team2){
+	//! Global_Debug é recebido como ponteiro, assim facilitando o recebimento de novas informações de debug
 	this->global_debug = global_debug;
 	this->addr_server_debug_team2 = addr_server_debug_team2;
 

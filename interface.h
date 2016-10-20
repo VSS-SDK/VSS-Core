@@ -45,7 +45,7 @@ protected:
 	//! Socket de envio de informações de debug por um VSS-SampleStrategy. E socket de recebimento de informações de debug pelo VSS-Viewer
 	zmq::socket_t *socket_debug;
     
-	//! Pacote de estados (Utilizando pelo VSS-Simulator e VSS-Vision, para enviar informações do campo) (Utilizado também pelo VSS-Viewer, para desenhar a estado do jogo e pelo VSS-SampleStrategy para construir-se uma estratégia)
+	//! Pacote de estados (Utilizado pelo VSS-Simulator e VSS-Vision, para enviar informações do campo) (Utilizado também pelo VSS-Viewer, para desenhar a estado do jogo e pelo VSS-SampleStrategy para construir-se uma estratégia)
 	vss_state::Global_State *global_state;
 
 	//! Pacote de comandos (Utilizado por VSS-SampleStrategys e VSS-Joysticks, para enviar comandos para robôs virtuais) (Utilizado também pelo VSS-Simulator, para receber os comandos de cada robô)
@@ -59,20 +59,24 @@ protected:
 	//! Endereço mulsticast do recebimento dos estados por parte do VSS-Viewer e VSS-SampleStrategys
 	string addr_client_multicast;
 
-	//! (Time Amarelo) Endereços unicast para envio de comandos por VSS-SampleStrategys ou VSS-Joysticks. E recebimento dessas informações pelo VSS-Simulator 
+	//! (Time Amarelo) Endereço unicast para recebimento dessas informações pelo VSS-Simulator 
 	string addr_server_simulator_team1;
+	//! (Time Amarelo) Endereço unicast para envio de comandos por VSS-SampleStrategys ou VSS-Joysticks
 	string addr_client_simulator_team1;
 
-	//! (Time Azul) Endereços unicast para envio de comandos por VSS-SampleStrategys ou VSS-Joysticks. E recebimento dessas informações pelo VSS-Simulator 
+	//! (Time Azul) Endereços unicast para recebimento dessas informações pelo VSS-Simulator 
 	string addr_server_simulator_team2;
+	//! (Time Azul) Endereços unicast para envio de comandos por VSS-SampleStrategys ou VSS-Joysticks
 	string addr_client_simulator_team2;
 
-	//! (Time Amarelo) Endereços unicast para envio de informações de debug por VSS-SampleStrategys e recebimento dessas informações pelo VSS-Viewer 
+	//! (Time Amarelo) Endereço unicast para recebimento de informações de debug pelo VSS-Viewer
 	string addr_server_debug_team1;
+	//! (Time Amarelo) Endereço unicast para envio de informações de debug por VSS-SampleStrategys
 	string addr_client_debug_team1;
 
-	//! (Time Azul) Endereços unicast para envio de informações de debug por VSS-SampleStrategys e recebimento dessas informações pelo VSS-Viewer 
+	//! (Time Azul) Endereço unicast para recebimento de informações de debug pelo VSS-Viewer
 	string addr_server_debug_team2;
+	//! (Time Azul) Endereço unicast para envio de informações de debug por VSS-SampleStrategys
 	string addr_client_debug_team2;
 public:
 	//! Construtor DEFAULT
