@@ -27,6 +27,7 @@ void Interface::createSocketSendState(vss_state::Global_State *global_state, str
 //! Esse método deve ser chamado em um loop infinito controlado.
 //! O envio tratado aqui é não bloqueante
 void Interface::sendState(){
+	//! Chamando esse método, o Global_State passado por ponteiro na construção do socket automaticamente é atualizado
 	std::string msg_str;
     global_state->SerializeToString(&msg_str);
 
@@ -54,6 +55,7 @@ void Interface::createSocketReceiveState(vss_state::Global_State *global_state, 
 //! Esse método deve ser chamado em um loop infinito controlado.
 //! O recebimento tratado aqui é não bloqueante
 void Interface::receiveState(){
+	//! Chamando esse método, o Global_State passado por ponteiro na construção do socket automaticamente é atualizado
 	zmq::message_t request;
 	socket->recv(&request, 0); //  Wait for next request from client
 	//std::cout << "Received" << std::endl;
@@ -78,6 +80,7 @@ void Interface::createSendCommandsTeam1(vss_command::Global_Commands* global_com
 //! Esse método deve ser chamado em um loop infinito controlado.
 //! O envio tratado aqui é bloqueante
 void Interface::sendCommandTeam1(){
+	//! Chamando esse método, o Global_Commands passado por ponteiro na construção do socket automaticamente é atualizado
 	std::string msg_str;
 	global_commands->SerializeToString(&msg_str);
 
@@ -104,6 +107,7 @@ void Interface::createSendCommandsTeam2(vss_command::Global_Commands* global_com
 //! Esse método deve ser chamado em um loop infinito controlado.
 //! O envio tratado aqui é bloqueante
 void Interface::sendCommandTeam2(){
+	//! Chamando esse método, o Global_Commands passado por ponteiro na construção do socket automaticamente é atualizado
 	std::string msg_str;
 	global_commands->SerializeToString(&msg_str);
 
@@ -130,6 +134,7 @@ void Interface::createReceiveCommandsTeam1(vss_command::Global_Commands* global_
 //! Esse método deve ser chamado em um loop infinito controlado.
 //! O recebimento tratado aqui é bloqueante
 void Interface::receiveCommandTeam1(){
+	//! Chamando esse método, o Global_Commands passado por ponteiro na construção do socket automaticamente é atualizado
 	zmq::message_t request;
 	socket_command_yellow->recv(&request);
 	//std::cout << "Received" << std::endl;
@@ -155,6 +160,7 @@ void Interface::createReceiveCommandsTeam2(vss_command::Global_Commands* global_
 //! Esse método deve ser chamado em um loop infinito controlado.
 //! O recebimento tratado aqui é bloqueante
 void Interface::receiveCommandTeam2(){
+	//! Chamando esse método, o Global_Commands passado por ponteiro na construção do socket automaticamente é atualizado
 	zmq::message_t request;
 	socket_command_blue->recv(&request);
 	//std::cout << "Received" << std::endl;
@@ -179,6 +185,7 @@ void Interface::createSendDebugTeam1(vss_debug::Global_Debug* global_debug, stri
 //! Esse método deve ser chamado em um loop infinito controlado.
 //! O envio tratado aqui é bloqueante
 void Interface::sendDebugTeam1(){
+	//! Chamando esse método, o Global_Debug passado por ponteiro na construção do socket automaticamente é atualizado
 	std::string msg_str;
 	global_debug->SerializeToString(&msg_str);
 
@@ -205,6 +212,7 @@ void Interface::createReceiveDebugTeam1(vss_debug::Global_Debug* global_debug, s
 //! Esse método deve ser chamado em um loop infinito controlado.
 //! O recebimento tratado aqui é bloqueante
 void Interface::receiveDebugTeam1(){
+	//! Chamando esse método, o Global_Debug passado por ponteiro na construção do socket automaticamente é atualizado
 	zmq::message_t request;
 	socket_debug->recv(&request);
 	//std::cout << "Received" << std::endl;
@@ -230,6 +238,7 @@ void Interface::createSendDebugTeam2(vss_debug::Global_Debug* global_debug, stri
 //! Esse método deve ser chamado em um loop infinito controlado.
 //! O envio tratado aqui é bloqueante
 void Interface::sendDebugTeam2(){
+	//! Chamando esse método, o Global_Debug passado por ponteiro na construção do socket automaticamente é atualizado
 	std::string msg_str;
 	global_debug->SerializeToString(&msg_str);
 
@@ -256,6 +265,7 @@ void Interface::createReceiveDebugTeam2(vss_debug::Global_Debug* global_debug, s
 //! Esse método deve ser chamado em um loop infinito controlado.
 //! O recebimento tratado aqui é bloqueante
 void Interface::receiveDebugTeam2(){
+	//! Chamando esse método, o Global_Debug passado por ponteiro na construção do socket automaticamente é atualizado
 	zmq::message_t request;
 	socket_debug->recv(&request);
 	//std::cout << "Received" << std::endl;
