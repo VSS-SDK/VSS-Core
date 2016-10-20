@@ -7,12 +7,13 @@
  */
 
 //! Aqui, encontra-se a definição do pacote de estado no formato da biblioteca Google Protocol Buffers (protobuf).
+//! Para mais informações sobre protobuf: https://developers.google.com/protocol-buffers/
 //! Esse pacote é responsável por carregar todas as informações a cerca do estado do campo, em outras palavras,
 //! posição, orientação e velocidades de todos os robôs em campo e da bola. Esse pacote possibilita que uma
 //! estratégia obtenha os dados do VSS-Vision e VSS-Simulator, para tal, o mesmo deve ser précompílado para uma
 //! linguagem especifica gerando um trecho de código que deve ser referenciado.
 
-//! Aqui definisse um package, que na pratica gera um namespace (C++)
+//! Aqui definisse um package, que na pratica gera um namespace (C++) -> (!) using namespace vss_state;
 package vss_state;
 
 //! Essa mensagem é uma submensagem do pacote Global_State que de fato é enviado. Essa informação é utilizada
@@ -56,7 +57,7 @@ message Robot_State{
   optional RGB		  color = 5;	  //! Cor da etiqueta secundária de um robô (Somente VSS-Vision)	
 }
 
-//! Essa é a mensagem que é enviado pelo VSS-Vision e VSS-Simulator.
+//! Essa é a mensagem que é enviada pelo VSS-Vision e VSS-Simulator.
 message Global_State{
   optional uint32       id = 1;               //! ID da mensagem, pode ser enviado como contra-prova para verificar se a comunicação está sincronizada. Sende este o único valor OPICIONAL
   required bool			    origin = 2;		        //! Booleano que define a origem da mensagem. Caso TRUE a mensagem vem do VSS-Vision, caso FALSE a mensagem vem do VSS-Simulator

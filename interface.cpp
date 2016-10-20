@@ -11,7 +11,9 @@
 Interface::Interface(){
 }
 
+//! Esse método deve ser chamado apenas uma vez
 void Interface::createSocketSendState(vss_state::Global_State *global_state, string addr_server_multicast){
+	//! Global_State é recebido como ponteiro, assim facilitando o envio de novos estados
 	this->global_state = global_state;
 	this->addr_server_multicast = addr_server_multicast;
 
@@ -22,6 +24,8 @@ void Interface::createSocketSendState(vss_state::Global_State *global_state, str
 	socket->bind(addr_server_multicast.c_str());
 }
 
+//! Esse método deve ser chamado em um loop infinito controlado.
+//! O envio tratado aqui é não bloqueante
 void Interface::sendState(){
 	std::string msg_str;
     global_state->SerializeToString(&msg_str);
@@ -32,6 +36,7 @@ void Interface::sendState(){
     socket->send(request);
 }
 
+//! Esse método deve ser chamado apenas uma vez
 void Interface::createSocketReceiveState(vss_state::Global_State *global_state, string addr_client_multicast){
 	this->global_state = global_state;
 	this->addr_client_multicast = addr_client_multicast;
@@ -45,6 +50,8 @@ void Interface::createSocketReceiveState(vss_state::Global_State *global_state, 
 	socket->setsockopt(ZMQ_SUBSCRIBE, "", 0);
 }
 
+//! Esse método deve ser chamado em um loop infinito controlado.
+//! O recebimento tratado aqui é não bloqueante
 void Interface::receiveState(){
 	zmq::message_t request;
 	socket->recv(&request, 0); //  Wait for next request from client
@@ -54,6 +61,7 @@ void Interface::receiveState(){
 	//printState();
 }
 
+//! Esse método deve ser chamado apenas uma vez
 void Interface::createSendCommandsTeam1(vss_command::Global_Commands* global_commands, string addr_client_simulator_team1){
 	this->global_commands = global_commands;
 	this->addr_client_simulator_team1 = addr_client_simulator_team1;
@@ -65,6 +73,8 @@ void Interface::createSendCommandsTeam1(vss_command::Global_Commands* global_com
 	socket_command_yellow->connect(addr_client_simulator_team1.c_str());
 }
 
+//! Esse método deve ser chamado em um loop infinito controlado.
+//! O envio tratado aqui é bloqueante
 void Interface::sendCommandTeam1(){
 	std::string msg_str;
 	global_commands->SerializeToString(&msg_str);
@@ -76,6 +86,7 @@ void Interface::sendCommandTeam1(){
 	//printCommand();
 }
 
+//! Esse método deve ser chamado apenas uma vez
 void Interface::createSendCommandsTeam2(vss_command::Global_Commands* global_commands, string addr_client_simulator_team2){
 	this->global_commands = global_commands;
 	this->addr_client_simulator_team2 = addr_client_simulator_team2;
@@ -87,6 +98,8 @@ void Interface::createSendCommandsTeam2(vss_command::Global_Commands* global_com
 	socket_command_blue->connect(addr_client_simulator_team2.c_str());
 }
 
+//! Esse método deve ser chamado em um loop infinito controlado.
+//! O envio tratado aqui é bloqueante
 void Interface::sendCommandTeam2(){
 	std::string msg_str;
 	global_commands->SerializeToString(&msg_str);
@@ -98,6 +111,7 @@ void Interface::sendCommandTeam2(){
 	//printCommand();
 }
 
+//! Esse método deve ser chamado apenas uma vez
 void Interface::createReceiveCommandsTeam1(vss_command::Global_Commands* global_commands, string addr_server_simulator_team1){
 	this->global_commands = global_commands;
 	this->addr_server_simulator_team1 = addr_server_simulator_team1;
@@ -109,6 +123,8 @@ void Interface::createReceiveCommandsTeam1(vss_command::Global_Commands* global_
 	socket_command_yellow->bind(addr_server_simulator_team1.c_str());
 }
 
+//! Esse método deve ser chamado em um loop infinito controlado.
+//! O recebimento tratado aqui é bloqueante
 void Interface::receiveCommandTeam1(){
 	zmq::message_t request;
 	socket_command_yellow->recv(&request);
@@ -119,6 +135,7 @@ void Interface::receiveCommandTeam1(){
 	//socket.close();
 }
 
+//! Esse método deve ser chamado apenas uma vez
 void Interface::createReceiveCommandsTeam2(vss_command::Global_Commands* global_commands, string addr_server_simulator_team2){
 	this->global_commands = global_commands;
 	this->addr_server_simulator_team2 = addr_server_simulator_team2;
@@ -130,6 +147,8 @@ void Interface::createReceiveCommandsTeam2(vss_command::Global_Commands* global_
 	socket_command_blue->bind(addr_server_simulator_team2.c_str());
 }
 
+//! Esse método deve ser chamado em um loop infinito controlado.
+//! O recebimento tratado aqui é bloqueante
 void Interface::receiveCommandTeam2(){
 	zmq::message_t request;
 	socket_command_blue->recv(&request);
@@ -139,6 +158,7 @@ void Interface::receiveCommandTeam2(){
 	//printCommand();
 }
 
+//! Esse método deve ser chamado apenas uma vez
 void Interface::createSendDebugTeam1(vss_debug::Global_Debug* global_debug, string addr_client_debug_team1){
 	this->global_debug = global_debug;
 	this->addr_client_debug_team1 = addr_client_debug_team1;
@@ -150,6 +170,8 @@ void Interface::createSendDebugTeam1(vss_debug::Global_Debug* global_debug, stri
 	socket_debug->connect(addr_client_debug_team1.c_str());
 }
 
+//! Esse método deve ser chamado em um loop infinito controlado.
+//! O envio tratado aqui é bloqueante
 void Interface::sendDebugTeam1(){
 	std::string msg_str;
 	global_debug->SerializeToString(&msg_str);
@@ -161,6 +183,7 @@ void Interface::sendDebugTeam1(){
 	//printCommand();
 }
 
+//! Esse método deve ser chamado apenas uma vez
 void Interface::createReceiveDebugTeam1(vss_debug::Global_Debug* global_debug, string addr_server_debug_team1){
 	this->global_debug = global_debug;
 	this->addr_server_debug_team1 = addr_server_debug_team1;
@@ -172,6 +195,8 @@ void Interface::createReceiveDebugTeam1(vss_debug::Global_Debug* global_debug, s
 	socket_debug->bind(addr_server_debug_team1.c_str());
 }
 
+//! Esse método deve ser chamado em um loop infinito controlado.
+//! O recebimento tratado aqui é bloqueante
 void Interface::receiveDebugTeam1(){
 	zmq::message_t request;
 	socket_debug->recv(&request);
@@ -182,6 +207,7 @@ void Interface::receiveDebugTeam1(){
 	//socket.close();
 }
 
+//! Esse método deve ser chamado apenas uma vez
 void Interface::createSendDebugTeam2(vss_debug::Global_Debug* global_debug, string addr_client_debug_team2){
 	this->global_debug = global_debug;
 	this->addr_client_debug_team2 = addr_client_debug_team2;
@@ -193,6 +219,8 @@ void Interface::createSendDebugTeam2(vss_debug::Global_Debug* global_debug, stri
 	socket_debug->connect(addr_client_debug_team2.c_str());
 }
 
+//! Esse método deve ser chamado em um loop infinito controlado.
+//! O envio tratado aqui é bloqueante
 void Interface::sendDebugTeam2(){
 	std::string msg_str;
 	global_debug->SerializeToString(&msg_str);
@@ -204,6 +232,7 @@ void Interface::sendDebugTeam2(){
 	//printCommand();
 }
 
+//! Esse método deve ser chamado apenas uma vez
 void Interface::createReceiveDebugTeam2(vss_debug::Global_Debug* global_debug, string addr_server_debug_team2){
 	this->global_debug = global_debug;
 	this->addr_server_debug_team2 = addr_server_debug_team2;
@@ -215,6 +244,8 @@ void Interface::createReceiveDebugTeam2(vss_debug::Global_Debug* global_debug, s
 	socket_debug->bind(addr_server_debug_team2.c_str());
 }
 
+//! Esse método deve ser chamado em um loop infinito controlado.
+//! O recebimento tratado aqui é bloqueante
 void Interface::receiveDebugTeam2(){
 	zmq::message_t request;
 	socket_debug->recv(&request);

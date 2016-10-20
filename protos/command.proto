@@ -6,28 +6,40 @@
  * file, You can obtain one at http://www.gnu.org/licenses/gpl-3.0/.
  */
 
+//! Aqui, encontra-se a definição do pacote de comandos de um time no formato da biblioteca Google Protocol Buffers (protobuf).
+//! Para mais informações sobre protobuf: https://developers.google.com/protocol-buffers/
+//! Esse pacote é responsável por carregar as informações de comando de um time de futebol de robôs.
+//! Essa pacote SOMENTE É UTILIZADO para enviar os comandos para robôs virtuais no VSS-Simulator
+//! Dentre essas informações do pacote existem: ID do comando, se o time é amarelo ou azul, uma lista dinâmica de comandos
+//! e um código de situação. Para utilizar esse protocolo, o mesmo deve ser précompílado para uma linguagem especifica
+//! gerando um trecho de código que deve ser referenciado.
+
+//! Aqui definisse um package, que na pratica gera um namespace ((C++) -> (!) using namespace vss_command;
 package vss_command;
 
+
+//! Essa mensagem é uma submensagem do pacote Global_Commands que de fato é enviado. Essa informação é utilizada para
+//! represetar as velocidades das rodas direita e esquerda de um robô.
 message Robot_Command{
-	required uint32	id = 1;
-	required float left_vel = 2;
-	required float right_vel = 3;
+	required uint32	id = 1;			//! ID que define de qual robô é a comando
+	required float left_vel = 2;	//! Velocidade da roda esquerda
+	required float right_vel = 3;	//! Velocidade da roda direita
 }
 
+//! Essa é a mensagem que de fato é enviada.
 message Global_Commands{
-	optional uint32			id = 1;
-	required bool			is_team_yellow = 2;
-	repeated Robot_Command	robot_commands = 3;
-	required uint32			situation = 4;
-	/* SITUATIONS
-		0 = Normal Game
-		1 = Re-organize (GOAL_TEAM1)
-		2 = Re-organize (GOAL_TEAM2)
-		3 = Re-organize (FAULT_TEAM1)
-		4 = Re-organize (FAULT_TEAM2)
-		5 = Re-organize (PENALTY_TEAM1)
-		6 = Re-organize (PENALITY_TEAM2)
-		99 = Finish
-	*/
+	optional uint32			id = 1;					//! ID da mensagem. Afim de ser utilizado como contra-prova para verificar se a comunicação está sincronizada
+	required bool			is_team_yellow = 2;		//! Booleano que define se o time é amarelo ou azul
+	repeated Robot_Command	robot_commands = 3;		//! Lista dinâmica de comandos. Sendo sempre 3, devido a quantidade robôs
+	required uint32			situation = 4;			//! Situação em que se encontra o comando. No futuro os robôs serão posicionados autonomamente
+	//!SITUATIONS
+	//!	0 = Normal Game
+	//!	1 = Re-organize (GOAL_TEAM1)
+	//!	2 = Re-organize (GOAL_TEAM2)
+	//!	3 = Re-organize (FAULT_TEAM1)
+	//!	4 = Re-organize (FAULT_TEAM2)
+	//!	5 = Re-organize (PENALTY_TEAM1)
+	//!	6 = Re-organize (PENALITY_TEAM2)
+	//!	99 = Finish
 }
 
