@@ -45,12 +45,10 @@ protected:
 	//! Socket de envio de informações de debug por um VSS-SampleStrategy. E socket de recebimento de informações de debug pelo VSS-Viewer
 	zmq::socket_t *socket_debug;
     
-	//! Pacote de estados (Utilizando pelo VSS-Simulator e VSS-Vision, para enviar informações do campo)
-	//! (Utilizado também pelo VSS-Viewer, para desenhar a estado do jogo e pelo VSS-SampleStrategy para construir-se uma estratégia)
+	//! Pacote de estados (Utilizando pelo VSS-Simulator e VSS-Vision, para enviar informações do campo) (Utilizado também pelo VSS-Viewer, para desenhar a estado do jogo e pelo VSS-SampleStrategy para construir-se uma estratégia)
 	vss_state::Global_State *global_state;
 
-	//! Pacote de comandos (Utilizado por VSS-SampleStrategys e VSS-Joysticks, para enviar comandos para robôs virtuais)
-	//! (Utilizado também pelo VSS-Simulator, para receber os comandos de cada robô)
+	//! Pacote de comandos (Utilizado por VSS-SampleStrategys e VSS-Joysticks, para enviar comandos para robôs virtuais) (Utilizado também pelo VSS-Simulator, para receber os comandos de cada robô)
 	vss_command::Global_Commands *global_commands;
 
 	//! Pacote de debug visual (Utilizado por VSS-SampleStrategys, para enviar informações da estratégia para o VSS-Viewer desenhar)
