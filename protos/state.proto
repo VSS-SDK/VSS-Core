@@ -6,50 +6,66 @@
  * file, You can obtain one at http://www.gnu.org/licenses/gpl-3.0/.
  */
 
+//! Aqui, encontra-se a definição do pacote de estado no formato da biblioteca Google Protocol Buffers (protobuf). Esse pacote é responsável por carregar todas
+//! as informações a cerca do estado do campo, em outras palavras, posição, orientação e velocidades de todos os robôs em campo e da bola. Esse pacote possibilita
+//! que uma estratégia obtenha os dados do VSS-Vision e VSS-Simulator, para tal, o mesmo deve ser précompílado para uma linguagem especifica gerando um trecho de
+//! código que deve ser referenciado.
+
+//! Aqui definisse um package, que na pratica gera um namespace (C++)
 package vss_state;
 
+//! Essa mensagem é uma submensagem do pacote Global_State que de fato é enviado. Essa informação é utilizada somente pelo VSS-Vision, para enviar os valores RGB das cores
+//! calibradas para o VSS-Viewer, assim desenhando um ambiente mais realista.
 message RGB{
-  required uint32   r = 1;
-  required uint32   g = 2;
-  required uint32   b = 3;
+  required uint32   r = 1;  //! Valor R de RGB
+  required uint32   g = 2;  //! Valor G de RGB
+  required uint32   b = 3;  //! Valor B de RGB
 }
 
+//! Essa mensagem é uma submensagem do pacote Global_State que de fato é enviado. Essa informação é utilizada para represetar um corpo rígido (objeto: robô ou bola) em um espaço
+//! do Futebol de Robôs, sendo necessário apenas: posição X e Y e rotação em Z.
 message Pose{
-  required float x = 1;
-  required float y = 2;
-  optional float yaw = 3;
+  required float x = 1;     //! Posição em X do robô
+  required float y = 2;     //! Posição em Y do robô
+  optional float yaw = 3;   //! Orientação em Z. Sendo esse OPICIONAL no pacote, pois não são todos os objetos que necessitam de orientação para ser representados.
 }
 
+//! Essa mensagem é uma submensagem do pacote Global_State que de fato é enviado. Essa informação é utilizada para representar uma bola no espaço do Futebol de Robôs, contendo:
+//! Pose; Velocidade linear e tangencial; Estimativa da Pose por parte do Filtro de Kalman (Necessário em ambiente real pelo VSS-Vision); e Velocidade linear e tangencial
+//! estimados pelo Filtro de Kalman.
 message Ball_State{
-  required Pose pose = 1;
-  optional Pose v_pose = 2;
-  optional Pose k_pose = 3;
-  optional Pose k_v_pose = 4;
+  required Pose pose = 1;         //! Posição de uma bola. Sendo somente esse o valor OBRIGATÓRIO, pois os outros estão sendo implementados ainda.
+  optional Pose v_pose = 2;       //! Velocidade linear e tangencial de uma bola
+  optional Pose k_pose = 3;       //! Estimativa de Posição de uma bola
+  optional Pose k_v_pose = 4;     //! Estimativa de Velocidade linear e tangencial de uma bola
 }
 
+//! Essa mensagem é uma submensagem do pacote Global_State que de fato é enviado. Essa informação é utilizada para representar um robos no espaço do Futebol de Robôs, contendo:
+//! Pose; Velocidade linear, tangencial e angular; Estimativa da Pose por parte do Filtro de Kalman (Necessário em ambiente real pelo VSS-Vision); e Velocidade linear, tangencial
+//! e angular estimados pelo Filtro de Kalman.
 message Robot_State{
-  required Pose     pose = 1;
-  optional Pose     v_pose = 2;
-  optional Pose     k_pose = 3;
-  optional Pose     k_v_pose = 4;
-  optional RGB		  color = 5;		// COLOR: RED = 3, GREEN = 4, PURPLE = 5, PINK = 6, BROWN = 7
+  required Pose     pose = 1;     //! Posição e Orientação de um robô. Sendo somente esse o valor OBRIGATÓRIO, pois os outros estão sendo implementados ainda.
+  optional Pose     v_pose = 2;   //! Velocidade linear, tangencial e angular de um robô
+  optional Pose     k_pose = 3;   //! Posição e Orientação de um robô estimados pelo filtro de kalman
+  optional Pose     k_v_pose = 4; //! Velocidade linear, tangencial e angular estimados pelo filtro de kalman
+  optional RGB		  color = 5;	  //! Cor da etiqueta secundária de um robô (Somente VSS-Vision)	
 }
 
+//! Essa é a mensagem que é enviado pelo VSS-Vision e VSS-Simulator.
 message Global_State{
-  optional uint32       id = 1;
-  required bool			    origin = 2;		// true = VSS-Vision, false = VSS-Simulator
-  repeated Ball_State   balls = 3;
-  repeated Robot_State  robots_yellow = 4;
-  repeated Robot_State  robots_blue = 5;
-  required uint32       situation = 6;
-  	/* SITUATIONS
-      0 = Normal Game
-      1 = Re-organize (GOAL_TEAM1)
-      2 = Re-organize (GOAL_TEAM2)
-      3 = Re-organize (FAULT_TEAM1)
-      4 = Re-organize (FAULT_TEAM2)
-      5 = Re-organize (PENALTY_TEAM1)
-      6 = Re-organize (PENALITY_TEAM2)
-      99 = Finish
-    */
+  optional uint32       id = 1;               //! ID da mensagem, pode ser enviado como contra-prova para verificar se a comunicação está sincronizada. Sende este o único valor OPICIONAL
+  required bool			    origin = 2;		        //! Booleano que define a origem da mensagem. Caso TRUE a mensagem vem do VSS-Vision, caso FALSE a mensagem vem do VSS-Simulator
+  repeated Ball_State   balls = 3;            //! Lista dinâmica de bolas. Esta parte é definida dinâmicamente, pois podem existir situações indesejadas onde mais de uma bola está presente no ambiente
+  repeated Robot_State  robots_yellow = 4;    //! Lista dinâmica de robôs amarelos. Em geral sempre são enviados 3 robôs.
+  repeated Robot_State  robots_blue = 5;      //! Lista dinâmica de robôs azuis. Em geral sempre são enviados 3 robôs.
+  required uint32       situation = 6;        //! Situação em que a partida se encontra, será utilizado no futuro, para "obrigar" os robôs sempre a se reposicionarem autonomamente no campo
+  //! SITUATIONS
+  //!  0 = Normal Game
+  //!  1 = Re-organize (GOAL_TEAM1)
+  //!  2 = Re-organize (GOAL_TEAM2)
+  //!  3 = Re-organize (FAULT_TEAM1)
+  //!  4 = Re-organize (FAULT_TEAM2)
+  //!  5 = Re-organize (PENALTY_TEAM1)
+  //!  6 = Re-organize (PENALITY_TEAM2)
+  //!  99 = Finish
 }
