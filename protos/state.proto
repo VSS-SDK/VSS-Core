@@ -6,32 +6,36 @@
  * file, You can obtain one at http://www.gnu.org/licenses/gpl-3.0/.
  */
 
-//! Aqui, encontra-se a definição do pacote de estado no formato da biblioteca Google Protocol Buffers (protobuf). Esse pacote é responsável por carregar todas
-//! as informações a cerca do estado do campo, em outras palavras, posição, orientação e velocidades de todos os robôs em campo e da bola. Esse pacote possibilita
-//! que uma estratégia obtenha os dados do VSS-Vision e VSS-Simulator, para tal, o mesmo deve ser précompílado para uma linguagem especifica gerando um trecho de
-//! código que deve ser referenciado.
+//! Aqui, encontra-se a definição do pacote de estado no formato da biblioteca Google Protocol Buffers (protobuf).
+//! Esse pacote é responsável por carregar todas as informações a cerca do estado do campo, em outras palavras,
+//! posição, orientação e velocidades de todos os robôs em campo e da bola. Esse pacote possibilita que uma
+//! estratégia obtenha os dados do VSS-Vision e VSS-Simulator, para tal, o mesmo deve ser précompílado para uma
+//! linguagem especifica gerando um trecho de código que deve ser referenciado.
 
 //! Aqui definisse um package, que na pratica gera um namespace (C++)
 package vss_state;
 
-//! Essa mensagem é uma submensagem do pacote Global_State que de fato é enviado. Essa informação é utilizada somente pelo VSS-Vision, para enviar os valores RGB das cores
-//! calibradas para o VSS-Viewer, assim desenhando um ambiente mais realista.
+//! Essa mensagem é uma submensagem do pacote Global_State que de fato é enviado. Essa informação é utilizada
+//! somente pelo VSS-Vision, para enviar os valores RGB das cores calibradas para o VSS-Viewer, assim desenhando
+//! um ambiente mais realista.
 message RGB{
   required uint32   r = 1;  //! Valor R de RGB
   required uint32   g = 2;  //! Valor G de RGB
   required uint32   b = 3;  //! Valor B de RGB
 }
 
-//! Essa mensagem é uma submensagem do pacote Global_State que de fato é enviado. Essa informação é utilizada para represetar um corpo rígido (objeto: robô ou bola) em um espaço
-//! do Futebol de Robôs, sendo necessário apenas: posição X e Y e rotação em Z.
+//! Essa mensagem é uma submensagem do pacote Global_State que de fato é enviado. Essa informação é utilizada para
+//! represetar um corpo rígido (objeto: robô ou bola) em um espaço do Futebol de Robôs, sendo necessário apenas:
+//! posição X e Y e rotação em Z.
 message Pose{
   required float x = 1;     //! Posição em X do robô
   required float y = 2;     //! Posição em Y do robô
   optional float yaw = 3;   //! Orientação em Z. Sendo esse OPICIONAL no pacote, pois não são todos os objetos que necessitam de orientação para ser representados.
 }
 
-//! Essa mensagem é uma submensagem do pacote Global_State que de fato é enviado. Essa informação é utilizada para representar uma bola no espaço do Futebol de Robôs, contendo:
-//! Pose; Velocidade linear e tangencial; Estimativa da Pose por parte do Filtro de Kalman (Necessário em ambiente real pelo VSS-Vision); e Velocidade linear e tangencial
+//! Essa mensagem é uma submensagem do pacote Global_State que de fato é enviado. Essa informação é utilizada para
+//! representar uma bola no espaço do Futebol de Robôs, contendo: Pose; Velocidade linear e tangencial; Estimativa
+//! da Pose por parte do Filtro de Kalman (Necessário em ambiente real pelo VSS-Vision); e Velocidade linear e tangencial
 //! estimados pelo Filtro de Kalman.
 message Ball_State{
   required Pose pose = 1;         //! Posição de uma bola. Sendo somente esse o valor OBRIGATÓRIO, pois os outros estão sendo implementados ainda.
@@ -40,9 +44,10 @@ message Ball_State{
   optional Pose k_v_pose = 4;     //! Estimativa de Velocidade linear e tangencial de uma bola
 }
 
-//! Essa mensagem é uma submensagem do pacote Global_State que de fato é enviado. Essa informação é utilizada para representar um robos no espaço do Futebol de Robôs, contendo:
-//! Pose; Velocidade linear, tangencial e angular; Estimativa da Pose por parte do Filtro de Kalman (Necessário em ambiente real pelo VSS-Vision); e Velocidade linear, tangencial
-//! e angular estimados pelo Filtro de Kalman.
+//! Essa mensagem é uma submensagem do pacote Global_State que de fato é enviado. Essa informação é utilizada para
+//! representar um robos no espaço do Futebol de Robôs, contendo: Pose; Velocidade linear, tangencial e angular;
+//! Estimativa da Pose por parte do Filtro de Kalman (Necessário em ambiente real pelo VSS-Vision); e Velocidade linear,
+//! tangencial e angular estimados pelo Filtro de Kalman.
 message Robot_State{
   required Pose     pose = 1;     //! Posição e Orientação de um robô. Sendo somente esse o valor OBRIGATÓRIO, pois os outros estão sendo implementados ainda.
   optional Pose     v_pose = 2;   //! Velocidade linear, tangencial e angular de um robô
