@@ -68,8 +68,8 @@ message Global_State{
   optional uint32       time = 7;             //! Tempo: 1, 2, 3 ou 4
   optional uint32       goals_yellow = 8;     //! Quantidade de Gols do Time Amarelo
   optional uint32       goals_blue = 9;       //! Quantidade de Gols do Time Azul
-  optional uint32       name_yellow = 10;     //! Quantidade de Gols do Time Amarelo
-  optional uint32       name_blue = 11;       //! Quantidade de Gols do Time Azul
+  optional string       name_yellow = 10;     //! Quantidade de Gols do Time Amarelo
+  optional string       name_blue = 11;       //! Quantidade de Gols do Time Azul
   //! SITUATIONS
   //!  0 = Normal Game
   //!  1 = Re-organize (GOAL_TEAM1)
