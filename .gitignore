@@ -27,6 +27,9 @@
 *.vscode/.browse.VC.*
 *.pb.cc
 *.pb.h
+*state.rs
+*command.rs
+*debug.rs
 
 
 # Executables
