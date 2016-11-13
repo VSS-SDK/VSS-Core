@@ -36,6 +36,7 @@
 # Rust files
 *target
 *.cargo
+*.lock
 
 # Executables
 *.exe
