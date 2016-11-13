@@ -23,14 +23,19 @@
 *.a
 *.lib
 
-# Remove Junk Files
+# VSCode files
 *.vscode/.browse.VC.*
+
+# Protobuf files
 *.pb.cc
 *.pb.h
 *state.rs
 *command.rs
 *debug.rs
 
+# Rust files
+*target
+*.cargo
 
 # Executables
 *.exe
