@@ -1,6 +1,6 @@
 VSS-Interface
 -------------
-Interface que possibilita a comunicação entre os projetos do VSS-SDK.
+Interface que possibilita a comunicação entre os projetos do VSS-SDK e que possibilita a criação de estratégias que se comuniquem com os projetos do VSS-SDK.
 
 ```
 VSS-Interface
@@ -8,7 +8,7 @@ VSS-Interface
 |---state.proto
 |---debug.proto
 |---command.proto
-|---|cpp-interface
+|---|cpp
 	|---interface.h
 	|---interface.cpp
 	|---|protos
@@ -18,8 +18,8 @@ VSS-Interface
 		|---debug.pb.cc
 		|---command.pb.h
 		|---command.pb.cc
-|---|java-interface
-|---|rust-interface
+|---|java
+|---|rust
 	|---mod.rs
 	|---state.rs
 	|---debug.rs
