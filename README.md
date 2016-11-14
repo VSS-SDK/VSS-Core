@@ -1,6 +1,8 @@
 VSS-Interface
 -------------
-Interface que possibilita a comunicação entre os projetos do VSS-SDK e que possibilita a criação de estratégias que se comuniquem com os projetos do VSS-SDK.
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)][gpl3]
+
+Mais informações podem ser encontradas em [VSS-SDK][vss-sdk].
 
 ```
 VSS-Interface
@@ -25,3 +27,14 @@ VSS-Interface
 	|---debug.rs
 	|---command.rs
 ```
+
+License
+-------
+
+This code is licensed under the [GNU GENERAL PUBLIC LICENSE Version 3][gpl3], of which a textual copy is available at [LICENSE.txt](LICENSE.txt).
+
+You are allowed and encouraged to use this software on the IEEE Very Small Size Soccer competitions.  If you do, please let us know.
+
+
+[gpl3]: http://www.gnu.org/licenses/gpl-3.0/
+[vss-sdk]: http://sirlab.github.io/VSS-SDK
