@@ -24,7 +24,6 @@ use debug::Global_Debug;
 
 
 #[allow(dead_code)]
-#[derive(Debug)]
 pub struct Interface {
     context_recv: Context,
     context_send: Context,
@@ -41,10 +40,13 @@ impl Interface {
             global_state: Global_State::new(),
             global_commands: Global_Commands::new(),
             global_debug: Global_Debug::new(),
-        };
+        }
     }
 }
 
-mod rust {
-     
+#[cfg(test)]
+mod test {
+    #[test]
+    fn it_works() {
+    }
 }
