@@ -22,7 +22,6 @@ use state::Global_State;
 use command::{Global_Commands, Robot_Command};
 use debug::Global_Debug;
 
-
 #[allow(dead_code)]
 pub struct Interface {
     context_recv: Context,
@@ -41,12 +40,5 @@ impl Interface {
             global_commands: Global_Commands::new(),
             global_debug: Global_Debug::new(),
         }
-    }
-}
-
-#[cfg(test)]
-mod test {
-    #[test]
-    fn it_works() {
     }
 }
