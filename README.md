@@ -1,5 +1,5 @@
-VSS-Interface
--------------
+# VSS-Interface
+
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)][gpl3]
 
 Mais informações podem ser encontradas em [VSS-SDK][vss-sdk].
@@ -22,7 +22,7 @@ message Global_State{
 }
 ```
 
-# Commands
+## Commands
 
 ```protobuf
 message Global_Commands{
@@ -34,7 +34,7 @@ message Global_Commands{
 }
 ```
 
-# Debug
+## Debug
 
 ```protobuf
 message Global_Debug{
@@ -44,7 +44,9 @@ message Global_Debug{
 }
 ```
 
-
+## Exemplos
+Exemplo de como utilizar os protos em C++: [SampleCpp][samplecpp]
+Exemplo de como utilizar os protos em Rust: [SampleRust][samplerust]
 
 License
 -------
@@ -56,3 +58,5 @@ You are allowed and encouraged to use this software on the IEEE Very Small Size 
 
 [gpl3]: http://www.gnu.org/licenses/gpl-3.0/
 [vss-sdk]: http://sirlab.github.io/VSS-SDK
+[samplecpp]: https://github.com/SIRLab/VSS-SampleCpp
+[samplerust]: https://github.com/SIRLab/VSS-SampleRust
