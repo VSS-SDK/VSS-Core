@@ -38,13 +38,13 @@ impl Interface {
         Interface {
             context_recv: Context::new(),
             context_send: Context::new(),
-            global_state: Global_State:new(),
-            global_commands: Global_Commands:new(),
-            global_debug: Global_Debug:new(),
+            global_state: Global_State::new(),
+            global_commands: Global_Commands::new(),
+            global_debug: Global_Debug::new(),
         };
     }
 }
 
-mod {
+mod rust {
      
 }
