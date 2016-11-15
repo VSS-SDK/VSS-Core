@@ -36,10 +36,10 @@ pub struct Interface {
 }
 
 impl Interface {
-    pub fn new(&mut self) -> Interface {
+    pub fn new() -> Interface {
         Interface {
             context: Context::new(),
-            socket: self.context.socket(SUB).unwrap(),
+            socket: Context::new().socket(SUB).unwrap(),
             team: Team::TEAM1,
         }
     }    
