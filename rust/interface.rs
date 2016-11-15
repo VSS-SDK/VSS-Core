@@ -19,7 +19,7 @@ use zmq::{Context, Socket, SUB, PAIR};
 use protobuf::{parse_from_bytes, Message};
 
 use state::Global_State;
-use command::{Global_Commands, Robot_Command};
+use command::Global_Commands;
 use debug::Global_Debug;
 
 #[allow(dead_code)]
