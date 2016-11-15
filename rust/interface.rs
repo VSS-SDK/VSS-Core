@@ -16,7 +16,7 @@ pub mod debug;
 use std::str;
 
 use zmq::{Context, Socket, SUB, PAIR};
-use protobuf::{parse_from_bytes, RepeatedField, Message};
+use protobuf::{parse_from_bytes, Message};
 
 use state::Global_State;
 use command::{Global_Commands, Robot_Command};
@@ -52,7 +52,7 @@ impl Interface {
     }
 
     pub fn create_socket_send_commands(&mut self, team: Team) -> () {
-        self.socket = self.context.socket(zmq::PAIR).unwrap();
+        self.socket = self.context.socket(PAIR).unwrap();
 
         match team {
             Team::TEAM1 => assert!(self.socket.connect("tcp://localhost:5556").is_ok()),
@@ -61,7 +61,7 @@ impl Interface {
     }
 
     pub fn create_socket_send_debug(&mut self, team: Team) -> () {
-        self.socket = self.context.socket(zmq::PAIR).unwrap();
+        self.socket = self.context.socket(PAIR).unwrap();
 
         match team {
             Team::TEAM1 => assert!(self.socket.connect("tcp://localhost:5558").is_ok()),
