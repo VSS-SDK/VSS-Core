@@ -46,7 +46,7 @@ impl Interface {
 
     pub fn create_socket_receive_state(&mut self) -> () {
         self.socket = self.context.socket(SUB).unwrap();
-        assert!(self.socket.connect("tcp://localhost:5556").is_ok());
+        assert!(self.socket.connect("tcp://localhost:5555").is_ok());
         let filter = "".to_string();
         assert!(self.socket.set_subscribe(filter.as_bytes()).is_ok());
     }
