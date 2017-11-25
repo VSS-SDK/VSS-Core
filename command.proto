@@ -43,4 +43,3 @@ message Global_Commands{
 	//!	6 = Re-organize (PENALITY_TEAM2)
 	//!	99 = Finish
 }
-

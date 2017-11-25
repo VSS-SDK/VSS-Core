@@ -7,6 +7,6 @@
 # file, You can obtain one at http://www.gnu.org/licenses/gpl-3.0/.
 #
 
-protoc -I=. --cpp_out=. state.proto		
+protoc -I=. --cpp_out=. state.proto
 protoc -I=. --cpp_out=. command.proto
 protoc -I=. --cpp_out=. debug.proto
