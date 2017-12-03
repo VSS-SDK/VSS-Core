@@ -147,7 +147,7 @@ public:
 	//! Método responsável por criar o socket de recebimento de informações de debug no VSS-Simulator (Time Azul)
 	void createReceiveControl( vss_control::User_Control*, string addr_server_control = "tcp://*:5560" );
 	//! Método repsonsável por receber uma nova informação de debug (Time Azul)
-	void receiveDebugTeam2();
+	void receiveControl();
 
 	//! Método que pode ser utilizado para imprimir o pacote de estado recebido/enviado no terminal
 	void printState();
