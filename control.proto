@@ -1,0 +1,23 @@
+/*
+ * This file is part of the VSS-SDK project.
+ *
+ * This Source Code Form is subject to the terms of the GNU GENERAL PUBLIC LICENSE,
+ * v. 3.0. If a copy of the GPL was not distributed with this
+ * file, You can obtain one at http://www.gnu.org/licenses/gpl-3.0/.
+ */
+
+package vss_control;
+
+message Pose{
+  required float x = 3;     //! Posição em X do robô
+  required float y = 4;     //! Posição em Y do robô
+  optional float yaw = 5;   //! Orientação em Z. Sendo esse OPICIONAL no pacote, pois não são todos os objetos que necessitam de orientação para ser representados.
+}
+
+//! Essa é a mensagem que de fato é enviada.
+message User_Control{
+  optional bool paused = 1;
+  optional Pose new_ball_pose = 2;
+  repeated Pose new_robots_blue_pose = 3;
+  repeated POse new_robots_yellow_pose = 4;
+}

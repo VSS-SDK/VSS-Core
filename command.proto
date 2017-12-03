@@ -31,15 +31,4 @@ message Global_Commands{
 	optional uint32			id = 1;					//! ID da mensagem. Afim de ser utilizado como contra-prova para verificar se a comunicação está sincronizada
 	optional bool			is_team_yellow = 2;		//! Booleano que define se o time é amarelo ou azul
 	repeated Robot_Command	robot_commands = 3;		//! Lista dinâmica de comandos. Sendo sempre 3, devido a quantidade robôs
-	optional uint32			situation = 4;			//! Situação em que se encontra o comando. No futuro os robôs serão posicionados autonomamente
-	optional string			name = 5;				//! Nome do time
-	//!SITUATIONS
-	//!	0 = Normal Game
-	//!	1 = Re-organize (GOAL_TEAM1)
-	//!	2 = Re-organize (GOAL_TEAM2)
-	//!	3 = Re-organize (FAULT_TEAM1)
-	//!	4 = Re-organize (FAULT_TEAM2)
-	//!	5 = Re-organize (PENALTY_TEAM1)
-	//!	6 = Re-organize (PENALITY_TEAM2)
-	//!	99 = Finish
 }

@@ -19,6 +19,7 @@
 #include "VSS-Interface/state.pb.h"      //! Protobuf: pacote gerado pelo state.proto
 #include "VSS-Interface/command.pb.h"      //! Protobuf: pacote gerado pelo command.proto
 #include "VSS-Interface/debug.pb.h"      //! Protobuf: pacote gerado pelo debug.proto
+#include "VSS-Interface/control.pb.h"      //! Protobuf: pacote gerado pelo debug.proto
 
 using namespace std;
 
@@ -46,6 +47,10 @@ protected:
 	//! Socket de envio de informações de debug por um VSS-SampleStrategy. E socket de recebimento de informações de debug pelo VSS-Viewer
 	zmq::socket_t *socket_debug;
 
+	zmq::context_t *context_control;
+
+	zmq::socket_t *socket_control;
+
 	//! Pacote de estados (Utilizado pelo VSS-Simulator e VSS-Vision, para enviar informações do campo) (Utilizado também pelo VSS-Viewer, para desenhar a estado do jogo e pelo VSS-SampleStrategy para construir-se uma estratégia)
 	vss_state::Global_State *global_state;
 
@@ -54,6 +59,8 @@ protected:
 
 	//! Pacote de debug visual (Utilizado por VSS-SampleStrategys, para enviar informações da estratégia para o VSS-Viewer desenhar)
 	vss_debug::Global_Debug *global_debug;
+
+	vss_control::User_Control *user_control;
 
 	//! Endereço multicast do envio de estados por parte do VSS-Simulator e VSS-Vision (VSS-Vision e VSS-Simulator não podem ser abertos ao mesmo tempo)
 	string addr_server_multicast;
@@ -79,6 +86,11 @@ protected:
 	string addr_server_debug_team2;
 	//! (Time Azul) Endereço unicast para envio de informações de debug por VSS-SampleStrategys
 	string addr_client_debug_team2;
+
+	string addr_server_control;
+
+	string addr_client_control;
+
 public:
 
 	//! Construtor DEFAULT
@@ -129,12 +141,22 @@ public:
 	//! Método repsonsável por receber uma nova informação de debug (Time Azul)
 	void receiveDebugTeam2();
 
+	void createSendControl( vss_control::User_Control*, string addr_client_control = "tcp://localhost:5560" );
+	//! Método responsável por enviar uma nova informação de debug por VSS-SampleStrategys ou VSS-Joysticks (Time Azul)
+	void sendControl();
+	//! Método responsável por criar o socket de recebimento de informações de debug no VSS-Simulator (Time Azul)
+	void createReceiveControl( vss_control::User_Control*, string addr_server_control = "tcp://*:5560" );
+	//! Método repsonsável por receber uma nova informação de debug (Time Azul)
+	void receiveDebugTeam2();
+
 	//! Método que pode ser utilizado para imprimir o pacote de estado recebido/enviado no terminal
 	void printState();
 	//! Método que pode ser utilizado para imprimir o pacote de comando recebido/enviado no terminal
 	void printCommand();
 	//! Método que pode ser utilizado para imprimir o pacote de debug recebido/enviado no terminal
 	void printDebug();
+
+	void printControl();
 };
 
 #endif // _INTERFACE_H_

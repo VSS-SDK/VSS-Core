@@ -275,6 +275,49 @@ void Interface::receiveDebugTeam2(){
 	//socket.close();
 }
 
+void Interface::createSendControl( vss_control::User_Control *user_control, string addr_server_multicast ){
+	this->user_control = user_control;
+	this->addr_server_multicast = addr_server_multicast;
+
+	context_control = new zmq::context_t( 1 );
+	socket_control = new zmq::socket_t( *context_control, ZMQ_PUB );
+
+	std::cout << "Connecting Server Multicast Sender: " << addr_server_multicast << std::endl;
+	socket_control->bind( addr_server_multicast.c_str());
+}
+
+void Interface::sendControl(){
+	std::string msg_str;
+	user_control->SerializeToString( &msg_str );
+
+	zmq::message_t request ( msg_str.size());
+	memcpy ((void *) request.data (), msg_str.c_str(), msg_str.size());
+	//std::cout << "Sending State data ..." << std::endl;
+	socket_control->send( request );
+}
+
+void Interface::createReceiveControl( vss_control::User_Control *user_control, string addr_client_multicast ){
+	this->user_control = user_control;
+	this->addr_client_multicast = addr_client_multicast;
+
+	context_control = new zmq::context_t( 1 );
+	socket_control = new zmq::socket_t( *context_control, ZMQ_SUB );
+
+	std::cout << "Connecting Client Multicast Receiver: " << addr_client_multicast << std::endl;
+	socket_control->connect( addr_client_multicast.c_str());
+
+	socket_control->setsockopt( ZMQ_SUBSCRIBE, "", 0 );
+}
+
+void Interface::receiveControl(){
+	zmq::message_t request;
+	socket_control->recv( &request, 0 ); //  Wait for next request from client
+	//std::cout << "Received" << std::endl;
+	std::string msg_str( static_cast<char*>(request.data()), request.size());
+	user_control->ParseFromString( msg_str );
+	//printState();
+}
+
 void Interface::printState(){
 	std::string text_str;
 	google::protobuf::TextFormat::PrintToString( *global_state, &text_str );
@@ -290,5 +333,11 @@ void Interface::printCommand(){
 void Interface::printDebug(){
 	std::string text_str;
 	google::protobuf::TextFormat::PrintToString( *global_debug, &text_str );
+	std::cout << text_str << std::endl;
+}
+
+void Interface::printControl(){
+	std::string text_str;
+	google::protobuf::TextFormat::PrintToString( *user_control, &text_str );
 	std::cout << text_str << std::endl;
 }
