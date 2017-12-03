@@ -141,11 +141,11 @@ public:
 	//! Método repsonsável por receber uma nova informação de debug (Time Azul)
 	void receiveDebugTeam2();
 
-	void createSendControl( vss_control::User_Control*, string addr_client_control = "tcp://localhost:5560" );
+	void createSendControl( vss_control::User_Control*, string addr_server_control = "tcp://*:5560" );
 	//! Método responsável por enviar uma nova informação de debug por VSS-SampleStrategys ou VSS-Joysticks (Time Azul)
 	void sendControl();
 	//! Método responsável por criar o socket de recebimento de informações de debug no VSS-Simulator (Time Azul)
-	void createReceiveControl( vss_control::User_Control*, string addr_server_control = "tcp://*:5560" );
+	void createReceiveControl( vss_control::User_Control*, string addr_client_control = "tcp://localhost:5560" );
 	//! Método repsonsável por receber uma nova informação de debug (Time Azul)
 	void receiveControl();
 
