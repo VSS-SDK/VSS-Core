@@ -19,5 +19,5 @@ message User_Control{
   optional bool paused = 1;
   optional Pose new_ball_pose = 2;
   repeated Pose new_robots_blue_pose = 3;
-  repeated POse new_robots_yellow_pose = 4;
+  repeated Pose new_robots_yellow_pose = 4;
 }
