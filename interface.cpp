@@ -275,15 +275,15 @@ void Interface::receiveDebugTeam2(){
 	//socket.close();
 }
 
-void Interface::createSendControl( vss_control::User_Control *user_control, string addr_server_multicast ){
+void Interface::createSendControl( vss_control::User_Control *user_control, string addr_server_control ){
 	this->user_control = user_control;
-	this->addr_server_multicast = addr_server_multicast;
+	this->addr_server_control = addr_server_control;
 
 	context_control = new zmq::context_t( 1 );
 	socket_control = new zmq::socket_t( *context_control, ZMQ_PUB );
 
-	std::cout << "Connecting Server Multicast Sender: " << addr_server_multicast << std::endl;
-	socket_control->bind( addr_server_multicast.c_str());
+	std::cout << "Connecting Server Multicast Sender: " << addr_server_control << std::endl;
+	socket_control->bind( addr_server_control.c_str());
 }
 
 void Interface::sendControl(){
@@ -296,15 +296,15 @@ void Interface::sendControl(){
 	socket_control->send( request );
 }
 
-void Interface::createReceiveControl( vss_control::User_Control *user_control, string addr_client_multicast ){
+void Interface::createReceiveControl( vss_control::User_Control *user_control, string addr_client_control ){
 	this->user_control = user_control;
-	this->addr_client_multicast = addr_client_multicast;
+	this->addr_client_control = addr_client_control;
 
 	context_control = new zmq::context_t( 1 );
 	socket_control = new zmq::socket_t( *context_control, ZMQ_SUB );
 
-	std::cout << "Connecting Client Multicast Receiver: " << addr_client_multicast << std::endl;
-	socket_control->connect( addr_client_multicast.c_str());
+	std::cout << "Connecting Client Multicast Receiver: " << addr_client_control << std::endl;
+	socket_control->connect( addr_client_control.c_str());
 
 	socket_control->setsockopt( ZMQ_SUBSCRIBE, "", 0 );
 }
