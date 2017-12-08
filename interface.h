@@ -16,10 +16,10 @@
 
 #include "zmq.hpp"       //! ZMQ: utilizado para comunicação via Sockets
 #include <google/protobuf/text_format.h> //! Protobuf: utilizado para serialização/deserialização das mensagens
-#include "VSS-Interface/state.pb.h"      //! Protobuf: pacote gerado pelo state.proto
-#include "VSS-Interface/command.pb.h"      //! Protobuf: pacote gerado pelo command.proto
-#include "VSS-Interface/debug.pb.h"      //! Protobuf: pacote gerado pelo debug.proto
-#include "VSS-Interface/control.pb.h"      //! Protobuf: pacote gerado pelo debug.proto
+#include "../protos/state.pb.h"      //! Protobuf: pacote gerado pelo state.proto
+#include "command.pb.h"      //! Protobuf: pacote gerado pelo command.proto
+#include "debug.pb.h"      //! Protobuf: pacote gerado pelo debug.proto
+#include "control.pb.h"      //! Protobuf: pacote gerado pelo debug.proto
 
 using namespace std;
 

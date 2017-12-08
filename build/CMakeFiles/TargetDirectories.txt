@@ -1,0 +1,14 @@
+/home/johnathan/Repositories/SIRLab/VSS-Interface/build/CMakeFiles/install.dir
+/home/johnathan/Repositories/SIRLab/VSS-Interface/build/CMakeFiles/list_install_components.dir
+/home/johnathan/Repositories/SIRLab/VSS-Interface/build/CMakeFiles/rebuild_cache.dir
+/home/johnathan/Repositories/SIRLab/VSS-Interface/build/CMakeFiles/vss-interface.dir
+/home/johnathan/Repositories/SIRLab/VSS-Interface/build/CMakeFiles/install/local.dir
+/home/johnathan/Repositories/SIRLab/VSS-Interface/build/CMakeFiles/install/strip.dir
+/home/johnathan/Repositories/SIRLab/VSS-Interface/build/CMakeFiles/edit_cache.dir
+/home/johnathan/Repositories/SIRLab/VSS-Interface/build/protos/CMakeFiles/install.dir
+/home/johnathan/Repositories/SIRLab/VSS-Interface/build/protos/CMakeFiles/list_install_components.dir
+/home/johnathan/Repositories/SIRLab/VSS-Interface/build/protos/CMakeFiles/rebuild_cache.dir
+/home/johnathan/Repositories/SIRLab/VSS-Interface/build/protos/CMakeFiles/protos.dir
+/home/johnathan/Repositories/SIRLab/VSS-Interface/build/protos/CMakeFiles/install/strip.dir
+/home/johnathan/Repositories/SIRLab/VSS-Interface/build/protos/CMakeFiles/install/local.dir
+/home/johnathan/Repositories/SIRLab/VSS-Interface/build/protos/CMakeFiles/edit_cache.dir

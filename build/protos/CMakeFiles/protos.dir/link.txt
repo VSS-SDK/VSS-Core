@@ -1,0 +1,2 @@
+/usr/bin/ar qc libprotos.a  CMakeFiles/protos.dir/command.pb.cc.o CMakeFiles/protos.dir/state.pb.cc.o CMakeFiles/protos.dir/debug.pb.cc.o CMakeFiles/protos.dir/control.pb.cc.o
+/usr/bin/ranlib libprotos.a

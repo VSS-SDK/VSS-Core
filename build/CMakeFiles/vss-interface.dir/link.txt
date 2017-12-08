@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC -O3 -DNDEBUG  -shared -Wl,-soname,libvss-interface.so -o libvss-interface.so  protos/libprotos.a -lprotobuf -lpthread 
