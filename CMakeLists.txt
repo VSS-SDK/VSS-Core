@@ -36,3 +36,4 @@ target_link_libraries(vss-interface ${PROTOBUF_LIBRARIES})
 #Set the location for library installation -- i.e., /usr/lib in this case
 # not really necessary in this example. Use "sudo make install" to apply
 install(TARGETS vss-interface DESTINATION /usr/lib)
+install(DIRECTORY include/ DESTINATION include/ FILES_MATCHING PATTERN "*.h")
