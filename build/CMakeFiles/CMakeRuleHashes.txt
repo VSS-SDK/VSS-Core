@@ -1,5 +1,0 @@
-# Hashes of file build rules.
-fddd7a31e2cab158d458ecc8a84266ae protos/command.pb.cc
-e328bf8921bf0e6cbccd30f387250ecb protos/control.pb.cc
-95ddce7c7b2cd8897eee3774e0abe48b protos/debug.pb.cc
-7e943db5a9d94abc557ccf2325e96327 protos/state.pb.cc
