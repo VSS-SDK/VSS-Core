@@ -35,9 +35,9 @@ message Global_State{
 
 ```protobuf
 message Global_Commands{
-	optional uint32			id = 1;
-	optional bool			is_team_yellow = 2;
-	repeated Robot_Command	robot_commands = 3;
+	optional uint32         id = 1;
+	optional bool           is_team_yellow = 2;
+	repeated Robot_Command  robot_commands = 3;
 }
 ```
 
