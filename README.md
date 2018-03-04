@@ -4,9 +4,20 @@
 [![Trello PBIs](https://img.shields.io/badge/Trello-PBIs-blue.svg)][vss-sdk-pbis]
 [![Slack](https://img.shields.io/badge/Slack-Channel-551a8b.svg)][slack]
 
+O VSS-Interface é uma biblioteca open-source que faz parte do VSS-SDK.
+São utilizados as bibliotecas Google Protocols Buffer e ZeroMQ para realizar
+a comunicação entre os projetos do SDK.
+
 Mais informações podem ser encontradas em [VSS-SDK][vss-sdk].
 
-## State
+## Installation
+```
+$ sudo ./configure.sh
+```
+
+## Protos
+
+### Field state
 
 ```protobuf
 message Global_State{
@@ -20,7 +31,7 @@ message Global_State{
 }
 ```
 
-## Commands
+### Robots commands
 
 ```protobuf
 message Global_Commands{
@@ -30,7 +41,7 @@ message Global_Commands{
 }
 ```
 
-## Debug
+### Debug information
 
 ```protobuf
 message Global_Debug{
@@ -40,7 +51,7 @@ message Global_Debug{
 }
 ```
 
-## Control
+### User control
 
 ```protobuf
 message User_Control{
@@ -51,8 +62,8 @@ message User_Control{
 }
 ```
 
-## Exemplos
-Exemplo de como utilizar os protos em C++: [SampleCpp][samplecpp]
+## Samples
+C++ using the VSS-Interface: [SampleCpp][samplecpp]
 
 
 License
@@ -60,7 +71,7 @@ License
 
 This code is licensed under the [GNU GENERAL PUBLIC LICENSE Version 3][gpl3], of which a textual copy is available at [LICENSE.txt](LICENSE.txt).
 
-You are allowed and encouraged to use this software on the IEEE Very Small Size Soccer competitions.  If you do, please let us know.
+You are allowed and encouraged to use this software on robotics competitions.  If you do, please let us know.
 
 
 [gpl3]: http://www.gnu.org/licenses/gpl-3.0/
