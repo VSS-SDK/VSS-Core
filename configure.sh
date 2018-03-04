@@ -16,7 +16,7 @@ INSTALLED=0
 CMAKE_UBUNTU () {
   ./protos.sh
   sudo rm -R build
-  mkdir build
+  mkdir -p build
   cd build
   cmake ..
   sudo make install
@@ -26,7 +26,7 @@ CMAKE_UBUNTU () {
 CMAKE_MINT () {
   ./protos.sh
   sudo rm -R build
-  mkdir build
+  mkdir -p build
   cd build
   cmake ..
   sudo make install
@@ -36,7 +36,7 @@ CMAKE_MINT () {
 CMAKE_DEBIAN () {
   ./protos.sh
   rm -R build
-  mkdir build
+  mkdir -p build
   cd build
   cmake ..
   make install

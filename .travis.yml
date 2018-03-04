@@ -23,10 +23,6 @@ addons:
       
 script:
   - sudo ./configure.sh
-  - mkdir build
-  - cd build
-  - cmake ..
-  - make
 
 notifications:
   slack: vss-sdk:1bwlO40eKoIRA7l5yjLNqmjD
