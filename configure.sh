@@ -64,7 +64,7 @@ INSTALL_MINT_18_2 () {
   INSTALLED=1
 }
 
-INSTALL_DEBIAN_9_2 () {
+INSTALL_DEBIAN () {
   sudo apt-get update && apt-get upgrade
   sudo apt-get install pkgconf
   sudo apt-get install g++ cmake libzmq5 libzmq3-dev protobuf-compiler libprotobuf-dev
@@ -88,8 +88,8 @@ INSTALL () {
   fi
 
   # Debian
-  if [[ "$DISTRO" == "Debian" ]] && [[ "$RELEASE" == "9.2" ]]; then
-    INSTALL_DEBIAN_9_2;
+  if [[ "$DISTRO" == "Debian" ]]; then
+    INSTALL_DEBIAN;
     if [ $INSTALLED == 1 ]; then
       CMAKE_DEBIAN;
     fi
