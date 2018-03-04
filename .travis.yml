@@ -22,7 +22,7 @@ addons:
       - ubuntu-toolchain-r-test
       
 script:
-  - sudo bash configure.sh
+  - sudo ./configure.sh
   - mkdir build
   - cd build
   - cmake ..
