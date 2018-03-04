@@ -1,7 +1,8 @@
-# VSS-Interface
+# VSS-Interface [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)][gpl3] [![Build Status](https://travis-ci.org/SIRLab/VSS-Interface.svg?branch=master)][travis]
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)][gpl3]
-[![Build Status](https://travis-ci.org/SIRLab/VSS-Interface.svg?branch=master)][travis]
+[![Trello Features](https://img.shields.io/badge/Trello-Features-blue.svg)][vss-sdk-features]
+[![Trello PBIs](https://img.shields.io/badge/Trello-PBIs-blue.svg)][vss-sdk-pbis]
+[![Slack](https://img.shields.io/badge/Slack-Channel-551a8b.svg)][slack]
 
 Mais informações podem ser encontradas em [VSS-SDK][vss-sdk].
 
@@ -66,3 +67,6 @@ You are allowed and encouraged to use this software on the IEEE Very Small Size 
 [vss-sdk]: http://sirlab.github.io/VSS-SDK
 [samplecpp]: https://github.com/SIRLab/VSS-SampleCpp
 [travis]: https://travis-ci.org/SIRLab/VSS-Interface
+[vss-sdk-features]: https://trello.com/b/b4dVV6ug/vss-sdk-features
+[vss-sdk-pbis]: https://trello.com/b/m0u389nR/vss-sdk-pbis
+[slack]: https://vss-sdk.slack.com
