@@ -1,6 +1,4 @@
-# VSS-Interface
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)][gpl3]
-[![Build Status](https://travis-ci.org/SIRLab/VSS-Interface.svg?branch=master)][travis]
+# VSS-Interface [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)][gpl3] [![Build Status](https://travis-ci.org/SIRLab/VSS-Interface.svg?branch=master)][travis]
 
 [![Trello Features](https://img.shields.io/badge/Trello-Features-blue.svg)][vss-sdk-features]
 [![Trello PBIs](https://img.shields.io/badge/Trello-PBIs-blue.svg)][vss-sdk-pbis]
