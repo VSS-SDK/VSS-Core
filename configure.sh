@@ -9,6 +9,7 @@
 
 DISTRO=`lsb_release -si`
 RELEASE=`lsb_release -sr`
+RELEASE_DEBIAN=`lsb_release -sr | cut -c1-1`
 ARCHITECTURE=`uname -m`
 
 INSTALLED=0
@@ -71,7 +72,7 @@ INSTALL_MINT_18_2 () {
   INSTALLED=1
 }
 
-INSTALL_DEBIAN () {
+INSTALL_DEBIAN_9 () {
   sudo apt-get update && apt-get upgrade
   sudo apt-get install pkgconf
   sudo apt-get install g++ cmake libzmq5 libzmq3-dev protobuf-compiler libprotobuf-dev
@@ -102,8 +103,8 @@ INSTALL () {
     fi
 
   # Debian
-  if [[ "$DISTRO" == "Debian" ]]; then
-    INSTALL_DEBIAN;
+  if [[ "$DISTRO" == "Debian" ]] && [[ "$RELEASE_DEBIAN" == "9" ]]; then
+    INSTALL_DEBIAN_9;
     if [ $INSTALLED == 1 ]; then
       CMAKE_DEBIAN;
     fi
