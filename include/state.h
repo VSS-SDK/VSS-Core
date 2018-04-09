@@ -15,8 +15,8 @@ private:
 
 public:
     State();
-    State(vss_state::Global_State global_state, std::string main_color);
-    void globalStateToState(vss_state::Global_State, std::string);
+    State(vss_state::Global_State global_state);
+    void globalStateToState(vss_state::Global_State);
     void spinField180Degrees();
 };
  
