@@ -1,33 +1,19 @@
 #ifndef _ROBOT_H_
 #define _ROBOT_H_
 
-#include <cmath>
+#include "object.h"
 #include "state.pb.h"
 
-class Robot {
+class Robot : public Object {
 
 private:
-    float m_x;
-    float m_y;
     float m_angle;
-
-    float m_speed_x;
-    float m_speed_y;
     float m_speed_angle;
 
-    void globalState2Robot();
-
-protected:
-    vss_state::Robot_State robot_state;
-
-
 public:
+    Robot();
     Robot(vss_state::Robot_State);
-
-    float x();
-    float y();
-    float angle();
-    float radian_angle();
+    void robotStateToRobot(vss_state::Robot_State);
 };
  
 #endif
