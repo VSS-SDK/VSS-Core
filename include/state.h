@@ -3,6 +3,7 @@
 
 #include "ball.h"
 #include "robot.h"
+#include "fieldTransformation.h"
 #include <vector>
 #include <string>
 
@@ -15,8 +16,8 @@ private:
 
 public:
     State();
-    State(vss_state::Global_State global_state);
-    void globalStateToState(vss_state::Global_State);
+    State(vss_state::Global_State global_state, int);
+    void globalStateToState(vss_state::Global_State, int);
     void spinField180Degrees();
 };
  
