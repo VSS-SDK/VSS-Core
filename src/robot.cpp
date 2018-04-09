@@ -7,11 +7,11 @@ Robot::Robot(vss_state::Robot_State robot_state) {
 }
 
 void Robot::robotStateToRobot(vss_state::Robot_State robot_state) {
-    m_x = robot_state.pose().x();
-    m_y = robot_state.pose().y();
-    m_angle = robot_state.pose().yaw();
+    x = robot_state.pose().x();
+    y = robot_state.pose().y();
+    angle = robot_state.pose().yaw();
     
-    m_speed_x = robot_state.v_pose().x();
-    m_speed_y = robot_state.v_pose().y();
-    m_speed_angle = robot_state.v_pose().yaw();
+    speed_x = robot_state.v_pose().x();
+    speed_y = robot_state.v_pose().y();
+    speed_angle = robot_state.v_pose().yaw();
 }

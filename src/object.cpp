@@ -2,29 +2,25 @@
 
 Object::Object() {}
 
-float Object::x(){
-    return m_x;
-}
+void Object::spinField180Degrees(){
 
-float Object::y(){
-    return m_y;
-}
+    // 170 is the size in x of the field
+    x = 170 - x;
 
-float Object::angle(){
-    return m_angle;
+    // 130 is the size in y of the field    
+    y = 130 - y;
+    
+    if (angle + 180 > 360){
+        angle = angle - 180;
+    } else {
+        angle = angle + 180;
+    }
 }
 
 float Object::radian_angle(){
-    return (2 * M_PI * m_angle) / 360;
+    return (2 * M_PI * angle) / 360;
 }
 
-void Object::spinField180Degrees(){
-    m_x = 170 - m_x;
-    m_y = 130 - m_y;
-    
-    if (m_angle + 180 > 360){
-        m_angle = m_angle - 180;
-    } else {
-        m_angle = m_angle + 180;
-    }
+float Object::speed_radian_angle(){
+    return (2 * M_PI * speed_angle) / 360;
 }

@@ -7,21 +7,20 @@
 class Object {
 
 protected:
-    float m_x;
-    float m_y;
-    float m_angle;
-    float m_speed_x;
-    float m_speed_y;
-    float m_speed_angle;
+    float x;
+    float y;
+    float angle;
+    
+    float speed_x;
+    float speed_y;
+    float speed_angle;
 
 public:
     Object();
-    void spinField180Degrees();
 
-    float x();
-    float y();
-    float angle();
+    void spinField180Degrees();
     float radian_angle();
+    float speed_radian_angle();
 };
 
 #endif

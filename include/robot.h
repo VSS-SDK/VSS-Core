@@ -6,10 +6,6 @@
 
 class Robot : public Object {
 
-private:
-    float m_angle;
-    float m_speed_angle;
-
 public:
     Robot();
     Robot(vss_state::Robot_State);

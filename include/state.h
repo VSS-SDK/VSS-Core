@@ -9,15 +9,15 @@
 class State {
 
 private:
-    std::vector<Robot> team_1;
-    std::vector<Robot> team_2;
+    std::vector<Robot> team_blue;
+    std::vector<Robot> team_yellow;
     Ball ball;
-    
-protected:
 
 public:
     State();
+    State(vss_state::Global_State global_state, std::string main_color);
     void globalStateToState(vss_state::Global_State, std::string);
+    void spinField180Degrees();
 };
  
 #endif
