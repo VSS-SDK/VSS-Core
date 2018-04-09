@@ -2,34 +2,20 @@
 
 State::State() {}
 
-State::State(vss_state::Global_State global_state, std::string main_color) {
-    globalStateToState(global_state, main_color);
+State::State(vss_state::Global_State global_state) {
+    globalStateToState(global_state);
     
-    //if (spin){
-    //    spinField180Degrees();
-    //}
+    // chamar caso o usuario queira os dados rotacionados
+    // spinField180Degrees();
 }
 
-void State::globalStateToState(vss_state::Global_State global_state, std::string main_color) {
-
+void State::globalStateToState(vss_state::Global_State global_state) {
     ball = Ball(global_state.balls(0));
-
-    if (main_color == "yellow") {
-        for (int i = 0; i < 3; i++) {
-            team_1[i] = Robot(global_state.robots_yellow(i));
-            team_2[i] = Robot(global_state.robots_blue(i));
-        }
-        
-    } else if (main_color == "blue") {
-        for (int i = 0; i < 3; i++) {
-            team_1[i] = Robot(global_state.robots_blue(i));
-            team_2[i] = Robot(global_state.robots_yellow(i));
-        }
-    }
+    team_blue = Robot(global_state.robots_blue(i));
+    team_yellow = Robot(global_state.robots_yellow(i));
 }
 
 void State::spinField180Degrees(){
-
     ball.spinField180Degrees();
 
     for (int i = 0; i < 3; i++) {
