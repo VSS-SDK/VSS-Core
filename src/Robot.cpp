@@ -1,3 +1,3 @@
 #include "Robot.h"
 
-Robot::Robot() {}
+vss::Robot::Robot() {}

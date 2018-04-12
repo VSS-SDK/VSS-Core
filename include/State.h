@@ -5,14 +5,17 @@
 #include "Robot.h"
 #include <vector>
 
-class State {
+namespace vss {
+        
+    class State {
 
-public:
-    State();
+    public:
+        State();
 
-    Ball ball;
-    std::vector<Robot> teamBlue;
-    std::vector<Robot> teamYellow;
-};
- 
+        vss::Ball ball;
+        std::vector<vss::Robot> teamBlue;
+        std::vector<vss::Robot> teamYellow;
+    };
+
+}
 #endif

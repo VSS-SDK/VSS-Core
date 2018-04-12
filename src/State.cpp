@@ -1,3 +1,3 @@
 #include "State.h"
 
-State::State() {}
+vss::State::State() {}

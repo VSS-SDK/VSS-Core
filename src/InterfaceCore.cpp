@@ -26,7 +26,7 @@ void InterfaceCore::createSocketReceiveState( string addr_client_multicast ){
 
 //! Esse método deve ser chamado em um loop infinito controlado.
 //! O recebimento tratado aqui é não bloqueante
-State InterfaceCore::receiveState( FieldTransformation userTransformation ){
+vss::State InterfaceCore::receiveState( FieldTransformation userTransformation ){
 
 	//! Recebendo informações via socket e atualizando o globalState
 	zmq::message_t request;
@@ -37,8 +37,8 @@ State InterfaceCore::receiveState( FieldTransformation userTransformation ){
 	return globalStateToState( globalState, userTransformation );
 }
 
-State InterfaceCore::globalStateToState(vss_state::Global_State _globalState, FieldTransformation userTransformation){
-	State state;
+vss::State InterfaceCore::globalStateToState(vss_state::Global_State _globalState, FieldTransformation userTransformation){
+	vss::State state;
 
 	state.ball = ballStateToBall(_globalState.balls(0));
 		
@@ -54,8 +54,8 @@ State InterfaceCore::globalStateToState(vss_state::Global_State _globalState, Fi
 	return state;
 }
 
-Robot InterfaceCore::robotStateToRobot(vss_state::Robot_State robot_state) {
-    Robot robot;
+vss::Robot InterfaceCore::robotStateToRobot(vss_state::Robot_State robot_state) {
+    vss::Robot robot;
 
     robot.x = robot_state.pose().x();
     robot.y = robot_state.pose().y();
@@ -68,8 +68,8 @@ Robot InterfaceCore::robotStateToRobot(vss_state::Robot_State robot_state) {
     return robot;
 }
 
-Ball InterfaceCore::ballStateToBall(vss_state::Ball_State ball_state) {
-    Ball ball;
+vss::Ball InterfaceCore::ballStateToBall(vss_state::Ball_State ball_state) {
+    vss::Ball ball;
 
     ball.x = ball_state.pose().x();
     ball.y = ball_state.pose().y();

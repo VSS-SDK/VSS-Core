@@ -1,15 +1,18 @@
 #ifndef _BALL_H_
 #define _BALL_H_
 
-class Ball {
+namespace vss {
 
-public:
-    Ball();
-    
-    float x;
-    float y;    
-    float speedX;
-    float speedY;
-};
- 
+    class Ball {
+
+    public:
+        Ball();
+        
+        float x;
+        float y;    
+        float speedX;
+        float speedY;
+    };
+
+}
 #endif

@@ -1,3 +1,3 @@
 #include "Ball.h"
 
-Ball::Ball() {}
+vss::Ball::Ball() {}

@@ -1,6 +1,6 @@
 #include "CoordinateTransformer.h"
 
-State CoordinateTransformer::spinField180Degrees(State state){
+vss::State CoordinateTransformer::spinField180Degrees(vss::State state){
 
     state.ball = spin180Degrees(state.ball);
 	
@@ -12,7 +12,7 @@ State CoordinateTransformer::spinField180Degrees(State state){
     return state;
 }
 
-Robot CoordinateTransformer::spin180Degrees(Robot robot){
+vss::Robot CoordinateTransformer::spin180Degrees(vss::Robot robot){
     // 170 is the size in x of the field
     robot.x = 170 - robot.x;
     // 130 is the size in y of the field    
@@ -27,7 +27,7 @@ Robot CoordinateTransformer::spin180Degrees(Robot robot){
     return robot;
 }
 
-Ball CoordinateTransformer::spin180Degrees(Ball ball){
+vss::Ball CoordinateTransformer::spin180Degrees(vss::Ball ball){
     // 170 is the size in x of the field
     ball.x = 170 - ball.x;
     // 130 is the size in y of the field    

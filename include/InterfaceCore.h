@@ -50,14 +50,14 @@ public:
 	//! Método responsável por criar o socket de recebimento de estados em VSS-SampleStrategys
 	void createSocketReceiveState( string addr_client_multicast = "tcp://localhost:5555" );
 	//! Método responsável por receber um novo estado em VSS-SampleStrategys
-	State receiveState(FieldTransformation);
+	vss::State receiveState(FieldTransformation);
 	
 	//! Método responsável por converter um Ball_State em Ball
-	Ball ballStateToBall(vss_state::Ball_State);
+	vss::Ball ballStateToBall(vss_state::Ball_State);
 	//! Método responsável por converter um Robot_State em Robot
-	Robot robotStateToRobot(vss_state::Robot_State);
+	vss::Robot robotStateToRobot(vss_state::Robot_State);
 	//! Método responsável por converter um Global_State em State
-	State globalStateToState(vss_state::Global_State, FieldTransformation);	
+	vss::State globalStateToState(vss_state::Global_State, FieldTransformation);	
 };
 
 #endif // _INTERFACE_H_
