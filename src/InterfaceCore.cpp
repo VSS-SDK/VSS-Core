@@ -42,11 +42,12 @@ namespace vss{
         state.teamBlue[i] = robotStateToRobot(_globalState.robots_blue(i));
         state.teamYellow[i] = robotStateToRobot(_globalState.robots_yellow(i));
       }
-
+      
       if (userTransformation == FieldTransformation::Flip180Degrees) {
         CoordinateTransformer transformState;
         state = transformState.spinField180Degrees(state);
       }
+      
       return state;
     }
 
