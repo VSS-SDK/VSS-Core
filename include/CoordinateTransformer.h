@@ -3,6 +3,8 @@
 
 #include "State.h"
 
+namespace vss {
+
 class CoordinateTransformer {
 
 public:
@@ -10,5 +12,7 @@ public:
     vss::Robot spin180Degrees(vss::Robot robot);
     vss::State spinField180Degrees(vss::State state);
 };
- 
+
+}
+
 #endif
