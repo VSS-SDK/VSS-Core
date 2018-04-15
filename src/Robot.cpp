@@ -1,3 +1,5 @@
 #include "Robot.h"
 
-vss::Robot::Robot() {}
+namespace vss{
+    Robot::Robot() {}
+}

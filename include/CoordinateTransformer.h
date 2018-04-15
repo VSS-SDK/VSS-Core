@@ -5,13 +5,12 @@
 
 namespace vss {
 
-class CoordinateTransformer {
-
-public:
-    vss::Ball spin180Degrees(vss::Ball ball);
-    vss::Robot spin180Degrees(vss::Robot robot);
-    vss::State spinField180Degrees(vss::State state);
-};
+    class CoordinateTransformer {
+    public:
+        vss::Ball spin180Degrees(vss::Ball ball);
+        vss::Robot spin180Degrees(vss::Robot robot);
+        vss::State spinField180Degrees(vss::State state);
+    };
 
 }
 

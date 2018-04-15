@@ -6,9 +6,8 @@
 #include <vector>
 
 namespace vss {
-        
-    class State {
 
+    class State {
     public:
         State();
 

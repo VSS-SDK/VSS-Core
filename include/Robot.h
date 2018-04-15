@@ -4,7 +4,6 @@
 namespace vss {
 
     class Robot {
-
     public:
         Robot();
 
@@ -16,5 +15,5 @@ namespace vss {
         float speedAngle;
     };
 
-} 
+}
 #endif

@@ -1,3 +1,5 @@
 #include "State.h"
 
-vss::State::State() {}
+namespace vss{
+    State::State() {}
+}

@@ -4,12 +4,11 @@
 namespace vss {
 
     class Ball {
-
     public:
         Ball();
-        
+
         float x;
-        float y;    
+        float y;
         float speedX;
         float speedY;
     };

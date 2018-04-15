@@ -1,3 +1,5 @@
 #include "Ball.h"
 
-vss::Ball::Ball() {}
+namespace vss{
+    Ball::Ball() {}
+}

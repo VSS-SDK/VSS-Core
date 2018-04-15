@@ -25,39 +25,29 @@
 #include "debug.pb.h"      //! Protobuf: pacote gerado pelo debug.proto
 #include "control.pb.h"      //! Protobuf: pacote gerado pelo debug.proto
 
-using namespace std;
+namespace vss{
 
-//! Essa classe define as interfaces utilizadas em todos os projetos do VSS-SDK, em outras palavras, todos os sockets abertos em todos os projetos estão aqui.
-class InterfaceCore {
-protected:
+    class InterfaceCore {
+    public:
+        InterfaceCore();
 
-	//! Contexto do socket de envio de estados pelo VSS-Vision. E contexto do socket de recebimento de estados pelos VSS-SampleStrategys
-	zmq::context_t *context;
-	//! Socket de envio de estados pelo VSS-Vision. E socket de recebimento de estados pelos VSS-SampleStrategys
-	zmq::socket_t *socket;
-	
-	//! Pacote de estados (Utilizado pelo VSS-Simulator e VSS-Vision, para enviar informações do campo) (Utilizado também pelo VSS-Viewer, para desenhar a estado do jogo e pelo VSS-SampleStrategy para construir-se uma estratégia)
-	vss_state::Global_State globalState;
+        void createSocketReceiveState( std::string addr_client_multicast = "tcp://localhost:5555" );
+        State receiveState(FieldTransformation);
 
-	//! Endereço mulsticast do recebimento dos estados por parte do VSS-Viewer e VSS-SampleStrategys
-	string addr_client_multicast;
+        Ball ballStateToBall(vss_state::Ball_State);
+        Robot robotStateToRobot(vss_state::Robot_State);
+        State globalStateToState(vss_state::Global_State, FieldTransformation);
 
+    protected:
 
-public:
-	//! Construtor DEFAULT
-	InterfaceCore();
+        zmq::context_t *context;
+        zmq::socket_t *socket;
 
-	//! Método responsável por criar o socket de recebimento de estados em VSS-SampleStrategys
-	void createSocketReceiveState( string addr_client_multicast = "tcp://localhost:5555" );
-	//! Método responsável por receber um novo estado em VSS-SampleStrategys
-	vss::State receiveState(vss::FieldTransformation);
-	
-	//! Método responsável por converter um Ball_State em Ball
-	vss::Ball ballStateToBall(vss_state::Ball_State);
-	//! Método responsável por converter um Robot_State em Robot
-	vss::Robot robotStateToRobot(vss_state::Robot_State);
-	//! Método responsável por converter um Global_State em State
-	vss::State globalStateToState(vss_state::Global_State, vss::FieldTransformation);	
-};
+        vss_state::Global_State globalState;
 
-#endif // _INTERFACE_H_
+        std::string addr_client_multicast;
+    };
+
+}
+
+#endif // _INTERFACE_CORE_H_

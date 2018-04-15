@@ -3,7 +3,10 @@
 
 namespace vss {
 
-enum FieldTransformation {None = 0, Flip180Degrees = 1};
+    enum FieldTransformation{
+        None = 0,
+        Flip180Degrees = 1
+    };
 
 }
 
