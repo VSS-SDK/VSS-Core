@@ -43,5 +43,7 @@
 *.out
 *.app
 
+.vscode/*
+.idea/*
 build/*
 cmake-build-debug/*

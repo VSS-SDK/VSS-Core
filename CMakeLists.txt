@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.9)
-project(vss-interface)
+project(vss-core)
 set(CMAKE_BUILD_TYPE Release)
 
 find_package(PkgConfig)
@@ -23,17 +23,18 @@ INCLUDE_DIRECTORIES(${PROTOBUF_INCLUDE_DIR})
 #However, the file(GLOB...) allows for wildcard additions:
 file(GLOB CPP "src/*.cpp")
 file(GLOB CC "src/*.cc")
+file(GLOB H "src/*.h")
+
+set(CLION SOURCE ${CC} ${CPP} ${H})
 
 #Generate the shared library from the sources
-add_library(vss-interface SHARED ${CPP} ${CC})
+add_library(vss-core SHARED ${CPP} ${CC})
 
-target_include_directories(vss-interface PUBLIC ${ZeroMQ_INCLUDE_DIR})
-target_link_libraries(vss-interface PUBLIC ${ZeroMQ_LIBRARY})
-target_link_libraries(vss-interface ${PROTOBUF_LIBRARIES})
+target_include_directories(vss-core PUBLIC ${ZeroMQ_INCLUDE_DIR})
+target_link_libraries(vss-core PUBLIC ${ZeroMQ_LIBRARY})
+target_link_libraries(vss-core ${PROTOBUF_LIBRARIES})
 
-#TARGET_LINK_LIBRARIES(vss-interface ${PROTOBUF_LIBRARY})
+SET(CMAKE_CXX_FLAGS "-g -Wall -Werror -std=c++11")
 
-#Set the location for library installation -- i.e., /usr/lib in this case
-# not really necessary in this example. Use "sudo make install" to apply
-install(TARGETS vss-interface DESTINATION /usr/lib)
+install(TARGETS vss-core DESTINATION /usr/lib)
 install(DIRECTORY include/ DESTINATION include/ FILES_MATCHING PATTERN "*.h")

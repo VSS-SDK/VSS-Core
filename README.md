@@ -1,12 +1,15 @@
-# VSS-Interface [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)][gpl3] [![Build Status](https://travis-ci.org/SIRLab/VSS-Interface.svg?branch=master)][travis]
+# VSS-Core [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)][gpl3] [![Build Status](https://travis-ci.org/SIRLab/VSS-Interface.svg?branch=master)][travis]
+
 
 [![Trello Features](https://img.shields.io/badge/Trello-Features-blue.svg)][vss-sdk-features]
 [![Trello PBIs](https://img.shields.io/badge/Trello-PBIs-blue.svg)][vss-sdk-pbis]
 [![Slack](https://img.shields.io/badge/Slack-Channel-551a8b.svg)][slack]
 
-O VSS-Interface é uma biblioteca open-source que faz parte do VSS-SDK.
-São utilizados as bibliotecas Google Protocols Buffer e ZeroMQ para realizar
-a comunicação entre os projetos do SDK.
+O VSS-Core é uma biblioteca open-source que faz parte do VSS-SDK.
+Contém a parte de comunicação entre os projetos utilizando as 
+bibliotecas Google Protocols Buffere ZeroMQ para realizar. Também guarda classes,
+estruturas e enums úteis.
+
 
 Mais informações podem ser encontradas em [VSS-SDK][vss-sdk].
 
@@ -63,7 +66,7 @@ message User_Control{
 ```
 
 ## Samples
-C++ using the VSS-Interface: [SampleCpp][samplecpp]
+C++ using the VSS-Core: [SampleCpp][samplecpp]
 
 
 License
@@ -77,7 +80,7 @@ You are allowed and encouraged to use this software on robotics competitions.  I
 [gpl3]: http://www.gnu.org/licenses/gpl-3.0/
 [vss-sdk]: http://sirlab.github.io/VSS-SDK
 [samplecpp]: https://github.com/SIRLab/VSS-SampleCpp
-[travis]: https://travis-ci.org/SIRLab/VSS-Interface
+[travis]: https://travis-ci.org/SIRLab/VSS-Core
 [vss-sdk-features]: https://trello.com/b/b4dVV6ug/vss-sdk-features
 [vss-sdk-pbis]: https://trello.com/b/m0u389nR/vss-sdk-pbis
 [slack]: https://vss-sdk.slack.com
