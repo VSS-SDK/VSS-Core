@@ -7,9 +7,9 @@ namespace vss {
 
     class CoordinateTransformer {
     public:
-        vss::Ball spin180Degrees(vss::Ball ball);
-        vss::Robot spin180Degrees(vss::Robot robot);
-        vss::State spinField180Degrees(vss::State state);
+        Ball spin180Degrees(Ball ball);
+        Robot spin180Degrees(Robot robot);
+        State spinField180Degrees(State state);
     };
 
 }

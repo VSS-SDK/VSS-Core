@@ -11,9 +11,9 @@ namespace vss {
     public:
         State();
 
-        vss::Ball ball;
-        std::vector<vss::Robot> teamBlue;
-        std::vector<vss::Robot> teamYellow;
+        Ball ball;
+        std::vector<Robot> teamBlue;
+        std::vector<Robot> teamYellow;
     };
 
 }
