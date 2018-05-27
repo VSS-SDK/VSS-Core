@@ -15,7 +15,7 @@
 #include "unistd.h"
 
 #include "Domain/State.h"
-#include "Domain/FieldTransformation.h"
+#include "Domain/FieldTransformationType.h"
 #include "Helpers/CoordinateTransformer.h"
 #include "Interfaces/IStateReceiver.h"
 
@@ -32,15 +32,15 @@ namespace vss{
     public:
         StateReceiver();
 
-        void createSocketReceiveState( std::string addr_client_multicast = "tcp://localhost:5555" ) override;
-        State receiveState(FieldTransformation) override;
+        void createSocket() override;
+        void setAddress(std::string) override;
+        State receiveState(FieldTransformationType) override;
 
     protected:
         zmq::context_t *context;
         zmq::socket_t *socket;
 
-        vss_state::Global_State globalState;
-        std::string addr_client_multicast;
+        std::string address;
     };
 
 }

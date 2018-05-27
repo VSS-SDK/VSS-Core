@@ -11,6 +11,7 @@ DISTRO=``
 RELEASE=``
 RELEASE_DEBIAN=``
 ARCHITECTURE=``
+COMPILE_TYPE=$1
 
 INSTALLED=0
 
@@ -20,6 +21,16 @@ CMAKE () {
     mkdir -p build
     cd build
     cmake ..
+    make
+    cd ..
+}
+
+CMAKE_INSTALL () {
+    ./protos.sh
+    rm -R build
+    mkdir -p build
+    cd build
+    cmake -D RELEASE=ON ..
     make install
     cd ..
 }
@@ -95,7 +106,12 @@ INSTALL () {
     fi
 
     if [[ $INSTALLED == 1 ]]; then
-        CMAKE;
+        if [[ $COMPILE_TYPE == "release" ]];
+        then
+            CMAKE_INSTALL;
+        else
+            CMAKE;
+        fi
     fi
 }
 

@@ -12,9 +12,12 @@
 
 namespace vss {
     namespace StateMapper {
-        State globalStateToState(vss_state::Global_State _globalState);
-        Robot robotStateToRobot(vss_state::Robot_State robot_state);
-        Ball ballStateToBall(vss_state::Ball_State ball_state);
+        State globalStateToState(vss_state::Global_State globalState);
+        Robot robotStateToRobot(vss_state::Robot_State robotState);
+        Ball ballStateToBall(vss_state::Ball_State ballState);
+        vss_state::Global_State stateToGlobalState(State state);
+        vss_state::Robot_State robotToRobotState(Robot robot);
+        vss_state::Ball_State ballToBallState(Ball ball);
     }
 }
 

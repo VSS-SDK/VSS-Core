@@ -11,8 +11,9 @@
 namespace vss {
     class IStateSender {
     public:
-        virtual void createSocketSendState(std::string addr_server_multicast = "tcp://*:5555") = 0;
+        virtual void createSocket() = 0;
         virtual void sendState(State) = 0;
+        virtual void setAddress(std::string) = 0;
     };
 }
 

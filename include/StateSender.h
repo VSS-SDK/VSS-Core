@@ -9,7 +9,7 @@
 #include "Domain/State.h"
 
 #include "Domain/State.h"
-#include "Domain/FieldTransformation.h"
+#include "Domain/FieldTransformationType.h"
 #include "Helpers/CoordinateTransformer.h"
 #include "Interfaces/IStateReceiver.h"
 
@@ -25,15 +25,16 @@ namespace vss{
     public:
         StateSender();
 
-        void createSocketSendState(std::string addr_server_multicast = "tcp://*:5555") override;
+        void createSocket() override;
         void sendState(State) override;
+        void setAddress(std::string) override;
 
     protected:
         zmq::context_t *context;
         zmq::socket_t *socket;
-
-        vss_state::Global_State globalState;
-        std::string addr_client_multicast;
+        
+        std::string address;
     };
 }
+
 #endif //VSS_CORE_STATESENDER_H

@@ -11,32 +11,37 @@
 
 namespace vss{
     StateReceiver::StateReceiver(){
+        address = "tcp://localhost:5555";
     }
 
-    void StateReceiver::createSocketReceiveState(std::string addr_client_multicast){
-      this->addr_client_multicast = addr_client_multicast;
+    void StateReceiver::createSocket(){
+        context = new zmq::context_t( 1 );
+        socket = new zmq::socket_t( *context, ZMQ_SUB );
 
-      context = new zmq::context_t( 1 );
-      socket = new zmq::socket_t( *context, ZMQ_SUB );
+        std::cout << "Connecting Client Multicast Receiver: " << address << std::endl;
+        socket->connect( address.c_str());
 
-      std::cout << "Connecting Client Multicast Receiver: " << addr_client_multicast << std::endl;
-      socket->connect( addr_client_multicast.c_str());
-
-      socket->setsockopt( ZMQ_SUBSCRIBE, "", 0 );
+        socket->setsockopt( ZMQ_SUBSCRIBE, "", 0 );
     }
 
-    State StateReceiver::receiveState(FieldTransformation userTransformation){
-      zmq::message_t request;
-      socket->recv(&request, 0);
-      std::string msg_str( static_cast<char*>(request.data()), request.size());
-      globalState.ParseFromString(msg_str);
+    State StateReceiver::receiveState(FieldTransformationType userTransformation){
+        vss_state::Global_State globalState;
+        zmq::message_t request;
 
-      auto state = StateMapper::globalStateToState(globalState);
+        socket->recv(&request, 0);
+        std::string msg_str( static_cast<char*>(request.data()), request.size());
 
-      if (userTransformation == FieldTransformation::Flip180Degrees) {
-        state = CoordinateTransformer::spinField180Degrees(state);
-      }
+        globalState.ParseFromString(msg_str);
+        auto state = StateMapper::globalStateToState(globalState);
 
-      return state;
+        if (userTransformation == FieldTransformationType::Flip180Degrees) {
+            state = CoordinateTransformer::spinField180Degrees(state);
+        }
+
+        return state;
+    }
+
+    void StateReceiver::setAddress(std::string address) {
+        this->address = address;
     }
 }
