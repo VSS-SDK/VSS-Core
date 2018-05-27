@@ -1,28 +1,10 @@
-# Ubuntu 14.04 Trusty support
-sudo: true
-
-dist: trusty
+sudo: required
 
 language: cpp
 
-compiler:
-  - gcc
+services:
+  - docker
 
-before_install:
-  - if [ "$CXX" == "g++" ]; then sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test; fi
-  - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
-  - sudo apt-get update -qq
-
-install:
-  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
-
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-      
 script:
-  - sudo ./configure.sh
-
-notifications:
-  slack: vss-sdk:1bwlO40eKoIRA7l5yjLNqmjD
+  - sudo docker build -t boilerplate .
+  - sudo docker run boilerplate test

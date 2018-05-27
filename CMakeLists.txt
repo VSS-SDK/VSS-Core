@@ -34,7 +34,32 @@ target_include_directories(vss-core PUBLIC ${ZeroMQ_INCLUDE_DIR})
 target_link_libraries(vss-core PUBLIC ${ZeroMQ_LIBRARY})
 target_link_libraries(vss-core ${PROTOBUF_LIBRARIES})
 
-SET(CMAKE_CXX_FLAGS "-g -Wall -Werror -std=c++11")
+IF(RELEASE)
+    SET(CMAKE_CXX_FLAGS "-Wall -Werror -o2 -std=c++11")
 
-install(TARGETS vss-core DESTINATION /usr/lib)
-install(DIRECTORY include/ DESTINATION include/ FILES_MATCHING PATTERN "*.h")
+    install(TARGETS vss-core DESTINATION /usr/lib)
+    install(DIRECTORY include/ DESTINATION include/ FILES_MATCHING PATTERN "*.h")
+ELSE()
+    INCLUDE_DIRECTORIES(third-party)
+
+    enable_testing()
+
+    add_subdirectory(third-party/googletest)
+
+    include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+    include_directories(${gmock_SOURCE_DIR}/include ${gmock_SOURCE_DIR})
+
+    file(GLOB_RECURSE TEST test/*.cpp)
+
+    ADD_EXECUTABLE(tests ${TEST})
+
+    target_link_libraries(tests
+            pthread
+            gtest
+            gtest_main
+            vss-core)
+
+    SET(CMAKE_CXX_FLAGS "-g -Wall -Werror -std=c++11")
+ENDIF()
+
+
