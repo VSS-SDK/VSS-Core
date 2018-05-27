@@ -2,6 +2,7 @@
 // Created by johnathan on 27/05/18.
 //
 
+#include <Helpers/CommandMapper.h>
 #include "CommandSender.h"
 
 namespace vss{
@@ -15,12 +16,12 @@ namespace vss{
         context = new zmq::context_t(1);
         socket = new zmq::socket_t(*context, ZMQ_PAIR);
 
-        std::cout << "Connecting Client Sender Team 1: " << address << "(yellow team)" << std::endl << std::endl;
+        std::cout << "Connecting Client Sender Team 1: " << address << " (yellow team)" << std::endl << std::endl;
         socket->connect(address.c_str());
     }
 
     void CommandSender::sendCommand(Command command) {
-        vss_command::Global_Commands globalCommands;
+        auto globalCommands = CommandMapper::commandToGlobalCommands(command);
 
         std::string msg_str;
         globalCommands.SerializeToString( &msg_str );

@@ -8,3 +8,6 @@ services:
 script:
   - sudo docker build -t vss-core .
   - sudo docker run vss-core test
+
+notifications:
+  slack: vss-sdk:lnhtUVtf6dTHUESmXCwkSBd8
