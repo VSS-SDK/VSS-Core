@@ -2,6 +2,11 @@ cmake_minimum_required(VERSION 2.8.9)
 project(vss-core)
 set(CMAKE_BUILD_TYPE Release)
 
+include_directories(src)
+include_directories(include)
+
+INCLUDE_DIRECTORIES(${PROTOBUF_INCLUDE_DIR})
+
 find_package(PkgConfig)
 INCLUDE(FindProtobuf)
 FIND_PACKAGE(Protobuf REQUIRED)
@@ -16,20 +21,13 @@ find_library(ZeroMQ_LIBRARY
         PATHS ${PC_ZeroMQ_LIBRARY_DIRS}
         )
 
-#Bring the headers, such as Student.h into the project
-include_directories(src)
-include_directories(include)
-INCLUDE_DIRECTORIES(${PROTOBUF_INCLUDE_DIR})
-
-#However, the file(GLOB...) allows for wildcard additions:
-file(GLOB CPP "src/*.cpp")
-file(GLOB CC "src/*.cc")
-file(GLOB H "src/*.h")
+file(GLOB_RECURSE CPP "src/*.cpp")
+file(GLOB_RECURSE CC "src/*.cc")
+file(GLOB_RECURSE H "include/*.h")
 
 set(CLION SOURCE ${CC} ${CPP} ${H})
 
-#Generate the shared library from the sources
-add_library(vss-core SHARED ${CPP} ${CC})
+add_library(vss-core SHARED ${CPP} ${CC} ${H})
 
 target_include_directories(vss-core PUBLIC ${ZeroMQ_INCLUDE_DIR})
 target_link_libraries(vss-core PUBLIC ${ZeroMQ_LIBRARY})

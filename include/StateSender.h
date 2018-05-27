@@ -1,18 +1,12 @@
-/*
- * This file is part of the VSS-SDK project.
- *
- * This Source Code Form is subject to the terms of the GNU GENERAL PUBLIC LICENSE,
- * v. 3.0. If a copy of the GPL was not distributed with this
- * file, You can obtain one at http://www.gnu.org/licenses/gpl-3.0/.
- */
+//
+// Created by johnathan on 27/05/18.
+//
 
-#ifndef _INTERFACE_CORE_H_
-#define _INTERFACE_CORE_H_
+#ifndef VSS_CORE_STATESENDER_H
+#define VSS_CORE_STATESENDER_H
 
-#include "sstream"
-#include <iostream>
-#include <string>
-#include "unistd.h"
+#include "Interfaces/IStateSender.h"
+#include "Domain/State.h"
 
 #include "Domain/State.h"
 #include "Domain/FieldTransformation.h"
@@ -27,13 +21,12 @@
 #include "control.pb.h"      //! Protobuf: pacote gerado pelo debug.proto
 
 namespace vss{
-
-    class StateReceiver : public IStateReceiver {
+    class StateSender : public IStateSender {
     public:
-        StateReceiver();
+        StateSender();
 
-        void createSocketReceiveState( std::string addr_client_multicast = "tcp://localhost:5555" ) override;
-        State receiveState(FieldTransformation) override;
+        void createSocketSendState(std::string addr_server_multicast = "tcp://*:5555") override;
+        void sendState(State) override;
 
     protected:
         zmq::context_t *context;
@@ -42,7 +35,5 @@ namespace vss{
         vss_state::Global_State globalState;
         std::string addr_client_multicast;
     };
-
 }
-
-#endif // _INTERFACE_CORE_H_
+#endif //VSS_CORE_STATESENDER_H
