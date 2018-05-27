@@ -6,5 +6,5 @@ services:
   - docker
 
 script:
-  - sudo docker build -t boilerplate .
-  - sudo docker run boilerplate test
+  - sudo docker build -t vss-core .
+  - sudo docker run vss-core test

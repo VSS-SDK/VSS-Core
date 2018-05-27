@@ -16,4 +16,9 @@ TEST() {
     cd ..
 }
 
-TEST;
+if [[ $1 == "test" ]];
+then
+    TEST;
+else
+    echo "Only supports test"
+fi
