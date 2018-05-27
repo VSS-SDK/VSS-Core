@@ -15,7 +15,7 @@ namespace vss{
         }
 
         Robot spin180Degrees(Robot robot){
-            // 170 is the size in x of the field
+            // 170 is the size in x of the fiel
             robot.x = 170 - robot.x;
             // 130 is the size in y of the field
             robot.y = 130 - robot.y;
