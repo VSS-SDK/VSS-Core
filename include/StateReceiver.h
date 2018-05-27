@@ -14,9 +14,10 @@
 #include <string>
 #include "unistd.h"
 
-#include "State.h"
-#include "FieldTransformation.h"
-#include "CoordinateTransformer.h"
+#include "Domain/State.h"
+#include "Domain/FieldTransformation.h"
+#include "Helpers/CoordinateTransformer.h"
+#include "Interfaces/IStateReceiver.h"
 
 #include "zmq.hpp"       //! ZMQ: utilizado para comunicação via Sockets
 #include <google/protobuf/text_format.h> //! Protobuf: utilizado para serialização/deserialização das mensagens
@@ -27,24 +28,22 @@
 
 namespace vss{
 
-    class InterfaceCore {
+    class StateReceiver : public IStateReceiver {
     public:
-        InterfaceCore();
+        StateReceiver();
 
-        void createSocketReceiveState( std::string addr_client_multicast = "tcp://localhost:5555" );
-        State receiveState(FieldTransformation);
+        void createSocketReceiveState( std::string addr_client_multicast = "tcp://localhost:5555" ) override;
+        State receiveState(FieldTransformation) override;
 
         Ball ballStateToBall(vss_state::Ball_State);
         Robot robotStateToRobot(vss_state::Robot_State);
         State globalStateToState(vss_state::Global_State, FieldTransformation);
 
     protected:
-
         zmq::context_t *context;
         zmq::socket_t *socket;
 
         vss_state::Global_State globalState;
-
         std::string addr_client_multicast;
     };
 

@@ -1,7 +1,7 @@
 #ifndef _COORDINATE_TRANSFORMER_H_
 #define _COORDINATE_TRANSFORMER_H_
 
-#include "State.h"
+#include "Domain/State.h"
 
 namespace vss {
 

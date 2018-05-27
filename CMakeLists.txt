@@ -17,6 +17,7 @@ find_library(ZeroMQ_LIBRARY
         )
 
 #Bring the headers, such as Student.h into the project
+include_directories(src)
 include_directories(include)
 INCLUDE_DIRECTORIES(${PROTOBUF_INCLUDE_DIR})
 

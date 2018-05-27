@@ -6,13 +6,13 @@
  * file, You can obtain one at http://www.gnu.org/licenses/gpl-3.0/.
  */
 
-#include "InterfaceCore.h"
+#include "StateReceiver.h"
 
 namespace vss{
-    InterfaceCore::InterfaceCore(){
+    StateReceiver::StateReceiver(){
     }
 
-    void InterfaceCore::createSocketReceiveState( std::string addr_client_multicast ){
+    void StateReceiver::createSocketReceiveState( std::string addr_client_multicast ){
       this->addr_client_multicast = addr_client_multicast;
 
       context = new zmq::context_t( 1 );
@@ -24,7 +24,7 @@ namespace vss{
       socket->setsockopt( ZMQ_SUBSCRIBE, "", 0 );
     }
 
-    State InterfaceCore::receiveState( FieldTransformation userTransformation ){
+    State StateReceiver::receiveState( FieldTransformation userTransformation ){
       zmq::message_t request;
       socket->recv( &request, 0 );
       std::string msg_str( static_cast<char*>(request.data()), request.size());
@@ -33,7 +33,7 @@ namespace vss{
       return globalStateToState( globalState, userTransformation );
     }
 
-    State InterfaceCore::globalStateToState(vss_state::Global_State _globalState, FieldTransformation userTransformation){
+    State StateReceiver::globalStateToState(vss_state::Global_State _globalState, FieldTransformation userTransformation){
       State state;
 
       state.ball = ballStateToBall(_globalState.balls(0));
@@ -51,7 +51,7 @@ namespace vss{
       return state;
     }
 
-    Robot InterfaceCore::robotStateToRobot(vss_state::Robot_State robot_state) {
+    Robot StateReceiver::robotStateToRobot(vss_state::Robot_State robot_state) {
       Robot robot;
 
       robot.x = robot_state.pose().x();
@@ -65,7 +65,7 @@ namespace vss{
       return robot;
     }
 
-    Ball InterfaceCore::ballStateToBall(vss_state::Ball_State ball_state) {
+    Ball StateReceiver::ballStateToBall(vss_state::Ball_State ball_state) {
       Ball ball;
 
       ball.x = ball_state.pose().x();
