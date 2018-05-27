@@ -1,4 +1,4 @@
-#include "Ball.h"
+#include "Domain/Ball.h"
 
 namespace vss{
     Ball::Ball() {}

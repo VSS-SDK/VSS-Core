@@ -14,4 +14,5 @@ namespace vss {
     };
 
 }
+
 #endif

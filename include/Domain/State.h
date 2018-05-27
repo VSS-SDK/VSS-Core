@@ -1,8 +1,8 @@
 #ifndef _STATE_H_
 #define _STATE_H_
 
-#include "Ball.h"
-#include "Robot.h"
+#include "Domain/Ball.h"
+#include "Domain/Robot.h"
 #include <vector>
 
 namespace vss {
