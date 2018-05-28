@@ -14,12 +14,16 @@ namespace vss {
 
         for (unsigned int i = 0; i < command.commands.size() ; i++) {
             auto ref = commands.add_robot_commands();
-            ref->set_id(static_cast<google::protobuf::uint32>(command.commands[i].id));
-            ref->set_left_vel(command.commands[i].leftVel);
-            ref->set_right_vel(command.commands[i].rightVel);
+            setupWheelCommand(ref, command.commands[i]);
         }
 
         return commands;
+    }
+
+    void CommandMapper::setupWheelCommand(vss_command::Robot_Command *robotCommand, WheelsCommand wheelsCommand) {
+        robotCommand->set_id(static_cast<google::protobuf::uint32>(wheelsCommand.id));
+        robotCommand->set_left_vel(wheelsCommand.leftVel);
+        robotCommand->set_right_vel(wheelsCommand.rightVel);
     }
 }
 

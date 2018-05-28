@@ -16,8 +16,8 @@ namespace vss {
         Robot robotStateToRobot(vss_state::Robot_State robotState);
         Ball ballStateToBall(vss_state::Ball_State ballState);
         vss_state::Global_State stateToGlobalState(State state);
-        vss_state::Robot_State robotToRobotState(Robot robot);
-        vss_state::Ball_State ballToBallState(Ball ball);
+        void setupRobotState(vss_state::Robot_State *robotState, Robot robot);
+        void setupBallState(vss_state::Ball_State *ballState, Ball ball);
     }
 }
 

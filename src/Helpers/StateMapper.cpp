@@ -48,52 +48,38 @@ namespace vss {
         vss_state::Global_State stateToGlobalState(State state){
             vss_state::Global_State globalState;
 
-            auto ballState = ballToBallState(state.ball);
             auto ball = globalState.add_balls();
-            ball->Clear();
-            ball = &ballState;
+            setupBallState(ball, state.ball);
 
             for(unsigned int i = 0 ; i < state.teamYellow.size() ; i++){
-                auto robotYellowState = robotToRobotState(state.teamYellow[i]);
                 auto robot = globalState.add_robots_yellow();
-                robot->Clear();
-                robot = &robotYellowState;
+                setupRobotState(robot, state.teamYellow[i]);
             }
 
             for(unsigned int i = 0 ; i < state.teamBlue.size() ; i++){
-                auto robotRobotState = robotToRobotState(state.teamBlue[i]);
                 auto robot = globalState.add_robots_blue();
-                robot->Clear();
-                robot = &robotRobotState;
+                setupRobotState(robot, state.teamBlue[i]);
             }
 
             return globalState;
         }
 
-        vss_state::Robot_State robotToRobotState(Robot robot){
-            vss_state::Robot_State robotState;
+        void setupRobotState(vss_state::Robot_State *robotState, Robot robot){
+            robotState->mutable_pose()->set_x(robot.x);
+            robotState->mutable_pose()->set_y(robot.y);
+            robotState->mutable_pose()->set_yaw(robot.angle);
 
-            robotState.mutable_pose()->set_x(robot.x);
-            robotState.mutable_pose()->set_y(robot.y);
-            robotState.mutable_pose()->set_yaw(robot.angle);
-
-            robotState.mutable_v_pose()->set_x(robot.speedX);
-            robotState.mutable_v_pose()->set_y(robot.speedY);
-            robotState.mutable_v_pose()->set_yaw(robot.speedAngle);
-
-            return robotState;
+            robotState->mutable_v_pose()->set_x(robot.speedX);
+            robotState->mutable_v_pose()->set_y(robot.speedY);
+            robotState->mutable_v_pose()->set_yaw(robot.speedAngle);
         }
 
-        vss_state::Ball_State ballToBallState(Ball ball){
-            vss_state::Ball_State ballState;
+        void setupBallState(vss_state::Ball_State *ballState, Ball ball){
+            ballState->mutable_pose()->set_x(ball.x);
+            ballState->mutable_pose()->set_y(ball.y);
 
-            ballState.mutable_pose()->set_x(ball.x);
-            ballState.mutable_pose()->set_y(ball.y);
-
-            ballState.mutable_v_pose()->set_x(ball.speedX);
-            ballState.mutable_v_pose()->set_y(ball.speedY);
-
-            return ballState;
+            ballState->mutable_v_pose()->set_x(ball.speedX);
+            ballState->mutable_v_pose()->set_y(ball.speedY);
         }
     }
 }
