@@ -11,7 +11,9 @@
 namespace vss {
     namespace CommandMapper {
         vss_command::Global_Commands commandToGlobalCommands(Command command);
-        vss_command::Robot_Command wheelsCommandToRobotCommand(WheelsCommand wheelsCommand);
+        void setupWheelCommand(vss_command::Robot_Command *robotCommand, WheelsCommand wheelsCommand);
+
+        Command globalCommandsToCommand(vss_command::Global_Commands);
     }
 }
 

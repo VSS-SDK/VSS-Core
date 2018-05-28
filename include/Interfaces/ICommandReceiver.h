@@ -5,14 +5,15 @@
 #ifndef VSS_CORE_ICOMMANDRECEIVER_H
 #define VSS_CORE_ICOMMANDRECEIVER_H
 
+#include <Domain/TeamType.h>
 #include "Domain/Command.h"
+#include "iostream"
 
 namespace vss {
     class ICommandReceiver {
     public:
-        virtual void createSocket() = 0;
+        virtual void createSocket(TeamType) = 0;
         virtual Command receiveCommand() = 0;
-        virtual void setAddress(std::string) = 0;
     };
 }
 
