@@ -51,7 +51,7 @@ TEST(CoordinateTransaformer_Spin180Degrees_State, WhenSpin_ShouldReturnTheRightT
     vss::State state = createRandomState();
     vss::State stateInFieldSpinned = vss::CoordinateTransformer::spinField180Degrees(state);
 
-    EXPECT_EQ(stateInFieldSpinned.teamBlue.size(), (unsigned int)3);
+    EXPECT_EQ(stateInFieldSpinned.teamBlue.size(), (unsigned int)4);
     EXPECT_EQ(stateInFieldSpinned.teamYellow.size(), (unsigned int)3);
 
     EXPECT_EQ(stateInFieldSpinned.teamBlue.size(), state.teamBlue.size());
