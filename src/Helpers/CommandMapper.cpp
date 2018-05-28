@@ -25,5 +25,22 @@ namespace vss {
         robotCommand->set_left_vel(wheelsCommand.leftVel);
         robotCommand->set_right_vel(wheelsCommand.rightVel);
     }
+
+    Command CommandMapper::globalCommandsToCommand(vss_command::Global_Commands globalCommands) {
+        Command command;
+
+        command.id = globalCommands.id();
+
+        for (int i = 0 ; i < globalCommands.robot_commands_size() ; i++){
+            WheelsCommand wheelsCommand;
+            wheelsCommand.id = globalCommands.robot_commands(i).id();
+            wheelsCommand.rightVel = globalCommands.robot_commands(i).right_vel();
+            wheelsCommand.leftVel = globalCommands.robot_commands(i).left_vel();
+
+            command.commands.push_back(wheelsCommand);
+        }
+
+        return command;
+    }
 }
 
