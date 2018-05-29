@@ -13,7 +13,7 @@ RUN chmod +x /vss-core/entrypoint.sh
 RUN chmod +x /vss-core/protos.sh
 
 # Executa a instalação na criação dos containers
-RUN /vss-core/configure.sh
+RUN /vss-core/configure.sh development
 
 # Script executado no docker run
 ENTRYPOINT ["/vss-core/entrypoint.sh"]
