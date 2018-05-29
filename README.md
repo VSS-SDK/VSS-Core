@@ -18,6 +18,11 @@ Mais informações podem ser encontradas em [VSS-SDK][vss-sdk].
 $ sudo ./configure.sh
 ```
 
+## Development
+```
+$ sudo ./configure.sh development
+```
+
 ## Protos
 
 ### Field state

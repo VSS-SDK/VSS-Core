@@ -11,8 +11,11 @@ namespace vss {
 
             state.ball = ballStateToBall(_globalState.balls(0));
 
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < _globalState.robots_blue_size(); i++) {
                 state.teamBlue[i] = robotStateToRobot(_globalState.robots_blue(i));
+            }
+
+            for (int i = 0; i < _globalState.robots_yellow_size(); i++) {
                 state.teamYellow[i] = robotStateToRobot(_globalState.robots_yellow(i));
             }
 
