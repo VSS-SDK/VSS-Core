@@ -75,6 +75,11 @@ INSTALL_BASE() {
     ARCHITECTURE=`uname -m`
 }
 
+INIT_SUBMODULES() {
+    git submodule init;
+    git submodule update;
+}
+
 INSTALL () {
     INSTALL_BASE;
 
@@ -106,11 +111,13 @@ INSTALL () {
     fi
 
     if [[ $INSTALLED == 1 ]]; then
-        if [[ $COMPILE_TYPE == "release" ]];
+        INIT_SUBMODULES;
+
+        if [[ $COMPILE_TYPE == "development" ]];
         then
-            CMAKE_INSTALL;
-        else
             CMAKE;
+        else
+            CMAKE_INSTALL;
         fi
     fi
 }
