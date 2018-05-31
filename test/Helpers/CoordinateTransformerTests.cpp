@@ -89,10 +89,10 @@ TEST(CoordinateTransaformer_Spin180Degrees_State, WhenSpin_ShouldReturnTheRightT
 float getRightAngleTransformationInFlip(float angle){
     float rightAngle;
 
-    if (angle + 180 > 360){
-        rightAngle = angle - 180;
+    if (angle + (vss::MAX_ANGLE_VALUE/2) > vss::MAX_ANGLE_VALUE){
+        rightAngle = angle - (vss::MAX_ANGLE_VALUE/2);
     } else {
-        rightAngle = angle + 180;
+        rightAngle = angle + (vss::MAX_ANGLE_VALUE/2);
     }
 
     return rightAngle;

@@ -40,8 +40,6 @@ TEST(Robot_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
 }
 
 TEST(Robot_cout, WhenCoutShouldPrintRight){
-    srand(static_cast<unsigned int>(time(NULL)));
-
     auto robot = vss::DomainRandomizer::createRandomRobot();
 
     testing::internal::CaptureStdout();

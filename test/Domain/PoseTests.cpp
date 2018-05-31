@@ -30,8 +30,6 @@ TEST(Pose_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
 }
 
 TEST(Pose_cout, WhenCoutShouldPrintRight){
-    srand(static_cast<unsigned int>(time(NULL)));
-
     auto pose = vss::DomainRandomizer::createRandomPose();
 
     testing::internal::CaptureStdout();

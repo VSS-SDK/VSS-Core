@@ -27,8 +27,6 @@ TEST(Point_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
 }
 
 TEST(Point_cout, WhenCoutShouldPrintRight){
-    srand(static_cast<unsigned int>(time(NULL)));
-
     auto point = vss::DomainRandomizer::createRandomPoint();
 
     testing::internal::CaptureStdout();

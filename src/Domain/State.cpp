@@ -3,7 +3,7 @@
 namespace vss{
     State::State() { }
 
-    State::State(Ball ball, std::vector<Robot> teamBlue, std::vector<Robot> teamYellow) {
+    State::State(Ball ball, std::vector<Robot> teamYellow, std::vector<Robot> teamBlue) {
         this->ball = ball;
         this->teamBlue = teamBlue;
         this->teamYellow = teamYellow;

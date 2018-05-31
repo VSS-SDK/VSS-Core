@@ -21,13 +21,7 @@ TEST(Command_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
     std::vector<vss::WheelsCommand> wheelsCommands;
 
     for(int i = 0 ; i < size ; i++){
-        vss::WheelsCommand wheelsCommand;
-
-        wheelsCommand.id = rand();
-        wheelsCommand.leftVel = rand();
-        wheelsCommand.rightVel = rand();
-
-        wheelsCommands.push_back(wheelsCommand);
+        wheelsCommands.push_back(vss::DomainRandomizer::createRandomWheelsCommand());
     }
 
     vss::Command command(id, wheelsCommands);
@@ -43,8 +37,6 @@ TEST(Command_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
 }
 
 TEST(Command_cout, WhenCoutShouldPrintRight){
-    srand(static_cast<unsigned int>(time(NULL)));
-
     auto command = vss::DomainRandomizer::createRandomCommand();
 
     testing::internal::CaptureStdout();

@@ -25,7 +25,6 @@ namespace vss {
         vss::WheelsCommand createRandomWheelsCommand();
         vss::Command createRandomCommand();
 
-
     }
 
 }

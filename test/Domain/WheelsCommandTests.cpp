@@ -29,8 +29,6 @@ TEST(WheelsCommand_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
 }
 
 TEST(WheelsCommand_cout, WhenCoutShouldPrintRight){
-    srand(static_cast<unsigned int>(time(NULL)));
-
     auto wheelsCommand = vss::DomainRandomizer::createRandomWheelsCommand();
 
     testing::internal::CaptureStdout();

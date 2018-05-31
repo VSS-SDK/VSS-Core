@@ -33,8 +33,6 @@ TEST(Ball_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
 }
 
 TEST(Ball_cout, WhenCoutShouldPrintRight){
-    srand(static_cast<unsigned int>(time(NULL)));
-
     auto ball = vss::DomainRandomizer::createRandomBall();
 
     testing::internal::CaptureStdout();
