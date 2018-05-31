@@ -73,17 +73,17 @@ TEST(State_cout, WhenCoutShouldPrintRight){
 
     mock_output << "State {" << std::endl;
 
-    mock_output << "\t" << state.ball << std::endl << std::endl;
-    mock_output << "\tTeamYellow" << std::endl;
+    mock_output << "\t" << state.ball << std::endl;
+    mock_output << "\tTeamYellow:" << std::endl;
 
     for(unsigned int i = 0 ; i < state.teamYellow.size() ; i++){
-        mock_output << "\t" << state.teamYellow[i] << std::endl;
+        mock_output << "\t\t" << state.teamYellow[i] << std::endl;
     }
 
-    mock_output << std::endl << "\tTeamBlue" << std::endl;
+    mock_output << "\tTeamBlue:" << std::endl;
 
     for(unsigned int i = 0 ; i < state.teamYellow.size() ; i++){
-        mock_output << "\t" << state.teamYellow[i] << std::endl;
+        mock_output << "\t\t" << state.teamYellow[i] << std::endl;
     }
 
     mock_output << "}";

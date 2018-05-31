@@ -15,6 +15,9 @@ namespace vss {
     class Debug {
     public:
         Debug();
+        Debug(std::vector<Point> stepPoints, std::vector<Pose> finalPoses, std::vector<Path> paths);
+
+        friend std::ostream& operator<<(std::ostream& os, const Debug& debug);
 
         std::vector<Point> stepPoints;
         std::vector<Pose> finalPoses;
