@@ -9,6 +9,7 @@
 #include <Domain/Command.h>
 #include <Domain/Path.h>
 #include <Constants.h>
+#include <Domain/Debug.h>
 
 namespace vss {
 
@@ -66,6 +67,7 @@ namespace vss {
         }
 
         vss::Path createRandomPath() {
+            srand(static_cast<unsigned int>(time(NULL)));
             vss::Path path;
 
             unsigned int size = rand()%10;
@@ -78,6 +80,7 @@ namespace vss {
         }
 
         vss::State createRandomState(){
+            srand(static_cast<unsigned int>(time(NULL)));
             vss::State state;
 
             unsigned int sizeTeamYellow = rand()%10;
@@ -96,6 +99,7 @@ namespace vss {
         }
 
         vss::WheelsCommand createRandomWheelsCommand() {
+            srand(static_cast<unsigned int>(time(NULL)));
             vss::WheelsCommand wheelsCommand;
 
             wheelsCommand.id = rand();
@@ -106,6 +110,7 @@ namespace vss {
         }
 
         vss::Command createRandomCommand() {
+            srand(static_cast<unsigned int>(time(NULL)));
             vss::Command command;
 
             unsigned int size = rand()%10;
@@ -116,6 +121,21 @@ namespace vss {
             }
 
             return command;
+        }
+
+        vss::Debug createRandomDebug() {
+            srand(static_cast<unsigned int>(time(NULL)));
+            vss::Debug debug;
+
+            unsigned int robotsAmount = rand()%10;
+
+            for(unsigned int i = 0 ; i < robotsAmount ; i++){
+                debug.stepPoints.push_back(createRandomPoint());
+                debug.finalPoses.push_back(createRandomPose());
+                debug.paths.push_back(createRandomPath());
+            }
+
+            return debug;
         }
 
     }

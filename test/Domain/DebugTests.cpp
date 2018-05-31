@@ -51,3 +51,30 @@ TEST(Debug_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
         }
     }
 }
+
+TEST(Debug_cout, WhenCoutShouldPrintRight){
+    auto debug = vss::DomainRandomizer::createRandomDebug();
+
+    testing::internal::CaptureStdout();
+    std::cout << debug;
+    std::string output = testing::internal::GetCapturedStdout();
+    std::stringstream mock_output;
+
+    mock_output << "Debug {" << std::endl;
+
+    for(unsigned int i = 0 ; i < debug.finalPoses.size() ; i++){
+        mock_output << "\tRobot {" << std::endl;
+        mock_output << "\t\tStep: " << debug.stepPoints[i] << std::endl;
+        mock_output << "\t\tFinal: " << debug.finalPoses[i] << std::endl;
+        mock_output << "\t\tPath {" << std::endl;
+        for(unsigned int j = 0 ; j < debug.paths[i].points.size() ; j++){
+            mock_output << "\t\t\t" << debug.paths[i].points[j] << std::endl;
+        }
+        mock_output << "\t\t}" << std::endl;
+        mock_output << "\t}" << std::endl;
+    }
+
+    mock_output << "}";
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
