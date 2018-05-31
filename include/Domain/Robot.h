@@ -1,19 +1,22 @@
 #ifndef _ROBOT_H_
 #define _ROBOT_H_
 
+#include "Pose.h"
+
 namespace vss {
 
-    class Robot {
+    class Robot : public Pose {
     public:
         Robot();
+        Robot(float x, float y, float angle, float speedX, float speedY, float speedAngle);
 
-        float x;
-        float y;
-        float angle;
+        friend std::ostream& operator<<(std::ostream& os, const Robot& robot);
+
         float speedX;
         float speedY;
         float speedAngle;
     };
 
 }
+
 #endif

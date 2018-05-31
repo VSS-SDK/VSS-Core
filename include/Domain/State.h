@@ -10,6 +10,9 @@ namespace vss {
     class State {
     public:
         State();
+        State(Ball ball, std::vector<Robot> teamBlue, std::vector<Robot> teamYellow);
+
+        friend std::ostream& operator<<(std::ostream& os, const State& state);
 
         Ball ball;
         std::vector<Robot> teamBlue;

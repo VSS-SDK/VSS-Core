@@ -5,6 +5,7 @@
 #ifndef VSS_CORE_IDEBUGRECEIVER_H
 #define VSS_CORE_IDEBUGRECEIVER_H
 
+#include <string>
 #include "Domain/Debug.h"
 
 namespace vss {

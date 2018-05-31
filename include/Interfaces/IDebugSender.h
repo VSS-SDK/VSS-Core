@@ -13,7 +13,6 @@ namespace vss {
     public:
         virtual void createSocket(TeamType) = 0;
         virtual void sendDebug(Debug) = 0;
-        virtual void setAddress(std::string) = 0;
     };
 }
 
