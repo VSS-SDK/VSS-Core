@@ -26,3 +26,17 @@ TEST(Pose_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
     EXPECT_EQ(pose.y, y);
     EXPECT_EQ(pose.angle, angle);
 }
+
+TEST(Pose_cout, WhenCoutShouldPrintRight){
+    srand(static_cast<unsigned int>(time(NULL)));
+
+    vss::Pose pose(rand(), rand(), rand());
+
+    testing::internal::CaptureStdout();
+    std::cout << pose;
+    std::string output = testing::internal::GetCapturedStdout();
+    std::stringstream mock_output;
+    mock_output << "Pose(" << pose.x << ", " << pose.y << ", " << pose.angle << ")";
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}

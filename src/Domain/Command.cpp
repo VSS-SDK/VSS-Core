@@ -18,7 +18,7 @@ namespace vss {
         os << "Commands[" << command.id << "] {" << std::endl;
 
         for(unsigned int i = 0 ; i < command.commands.size() ; i++){
-            os << command.commands[i] << std::endl;
+            os << "\t" << command.commands[i] << std::endl;
         }
 
         os << "}";

@@ -23,3 +23,17 @@ TEST(Point_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
     EXPECT_EQ(point.x, x);
     EXPECT_EQ(point.y, y);
 }
+
+TEST(Point_cout, WhenCoutShouldPrintRight){
+    srand(static_cast<unsigned int>(time(NULL)));
+
+    vss::Point point(rand(), rand());
+
+    testing::internal::CaptureStdout();
+    std::cout << point;
+    std::string output = testing::internal::GetCapturedStdout();
+    std::stringstream mock_output;
+    mock_output << "Point(" << point.x << ", " << point.y << ")";
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}

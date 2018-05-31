@@ -30,3 +30,17 @@ TEST(Ball_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
     EXPECT_EQ(ball.speedX, speedX);
     EXPECT_EQ(ball.speedY, speedY);
 }
+
+TEST(Ball_cout, WhenCoutShouldPrintRight){
+    srand(static_cast<unsigned int>(time(NULL)));
+
+    vss::Ball ball(rand(), rand(), rand(), rand());
+
+    testing::internal::CaptureStdout();
+    std::cout << ball;
+    std::string output = testing::internal::GetCapturedStdout();
+    std::stringstream mock_output;
+    mock_output << "Ball(" << ball.x << ", " << ball.y << ", " << ball.speedX << ", " << ball.speedY  << ")";
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}

@@ -21,7 +21,7 @@ namespace vss{
     }
 
     std::ostream &operator<<(std::ostream &os, const Robot &robot) {
-        return os << "Robot(" << robot.x << ", " << robot.y << ", " << robot.angle << "," << robot.speedX << ", " << robot.speedY << ", " << robot.speedAngle << ")";
+        return os << "Robot(" << robot.x << ", " << robot.y << ", " << robot.angle << ", " << robot.speedX << ", " << robot.speedY << ", " << robot.speedAngle << ")";
     }
 
 }

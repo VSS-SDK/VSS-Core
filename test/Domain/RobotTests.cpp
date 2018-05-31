@@ -36,3 +36,17 @@ TEST(Robot_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
     EXPECT_EQ(robot.speedY, speedY);
     EXPECT_EQ(robot.speedAngle, speedAngle);
 }
+
+TEST(Robot_cout, WhenCoutShouldPrintRight){
+    srand(static_cast<unsigned int>(time(NULL)));
+
+    vss::Robot robot(rand(), rand(), rand(), rand(), rand(), rand());
+
+    testing::internal::CaptureStdout();
+    std::cout << robot;
+    std::string output = testing::internal::GetCapturedStdout();
+    std::stringstream mock_output;
+    mock_output << "Robot(" << robot.x << ", " << robot.y << ", " << robot.angle << ", " << robot.speedX << ", " << robot.speedY << ", " << robot.speedAngle << ")";
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}

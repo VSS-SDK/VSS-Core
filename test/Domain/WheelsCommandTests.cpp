@@ -26,3 +26,17 @@ TEST(WheelsCommand_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
     EXPECT_EQ(wheelsCommand.leftVel, leftVel);
     EXPECT_EQ(wheelsCommand.rightVel, rightVel);
 }
+
+TEST(WheelsCommand_cout, WhenCoutShouldPrintRight){
+    srand(static_cast<unsigned int>(time(NULL)));
+
+    vss::WheelsCommand wheelsCommand(rand(), rand(), rand());
+
+    testing::internal::CaptureStdout();
+    std::cout << wheelsCommand;
+    std::string output = testing::internal::GetCapturedStdout();
+    std::stringstream mock_output;
+    mock_output << "WheelsCommand(" << wheelsCommand.id << ", " << wheelsCommand.leftVel << ", " << wheelsCommand.rightVel << ")";
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
