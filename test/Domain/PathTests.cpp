@@ -35,3 +35,27 @@ TEST(Path_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
         EXPECT_EQ(path.points[i].y, points[i].y);
     }
 }
+
+TEST(Path_cout, WhenCoutShouldPrintRight){
+    srand(static_cast<unsigned int>(time(NULL)));
+
+    int size = rand()%10;
+    vss::Path path;
+
+    for(int i = 0 ; i < size ; i++){
+        path.points.push_back(vss::Point(rand(), rand()));
+    }
+
+    testing::internal::CaptureStdout();
+    std::cout << path;
+    std::string output = testing::internal::GetCapturedStdout();
+    std::stringstream mock_output;
+
+    mock_output << "Path {" << std::endl;
+    for(unsigned int i = 0 ; i < path.points.size() ; i++){
+        mock_output << "\t" << path.points[i] << std::endl;
+    }
+    mock_output << "}";
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}

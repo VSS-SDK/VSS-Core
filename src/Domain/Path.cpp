@@ -16,7 +16,7 @@ namespace vss {
         os << "Path {" << std::endl;
 
         for(unsigned int i = 0 ; i < path.points.size() ; i++){
-            os << path.points[i] << std::endl;
+            os << "\t" << path.points[i] << std::endl;
         }
 
         os << "}";

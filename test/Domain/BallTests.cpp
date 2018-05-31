@@ -22,7 +22,6 @@ TEST(Ball_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
     float speedX = rand();
     float speedY = rand();
 
-
     vss::Ball ball(x, y, speedX, speedY);
 
     EXPECT_EQ(ball.x, x);
