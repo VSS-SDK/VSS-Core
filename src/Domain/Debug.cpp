@@ -5,8 +5,10 @@
 #include <Domain/Debug.h>
 
 namespace vss{
+
     Debug::Debug() {
 
     }
+
 }
 

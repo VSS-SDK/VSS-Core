@@ -13,6 +13,9 @@ namespace vss {
     class Command {
     public:
         Command();
+        Command(int id, std::vector<WheelsCommand> commands);
+
+        friend std::ostream& operator<<(std::ostream& os, const Command& command);
 
         int id;
         std::vector<WheelsCommand> commands;

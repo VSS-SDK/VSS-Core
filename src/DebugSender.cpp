@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <debug.pb.h>
+#include <Helpers/DebugMapper.h>
 #include "DebugSender.h"
 
 namespace vss {
@@ -23,9 +24,9 @@ namespace vss {
     }
 
     void DebugSender::sendDebug(Debug debug) {
-        vss_debug::Global_Debug globalDebug;
-
         std::string msg_str;
+        auto globalDebug = DebugMapper::debugToGlobalDebug(debug);
+
         globalDebug.SerializeToString( &msg_str );
 
         zmq::message_t request ( msg_str.size());

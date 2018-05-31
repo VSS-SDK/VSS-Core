@@ -5,11 +5,16 @@
 #ifndef VSS_CORE_WHEELSCOMMAND_H
 #define VSS_CORE_WHEELSCOMMAND_H
 
+#include <iostream>
+
 namespace vss {
 
     class WheelsCommand {
     public:
         WheelsCommand();
+        WheelsCommand(int id, float leftVel, float rightVel);
+
+        friend std::ostream& operator<<(std::ostream& os, const WheelsCommand& wheelsCommand);
 
         int id;
         float leftVel;
