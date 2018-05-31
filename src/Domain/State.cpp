@@ -1,10 +1,7 @@
 #include "Domain/State.h"
 
 namespace vss{
-    State::State() {
-        teamBlue.resize(3);
-        teamYellow.resize(3);
-    }
+    State::State() { }
 
     State::State(Ball ball, std::vector<Robot> teamBlue, std::vector<Robot> teamYellow) {
         this->ball = ball;

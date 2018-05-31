@@ -1,3 +1,4 @@
+#include <Constants.h>
 #include "Helpers/CoordinateTransformer.h"
 
 namespace vss{
@@ -6,34 +7,33 @@ namespace vss{
 
             state.ball = spin180Degrees(state.ball);
 
-            for (int i = 0; i < 3; i++) {
-                state.teamBlue[i] = spin180Degrees(state.teamBlue[i]);
+            for (unsigned int i = 0; i < state.teamYellow.size(); i++) {
                 state.teamYellow[i] = spin180Degrees(state.teamYellow[i]);
+            }
+
+            for (unsigned int i = 0; i < state.teamBlue.size(); i++) {
+                state.teamBlue[i] = spin180Degrees(state.teamBlue[i]);
             }
 
             return state;
         }
 
         Robot spin180Degrees(Robot robot){
-            // 170 is the size in x of the fiel
-            robot.x = 170 - robot.x;
-            // 130 is the size in y of the field
-            robot.y = 130 - robot.y;
+            robot.x = vss::MAX_COORDINATE_X - robot.x;
+            robot.y = vss::MAX_COORDINATE_Y - robot.y;
 
-            if (robot.angle + 180 > 360){
-                robot.angle = robot.angle - 180;
+            if (robot.angle + (vss::MAX_ANGLE_VALUE/2) > vss::MAX_ANGLE_VALUE){
+                robot.angle = robot.angle - (vss::MAX_ANGLE_VALUE/2);
             } else {
-                robot.angle = robot.angle + 180;
+                robot.angle = robot.angle + (vss::MAX_ANGLE_VALUE/2);
             }
 
             return robot;
         }
 
         Ball spin180Degrees(Ball ball){
-            // 170 is the size in x of the field
-            ball.x = 170 - ball.x;
-            // 130 is the size in y of the field
-            ball.y = 130 - ball.y;
+            ball.x = vss::MAX_COORDINATE_X - ball.x;
+            ball.y = vss::MAX_COORDINATE_Y - ball.y;
 
             return ball;
         }

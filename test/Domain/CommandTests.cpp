@@ -3,6 +3,7 @@
 //
 
 #include <googletest/googletest/include/gtest/gtest.h>
+#include <Helpers/DomainRandomizer.h>
 #include "Domain/Command.h"
 
 TEST(Command_Constructor, WhenDefaultBuilded_ShouldBeZero){
@@ -44,19 +45,14 @@ TEST(Command_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
 TEST(Command_cout, WhenCoutShouldPrintRight){
     srand(static_cast<unsigned int>(time(NULL)));
 
-    int size = rand()%10;
-    vss::Command command;
-
-    for(int i = 0 ; i < size ; i++){
-        command.commands.push_back(vss::WheelsCommand(rand(), rand(), rand()));
-    }
+    auto command = vss::DomainRandomizer::createRandomCommand();
 
     testing::internal::CaptureStdout();
     std::cout << command;
     std::string output = testing::internal::GetCapturedStdout();
     std::stringstream mock_output;
 
-    mock_output << "Commands[0] {" << std::endl;
+    mock_output << "Commands[" << command.id << "] {" << std::endl;
     for(unsigned int i = 0 ; i < command.commands.size() ; i++){
         mock_output << "\t" << command.commands[i] << std::endl;
     }

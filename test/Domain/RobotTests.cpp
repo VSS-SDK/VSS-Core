@@ -3,6 +3,8 @@
 //
 
 #include <googletest/googletest/include/gtest/gtest.h>
+#include <Helpers/DomainRandomizer.h>
+#include <Constants.h>
 #include "Domain/Robot.h"
 
 TEST(Robot_Constructor, WhenDefaultBuilded_ShouldBeZero){
@@ -19,9 +21,9 @@ TEST(Robot_Constructor, WhenDefaultBuilded_ShouldBeZero){
 TEST(Robot_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
     srand(static_cast<unsigned int>(time(NULL)));
 
-    float x = rand();
-    float y = rand();
-    float angle = rand();
+    float x = rand()%vss::MAX_COORDINATE_X;
+    float y = rand()%vss::MAX_COORDINATE_Y;
+    float angle = rand()%vss::MAX_ANGLE_VALUE;
     float speedX = rand();
     float speedY = rand();
     float speedAngle = rand();
@@ -40,7 +42,7 @@ TEST(Robot_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
 TEST(Robot_cout, WhenCoutShouldPrintRight){
     srand(static_cast<unsigned int>(time(NULL)));
 
-    vss::Robot robot(rand(), rand(), rand(), rand(), rand(), rand());
+    auto robot = vss::DomainRandomizer::createRandomRobot();
 
     testing::internal::CaptureStdout();
     std::cout << robot;

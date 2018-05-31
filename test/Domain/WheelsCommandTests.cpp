@@ -3,6 +3,7 @@
 //
 
 #include <googletest/googletest/include/gtest/gtest.h>
+#include <Helpers/DomainRandomizer.h>
 #include "Domain/WheelsCommand.h"
 
 TEST(WheelsCommand_Constructor, WhenDefaultBuilded_ShouldBeZero){
@@ -30,7 +31,7 @@ TEST(WheelsCommand_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
 TEST(WheelsCommand_cout, WhenCoutShouldPrintRight){
     srand(static_cast<unsigned int>(time(NULL)));
 
-    vss::WheelsCommand wheelsCommand(rand(), rand(), rand());
+    auto wheelsCommand = vss::DomainRandomizer::createRandomWheelsCommand();
 
     testing::internal::CaptureStdout();
     std::cout << wheelsCommand;

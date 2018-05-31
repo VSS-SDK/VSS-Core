@@ -3,6 +3,8 @@
 //
 
 #include <googletest/googletest/include/gtest/gtest.h>
+#include <Helpers/DomainRandomizer.h>
+#include <Constants.h>
 #include "Domain/Point.h"
 
 TEST(Point_Constructor, WhenDefaultBuilded_ShouldBeZero){
@@ -15,8 +17,8 @@ TEST(Point_Constructor, WhenDefaultBuilded_ShouldBeZero){
 TEST(Point_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
     srand(static_cast<unsigned int>(time(NULL)));
 
-    float x = rand();
-    float y = rand();
+    float x = rand()%vss::MAX_COORDINATE_X;
+    float y = rand()%vss::MAX_COORDINATE_Y;
 
     vss::Point point(x, y);
 
@@ -27,7 +29,7 @@ TEST(Point_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
 TEST(Point_cout, WhenCoutShouldPrintRight){
     srand(static_cast<unsigned int>(time(NULL)));
 
-    vss::Point point(rand(), rand());
+    auto point = vss::DomainRandomizer::createRandomPoint();
 
     testing::internal::CaptureStdout();
     std::cout << point;
