@@ -12,6 +12,7 @@
 #include "Domain/Command.h"
 
 namespace vss {
+
     class CommandSender : public ICommandSender {
     public:
         CommandSender();
@@ -26,6 +27,7 @@ namespace vss {
 
         void SetupAddress(TeamType);
     };
+
 }
 
 #endif //VSS_CORE_COMMANDSENDER_H

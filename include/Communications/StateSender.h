@@ -21,6 +21,7 @@
 #include "control.pb.h"      //! Protobuf: pacote gerado pelo debug.proto
 
 namespace vss{
+
     class StateSender : public IStateSender {
     public:
         StateSender();
@@ -35,6 +36,7 @@ namespace vss{
         
         std::string address;
     };
+
 }
 
 #endif //VSS_CORE_STATESENDER_H

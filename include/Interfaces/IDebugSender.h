@@ -9,11 +9,13 @@
 #include "Domain/Debug.h"
 
 namespace vss {
+
     class IDebugSender {
     public:
         virtual void createSocket(TeamType) = 0;
         virtual void sendDebug(Debug) = 0;
     };
+
 }
 
 #endif //VSS_CORE_IDEBUGSENDER_H

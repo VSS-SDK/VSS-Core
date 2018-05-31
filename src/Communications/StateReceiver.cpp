@@ -6,10 +6,11 @@
  * file, You can obtain one at http://www.gnu.org/licenses/gpl-3.0/.
  */
 
-#include "StateReceiver.h"
+#include "Communications/StateReceiver.h"
 #include "Helpers/StateMapper.h"
 
 namespace vss{
+
     StateReceiver::StateReceiver(){
         address = "tcp://localhost:5555";
     }
@@ -44,4 +45,5 @@ namespace vss{
     void StateReceiver::setAddress(std::string address) {
         this->address = address;
     }
+
 }

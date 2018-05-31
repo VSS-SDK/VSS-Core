@@ -48,5 +48,30 @@ namespace vss {
                 setupStepPoint(pose, path.points[i]);
             }
         }
+
+        Debug globalDebugToDebug(vss_debug::Global_Debug globalDebug) {
+            Debug debug;
+
+            for(int i = 0 ; i < globalDebug.step_poses_size() ; i++){
+                debug.stepPoints.push_back(Point(globalDebug.step_poses(i).x(), globalDebug.step_poses(i).y()));
+            }
+
+            for(int i = 0 ; i < globalDebug.final_poses_size() ; i++){
+                debug.finalPoses.push_back(Pose(globalDebug.final_poses(i).x(), globalDebug.final_poses(i).y(), globalDebug.final_poses(i).yaw()));
+            }
+
+            for(int i = 0 ; i < globalDebug.paths_size() ; i++){
+                Path path;
+                auto vssPath = globalDebug.paths(i);
+
+                for(int j = 0 ; j < vssPath.poses_size() ; j++){
+                    path.points.push_back(Point(vssPath.poses(j).x(), vssPath.poses(j).y()));
+                }
+
+                debug.paths.push_back(path);
+            }
+
+            return debug;
+        }
     }
 }

@@ -3,9 +3,10 @@
 //
 
 #include <Helpers/StateMapper.h>
-#include "StateSender.h"
+#include "Communications/StateSender.h"
 
 namespace vss{
+
     StateSender::StateSender(){
         address = "tcp://*:5555";
     }
@@ -34,4 +35,5 @@ namespace vss{
     void StateSender::setAddress(std::string address) {
         this->address = address;
     }
+
 }

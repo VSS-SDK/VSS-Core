@@ -9,6 +9,7 @@
 #include <zmq.hpp>
 
 namespace vss {
+
     class CommandReceiver : public ICommandReceiver {
     public:
         CommandReceiver();
@@ -23,6 +24,7 @@ namespace vss {
 
         void SetupAddress(TeamType);
     };
+
 }
 
 #endif //VSS_CORE_COMMANDRECEIVER_H

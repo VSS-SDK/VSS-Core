@@ -3,9 +3,10 @@
 //
 
 #include <Helpers/CommandMapper.h>
-#include "CommandSender.h"
+#include "Communications/CommandSender.h"
 
 namespace vss{
+
     CommandSender::CommandSender(){
         address = "";
     }
@@ -37,4 +38,5 @@ namespace vss{
         else
             address = "tcp://localhost:5557";
     }
+
 }

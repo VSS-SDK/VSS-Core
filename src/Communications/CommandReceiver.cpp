@@ -2,11 +2,12 @@
 // Created by johnathan on 28/05/18.
 //
 
-#include <CommandReceiver.h>
+#include <Communications/CommandReceiver.h>
 #include <command.pb.h>
 #include <Helpers/CommandMapper.h>
 
 namespace vss{
+
     CommandReceiver::CommandReceiver() {
         address = "";
     }
@@ -38,6 +39,5 @@ namespace vss{
         else
             address = "tcp://*:5557";
     }
-
 
 }
