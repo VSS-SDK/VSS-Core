@@ -3,6 +3,8 @@
 //
 
 #include <googletest/googletest/include/gtest/gtest.h>
+#include <Helpers/DomainRandomizer.h>
+#include <Constants.h>
 #include "Domain/Ball.h"
 
 TEST(Ball_Constructor, WhenDefaultBuilded_ShouldBeZero){
@@ -17,8 +19,8 @@ TEST(Ball_Constructor, WhenDefaultBuilded_ShouldBeZero){
 TEST(Ball_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
     srand(static_cast<unsigned int>(time(NULL)));
 
-    float x = rand();
-    float y = rand();
+    float x = rand()%vss::MAX_COORDINATE_X;
+    float y = rand()%vss::MAX_COORDINATE_Y;
     float speedX = rand();
     float speedY = rand();
 
@@ -31,9 +33,7 @@ TEST(Ball_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
 }
 
 TEST(Ball_cout, WhenCoutShouldPrintRight){
-    srand(static_cast<unsigned int>(time(NULL)));
-
-    vss::Ball ball(rand(), rand(), rand(), rand());
+    auto ball = vss::DomainRandomizer::createRandomBall();
 
     testing::internal::CaptureStdout();
     std::cout << ball;

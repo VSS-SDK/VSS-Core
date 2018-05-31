@@ -3,6 +3,8 @@
 //
 
 #include <googletest/googletest/include/gtest/gtest.h>
+#include <Helpers/DomainRandomizer.h>
+#include <Constants.h>
 #include "Domain/Pose.h"
 
 TEST(Pose_Constructor, WhenDefaultBuilded_ShouldBeZero){
@@ -16,9 +18,9 @@ TEST(Pose_Constructor, WhenDefaultBuilded_ShouldBeZero){
 TEST(Pose_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
     srand(static_cast<unsigned int>(time(NULL)));
 
-    float x = rand();
-    float y = rand();
-    float angle = rand();
+    float x = rand()%vss::MAX_COORDINATE_X;
+    float y = rand()%vss::MAX_COORDINATE_Y;
+    float angle = rand()%vss::MAX_ANGLE_VALUE;
 
     vss::Pose pose(x, y, angle);
 
@@ -28,9 +30,7 @@ TEST(Pose_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
 }
 
 TEST(Pose_cout, WhenCoutShouldPrintRight){
-    srand(static_cast<unsigned int>(time(NULL)));
-
-    vss::Pose pose(rand(), rand(), rand());
+    auto pose = vss::DomainRandomizer::createRandomPose();
 
     testing::internal::CaptureStdout();
     std::cout << pose;

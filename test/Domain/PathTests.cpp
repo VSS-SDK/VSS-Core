@@ -3,6 +3,7 @@
 //
 
 #include <googletest/googletest/include/gtest/gtest.h>
+#include <Helpers/DomainRandomizer.h>
 #include "Domain/Path.h"
 
 TEST(Path_Constructor, WhenDefaultBuilded_ShouldBeZero){
@@ -18,12 +19,7 @@ TEST(Path_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
     std::vector<vss::Point> points;
 
     for(int i = 0 ; i < size ; i++){
-        vss::Point point;
-
-        point.x = rand();
-        point.y = rand();
-
-        points.push_back(point);
+        points.push_back(vss::DomainRandomizer::createRandomPoint());
     }
 
     vss::Path path(points);
@@ -37,14 +33,7 @@ TEST(Path_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
 }
 
 TEST(Path_cout, WhenCoutShouldPrintRight){
-    srand(static_cast<unsigned int>(time(NULL)));
-
-    int size = rand()%10;
-    vss::Path path;
-
-    for(int i = 0 ; i < size ; i++){
-        path.points.push_back(vss::Point(rand(), rand()));
-    }
+    auto path = vss::DomainRandomizer::createRandomPath();
 
     testing::internal::CaptureStdout();
     std::cout << path;
