@@ -1,8 +1,7 @@
 # VSS-Core [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)][gpl3] [![Build Status](https://travis-ci.org/SIRLab/VSS-Interface.svg?branch=master)][travis]
 
 
-[![Trello Features](https://img.shields.io/badge/Trello-Features-blue.svg)][vss-sdk-features]
-[![Trello PBIs](https://img.shields.io/badge/Trello-PBIs-blue.svg)][vss-sdk-pbis]
+[![Trello](https://img.shields.io/badge/Trello-SDK-blue.svg)][vss-sdk-trello]
 [![Slack](https://img.shields.io/badge/Slack-Channel-551a8b.svg)][slack]
 
 O VSS-Core é uma biblioteca open-source que faz parte do VSS-SDK.
@@ -86,6 +85,5 @@ You are allowed and encouraged to use this software on robotics competitions.  I
 [vss-sdk]: http://sirlab.github.io/VSS-SDK
 [samplecpp]: https://github.com/SIRLab/VSS-SampleCpp
 [travis]: https://travis-ci.org/SIRLab/VSS-Core
-[vss-sdk-features]: https://trello.com/b/b4dVV6ug/vss-sdk-features
-[vss-sdk-pbis]: https://trello.com/b/m0u389nR/vss-sdk-pbis
+[vss-sdk-trello]: https://trello.com/b/b4dVV6ug/vss-sdk
 [slack]: https://vss-sdk.slack.com

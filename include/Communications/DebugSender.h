@@ -9,6 +9,7 @@
 #include <zmq.hpp>
 
 namespace vss {
+
     class DebugSender : public IDebugSender {
     public:
         DebugSender();
@@ -23,6 +24,7 @@ namespace vss {
 
         void SetupAddress(TeamType);
     };
+
 }
 
 #endif //VSS_CORE_DEBUGSENDER_H

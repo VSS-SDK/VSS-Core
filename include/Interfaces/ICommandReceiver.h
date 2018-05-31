@@ -10,11 +10,13 @@
 #include "iostream"
 
 namespace vss {
+
     class ICommandReceiver {
     public:
         virtual void createSocket(TeamType) = 0;
         virtual Command receiveCommand() = 0;
     };
+
 }
 
 #endif //VSS_CORE_ICOMMANDRECEIVER_H
