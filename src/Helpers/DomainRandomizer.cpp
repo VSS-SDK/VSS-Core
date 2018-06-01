@@ -10,6 +10,7 @@
 #include <Domain/Path.h>
 #include <Constants.h>
 #include <Domain/Debug.h>
+#include <Domain/Control.h>
 
 namespace vss {
 
@@ -136,6 +137,22 @@ namespace vss {
             }
 
             return debug;
+        }
+
+        vss::Control createRandomControl() {
+            vss::Control control;
+
+            control.paused = true;
+            control.ball = createRandomBall();
+
+            unsigned int robotsAmount = rand()%10;
+
+            for(unsigned int i = 0 ; i < robotsAmount ; i++){
+                control.teamYellow.push_back(createRandomRobot());
+                control.teamBlue.push_back(createRandomRobot());
+            }
+
+            return control;
         }
 
     }

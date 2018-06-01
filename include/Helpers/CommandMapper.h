@@ -9,12 +9,17 @@
 #include <Domain/Command.h>
 
 namespace vss {
+
     namespace CommandMapper {
+
         vss_command::Global_Commands commandToGlobalCommands(Command command);
         void setupWheelCommand(vss_command::Robot_Command *robotCommand, WheelsCommand wheelsCommand);
 
         Command globalCommandsToCommand(vss_command::Global_Commands);
+        WheelsCommand robotCommandToWheelsCommand(vss_command::Robot_Command robotCommand);
+
     }
+
 }
 
 #endif //VSS_CORE_COMMANDMAPPER_H

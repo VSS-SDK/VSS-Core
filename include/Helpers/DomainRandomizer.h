@@ -12,6 +12,7 @@
 #include <Domain/Command.h>
 #include <Domain/Path.h>
 #include <Domain/Debug.h>
+#include <Domain/Control.h>
 
 namespace vss {
 
@@ -26,6 +27,7 @@ namespace vss {
         vss::WheelsCommand createRandomWheelsCommand();
         vss::Command createRandomCommand();
         vss::Debug createRandomDebug();
+        vss::Control createRandomControl();
 
     }
 
