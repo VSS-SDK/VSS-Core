@@ -18,6 +18,24 @@ namespace vss {
     }
 
     std::ostream &operator<<(std::ostream &os, const Control &control) {
+        os << "Control {" << std::endl;
+
+        os << "\tPaused: " << control.paused << std::endl;
+        os << "\tBall: " << control.ball << std::endl;
+        os << "\tTeamYellow:" << std::endl;
+
+        for(unsigned int i = 0 ; i < control.teamYellow.size() ; i++){
+            os << "\t\t" << control.teamYellow[i] << std::endl;
+        }
+
+        os << "\tTeamBlue:" << std::endl;
+
+        for(unsigned int i = 0 ; i < control.teamYellow.size() ; i++){
+            os << "\t\t" << control.teamYellow[i] << std::endl;
+        }
+
+        os << "}";
+
         return os;
     }
 
