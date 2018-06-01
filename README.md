@@ -1,12 +1,30 @@
-# VSS-Interface [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)][gpl3] [![Build Status](https://travis-ci.org/SIRLab/VSS-Interface.svg?branch=master)][travis]
+# VSS-Core [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)][gpl3] [![Build Status](https://travis-ci.org/SIRLab/VSS-Interface.svg?branch=master)][travis]
 
-[![Trello Features](https://img.shields.io/badge/Trello-Features-blue.svg)][vss-sdk-features]
-[![Trello PBIs](https://img.shields.io/badge/Trello-PBIs-blue.svg)][vss-sdk-pbis]
+
+[![Trello](https://img.shields.io/badge/Trello-SDK-blue.svg)][vss-sdk-trello]
 [![Slack](https://img.shields.io/badge/Slack-Channel-551a8b.svg)][slack]
+
+O VSS-Core é uma biblioteca open-source que faz parte do VSS-SDK.
+Contém a parte de comunicação entre os projetos utilizando as 
+bibliotecas Google Protocols Buffere ZeroMQ para realizar. Também guarda classes,
+estruturas e enums úteis.
+
 
 Mais informações podem ser encontradas em [VSS-SDK][vss-sdk].
 
-## State
+## Installation
+```
+$ sudo ./configure.sh
+```
+
+## Development
+```
+$ sudo ./configure.sh development
+```
+
+## Protos
+
+### Field state
 
 ```protobuf
 message Global_State{
@@ -20,17 +38,17 @@ message Global_State{
 }
 ```
 
-## Commands
+### Robots commands
 
 ```protobuf
 message Global_Commands{
-	optional uint32			id = 1;
-	optional bool			is_team_yellow = 2;
-	repeated Robot_Command	robot_commands = 3;
+	optional uint32         id = 1;
+	optional bool           is_team_yellow = 2;
+	repeated Robot_Command  robot_commands = 3;
 }
 ```
 
-## Debug
+### Debug information
 
 ```protobuf
 message Global_Debug{
@@ -40,7 +58,7 @@ message Global_Debug{
 }
 ```
 
-## Control
+### User control
 
 ```protobuf
 message User_Control{
@@ -51,8 +69,8 @@ message User_Control{
 }
 ```
 
-## Exemplos
-Exemplo de como utilizar os protos em C++: [SampleCpp][samplecpp]
+## Samples
+C++ using the VSS-Core: [SampleCpp][samplecpp]
 
 
 License
@@ -60,13 +78,12 @@ License
 
 This code is licensed under the [GNU GENERAL PUBLIC LICENSE Version 3][gpl3], of which a textual copy is available at [LICENSE.txt](LICENSE.txt).
 
-You are allowed and encouraged to use this software on the IEEE Very Small Size Soccer competitions.  If you do, please let us know.
+You are allowed and encouraged to use this software on robotics competitions.  If you do, please let us know.
 
 
 [gpl3]: http://www.gnu.org/licenses/gpl-3.0/
 [vss-sdk]: http://sirlab.github.io/VSS-SDK
 [samplecpp]: https://github.com/SIRLab/VSS-SampleCpp
-[travis]: https://travis-ci.org/SIRLab/VSS-Interface
-[vss-sdk-features]: https://trello.com/b/b4dVV6ug/vss-sdk-features
-[vss-sdk-pbis]: https://trello.com/b/m0u389nR/vss-sdk-pbis
+[travis]: https://travis-ci.org/SIRLab/VSS-Core
+[vss-sdk-trello]: https://trello.com/b/b4dVV6ug/vss-sdk
 [slack]: https://vss-sdk.slack.com

@@ -29,7 +29,7 @@
                 "/usr/include/x86_64-linux-gnu",
                 "/usr/include/c++/5/backward",
                 "/usr/lib/gcc/x86_64-linux-gnu/5/include",
-                "/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" 
+                "/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"
             ],
             "intelliSenseMode": "clang-x64",
             "browse": {
@@ -37,7 +37,10 @@
                     "/usr/include",
                     "/usr/local/include"
                 ]
-            }
+            },
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
         },
         {
             "name": "Win32",
