@@ -18,7 +18,7 @@ $ sudo ./configure.sh
 $ sudo ./configure.sh development
 ```
 ## Exemplos
-Exemplo em C++: [SampleCpp][samplecpp]
+Exemplo em C++: [VSS-SampleCpp][samplecpp]
 
 
 # Licença
