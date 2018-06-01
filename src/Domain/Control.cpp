@@ -30,8 +30,8 @@ namespace vss {
 
         os << "\tTeamBlue:" << std::endl;
 
-        for(unsigned int i = 0 ; i < control.teamYellow.size() ; i++){
-            os << "\t\t" << control.teamYellow[i] << std::endl;
+        for(unsigned int i = 0 ; i < control.teamBlue.size() ; i++){
+            os << "\t\t" << control.teamBlue[i] << std::endl;
         }
 
         os << "}";

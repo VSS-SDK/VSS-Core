@@ -21,8 +21,8 @@ namespace vss{
 
         os << "\tTeamBlue:" << std::endl;
 
-        for(unsigned int i = 0 ; i < state.teamYellow.size() ; i++){
-            os << "\t\t" << state.teamYellow[i] << std::endl;
+        for(unsigned int i = 0 ; i < state.teamBlue.size() ; i++){
+            os << "\t\t" << state.teamBlue[i] << std::endl;
         }
 
         os << "}";

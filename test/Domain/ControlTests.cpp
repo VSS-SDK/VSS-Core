@@ -84,8 +84,8 @@ TEST(Control_cout, WhenCoutShouldPrintRight){
 
     mock_output << "\tTeamBlue:" << std::endl;
 
-    for(unsigned int i = 0 ; i < control.teamYellow.size() ; i++){
-        mock_output << "\t\t" << control.teamYellow[i] << std::endl;
+    for(unsigned int i = 0 ; i < control.teamBlue.size() ; i++){
+        mock_output << "\t\t" << control.teamBlue[i] << std::endl;
     }
 
     mock_output << "}";
