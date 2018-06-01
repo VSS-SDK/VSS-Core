@@ -8,25 +8,24 @@ Contém interfaces de comunicação entre os projetos do SDK, modelos que repres
 
 Mais informações podem ser encontradas em [VSS-SDK][vss-sdk].
 
-## Installation
+## Instalação
 ```
 $ sudo ./configure.sh
 ```
 
-## Development
+## Desenvolvimento
 ```
 $ sudo ./configure.sh development
 ```
-## Samples
-C++ using the VSS-Core: [SampleCpp][samplecpp]
+## Exemplos
+Exemplo em C++: [SampleCpp][samplecpp]
 
 
-#License
+# Licença
 
-This code is licensed under the [GNU GENERAL PUBLIC LICENSE Version 3][gpl3], of which a textual copy is available at [LICENSE.txt](LICENSE.txt).
+Esse código está sob licença [GNU GENERAL PUBLIC LICENSE Version 3][gpl3], cujo uma cópia em texto pode ser encontrada em [LICENSE.txt](LICENSE.txt).
 
-You are allowed and encouraged to use this software on robotics competitions.  If you do, please let us know.
-
+Você pode utilizar esse código. Caso o faça, nos informe.
 
 [gpl3]: http://www.gnu.org/licenses/gpl-3.0/
 [vss-sdk]: http://sirlab.github.io/VSS-SDK
