@@ -2,7 +2,9 @@
 #include "Helpers/CoordinateTransformer.h"
 
 namespace vss{
+
     namespace CoordinateTransformer{
+
         State spinField180Degrees(State state){
 
             state.ball = spin180Degrees(state.ball);
@@ -37,5 +39,7 @@ namespace vss{
 
             return ball;
         }
+
     }
+
 }

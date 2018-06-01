@@ -5,7 +5,9 @@
 #include "Helpers/StateMapper.h"
 
 namespace vss {
+
     namespace StateMapper {
+
         State globalStateToState(vss_state::Global_State _globalState){
             State state;
 
@@ -84,5 +86,7 @@ namespace vss {
             ballState->mutable_v_pose()->set_x(ball.speedX);
             ballState->mutable_v_pose()->set_y(ball.speedY);
         }
+
     }
+
 }

@@ -8,9 +8,11 @@
 namespace vss {
 
     namespace CoordinateTransformer {
+
         Ball spin180Degrees(Ball ball);
         Robot spin180Degrees(Robot robot);
         State spinField180Degrees(State state);
+
     };
 
 }

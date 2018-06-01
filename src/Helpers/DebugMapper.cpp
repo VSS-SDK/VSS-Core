@@ -5,6 +5,7 @@
 #include "Helpers/DebugMapper.h"
 
 namespace vss {
+
     namespace DebugMapper {
 
         vss_debug::Global_Debug debugToGlobalDebug(Debug debug) {
@@ -73,5 +74,7 @@ namespace vss {
 
             return debug;
         }
+
     }
+
 }
