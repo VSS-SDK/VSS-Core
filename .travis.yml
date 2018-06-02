@@ -10,4 +10,4 @@ script:
   - sudo docker run vss-core test
 
 notifications:
-  slack: vss-sdk:lnhtUVtf6dTHUESmXCwkSBd8
+  slack: vss-sdk:1bwlO40eKoIRA7l5yjLNqmjD
