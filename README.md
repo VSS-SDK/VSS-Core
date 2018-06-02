@@ -17,6 +17,7 @@ $ sudo ./configure.sh
 ```
 $ sudo ./configure.sh development
 ```
+
 ## Exemplos
 Exemplo em C++: [VSS-SampleCpp][samplecpp]
 
