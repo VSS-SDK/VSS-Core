@@ -21,7 +21,6 @@ $ sudo ./configure.sh development
 ## Exemplos
 Exemplo em C++: [VSS-SampleCpp][samplecpp]
 
-
 # Licença
 
 Esse código está sob licença [GNU GENERAL PUBLIC LICENSE Version 3][gpl3], cujo uma cópia em texto pode ser encontrada em [LICENSE.txt](LICENSE.txt).
