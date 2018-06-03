@@ -6,6 +6,8 @@
 O VSS-Core é uma biblioteca open-source que faz parte do VSS-SDK.
 Contém interfaces de comunicação entre os projetos do SDK, modelos que representam o domínio do problema de futebol de robôs e métodos uteis. Os pacotes traferam utilizando ZeroMQ e são serializados utilizando Protobuf.
 
+Documentação [Wiki][wiki].
+
 Mais informações podem ser encontradas em [VSS-SDK][vss-sdk].
 
 ## Instalação
@@ -33,3 +35,4 @@ Você pode utilizar esse código. Caso o faça, nos informe.
 [travis]: https://travis-ci.org/SIRLab/VSS-Core
 [vss-sdk-trello]: https://trello.com/b/b4dVV6ug/vss-sdk
 [slack]: https://vss-sdk.slack.com
+[wiki]: https://github.com/SIRLab/VSS-Core/wiki
