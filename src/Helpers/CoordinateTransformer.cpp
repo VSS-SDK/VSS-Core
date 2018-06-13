@@ -30,12 +30,19 @@ namespace vss{
                 robot.angle = robot.angle + (vss::MAX_ANGLE_VALUE/2);
             }
 
+            robot.speedX = -robot.speedX;
+            robot.speedY = -robot.speedY;
+            robot.speedAngle = -robot.speedAngle;
+
             return robot;
         }
 
         Ball spin180Degrees(Ball ball){
             ball.x = vss::MAX_COORDINATE_X - ball.x;
             ball.y = vss::MAX_COORDINATE_Y - ball.y;
+
+            ball.speedX = -ball.speedX;
+            ball.speedY = -ball.speedY;
 
             return ball;
         }
