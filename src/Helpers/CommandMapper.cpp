@@ -12,8 +12,6 @@ namespace vss {
         vss_command::Global_Commands commandToGlobalCommands(Command command) {
             vss_command::Global_Commands commands;
 
-
-
             for (unsigned int i = 0; i < command.commands.size() ; i++) {
                 auto ref = commands.add_robot_commands();
                 setupWheelCommand(ref, command.commands[i]);
@@ -29,8 +27,6 @@ namespace vss {
 
         Command globalCommandsToCommand(vss_command::Global_Commands globalCommands) {
             Command command;
-
-
 
             for (int i = 0 ; i < globalCommands.robot_commands_size() ; i++){
                 auto wheelsCommand = robotCommandToWheelsCommand(globalCommands.robot_commands(i));
