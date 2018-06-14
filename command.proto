@@ -21,7 +21,7 @@ package vss_command;
 //! Essa mensagem é uma submensagem do pacote Global_Commands que de fato é enviado. Essa informação é utilizada para
 //! represetar as velocidades das rodas direita e esquerda de um robô.
 message Robot_Command{
-	required uint32	id = 1;			//! ID que define de qual robô é a comando
+	required uint32	id = 1;			//! ID que define de qual robô é o comando
 	required float left_vel = 2;	//! Velocidade da roda esquerda
 	required float right_vel = 3;	//! Velocidade da roda direita
 }

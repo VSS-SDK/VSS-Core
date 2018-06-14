@@ -6,19 +6,17 @@
 
 namespace vss{
     WheelsCommand::WheelsCommand(){
-        id = 0;
         leftVel = 0;
         rightVel = 0;
     }
 
-    WheelsCommand::WheelsCommand(int id, float leftVel, float rightVel) {
-        this->id = id;
+    WheelsCommand::WheelsCommand(float leftVel, float rightVel) {
         this->leftVel = leftVel;
         this->rightVel = rightVel;
     }
 
     std::ostream &operator<<(std::ostream &os, const WheelsCommand &wheelsCommand) {
-        return os << "WheelsCommand(" << wheelsCommand.id << ", " << wheelsCommand.leftVel << ", " << wheelsCommand.rightVel << ")";;
+        return os << "WheelsCommand(" << wheelsCommand.leftVel << ", " << wheelsCommand.rightVel << ")";;
     }
 }
 

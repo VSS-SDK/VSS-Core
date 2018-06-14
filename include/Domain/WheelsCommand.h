@@ -12,11 +12,10 @@ namespace vss {
     class WheelsCommand {
     public:
         WheelsCommand();
-        WheelsCommand(int id, float leftVel, float rightVel);
+        WheelsCommand(float leftVel, float rightVel);
 
         friend std::ostream& operator<<(std::ostream& os, const WheelsCommand& wheelsCommand);
 
-        int id;
         float leftVel;
         float rightVel;
     };

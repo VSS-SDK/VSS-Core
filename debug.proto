@@ -33,7 +33,7 @@ message Pose{
 //! Gradientes e etc. Para tal utilizar esse protocolo, o mesmo deve ser précompílado para uma linguagem especifica
 //! gerando um trecho de código que deve ser referenciado.
 message Path{
-    required uint32 id = 1;     //! ID que define de qual robô é o caminho
+    optional uint32 id = 1;     //! ID que define de qual robô é o caminho
     repeated Pose   poses = 2;  //! Lista dinâmica de poses (caminho e etc)
 }
 

@@ -9,14 +9,12 @@
 TEST(Command_Constructor, WhenDefaultBuilded_ShouldBeZero){
     vss::Command command;
 
-    EXPECT_EQ(command.id, 0);
     EXPECT_EQ(command.commands.size(), (unsigned int)0);
 }
 
 TEST(Command_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
     srand(static_cast<unsigned int>(time(NULL)));
 
-    int id = rand();
     int size = rand()%10;
     std::vector<vss::WheelsCommand> wheelsCommands;
 
@@ -24,13 +22,11 @@ TEST(Command_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
         wheelsCommands.push_back(vss::DomainRandomizer::createRandomWheelsCommand());
     }
 
-    vss::Command command(id, wheelsCommands);
+    vss::Command command(wheelsCommands);
 
-    EXPECT_EQ(command.id, id);
     EXPECT_EQ(command.commands.size(), (unsigned int)size);
 
     for(unsigned int i = 0 ; i < command.commands.size() ; i++){
-        EXPECT_EQ(command.commands[i].id, wheelsCommands[i].id);
         EXPECT_EQ(command.commands[i].leftVel, wheelsCommands[i].leftVel);
         EXPECT_EQ(command.commands[i].rightVel, wheelsCommands[i].rightVel);
     }
@@ -44,7 +40,7 @@ TEST(Command_cout, WhenCoutShouldPrintRight){
     std::string output = testing::internal::GetCapturedStdout();
     std::stringstream mock_output;
 
-    mock_output << "Commands[" << command.id << "] {" << std::endl;
+    mock_output << "Commands {" << std::endl;
     for(unsigned int i = 0 ; i < command.commands.size() ; i++){
         mock_output << "\t" << command.commands[i] << std::endl;
     }

@@ -12,7 +12,7 @@ namespace vss {
         vss_command::Global_Commands commandToGlobalCommands(Command command) {
             vss_command::Global_Commands commands;
 
-            commands.set_id(static_cast<google::protobuf::uint32>(command.id));
+
 
             for (unsigned int i = 0; i < command.commands.size() ; i++) {
                 auto ref = commands.add_robot_commands();
@@ -23,7 +23,6 @@ namespace vss {
         }
 
         void setupWheelCommand(vss_command::Robot_Command *robotCommand, WheelsCommand wheelsCommand) {
-            robotCommand->set_id(static_cast<google::protobuf::uint32>(wheelsCommand.id));
             robotCommand->set_left_vel(wheelsCommand.leftVel);
             robotCommand->set_right_vel(wheelsCommand.rightVel);
         }
@@ -31,7 +30,7 @@ namespace vss {
         Command globalCommandsToCommand(vss_command::Global_Commands globalCommands) {
             Command command;
 
-            command.id = globalCommands.id();
+
 
             for (int i = 0 ; i < globalCommands.robot_commands_size() ; i++){
                 auto wheelsCommand = robotCommandToWheelsCommand(globalCommands.robot_commands(i));
@@ -44,7 +43,6 @@ namespace vss {
         WheelsCommand robotCommandToWheelsCommand(vss_command::Robot_Command robotCommand){
             WheelsCommand wheelsCommand;
 
-            wheelsCommand.id = robotCommand.id();
             wheelsCommand.rightVel = robotCommand.right_vel();
             wheelsCommand.leftVel = robotCommand.left_vel();
 
