@@ -27,6 +27,5 @@ message Robot_Command{
 
 //! Essa é a mensagem que de fato é enviada.
 message Global_Commands{
-	optional bool			is_team_yellow = 1;		//! Booleano que define se o time é amarelo ou azul
 	repeated Robot_Command	robot_commands = 2;		//! Lista dinâmica de comandos. Sendo sempre 3, devido a quantidade robôs
 }
