@@ -20,10 +20,9 @@ package vss_debug;
 //! posição X e Y e rotação em Z. O ID é necessário para que se saiba de qual robô é a pose.
 //! Essa informação é utilizada para desenhar uma Pose futura e um vetor de movimentação
 message Pose{
-    required uint32 id = 1;     //! ID que define de qual robô é a pose
-	required float  x = 2;      //! Posição em X do robô
-	required float  y = 3;      //! Posição em Y do robô
-	optional float  yaw = 4;    //! Orientação em Z. Sendo esse OPICIONAL no pacote, pois não são todos os objetos que necessitam de orientação para ser representados.
+	required float  x = 1;      //! Posição em X do robô
+	required float  y = 2;      //! Posição em Y do robô
+	optional float  yaw = 3;    //! Orientação em Z. Sendo esse OPICIONAL no pacote, pois não são todos os objetos que necessitam de orientação para ser representados.
 }
 
 //! Essa mensagem é uma submensagem do pacote Global_Debug que de fato é enviado. Essa informação é utilizada para
@@ -33,8 +32,7 @@ message Pose{
 //! Gradientes e etc. Para tal utilizar esse protocolo, o mesmo deve ser précompílado para uma linguagem especifica
 //! gerando um trecho de código que deve ser referenciado.
 message Path{
-    required uint32 id = 1;     //! ID que define de qual robô é o caminho
-    repeated Pose   poses = 2;  //! Lista dinâmica de poses (caminho e etc)
+    repeated Pose   poses = 1;  //! Lista dinâmica de poses (caminho e etc)
 }
 
 //! Essa é a mensagem que de fato é enviada por um VSS-SampleStrategy para o VSS-Viewer

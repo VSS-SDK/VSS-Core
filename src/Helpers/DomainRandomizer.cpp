@@ -103,7 +103,6 @@ namespace vss {
             srand(static_cast<unsigned int>(time(NULL)));
             vss::WheelsCommand wheelsCommand;
 
-            wheelsCommand.id = rand();
             wheelsCommand.leftVel = rand()%10;
             wheelsCommand.rightVel = rand()%10;
 
@@ -115,7 +114,6 @@ namespace vss {
             vss::Command command;
 
             unsigned int size = rand()%10;
-            command.id = rand();
 
             for(unsigned int i = 0 ; i < size ; i++){
                 command.commands.push_back(createRandomWheelsCommand());

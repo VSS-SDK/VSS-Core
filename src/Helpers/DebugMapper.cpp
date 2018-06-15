@@ -30,14 +30,12 @@ namespace vss {
         }
 
         void setupStepPoint(vss_debug::Pose *stepPose, Point point) {
-            stepPose->set_id(0);
             stepPose->set_x(point.x);
             stepPose->set_y(point.y);
             stepPose->set_yaw(0);
         }
 
         void setupFinalPose(vss_debug::Pose *finalPose, Pose pose) {
-            finalPose->set_id(0);
             finalPose->set_x(pose.x);
             finalPose->set_y(pose.y);
             finalPose->set_yaw(pose.angle);
