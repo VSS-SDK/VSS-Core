@@ -12,5 +12,8 @@ protoc -I=. --cpp_out=. protos/command.proto
 protoc -I=. --cpp_out=. protos/debug.proto
 protoc -I=. --cpp_out=. protos/control.proto
 
+mkdir -p src/protos
+mkdir -p include/protos
+
 mv protos/*.pb.cc src/protos
 mv protos/*.pb.h include/protos
