@@ -7,16 +7,17 @@
 
 #include <string>
 #include <iostream>
+#include "sstream"
 
-#define vss_core_VERSION_MAJOR 1
-#define vss_core_VERSION_MINOR 0
-#define vss_core_VERSION_PATCH 0
+#define VSS_CORE_MAJOR_VERSION 1
+#define VSS_CORE_MINOR_VERSION 0
+#define VSS_CORE_PATCH_VERSION 0
 
 namespace vss {
 
     std::string getCoreVersion(){
         std::stringstream ss;
-        ss << "vss-core: " << vss_core_VERSION_MAJOR << "." << vss_core_VERSION_MINOR << "." << vss_core_VERSION_PATCH;
+        ss << "vss-core: " << VSS_CORE_MAJOR_VERSION << "." << VSS_CORE_MINOR_VERSION << "." << VSS_CORE_PATCH_VERSION;
         return ss.str();
     }
 

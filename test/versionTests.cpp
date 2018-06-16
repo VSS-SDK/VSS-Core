@@ -8,7 +8,7 @@
 TEST(getCoreVersion, ShouldReturnValidVersion){
     auto version = vss::getCoreVersion();
     std::stringstream mock_version;
-    mock_version << "vss-core: " << vss_core_VERSION_MAJOR << "." << vss_core_VERSION_MINOR << "." << vss_core_VERSION_PATCH;
+    mock_version << "vss-core: " << VSS_CORE_MAJOR_VERSION << "." << VSS_CORE_MINOR_VERSION << "." << VSS_CORE_PATCH_VERSION;
 
     EXPECT_EQ(version, mock_version.str());
 }
@@ -18,6 +18,6 @@ TEST(printCoreVersion, ShouldPrintAValidVersion){
     vss::printCoreVersion();
     std::string output = testing::internal::GetCapturedStdout();
     std::stringstream mock_version;
-    mock_version << "vss-core: "  << vss_core_VERSION_MAJOR << "." << vss_core_VERSION_MINOR << "." << vss_core_VERSION_PATCH << std::endl;
+    mock_version << "vss-core: "  << VSS_CORE_MAJOR_VERSION << "." << VSS_CORE_MINOR_VERSION << "." << VSS_CORE_PATCH_VERSION << std::endl;
     EXPECT_STREQ(output.c_str(), mock_version.str().c_str());
 }
