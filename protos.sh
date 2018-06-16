@@ -7,10 +7,10 @@
 # file, You can obtain one at http://www.gnu.org/licenses/gpl-3.0/.
 #
 
-protoc -I=. --cpp_out=. state.proto
-protoc -I=. --cpp_out=. command.proto
-protoc -I=. --cpp_out=. debug.proto
-protoc -I=. --cpp_out=. control.proto
+protoc -I=. --cpp_out=. protos/state.proto
+protoc -I=. --cpp_out=. protos/command.proto
+protoc -I=. --cpp_out=. protos/debug.proto
+protoc -I=. --cpp_out=. protos/control.proto
 
-mv *.pb.cc src
-mv *.pb.h include
+mv protos/*.pb.cc src/protos
+mv protos/*.pb.h include/protos
