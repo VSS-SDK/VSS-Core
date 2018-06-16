@@ -1,4 +1,4 @@
-#include <Constants.h>
+#include <Domain/Constants.h>
 #include "Helpers/CoordinateTransformer.h"
 
 namespace vss{

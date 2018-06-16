@@ -4,7 +4,7 @@
 
 #include <googletest/googletest/include/gtest/gtest.h>
 #include <Helpers/DomainRandomizer.h>
-#include <Constants.h>
+#include <Domain/Constants.h>
 #include "Domain/Point.h"
 
 TEST(Point_Constructor, WhenDefaultBuilded_ShouldBeZero){

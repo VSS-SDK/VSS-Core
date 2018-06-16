@@ -7,7 +7,6 @@
 
 #include <Domain/TeamType.h>
 #include "Domain/Command.h"
-#include "iostream"
 
 namespace vss {
 

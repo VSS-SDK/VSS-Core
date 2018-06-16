@@ -16,7 +16,7 @@ COMPILE_TYPE=$1
 INSTALLED=0
 
 CMAKE () {
-    ./protos.sh
+    bash scripts/protos.sh
     rm -R build
     mkdir -p build
     cd build
@@ -26,7 +26,7 @@ CMAKE () {
 }
 
 CMAKE_INSTALL () {
-    ./protos.sh
+    bash scripts/protos.sh
     rm -R build
     mkdir -p build
     cd build
@@ -67,7 +67,7 @@ INSTALL_DEBIAN_9 () {
 
 INSTALL_BASE() {
     apt-get update && apt-get upgrade
-    apt-get -y install lsb-release;
+    apt-get -y install lsb-release git
 
     DISTRO=`lsb_release -si`
     RELEASE=`lsb_release -sr`

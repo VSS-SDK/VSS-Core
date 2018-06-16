@@ -9,22 +9,8 @@
 #ifndef _INTERFACE_CORE_H_
 #define _INTERFACE_CORE_H_
 
-#include "sstream"
-#include <iostream>
-#include <string>
-#include "unistd.h"
-
-#include "Domain/State.h"
-#include "Domain/FieldTransformationType.h"
-#include "Helpers/CoordinateTransformer.h"
-#include "Interfaces/IStateReceiver.h"
-
-#include "zmq.hpp"       //! ZMQ: utilizado para comunicação via Sockets
-#include <google/protobuf/text_format.h> //! Protobuf: utilizado para serialização/deserialização das mensagens
-#include "state.pb.h"      //! Protobuf: pacote gerado pelo state.proto
-#include "command.pb.h"      //! Protobuf: pacote gerado pelo command.proto
-#include "debug.pb.h"      //! Protobuf: pacote gerado pelo debug.proto
-#include "control.pb.h"      //! Protobuf: pacote gerado pelo debug.proto
+#include <Interfaces/IStateReceiver.h>
+#include "zmq.hpp"
 
 namespace vss{
 

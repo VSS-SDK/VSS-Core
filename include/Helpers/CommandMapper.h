@@ -5,7 +5,7 @@
 #ifndef VSS_CORE_COMMANDMAPPER_H
 #define VSS_CORE_COMMANDMAPPER_H
 
-#include <command.pb.h>
+#include <protos/command.pb.h>
 #include <Domain/Command.h>
 
 namespace vss {

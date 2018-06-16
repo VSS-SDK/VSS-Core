@@ -3,7 +3,6 @@
 //
 
 #include <Communications/CommandReceiver.h>
-#include <command.pb.h>
 #include <Helpers/CommandMapper.h>
 
 namespace vss{
