@@ -20,8 +20,8 @@ TEST(State_Constructor, WhenDefaultBuilded_ShouldBeZero){
 TEST(State_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
     srand(static_cast<unsigned int>(time(NULL)));
 
-    unsigned int sizeTeamYellow = rand()%10;
-    unsigned int sizeTeamBlue = rand()%10;
+    auto sizeTeamYellow = static_cast<unsigned int>(rand() % 10);
+    auto sizeTeamBlue = static_cast<unsigned int>(rand() % 10);
 
     auto ball = vss::DomainRandomizer::createRandomBall();
     std::vector<vss::Robot> teamYellow;
@@ -76,14 +76,14 @@ TEST(State_cout, WhenCoutShouldPrintRight){
     mock_output << "\t" << state.ball << std::endl;
     mock_output << "\tTeamYellow:" << std::endl;
 
-    for(unsigned int i = 0 ; i < state.teamYellow.size() ; i++){
-        mock_output << "\t\t" << state.teamYellow[i] << std::endl;
+    for (const auto &i : state.teamYellow) {
+        mock_output << "\t\t" << i << std::endl;
     }
 
     mock_output << "\tTeamBlue:" << std::endl;
 
-    for(unsigned int i = 0 ; i < state.teamBlue.size() ; i++){
-        mock_output << "\t\t" << state.teamBlue[i] << std::endl;
+    for (const auto &i : state.teamBlue) {
+        mock_output << "\t\t" << i << std::endl;
     }
 
     mock_output << "}";

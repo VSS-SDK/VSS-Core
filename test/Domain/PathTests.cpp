@@ -41,8 +41,8 @@ TEST(Path_cout, WhenCoutShouldPrintRight){
     std::stringstream mock_output;
 
     mock_output << "Path {" << std::endl;
-    for(unsigned int i = 0 ; i < path.points.size() ; i++){
-        mock_output << "\t" << path.points[i] << std::endl;
+    for (auto point : path.points) {
+        mock_output << "\t" << point << std::endl;
     }
     mock_output << "}";
 

@@ -17,7 +17,7 @@ TEST(Debug_Constructor, WhenDefaultBuilded_ShouldBeZero){
 TEST(Debug_Constructor, WhenParameterBuilded_ShouldHaveSameValues){
     srand(static_cast<unsigned int>(time(NULL)));
 
-    unsigned int robotsAmount = rand()%10;
+    auto robotsAmount = static_cast<unsigned int>(rand() % 10);
 
     std::vector<vss::Point> stepPoints;
     std::vector<vss::Pose> finalPoses;
@@ -67,8 +67,8 @@ TEST(Debug_cout, WhenCoutShouldPrintRight){
         mock_output << "\t\tStep: " << debug.stepPoints[i] << std::endl;
         mock_output << "\t\tFinal: " << debug.finalPoses[i] << std::endl;
         mock_output << "\t\tPath {" << std::endl;
-        for(unsigned int j = 0 ; j < debug.paths[i].points.size() ; j++){
-            mock_output << "\t\t\t" << debug.paths[i].points[j] << std::endl;
+        for (auto point : debug.paths[i].points) {
+            mock_output << "\t\t\t" << point << std::endl;
         }
         mock_output << "\t\t}" << std::endl;
         mock_output << "\t}" << std::endl;

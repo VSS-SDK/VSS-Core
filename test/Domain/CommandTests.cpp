@@ -41,8 +41,8 @@ TEST(Command_cout, WhenCoutShouldPrintRight){
     std::stringstream mock_output;
 
     mock_output << "Commands {" << std::endl;
-    for(unsigned int i = 0 ; i < command.commands.size() ; i++){
-        mock_output << "\t" << command.commands[i] << std::endl;
+    for (auto i : command.commands) {
+        mock_output << "\t" << i << std::endl;
     }
     mock_output << "}";
 

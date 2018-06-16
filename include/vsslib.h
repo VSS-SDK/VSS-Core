@@ -55,5 +55,4 @@ extern "C" {
 }
 #endif
 
-
 #endif //VSS_CORE_VSSLIB_H

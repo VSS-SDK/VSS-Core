@@ -21,8 +21,8 @@ namespace vss {
 
             vss::Point point;
 
-            point.x = rand()%vss::MAX_COORDINATE_X;
-            point.y = rand()%vss::MAX_COORDINATE_Y;
+            point.x = rand() % vss::MAX_COORDINATE_X;
+            point.y = rand() % vss::MAX_COORDINATE_Y;
 
             return point;
         }
@@ -32,9 +32,9 @@ namespace vss {
 
             vss::Pose pose;
 
-            pose.x = rand()%vss::MAX_COORDINATE_X;
-            pose.y = rand()%vss::MAX_COORDINATE_Y;
-            pose.angle = rand()%vss::MAX_ANGLE_VALUE;
+            pose.x = rand() % vss::MAX_COORDINATE_X;
+            pose.y = rand() % vss::MAX_COORDINATE_Y;
+            pose.angle = rand() % vss::MAX_ANGLE_VALUE;
 
             return pose;
         }
@@ -44,10 +44,10 @@ namespace vss {
 
             vss::Ball ball;
 
-            ball.x = rand()%vss::MAX_COORDINATE_X;
-            ball.y = rand()%vss::MAX_COORDINATE_Y;
-            ball.speedX = rand()%2;
-            ball.speedY = rand()%2;
+            ball.x = rand() % vss::MAX_COORDINATE_X;
+            ball.y = rand() % vss::MAX_COORDINATE_Y;
+            ball.speedX = (rand() % MAX_RANDOM_VELOCITY) * (rand()%2 == 0 ? -1 : 1);
+            ball.speedY = (rand() % MAX_RANDOM_VELOCITY) * (rand()%2 == 0 ? -1 : 1);
 
             return ball;
         }
@@ -57,12 +57,12 @@ namespace vss {
 
             vss::Robot robot;
 
-            robot.x = rand()%vss::MAX_COORDINATE_X;
-            robot.y = rand()%vss::MAX_COORDINATE_Y;
-            robot.angle = rand()%vss::MAX_ANGLE_VALUE;
-            robot.speedX = rand()%2;
-            robot.speedY = rand()%2;
-            robot.speedAngle = rand()%2;
+            robot.x = rand() % vss::MAX_COORDINATE_X;
+            robot.y = rand() % vss::MAX_COORDINATE_Y;
+            robot.angle = rand() % vss::MAX_ANGLE_VALUE;
+            robot.speedX = (rand() % MAX_RANDOM_VELOCITY) * (rand()%2 == 0 ? -1 : 1);
+            robot.speedY = (rand() % MAX_RANDOM_VELOCITY) * (rand()%2 == 0 ? -1 : 1);
+            robot.speedAngle = (rand() % MAX_RANDOM_VELOCITY) * (rand()%2 == 0 ? -1 : 1);
 
             return robot;
         }
@@ -71,7 +71,7 @@ namespace vss {
             srand(static_cast<unsigned int>(time(NULL)));
             vss::Path path;
 
-            unsigned int size = rand()%10;
+            auto size = static_cast<unsigned int>(rand() % MAX_RANDOM_PATH_SIZE);
 
             for(unsigned int i = 0 ; i < size ; i++){
                 path.points.push_back(createRandomPoint());
@@ -84,8 +84,8 @@ namespace vss {
             srand(static_cast<unsigned int>(time(NULL)));
             vss::State state;
 
-            unsigned int sizeTeamYellow = rand()%10;
-            unsigned int sizeTeamBlue = rand()%10;
+            auto sizeTeamYellow = static_cast<unsigned int>(rand() % MAX_RANDOM_TEAM_SIZE);
+            auto sizeTeamBlue = static_cast<unsigned int>(rand() % MAX_RANDOM_TEAM_SIZE);
             state.ball = createRandomBall();
 
             for(unsigned int i = 0 ; i < sizeTeamYellow ; i++){
@@ -103,8 +103,8 @@ namespace vss {
             srand(static_cast<unsigned int>(time(NULL)));
             vss::WheelsCommand wheelsCommand;
 
-            wheelsCommand.leftVel = rand()%10;
-            wheelsCommand.rightVel = rand()%10;
+            wheelsCommand.leftVel = (rand() % MAX_RANDOM_WHEEL_COMMAND) * (rand()%2 == 0 ? -1 : 1);
+            wheelsCommand.rightVel = (rand() % MAX_RANDOM_WHEEL_COMMAND) * (rand()%2 == 0 ? -1 : 1);
 
             return wheelsCommand;
         }
@@ -113,7 +113,7 @@ namespace vss {
             srand(static_cast<unsigned int>(time(NULL)));
             vss::Command command;
 
-            unsigned int size = rand()%10;
+            auto size = static_cast<unsigned int>(rand() % MAX_RANDOM_TEAM_SIZE);
 
             for(unsigned int i = 0 ; i < size ; i++){
                 command.commands.push_back(createRandomWheelsCommand());
@@ -126,7 +126,7 @@ namespace vss {
             srand(static_cast<unsigned int>(time(NULL)));
             vss::Debug debug;
 
-            unsigned int robotsAmount = rand()%10;
+            auto robotsAmount = static_cast<unsigned int>(rand() % MAX_RANDOM_TEAM_SIZE);
 
             for(unsigned int i = 0 ; i < robotsAmount ; i++){
                 debug.stepPoints.push_back(createRandomPoint());
@@ -140,10 +140,10 @@ namespace vss {
         vss::Control createRandomControl() {
             vss::Control control;
 
-            control.paused = true;
+            control.paused = (rand()%2 == 0);
             control.ball = createRandomBall();
 
-            unsigned int robotsAmount = rand()%10;
+            auto robotsAmount = static_cast<unsigned int>(rand() % MAX_RANDOM_TEAM_SIZE);
 
             for(unsigned int i = 0 ; i < robotsAmount ; i++){
                 control.teamYellow.push_back(createRandomRobot());
