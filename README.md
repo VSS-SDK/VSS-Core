@@ -25,11 +25,9 @@ $ ./tests
 ```
 
 Atualizando versão
-```
-$ cd scripts
-# ./versioning.sh
-$ sudo ./versioning.sh <major> <minor> <patch>
-```
+> Alterar o arquivo include/version.h
+
+> Alterar o arquivo README.md
 
 ## Exemplos
 Exemplo em C++: [VSS-SampleCpp][samplecpp]
