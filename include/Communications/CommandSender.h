@@ -7,7 +7,6 @@
 
 #include <Interfaces/ICommandSender.h>
 #include <zmq.hpp>
-#include <command.pb.h>
 #include "Domain/TeamType.h"
 #include "Domain/Command.h"
 

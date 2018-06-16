@@ -6,7 +6,7 @@
 #define VSS_CORE_DEBUGMAPPER_H
 
 #include <Domain/Debug.h>
-#include "debug.pb.h"
+#include "protos/debug.pb.h"
 
 namespace vss {
 

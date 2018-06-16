@@ -6,6 +6,7 @@
  * file, You can obtain one at http://www.gnu.org/licenses/gpl-3.0/.
  */
 
+#include <Helpers/CoordinateTransformer.h>
 #include "Communications/StateReceiver.h"
 #include "Helpers/StateMapper.h"
 

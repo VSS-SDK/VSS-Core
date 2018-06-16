@@ -3,7 +3,6 @@
 //
 
 #include <iostream>
-#include <debug.pb.h>
 #include <Helpers/DebugMapper.h>
 #include "Communications/DebugSender.h"
 

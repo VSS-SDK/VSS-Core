@@ -3,7 +3,6 @@
 //
 
 #include <Communications/ControlReceiver.h>
-#include <control.pb.h>
 #include <Helpers/ControlMapper.h>
 
 namespace vss {

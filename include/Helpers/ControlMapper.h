@@ -6,7 +6,7 @@
 #define VSS_CORE_CONTROLMAPPER_H
 
 #include <Domain/Control.h>
-#include "control.pb.h"
+#include "protos/control.pb.h"
 
 namespace vss {
 

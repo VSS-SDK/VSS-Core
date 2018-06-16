@@ -5,7 +5,7 @@
 #ifndef VSS_CORE_STATEMAPPER_H
 #define VSS_CORE_STATEMAPPER_H
 
-#include <state.pb.h>
+#include <protos/state.pb.h>
 #include "Domain/State.h"
 #include "Domain/Robot.h"
 #include "Domain/Ball.h"

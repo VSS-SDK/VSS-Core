@@ -2,7 +2,6 @@
 // Created by johnathan on 31/05/18.
 //
 
-#include <control.pb.h>
 #include "Helpers/ControlMapper.h"
 
 namespace vss {

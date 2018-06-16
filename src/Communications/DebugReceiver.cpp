@@ -3,7 +3,6 @@
 //
 
 #include <Communications/DebugReceiver.h>
-#include <debug.pb.h>
 #include <Helpers/DebugMapper.h>
 
 namespace vss {
