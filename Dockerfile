@@ -10,7 +10,7 @@ WORKDIR /vss-core
 # Adiciona permissão de execução dos shellscripts
 RUN chmod +x /vss-core/configure.sh
 RUN chmod +x /vss-core/entrypoint.sh
-RUN chmod +x /vss-core/protos/protos.sh
+RUN chmod +x /vss-core/scripts/protos.sh
 
 # Executa a instalação na criação dos containers
 RUN /vss-core/configure.sh development
