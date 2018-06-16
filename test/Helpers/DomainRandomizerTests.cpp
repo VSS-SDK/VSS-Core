@@ -3,7 +3,7 @@
 //
 
 #include <googletest/googletest/include/gtest/gtest.h>
-#include <Constants.h>
+#include <Domain/Constants.h>
 #include "Helpers/DomainRandomizer.h"
 
 TEST(createRandomPoint, ShouldCreateValidObject){

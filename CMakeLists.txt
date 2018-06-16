@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 2.8.9)
 project(vss-core)
-set(CMAKE_BUILD_TYPE Release)
 
 include_directories(src)
 include_directories(include)
@@ -34,6 +33,7 @@ target_link_libraries(vss-core PUBLIC ${ZeroMQ_LIBRARY})
 target_link_libraries(vss-core ${PROTOBUF_LIBRARIES})
 
 IF(RELEASE)
+    set(CMAKE_BUILD_TYPE Release)
     SET(CMAKE_CXX_FLAGS "-Wall -Werror -o2 -std=c++11")
 
     install(TARGETS vss-core DESTINATION /usr/lib)

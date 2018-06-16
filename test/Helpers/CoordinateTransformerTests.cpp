@@ -4,7 +4,7 @@
 
 #include <googletest/googletest/include/gtest/gtest.h>
 #include <Helpers/DomainRandomizer.h>
-#include <Constants.h>
+#include <Domain/Constants.h>
 #include "Helpers/CoordinateTransformer.h"
 
 float getRightAngleTransformationInFlip(float angle);
