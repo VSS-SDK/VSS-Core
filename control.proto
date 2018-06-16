@@ -9,15 +9,14 @@
 package vss_control;
 
 message Pose{
-  required float x = 3;     //! Posição em X do robô
-  required float y = 4;     //! Posição em Y do robô
-  optional float yaw = 5;   //! Orientação em Z. Sendo esse OPICIONAL no pacote, pois não são todos os objetos que necessitam de orientação para ser representados.
+    required float x = 1;
+    required float y = 2;
+    optional float yaw = 3;
 }
 
-//! Essa é a mensagem que de fato é enviada.
 message User_Control{
-  optional bool paused = 1;
-  optional Pose new_ball_pose = 2;
-  repeated Pose new_robots_blue_pose = 3;
-  repeated Pose new_robots_yellow_pose = 4;
+    optional bool paused = 1;
+    optional Pose new_ball_pose = 2;
+    repeated Pose new_robots_blue_pose = 3;
+    repeated Pose new_robots_yellow_pose = 4;
 }

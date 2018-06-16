@@ -6,38 +6,20 @@
  * file, You can obtain one at http://www.gnu.org/licenses/gpl-3.0/.
  */
 
-//! Aqui, encontra-se a definição do pacote de debug no formato da biblioteca Google Protocol Buffers (protobuf).
-//! Para mais informações sobre protobuf: https://developers.google.com/protocol-buffers/
-//! Esse pacote é responsável por carregar as informações que podem ser debugadas visualmente. Dentre essas informações
-//! existem: Poses futuras, vetores de movimentação e caminhos. Para utilizar esse protocolo, o mesmo deve ser
-//! précompílado para uma linguagem especifica gerando um trecho de código que deve ser referenciado.
-
-//! Aqui definisse um package, que na pratica gera um namespace ((C++) -> (!) using namespace vss_debug;
 package vss_debug;
 
-//! Essa mensagem é uma submensagem do pacote Global_Debug que de fato é enviado. Essa informação é utilizada para
-//! represetar um corpo rígido (objeto: robô ou bola) em um espaço do Futebol de Robôs, sendo necessário apenas:
-//! posição X e Y e rotação em Z. O ID é necessário para que se saiba de qual robô é a pose.
-//! Essa informação é utilizada para desenhar uma Pose futura e um vetor de movimentação
 message Pose{
-	required float  x = 1;      //! Posição em X do robô
-	required float  y = 2;      //! Posição em Y do robô
-	optional float  yaw = 3;    //! Orientação em Z. Sendo esse OPICIONAL no pacote, pois não são todos os objetos que necessitam de orientação para ser representados.
+    required float x = 1;
+    required float y = 2;
+    optional float yaw = 3;
 }
 
-//! Essa mensagem é uma submensagem do pacote Global_Debug que de fato é enviado. Essa informação é utilizada para
-//! Representar um caminho de um determinado robô. Sendo definida como uma lista dinâmica de poses, ela possuir um
-//! tamanho relativamente grande, possibilitando plotar um caminho bem contínuo. Além de que, não há limitação do uso,
-//! Assim o desenvolvedor por utilizar a seguência de pontos para outras coisas como: Desenhar áreas de atuação,
-//! Gradientes e etc. Para tal utilizar esse protocolo, o mesmo deve ser précompílado para uma linguagem especifica
-//! gerando um trecho de código que deve ser referenciado.
 message Path{
-    repeated Pose   poses = 1;  //! Lista dinâmica de poses (caminho e etc)
+    repeated Pose poses = 1;
 }
 
-//! Essa é a mensagem que de fato é enviada por um VSS-SampleStrategy para o VSS-Viewer
 message Global_Debug{
-    repeated Pose   step_poses  = 1;    //! Lista dinâmica de vetores de movimentação. Sendo sempre 3, devido a quantidade de robôs de um time
-    repeated Pose   final_poses = 2;    //! Lista dinâmica de poses futuras. Sendo sempre 3, devido a quantidade de robôs de um time
-    repeated Path   paths       = 3;    //! Lista dinâmica de caminhos. Snedo sempre 3, devido a quantidade de robôs de um time
+    repeated Pose step_poses = 1;
+    repeated Pose final_poses = 2;
+    repeated Path paths = 3;
 }
