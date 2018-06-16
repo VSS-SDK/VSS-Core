@@ -16,7 +16,7 @@ COMPILE_TYPE=$1
 INSTALLED=0
 
 CMAKE () {
-    ./protos.sh
+    scripts/protos.sh
     rm -R build
     mkdir -p build
     cd build
@@ -26,7 +26,7 @@ CMAKE () {
 }
 
 CMAKE_INSTALL () {
-    ./protos.sh
+    scripts/protos.sh
     rm -R build
     mkdir -p build
     cd build

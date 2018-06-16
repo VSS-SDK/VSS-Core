@@ -1,5 +1,6 @@
 # VSS-Core [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)][gpl3] [![Build Status](https://api.travis-ci.com/VSS-SDK/VSS-Core.svg?branch=master)][travis]
 
+![v](https://img.shields.io/badge/Version-1.0.0-red.svg)
 [![Trello](https://img.shields.io/badge/Trello-SDK-blue.svg)][vss-sdk-trello]
 [![Slack](https://img.shields.io/badge/Slack-Channel-551a8b.svg)][slack]
 
@@ -16,8 +17,18 @@ $ sudo ./configure.sh
 ```
 
 ## Desenvolvimento
+Compilando
 ```
 $ sudo ./configure.sh development
+$ cd build
+$ ./tests
+```
+
+Atualizando versão
+```
+$ cd scripts
+# ./versioning.sh
+$ sudo ./versioning.sh <major> <minor> <patch>
 ```
 
 ## Exemplos
