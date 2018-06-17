@@ -11,6 +11,7 @@
 #include <Domain/Constants.h>
 #include <Domain/Debug.h>
 #include <Domain/Control.h>
+#include <protos/command.pb.h>
 
 namespace vss {
 
@@ -138,6 +139,7 @@ namespace vss {
         }
 
         vss::Control createRandomControl() {
+            srand(static_cast<unsigned int>(time(NULL)));
             vss::Control control;
 
             control.paused = (rand()%2 == 0);
@@ -151,6 +153,29 @@ namespace vss {
             }
 
             return control;
+        }
+
+        vss_command::Robot_Command createRandomRobotCommand(){
+            vss_command::Robot_Command robotCommand;
+
+            robotCommand.set_left_vel((rand() % MAX_RANDOM_WHEEL_COMMAND) * (rand()%2 == 0 ? -1 : 1));
+            robotCommand.set_right_vel((rand() % MAX_RANDOM_WHEEL_COMMAND) * (rand()%2 == 0 ? -1 : 1));
+
+            return robotCommand;
+        }
+
+        vss_command::Global_Commands createRandomGlobalCommands(){
+            srand(static_cast<unsigned int>(time(NULL)));
+            vss_command::Global_Commands globalCommands;
+
+            auto size = static_cast<unsigned int>(rand() % MAX_RANDOM_TEAM_SIZE);
+
+            for(unsigned int i = 0 ; i < size ; i++){
+                auto robot_command = globalCommands.add_robot_commands();
+                *robot_command = createRandomRobotCommand();
+            }
+
+            return globalCommands;
         }
 
     }

@@ -100,3 +100,22 @@ TEST(createRandomControl, ShouldCreateValidObject){
     EXPECT_LE(control.teamYellow.size(), (unsigned int)vss::MAX_RANDOM_TEAM_SIZE);
     EXPECT_LE(control.teamBlue.size(), (unsigned int)vss::MAX_RANDOM_TEAM_SIZE);
 }
+
+TEST(createRandomRobotCommand, ShouldCreateValidObject){
+    auto robotCommand = vss::DomainRandomizer::createRandomRobotCommand();
+
+    EXPECT_LE(std::fabs(robotCommand.left_vel()), vss::MAX_RANDOM_WHEEL_COMMAND);
+    EXPECT_LE(std::fabs(robotCommand.right_vel()), vss::MAX_RANDOM_WHEEL_COMMAND);
+}
+
+TEST(createRandomGlobalCommands, ShouldCreateValidObject){
+    auto robotCommand = vss::DomainRandomizer::createRandomGlobalCommands();
+
+    EXPECT_GE(robotCommand.robot_commands_size(), 0);
+    EXPECT_LE(robotCommand.robot_commands_size(), vss::MAX_RANDOM_TEAM_SIZE);
+
+    for(int i = 0 ; i < robotCommand.robot_commands_size() ; i++){
+        EXPECT_LE(std::fabs(robotCommand.robot_commands(i).left_vel()), vss::MAX_RANDOM_WHEEL_COMMAND);
+        EXPECT_LE(std::fabs(robotCommand.robot_commands(i).right_vel()), vss::MAX_RANDOM_WHEEL_COMMAND);
+    }
+}

@@ -28,3 +28,23 @@ TEST(commandToGlobalCommands, ShouldSetRightValues){
         EXPECT_EQ(command.commands[i].rightVel, globalCommands.robot_commands(i).right_vel());
     }
 }
+
+TEST(robotCommandToWheelsCommand, ShouldReturnRightValues){
+    auto robotCommand = vss::DomainRandomizer::createRandomRobotCommand();
+    auto wheelsCommand = vss::CommandMapper::robotCommandToWheelsCommand(robotCommand);
+
+    EXPECT_EQ(wheelsCommand.leftVel, robotCommand.left_vel());
+    EXPECT_EQ(wheelsCommand.rightVel, robotCommand.right_vel());
+}
+
+TEST(globalCommandsToCommand, ShouldReturnRightValues){
+    auto globalCommands = vss::DomainRandomizer::createRandomGlobalCommands();
+    auto command = vss::CommandMapper::globalCommandsToCommand(globalCommands);
+
+    EXPECT_EQ(command.commands.size(), (unsigned)globalCommands.robot_commands_size());
+
+    for(unsigned int i = 0 ; i < command.commands.size() ; i++){
+        EXPECT_EQ(globalCommands.robot_commands(i).left_vel(), command.commands[i].leftVel);
+        EXPECT_EQ(globalCommands.robot_commands(i).right_vel(), command.commands[i].rightVel);
+    }
+}
