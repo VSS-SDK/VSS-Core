@@ -17,6 +17,8 @@ TEST(CoordinateTransaformer_Spin180Degrees_Ball, WhenSpin_ShouldReturnTheRightTr
 
     EXPECT_EQ(ballInFieldSpinned.x, vss::MAX_COORDINATE_X - ball.x);
     EXPECT_EQ(ballInFieldSpinned.y, vss::MAX_COORDINATE_Y - ball.y);
+    EXPECT_EQ(ballInFieldSpinned.speedX, -ball.speedX);
+    EXPECT_EQ(ballInFieldSpinned.speedY, -ball.speedY);
     EXPECT_GT(ballInFieldSpinned.x, vss::MIN_COORDINATE_X - 1);
     EXPECT_GT(ballInFieldSpinned.y, vss::MIN_COORDINATE_Y - 1);
     EXPECT_LT(ballInFieldSpinned.x, vss::MAX_COORDINATE_X + 1);
@@ -33,6 +35,9 @@ TEST(CoordinateTransaformer_Spin180Degrees_Robot, WhenSpin_ShouldReturnTheRightT
     EXPECT_EQ(robotInFieldSpinned.x, vss::MAX_COORDINATE_X - robot.x);
     EXPECT_EQ(robotInFieldSpinned.y, vss::MAX_COORDINATE_Y - robot.y);
     EXPECT_EQ(robotInFieldSpinned.angle, rightAngle);
+    EXPECT_EQ(robotInFieldSpinned.speedX, -robot.speedX);
+    EXPECT_EQ(robotInFieldSpinned.speedY, -robot.speedY);
+    EXPECT_EQ(robotInFieldSpinned.speedAngle, -robot.speedAngle);
     EXPECT_GT(robotInFieldSpinned.x, vss::MIN_COORDINATE_X - 1);
     EXPECT_GT(robotInFieldSpinned.y, vss::MIN_COORDINATE_Y - 1);
     EXPECT_GT(robotInFieldSpinned.angle, vss::MIN_ANGLE_VALUE - 1);
@@ -52,6 +57,8 @@ TEST(CoordinateTransaformer_Spin180Degrees_State, WhenSpin_ShouldReturnTheRightT
 
     EXPECT_EQ(stateInFieldSpinned.ball.x, vss::MAX_COORDINATE_X - state.ball.x);
     EXPECT_EQ(stateInFieldSpinned.ball.y, vss::MAX_COORDINATE_Y - state.ball.y);
+    EXPECT_EQ(stateInFieldSpinned.ball.speedX, -state.ball.speedX);
+    EXPECT_EQ(stateInFieldSpinned.ball.speedY, -state.ball.speedY);
     EXPECT_GT(stateInFieldSpinned.ball.x, vss::MIN_COORDINATE_X - 1);
     EXPECT_GT(stateInFieldSpinned.ball.y, vss::MIN_COORDINATE_Y - 1);
     EXPECT_LT(stateInFieldSpinned.ball.x, vss::MAX_COORDINATE_X + 1);
@@ -63,6 +70,9 @@ TEST(CoordinateTransaformer_Spin180Degrees_State, WhenSpin_ShouldReturnTheRightT
         EXPECT_EQ(stateInFieldSpinned.teamYellow[i].x, vss::MAX_COORDINATE_X - state.teamYellow[i].x);
         EXPECT_EQ(stateInFieldSpinned.teamYellow[i].y, vss::MAX_COORDINATE_Y - state.teamYellow[i].y);
         EXPECT_EQ(stateInFieldSpinned.teamYellow[i].angle, rightAngle);
+        EXPECT_EQ(stateInFieldSpinned.teamYellow[i].speedX, -state.teamYellow[i].speedX);
+        EXPECT_EQ(stateInFieldSpinned.teamYellow[i].speedY, -state.teamYellow[i].speedY);
+        EXPECT_EQ(stateInFieldSpinned.teamYellow[i].speedAngle, -state.teamYellow[i].speedAngle);
         EXPECT_GT(stateInFieldSpinned.teamYellow[i].x, vss::MIN_COORDINATE_X - 1);
         EXPECT_GT(stateInFieldSpinned.teamYellow[i].y, vss::MIN_COORDINATE_Y - 1);
         EXPECT_GT(stateInFieldSpinned.teamYellow[i].angle, vss::MIN_ANGLE_VALUE - 1);
@@ -77,6 +87,9 @@ TEST(CoordinateTransaformer_Spin180Degrees_State, WhenSpin_ShouldReturnTheRightT
         EXPECT_EQ(stateInFieldSpinned.teamBlue[i].x, vss::MAX_COORDINATE_X - state.teamBlue[i].x);
         EXPECT_EQ(stateInFieldSpinned.teamBlue[i].y, vss::MAX_COORDINATE_Y - state.teamBlue[i].y);
         EXPECT_EQ(stateInFieldSpinned.teamBlue[i].angle, rightAngle);
+        EXPECT_EQ(stateInFieldSpinned.teamBlue[i].speedX, -state.teamBlue[i].speedX);
+        EXPECT_EQ(stateInFieldSpinned.teamBlue[i].speedY, -state.teamBlue[i].speedY);
+        EXPECT_EQ(stateInFieldSpinned.teamBlue[i].speedAngle, -state.teamBlue[i].speedAngle);
         EXPECT_GT(stateInFieldSpinned.teamBlue[i].x, vss::MIN_COORDINATE_X - 1);
         EXPECT_GT(stateInFieldSpinned.teamBlue[i].y, vss::MIN_COORDINATE_Y - 1);
         EXPECT_GT(stateInFieldSpinned.teamBlue[i].angle, vss::MIN_ANGLE_VALUE - 1);
