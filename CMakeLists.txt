@@ -56,7 +56,8 @@ ELSE()
             pthread
             gtest
             gtest_main
-            vss-core)
+            vss-core
+            ${PROTOBUF_LIBRARIES})
 
     SET(CMAKE_CXX_FLAGS "-g -Wall -Werror -std=c++11")
 ENDIF()

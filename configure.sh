@@ -1,11 +1,4 @@
 #!/bin/bash
-#
-# This file is part of the VSS-SDK project.
-#
-# This Source Code Form is subject to the terms of the GNU GENERAL PUBLIC LICENSE,
-# v. 3.0. If a copy of the GPL was not distributed with this
-# file, You can obtain one at http://www.gnu.org/licenses/gpl-3.0/.
-#
 
 DISTRO=``
 RELEASE=``
@@ -15,70 +8,14 @@ COMPILE_TYPE=$1
 
 INSTALLED=0
 
-CMAKE () {
-    bash scripts/protos.sh
-    rm -R build
-    mkdir -p build
-    cd build
-    cmake ..
-    make
-    cd ..
-}
+source scripts/base.sh
 
-CMAKE_INSTALL () {
-    bash scripts/protos.sh
-    rm -R build
-    mkdir -p build
-    cd build
-    cmake -D RELEASE=ON ..
-    make install
-    cd ..
-}
-
-INSTALL_UBUNTU_14_04 () {
-    apt-get -y install pkg-config
-    apt-get -y install g++ cmake libzmqpp3 libzmqpp-dev protobuf-compiler libprotobuf-dev
-    INSTALLED=1
-}
-
-INSTALL_UBUNTU_16_04 () {
-    apt-get -y install pkg-config
-    apt-get -y install g++ cmake libzmqpp3 libzmqpp-dev protobuf-compiler libprotobuf-dev
-    INSTALLED=1
-}
-
-INSTALL_UBUNTU_16_10 () {
-    apt-get -y install pkgconf
-    apt-get -y install g++ cmake libzmq5 libzmq3-dev protobuf-compiler libprotobuf-dev
-    INSTALLED=1
-}
-
-INSTALL_MINT_18_2 () {
-    apt-get -y install pkg-config
-    apt-get -y install g++ cmake libzmqpp3 libzmqpp-dev protobuf-compiler libprotobuf-dev
-    INSTALLED=1
-}
-
-INSTALL_DEBIAN_9 () {
-    apt-get -y install pkgconf
-    apt-get -y install g++ cmake libzmq5 libzmq3-dev protobuf-compiler libprotobuf-dev
-    INSTALLED=1
-}
-
-INSTALL_BASE() {
-    apt-get update && apt-get upgrade
-    apt-get -y install lsb-release git
-
-    DISTRO=`lsb_release -si`
-    RELEASE=`lsb_release -sr`
-    RELEASE_DEBIAN=`lsb_release -sr | cut -c1-1`
-    ARCHITECTURE=`uname -m`
-}
-
-INIT_SUBMODULES() {
-    git submodule init;
-    git submodule update;
-}
+source scripts/install-ubuntu14-04.sh
+source scripts/install-ubuntu16-04.sh
+source scripts/install-ubuntu16-10.sh
+source scripts/install-ubuntu18-04.sh
+source scripts/install-debian9.sh
+source scripts/install-mint18-2.sh
 
 INSTALL () {
     INSTALL_BASE;
@@ -94,6 +31,10 @@ INSTALL () {
 
     if [[ "$DISTRO" == "Ubuntu" ]] && [[ "$RELEASE" == "14.04" ]]; then
         INSTALL_UBUNTU_14_04;
+    fi
+
+    if [[ "$DISTRO" == "Ubuntu" ]] && [[ "$RELEASE" == "18.04" ]]; then
+        INSTALL_UBUNTU_18_04;
     fi
 
     # Debian

@@ -13,6 +13,7 @@
 #include <Domain/Path.h>
 #include <Domain/Debug.h>
 #include <Domain/Control.h>
+#include <protos/command.pb.h>
 
 namespace vss {
 
@@ -28,6 +29,9 @@ namespace vss {
         vss::Command createRandomCommand();
         vss::Debug createRandomDebug();
         vss::Control createRandomControl();
+
+        vss_command::Robot_Command createRandomRobotCommand();
+        vss_command::Global_Commands createRandomGlobalCommands();
 
     }
 
