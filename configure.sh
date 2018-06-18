@@ -47,6 +47,12 @@ INSTALL_UBUNTU_16_04 () {
     INSTALLED=1
 }
 
+INSTALL_UBUNTU_18_04 () {
+    apt-get -y install pkg-config
+    apt-get -y install g++ cmake libzmq5 libzmq3-dev protobuf-compiler libprotobuf-dev
+    INSTALLED=1
+}
+
 INSTALL_UBUNTU_16_10 () {
     apt-get -y install pkgconf
     apt-get -y install g++ cmake libzmq5 libzmq3-dev protobuf-compiler libprotobuf-dev
@@ -94,6 +100,10 @@ INSTALL () {
 
     if [[ "$DISTRO" == "Ubuntu" ]] && [[ "$RELEASE" == "14.04" ]]; then
         INSTALL_UBUNTU_14_04;
+    fi
+
+    if [[ "$DISTRO" == "Ubuntu" ]] && [[ "$RELEASE" == "18.04" ]]; then
+        INSTALL_UBUNTU_18_04;
     fi
 
     # Debian
