@@ -5,6 +5,7 @@
 #include <googletest/googletest/include/gtest/gtest.h>
 #include <Domain/Constants.h>
 #include "Helpers/DomainRandomizer.h"
+#include "math.h"
 
 TEST(createRandomPoint, ShouldCreateValidObject){
     auto point = vss::DomainRandomizer::createRandomPoint();
