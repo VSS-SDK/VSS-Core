@@ -11,22 +11,17 @@
 
 #include <Interfaces/IStateReceiver.h>
 #include "zmq.hpp"
+#include "Communications/CommunicationBase.h"
 
 namespace vss{
 
-    class StateReceiver : public IStateReceiver {
+    class StateReceiver : public IStateReceiver, public CommunicationBase {
     public:
         StateReceiver();
 
         void createSocket() override;
         void setAddress(std::string) override;
         State receiveState(FieldTransformationType) override;
-
-    protected:
-        zmq::context_t *context;
-        zmq::socket_t *socket;
-
-        std::string address;
     };
 
 }

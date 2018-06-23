@@ -9,10 +9,11 @@
 #include <zmq.hpp>
 #include "Domain/TeamType.h"
 #include "Domain/Command.h"
+#include "Communications/CommunicationBase.h"
 
 namespace vss {
 
-    class CommandSender : public ICommandSender {
+    class CommandSender : public ICommandSender, public CommunicationBase {
     public:
         CommandSender();
 
@@ -20,10 +21,6 @@ namespace vss {
         void sendCommand(Command) override;
 
     protected:
-        zmq::context_t *context;
-        zmq::socket_t *socket;
-        std::string address;
-
         void SetupAddress(TeamType);
     };
 

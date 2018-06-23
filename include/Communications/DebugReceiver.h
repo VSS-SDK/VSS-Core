@@ -9,10 +9,11 @@
 #include <Interfaces/IDebugReceiver.h>
 #include <Domain/TeamType.h>
 #include <zmq.hpp>
+#include "Communications/CommunicationBase.h"
 
 namespace vss {
 
-    class DebugReceiver : public IDebugReceiver {
+    class DebugReceiver : public IDebugReceiver, public CommunicationBase {
     public:
         DebugReceiver();
 
@@ -20,10 +21,6 @@ namespace vss {
         Debug receiveDebug() override;
 
     protected:
-        zmq::context_t *context;
-        zmq::socket_t *socket;
-        std::string address;
-
         void SetupAddress(TeamType);
     };
 

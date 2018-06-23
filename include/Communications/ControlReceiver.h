@@ -7,21 +7,17 @@
 
 #include <Interfaces/IControlReceiver.h>
 #include <zmq.hpp>
+#include "Communications/CommunicationBase.h"
 
 namespace vss {
 
-    class ControlReceiver : public IControlReceiver {
+    class ControlReceiver : public IControlReceiver, public CommunicationBase {
     public:
         ControlReceiver();
 
         void createSocket() override;
         Control receiveControl() override;
         void setAddress(std::string) override;
-
-    protected:
-        zmq::context_t *context;
-        zmq::socket_t *socket;
-        std::string address;
     };
 
 }

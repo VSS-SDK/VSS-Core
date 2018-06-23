@@ -7,22 +7,17 @@
 
 #include <Interfaces/IStateSender.h>
 #include <zmq.hpp>
+#include "Communications/CommunicationBase.h"
 
 namespace vss{
 
-    class StateSender : public IStateSender {
+    class StateSender : public IStateSender, public CommunicationBase {
     public:
         StateSender();
 
         void createSocket() override;
         void sendState(State) override;
         void setAddress(std::string) override;
-
-    protected:
-        zmq::context_t *context;
-        zmq::socket_t *socket;
-        
-        std::string address;
     };
 
 }
