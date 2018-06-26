@@ -4,11 +4,12 @@
 
 #include <Communications/CommandReceiver.h>
 #include <Helpers/CommandMapper.h>
+#include <Domain/Constants.h>
 
 namespace vss{
 
     CommandReceiver::CommandReceiver() {
-        address = "";
+        address = Address();
     }
 
     void CommandReceiver::createSocket(TeamType teamType) {
@@ -17,8 +18,7 @@ namespace vss{
         context = new zmq::context_t( 1 );
         socket = new zmq::socket_t( *context, ZMQ_PAIR );
 
-        std::cout << "Connecting Server Receiver Team 1: " << address << std::endl;
-        socket->bind( address.c_str());
+        socket->bind(address.getFullAddress().c_str());
     }
 
     Command CommandReceiver::receiveCommand() {
@@ -33,10 +33,13 @@ namespace vss{
     }
 
     void CommandReceiver::SetupAddress(TeamType teamType) {
-        if(teamType == TeamType::Yellow)
-            address = "tcp://*:5556";
-        else
-            address = "tcp://*:5557";
+        if(teamType == TeamType::Yellow){
+            address = Address(DEFAULT_COMMAND_RECEIVE_ADDRESS, DEFAULT_COMMAND_YELLOW_PORT);
+            std::cout << "Yellow Team Receiver Connected: " << address.getFullAddress() << std::endl;
+        }else{
+            address = Address(DEFAULT_COMMAND_RECEIVE_ADDRESS, DEFAULT_COMMAND_BLUE_PORT);
+            std::cout << "Blue Team Receiver Connected: " << address.getFullAddress() << std::endl;
+        }
     }
 
 }

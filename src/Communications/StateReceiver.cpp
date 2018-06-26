@@ -7,13 +7,14 @@
  */
 
 #include <Helpers/CoordinateTransformer.h>
+#include <Domain/Constants.h>
 #include "Communications/StateReceiver.h"
 #include "Helpers/StateMapper.h"
 
 namespace vss{
 
     StateReceiver::StateReceiver(){
-        address = "tcp://localhost:5555";
+        address = Address(DEFAULT_STATE_RECEIVE_ADDRESS, DEFAULT_STATE_PORT);
     }
 
     void StateReceiver::createSocket(){
@@ -21,7 +22,7 @@ namespace vss{
         socket = new zmq::socket_t( *context, ZMQ_SUB );
 
         std::cout << "Connecting Client Multicast Receiver: " << address << std::endl;
-        socket->connect( address.c_str());
+        socket->connect(address.getFullAddress().c_str());
 
         socket->setsockopt( ZMQ_SUBSCRIBE, "", 0 );
     }
@@ -41,10 +42,6 @@ namespace vss{
         }
 
         return state;
-    }
-
-    void StateReceiver::setAddress(std::string address) {
-        this->address = address;
     }
 
 }

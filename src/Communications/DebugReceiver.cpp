@@ -4,11 +4,12 @@
 
 #include <Communications/DebugReceiver.h>
 #include <Helpers/DebugMapper.h>
+#include <Domain/Constants.h>
 
 namespace vss {
 
     DebugReceiver::DebugReceiver() {
-        address = "";
+        address = Address();
     }
 
     void DebugReceiver::createSocket(TeamType teamType) {
@@ -18,7 +19,7 @@ namespace vss {
         socket = new zmq::socket_t( *context, ZMQ_PAIR );
 
         std::cout << "Connecting Client Receiver Debug Team 1: " << address << std::endl;
-        socket->bind( address.c_str());
+        socket->bind(address.getFullAddress().c_str());
     }
 
     Debug DebugReceiver::receiveDebug() {
@@ -34,9 +35,10 @@ namespace vss {
     }
 
     void DebugReceiver::SetupAddress(TeamType teamType) {
-        if(teamType == TeamType::Yellow)
-            address = "tcp://*:5558";
-        else
-            address = "tcp://*:5559";
+        if(teamType == TeamType::Yellow){
+            address = Address(DEFAULT_DEBUG_RECEIVE_ADDRESS, DEFAULT_DEBUG_YELLOW_PORT);
+        }else{
+            address = Address(DEFAULT_DEBUG_RECEIVE_ADDRESS, DEFAULT_DEBUG_BLUE_PORT);
+        }
     }
 }

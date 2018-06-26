@@ -17,7 +17,6 @@ namespace vss {
 
         void createSocket() override;
         void sendControl(Control) override;
-        void setAddress(std::string) override;
     };
 
 }

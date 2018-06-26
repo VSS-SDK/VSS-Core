@@ -3,12 +3,13 @@
 //
 
 #include <Helpers/CommandMapper.h>
+#include <Domain/Constants.h>
 #include "Communications/CommandSender.h"
 
 namespace vss{
 
     CommandSender::CommandSender(){
-        address = "";
+        address = Address();
     }
 
     void CommandSender::createSocket(TeamType teamType) {
@@ -17,8 +18,7 @@ namespace vss{
         context = new zmq::context_t(1);
         socket = new zmq::socket_t(*context, ZMQ_PAIR);
 
-        std::cout << "Connecting Client Sender Team 1: " << address << " (yellow team)" << std::endl << std::endl;
-        socket->connect(address.c_str());
+        socket->bind(address.getFullAddress().c_str());
     }
 
     void CommandSender::sendCommand(Command command) {
@@ -33,10 +33,13 @@ namespace vss{
     }
 
     void CommandSender::SetupAddress(TeamType teamType) {
-        if(teamType == TeamType::Yellow)
-            address = "tcp://localhost:5556";
-        else
-            address = "tcp://localhost:5557";
+        if(teamType == TeamType::Yellow){
+            address = Address(DEFAULT_COMMAND_SEND_ADDRESS, DEFAULT_COMMAND_YELLOW_PORT);
+            std::cout << "Yellow Team Sender Connected: " << address.getFullAddress() << std::endl;
+        }else{
+            address = Address(DEFAULT_COMMAND_SEND_ADDRESS, DEFAULT_COMMAND_BLUE_PORT);
+            std::cout << "Blue Team Sender Connected: " << address.getFullAddress() << std::endl;
+        }
     }
 
 }

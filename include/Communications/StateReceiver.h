@@ -20,7 +20,6 @@ namespace vss{
         StateReceiver();
 
         void createSocket() override;
-        void setAddress(std::string) override;
         State receiveState(FieldTransformationType) override;
     };
 

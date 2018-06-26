@@ -7,14 +7,18 @@
 
 #include <zmq.hpp>
 #include <Domain/TeamType.h>
+#include <Domain/Address.h>
 
 namespace vss {
 
     class CommunicationBase {
     public:
+        void createSocket(Address address);
+
+    protected:
         zmq::context_t *context;
         zmq::socket_t *socket;
-        std::string address;
+        Address address;
     };
 
 }
