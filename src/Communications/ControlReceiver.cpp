@@ -12,6 +12,17 @@ namespace vss {
         address = Address(DEFAULT_CONTROL_RECEIVE_ADDRESS, DEFAULT_CONTROL_PORT);
     }
 
+    void ControlReceiver::createSocket(Address address) {
+        this->address = address;
+        context = new zmq::context_t( 1 );
+        socket = new zmq::socket_t( *context, ZMQ_SUB );
+
+        std::cout << "Control Receiver Connected: " << address << std::endl;
+        socket->connect(address.getFullAddress().c_str());
+
+        socket->setsockopt( ZMQ_SUBSCRIBE, "", 0 );
+    }
+
     void ControlReceiver::createSocket() {
         context = new zmq::context_t( 1 );
         socket = new zmq::socket_t( *context, ZMQ_SUB );

@@ -13,13 +13,23 @@ namespace vss {
         address = Address();
     }
 
+    void DebugSender::createSocket(Address address) {
+        this->address = address;
+
+        context = new zmq::context_t( 1 );
+        socket = new zmq::socket_t( *context, ZMQ_PAIR );
+
+        std::cout << "Debug Sender Connected: " << this->address << std::endl;
+        socket->connect(this->address.getFullAddress().c_str());
+    }
+
     void DebugSender::createSocket(TeamType teamType) {
         SetupAddress(teamType);
 
         context = new zmq::context_t( 1 );
         socket = new zmq::socket_t( *context, ZMQ_PAIR );
 
-        std::cout << "Connecting Server Sender Debug Team 1: " << address << "(yellow team)" << std::endl << std::endl;
+        std::cout << "Debug Sender Connected: " << this->address << std::endl;
         socket->connect(address.getFullAddress().c_str());
     }
 

@@ -5,18 +5,23 @@
 #ifndef VSS_CORE_STATESENDER_H
 #define VSS_CORE_STATESENDER_H
 
-#include <Interfaces/IStateSender.h>
 #include <zmq.hpp>
-#include "Communications/CommunicationBase.h"
+#include <Interfaces/IStateSender.h>
 
 namespace vss{
 
-    class StateSender : public IStateSender, public CommunicationBase {
+    class StateSender : public IStateSender  {
     public:
         StateSender();
 
+        void createSocket(Address) override;
         void createSocket() override;
         void sendState(State) override;
+
+    protected:
+        zmq::context_t *context;
+        zmq::socket_t *socket;
+        Address address;
     };
 
 }

@@ -12,12 +12,22 @@ namespace vss{
         address = Address();
     }
 
+    void CommandReceiver::createSocket(Address address) {
+        this->address = address;
+        context = new zmq::context_t( 1 );
+        socket = new zmq::socket_t( *context, ZMQ_PAIR );
+
+        std::cout << "Command Receiver Connected: " << this->address << std::endl;
+        socket->bind(this->address.getFullAddress().c_str());
+    }
+
     void CommandReceiver::createSocket(TeamType teamType) {
         SetupAddress(teamType);
 
         context = new zmq::context_t( 1 );
         socket = new zmq::socket_t( *context, ZMQ_PAIR );
 
+        std::cout << "Command Receiver Connected: " << address << std::endl;
         socket->bind(address.getFullAddress().c_str());
     }
 

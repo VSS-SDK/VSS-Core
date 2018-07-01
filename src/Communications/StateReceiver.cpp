@@ -17,11 +17,22 @@ namespace vss{
         address = Address(DEFAULT_STATE_RECEIVE_ADDRESS, DEFAULT_STATE_PORT);
     }
 
+    void StateReceiver::createSocket(Address address) {
+        this->address = address;
+        context = new zmq::context_t( 1 );
+        socket = new zmq::socket_t( *context, ZMQ_SUB );
+
+        std::cout << "State Receiver Connected: " << this->address << std::endl;
+        socket->connect(address.getFullAddress().c_str());
+
+        socket->setsockopt( ZMQ_SUBSCRIBE, "", 0 );
+    }
+
     void StateReceiver::createSocket(){
         context = new zmq::context_t( 1 );
         socket = new zmq::socket_t( *context, ZMQ_SUB );
 
-        std::cout << "Connecting Client Multicast Receiver: " << address << std::endl;
+        std::cout << "State Receiver Connected: " << address << std::endl;
         socket->connect(address.getFullAddress().c_str());
 
         socket->setsockopt( ZMQ_SUBSCRIBE, "", 0 );

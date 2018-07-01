@@ -12,11 +12,21 @@ namespace vss{
         address = Address(DEFAULT_STATE_SEND_ADDRESS, DEFAULT_STATE_PORT);
     }
 
+    void StateSender::createSocket(Address address) {
+        this->address = address;
+
+        context = new zmq::context_t( 1 );
+        socket = new zmq::socket_t( *context, ZMQ_PUB );
+
+        std::cout << "State Sender Connected: " << this->address << std::endl;
+        socket->bind(address.getFullAddress().c_str());
+    }
+
     void StateSender::createSocket(){
         context = new zmq::context_t( 1 );
         socket = new zmq::socket_t( *context, ZMQ_PUB );
 
-        std::cout << "Connecting Server Multicast Sender: " << address << std::endl;
+        std::cout << "State Sender Connected: " << address << std::endl;
         socket->bind(address.getFullAddress().c_str());
     }
 

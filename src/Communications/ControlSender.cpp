@@ -12,6 +12,15 @@ namespace vss {
         address = Address(DEFAULT_CONTROL_SEND_ADDRESS, DEFAULT_CONTROL_PORT);
     }
 
+    void ControlSender::createSocket(Address address) {
+        this->address = address;
+        context = new zmq::context_t( 1 );
+        socket = new zmq::socket_t( *context, ZMQ_PUB );
+
+        std::cout << "Control Sender Connected: " << this->address << std::endl;
+        socket->bind(this->address.getFullAddress().c_str());
+    }
+
     void ControlSender::createSocket() {
         context = new zmq::context_t( 1 );
         socket = new zmq::socket_t( *context, ZMQ_PUB );

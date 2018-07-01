@@ -7,19 +7,23 @@
 
 #include <Interfaces/ICommandReceiver.h>
 #include <zmq.hpp>
-#include "Communications/CommunicationBase.h"
 
 namespace vss {
 
-    class CommandReceiver : public ICommandReceiver, public CommunicationBase {
+    class CommandReceiver : public ICommandReceiver {
     public:
         CommandReceiver();
 
+        void createSocket(Address) override;
         void createSocket(TeamType) override;
         Command receiveCommand() override;
 
     protected:
         void SetupAddress(TeamType);
+
+        zmq::context_t *context;
+        zmq::socket_t *socket;
+        Address address;
     };
 
 }

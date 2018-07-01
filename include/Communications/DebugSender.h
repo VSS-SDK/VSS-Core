@@ -7,19 +7,23 @@
 
 #include <Interfaces/IDebugSender.h>
 #include <zmq.hpp>
-#include "Communications/CommunicationBase.h"
 
 namespace vss {
 
-    class DebugSender : public IDebugSender, public CommunicationBase {
+    class DebugSender : public IDebugSender {
     public:
         DebugSender();
 
+        void createSocket(Address) override;
         void createSocket(TeamType) override;
         void sendDebug(Debug) override;
 
     protected:
         void SetupAddress(TeamType);
+
+        zmq::context_t *context;
+        zmq::socket_t *socket;
+        Address address;
     };
 
 }

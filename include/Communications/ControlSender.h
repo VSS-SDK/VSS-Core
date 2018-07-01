@@ -7,16 +7,21 @@
 
 #include <Interfaces/IControlSender.h>
 #include <zmq.hpp>
-#include "Communications/CommunicationBase.h"
 
 namespace vss {
 
-    class ControlSender : public IControlSender, public CommunicationBase {
+    class ControlSender : public IControlSender {
     public:
         ControlSender();
 
+        void createSocket(Address) override;
         void createSocket() override;
         void sendControl(Control) override;
+
+    protected:
+        zmq::context_t *context;
+        zmq::socket_t *socket;
+        Address address;
     };
 
 }

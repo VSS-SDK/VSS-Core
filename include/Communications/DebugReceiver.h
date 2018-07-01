@@ -9,19 +9,23 @@
 #include <Interfaces/IDebugReceiver.h>
 #include <Domain/TeamType.h>
 #include <zmq.hpp>
-#include "Communications/CommunicationBase.h"
 
 namespace vss {
 
-    class DebugReceiver : public IDebugReceiver, public CommunicationBase {
+    class DebugReceiver : public IDebugReceiver {
     public:
         DebugReceiver();
 
+        void createSocket(Address) override;
         void createSocket(TeamType) override;
         Debug receiveDebug() override;
 
     protected:
         void SetupAddress(TeamType);
+
+        zmq::context_t *context;
+        zmq::socket_t *socket;
+        Address address;
     };
 
 }
