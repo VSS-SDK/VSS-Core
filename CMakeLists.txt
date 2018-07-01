@@ -1,4 +1,8 @@
 cmake_minimum_required(VERSION 2.8.9)
+set(Boost_USE_STATIC_LIBS OFF)
+set(Boost_USE_MULTITHREADED ON)
+set(Boost_USE_STATIC_RUNTIME OFF)
+
 project(vss-core)
 
 include_directories(src)
@@ -20,6 +24,10 @@ find_library(ZeroMQ_LIBRARY
         PATHS ${PC_ZeroMQ_LIBRARY_DIRS}
         )
 
+find_package(Boost 1.45.0 COMPONENTS program_options)
+include_directories(${Boost_INCLUDE_DIRS})
+
+
 file(GLOB_RECURSE CPP "src/*.cpp")
 file(GLOB_RECURSE CC "src/*.cc")
 file(GLOB_RECURSE H "include/*.h")
@@ -28,6 +36,7 @@ set(CLION SOURCE ${CC} ${CPP} ${H})
 
 add_library(vss-core SHARED ${CPP} ${CC} ${H})
 
+target_link_libraries(vss-core ${Boost_PROGRAM_OPTIONS_LIBRARY})
 target_include_directories(vss-core PUBLIC ${ZeroMQ_INCLUDE_DIR})
 target_link_libraries(vss-core PUBLIC ${ZeroMQ_LIBRARY})
 target_link_libraries(vss-core ${PROTOBUF_LIBRARIES})
