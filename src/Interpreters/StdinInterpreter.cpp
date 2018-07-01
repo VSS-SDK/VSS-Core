@@ -33,6 +33,7 @@ namespace vss {
         looksForTeamType = false;
         looksForSideAttackType = false;
         looksForTimeExecutionType = false;
+        looksForEnvironmentType = false;
 
         stdinConfiguration.validConfiguration = false;
     }
@@ -137,6 +138,10 @@ namespace vss {
         if(looksForTimeExecutionType)
             desc.add_options()("time_execution_type", boost::program_options::value<std::string>()->default_value("Normal"), "");
 
+        if(looksForEnvironmentType)
+            desc.add_options()("environment_type", boost::program_options::value<std::string>()->default_value("Simulation"), "");
+
+
         return desc;
     }
 
@@ -214,6 +219,10 @@ namespace vss {
 
         if(vm.count("time_execution_type"))
             stdinConfiguration.timeExecutionType = toTimeExecutionType(vm["time_execution_type"].as<std::string>());
+
+        if(vm.count("environment_type"))
+            stdinConfiguration.environmentType = toEnvironmentType(vm["environment_type"].as<std::string>());
+
 
         stdinConfiguration.validConfiguration = true;
     }

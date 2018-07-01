@@ -39,6 +39,7 @@ namespace vss {
         bool looksForTeamType;
         bool looksForSideAttackType;
         bool looksForTimeExecutionType;
+        bool looksForEnvironmentType;
 
     private:
         StdinConfiguration stdinConfiguration;

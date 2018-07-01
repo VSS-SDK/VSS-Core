@@ -7,8 +7,9 @@
 
 #include "Domain/Address.h"
 #include "Domain/TeamType.h"
-#include "SideAttackType.h"
-#include "TimeExecutionType.h"
+#include "Domain/SideAttackType.h"
+#include "Domain/TimeExecutionType.h"
+#include "Domain/EnvironmentType.h"
 
 namespace vss {
 
@@ -35,6 +36,7 @@ namespace vss {
         TeamType teamType;
         SideAttackType sideAttackType;
         TimeExecutionType timeExecutionType;
+        EnvironmentType environmentType;
 
         bool validConfiguration;
     };
