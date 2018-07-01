@@ -5,13 +5,13 @@
 #ifndef VSS_CORE_ISTDININTERPRETER_H
 #define VSS_CORE_ISTDININTERPRETER_H
 
-#include <Domain/StdinConfiguration.h>
+#include <Domain/ExecutionConfiguration.h>
 
 namespace vss {
 
     class IStdinInterpreter {
     public:
-        virtual StdinConfiguration extractConfiguration(int argc, char** argv) = 0;
+        virtual ExecutionConfiguration extractExecutionConfiguration(int argc, char **argv) = 0;
     };
 
 };
