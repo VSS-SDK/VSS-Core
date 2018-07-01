@@ -10,29 +10,29 @@
 namespace vss {
 
     StdinInterpreter::StdinInterpreter() {
-        looksForStateReceiverAddress = true;
-        looksForStateSenderAddress = true;
-        looksForYellowCommandReceiverAddress = true;
-        looksForYellowCommandSenderAddress = true;
-        looksForYellowDebugReceiverAddress = true;
-        looksForYellowDebugSenderAddress = true;
-        looksForBlueCommandReceiverAddress = true;
-        looksForBlueCommandSenderAddress = true;
-        looksForBlueDebugReceiverAddress = true;
-        looksForBlueDebugSenderAddress = true;
-        looksForControlReceiverAddress = true;
-        looksForControlSenderAddress = true;
+        looksForStateReceiverAddress = false;
+        looksForStateSenderAddress = false;
+        looksForYellowCommandReceiverAddress = false;
+        looksForYellowCommandSenderAddress = false;
+        looksForYellowDebugReceiverAddress = false;
+        looksForYellowDebugSenderAddress = false;
+        looksForBlueCommandReceiverAddress = false;
+        looksForBlueCommandSenderAddress = false;
+        looksForBlueDebugReceiverAddress = false;
+        looksForBlueDebugSenderAddress = false;
+        looksForControlReceiverAddress = false;
+        looksForControlSenderAddress = false;
 
-        looksForStateCommunicationPort = true;
-        looksForYellowCommandCommunicationPort = true;
-        looksForYellowDebugCommunicationPort = true;
-        looksForBlueCommandCommunicationPort = true;
-        looksForBlueDebugCommunicationPort = true;
-        looksForControlCommunicationPort = true;
+        looksForStateCommunicationPort = false;
+        looksForYellowCommandCommunicationPort = false;
+        looksForYellowDebugCommunicationPort = false;
+        looksForBlueCommandCommunicationPort = false;
+        looksForBlueDebugCommunicationPort = false;
+        looksForControlCommunicationPort = false;
 
-        looksForTeamType = true;
-        looksForSideAttackType = true;
-        looksForTimeExecutionType = true;
+        looksForTeamType = false;
+        looksForSideAttackType = false;
+        looksForTimeExecutionType = false;
 
         stdinConfiguration.validConfiguration = false;
     }
