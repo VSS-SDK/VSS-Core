@@ -13,11 +13,11 @@
 
 namespace vss {
 
-    class ExecutionConfiguration {
+    class ExecutionConfig {
     public:
-        ExecutionConfiguration();
+        ExecutionConfig();
 
-        friend std::ostream& operator<<(std::ostream& os, const ExecutionConfiguration& state);
+        friend std::ostream& operator<<(std::ostream& os, const ExecutionConfig& state);
 
         Address stateReceiverAddress;
         Address stateSenderAddress;

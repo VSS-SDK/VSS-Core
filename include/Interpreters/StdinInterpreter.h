@@ -14,7 +14,7 @@ namespace vss {
     public:
         StdinInterpreter();
 
-        ExecutionConfiguration extractExecutionConfiguration(int argc, char **argv) override;
+        ExecutionConfig extractExecutionConfig(int argc, char **argv) override;
 
         bool looksForStateReceiverAddress;
         bool looksForStateSenderAddress;
@@ -42,7 +42,7 @@ namespace vss {
         bool looksForEnvironmentType;
 
     private:
-        ExecutionConfiguration stdinConfiguration;
+        ExecutionConfig stdinConfiguration;
 
         boost::program_options::options_description buildOptions();
         void buildConfiguration(boost::program_options::variables_map);

@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <Interpreters/StdinInterpreter.h>
-#include <Domain/ExecutionConfiguration.h>
+#include <Domain/ExecutionConfig.h>
 #include <Domain/Constants.h>
 
 namespace vss {
@@ -38,7 +38,7 @@ namespace vss {
         stdinConfiguration.validConfiguration = false;
     }
 
-    ExecutionConfiguration StdinInterpreter::extractExecutionConfiguration(int argc, char **argv) {
+    ExecutionConfig StdinInterpreter::extractExecutionConfig(int argc, char **argv) {
         try
         {
             auto desc = buildOptions();
