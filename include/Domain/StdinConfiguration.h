@@ -35,6 +35,8 @@ namespace vss {
         TeamType teamType;
         SideAttackType sideAttackType;
         TimeExecutionType timeExecutionType;
+
+        bool validConfiguration;
     };
 
 }

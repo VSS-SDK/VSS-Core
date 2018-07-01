@@ -5,6 +5,7 @@
 #ifndef VSS_CORE_STDININTERPRETER_H
 #define VSS_CORE_STDININTERPRETER_H
 
+#include <boost/program_options.hpp>
 #include <Interfaces/IStdinInterpreter.h>
 
 namespace vss {
@@ -40,7 +41,10 @@ namespace vss {
         bool looksForTimeExecutionType;
 
     private:
+        StdinConfiguration stdinConfiguration;
+
         boost::program_options::options_description buildOptions();
+        void buildConfiguration(boost::program_options::variables_map);
     };
 
 };

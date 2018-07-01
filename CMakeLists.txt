@@ -11,6 +11,7 @@ include_directories(include)
 INCLUDE_DIRECTORIES(${PROTOBUF_INCLUDE_DIR})
 
 find_package(PkgConfig)
+FIND_PACKAGE(Boost 1.40 COMPONENTS program_options REQUIRED)
 INCLUDE(FindProtobuf)
 FIND_PACKAGE(Protobuf REQUIRED)
 
@@ -24,9 +25,7 @@ find_library(ZeroMQ_LIBRARY
         PATHS ${PC_ZeroMQ_LIBRARY_DIRS}
         )
 
-find_package(Boost 1.45.0 COMPONENTS program_options)
 include_directories(${Boost_INCLUDE_DIRS})
-
 
 file(GLOB_RECURSE CPP "src/*.cpp")
 file(GLOB_RECURSE CC "src/*.cc")
