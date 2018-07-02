@@ -71,7 +71,7 @@ namespace vss {
         desc.add_options()("help,h", "");
 
         // ADDRESS
-        if(looksForStateReceiverAddress)
+        if(looksForStateSenderAddress)
             desc.add_options()("state_send_address", boost::program_options::value<std::string>()->default_value(DEFAULT_STATE_SEND_ADDRESS), "");
 
         if(looksForStateReceiverAddress)
@@ -101,7 +101,7 @@ namespace vss {
         if(looksForBlueDebugReceiverAddress)
             desc.add_options()("blue_debug_receive_address", boost::program_options::value<std::string>()->default_value(DEFAULT_DEBUG_RECEIVE_ADDRESS), "");
 
-        if(looksForControlReceiverAddress)
+        if(looksForControlSenderAddress)
             desc.add_options()("control_send_address", boost::program_options::value<std::string>()->default_value(DEFAULT_CONTROL_SEND_ADDRESS), "");
 
         if(looksForControlReceiverAddress)
@@ -124,7 +124,7 @@ namespace vss {
         if(looksForBlueDebugCommunicationPort)
             desc.add_options()("blue_debug_port", boost::program_options::value<int>()->default_value(DEFAULT_DEBUG_BLUE_PORT), "");
 
-        if(looksForStateCommunicationPort)
+        if(looksForControlCommunicationPort)
             desc.add_options()("control_port", boost::program_options::value<int>()->default_value(DEFAULT_CONTROL_PORT), "");
 
 
