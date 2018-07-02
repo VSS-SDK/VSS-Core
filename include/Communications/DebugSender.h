@@ -19,7 +19,7 @@ namespace vss {
         void sendDebug(Debug) override;
 
     protected:
-        void SetupAddress(TeamType);
+        void setupAddress(TeamType);
 
         zmq::context_t *context;
         zmq::socket_t *socket;

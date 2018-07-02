@@ -23,7 +23,7 @@ namespace vss {
     }
 
     void DebugReceiver::createSocket(TeamType teamType) {
-        SetupAddress(teamType);
+        setupAddress(teamType);
 
         context = new zmq::context_t( 1 );
         socket = new zmq::socket_t( *context, ZMQ_PAIR );
@@ -44,7 +44,7 @@ namespace vss {
         return DebugMapper::globalDebugToDebug(globalDebug);
     }
 
-    void DebugReceiver::SetupAddress(TeamType teamType) {
+    void DebugReceiver::setupAddress(TeamType teamType) {
         if(teamType == TeamType::Yellow){
             address = Address(DEFAULT_DEBUG_RECEIVE_ADDRESS, DEFAULT_DEBUG_YELLOW_PORT);
         }else{

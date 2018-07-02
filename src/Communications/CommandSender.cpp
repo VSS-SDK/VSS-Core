@@ -14,19 +14,12 @@ namespace vss{
 
     void CommandSender::createSocket(Address address) {
         this->address = address;
-        context = new zmq::context_t(1);
-        socket = new zmq::socket_t(*context, ZMQ_PAIR);
-
-        socket->bind(this->address.getFullAddress().c_str());
+        connect();
     }
 
     void CommandSender::createSocket(TeamType teamType) {
-        SetupAddress(teamType);
-
-        context = new zmq::context_t(1);
-        socket = new zmq::socket_t(*context, ZMQ_PAIR);
-
-        socket->bind(address.getFullAddress().c_str());
+        setupAddress(teamType);
+        connect();
     }
 
     void CommandSender::sendCommand(Command command) {
@@ -40,7 +33,7 @@ namespace vss{
         socket->send( request );
     }
 
-    void CommandSender::SetupAddress(TeamType teamType) {
+    void CommandSender::setupAddress(TeamType teamType) {
         if(teamType == TeamType::Yellow){
             address = Address(DEFAULT_COMMAND_SEND_ADDRESS, DEFAULT_COMMAND_YELLOW_PORT);
             std::cout << "Yellow Team Sender Connected: " << address.getFullAddress() << std::endl;
@@ -48,6 +41,12 @@ namespace vss{
             address = Address(DEFAULT_COMMAND_SEND_ADDRESS, DEFAULT_COMMAND_BLUE_PORT);
             std::cout << "Blue Team Sender Connected: " << address.getFullAddress() << std::endl;
         }
+    }
+
+    void CommandSender::connect() {
+        context = new zmq::context_t(1);
+        socket = new zmq::socket_t(*context, ZMQ_PAIR);
+        socket->bind(address.getFullAddress().c_str());
     }
 
 }

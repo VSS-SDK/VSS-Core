@@ -22,7 +22,7 @@ namespace vss{
     }
 
     void CommandReceiver::createSocket(TeamType teamType) {
-        SetupAddress(teamType);
+        setupAddress(teamType);
 
         context = new zmq::context_t( 1 );
         socket = new zmq::socket_t( *context, ZMQ_PAIR );
@@ -42,7 +42,7 @@ namespace vss{
         return CommandMapper::globalCommandsToCommand(globalCommands);
     }
 
-    void CommandReceiver::SetupAddress(TeamType teamType) {
+    void CommandReceiver::setupAddress(TeamType teamType) {
         if(teamType == TeamType::Yellow){
             address = Address(DEFAULT_COMMAND_RECEIVE_ADDRESS, DEFAULT_COMMAND_YELLOW_PORT);
             std::cout << "Yellow Team Receiver Connected: " << address.getFullAddress() << std::endl;
