@@ -46,7 +46,7 @@ namespace vss{
     void CommandSender::connect() {
         context = new zmq::context_t(1);
         socket = new zmq::socket_t(*context, ZMQ_PAIR);
-        socket->bind(address.getFullAddress().c_str());
+        socket->connect(address.getFullAddress().c_str());
     }
 
 }

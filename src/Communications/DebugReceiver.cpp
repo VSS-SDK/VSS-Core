@@ -14,22 +14,12 @@ namespace vss {
 
     void DebugReceiver::createSocket(Address address) {
         this->address = address;
-
-        context = new zmq::context_t( 1 );
-        socket = new zmq::socket_t( *context, ZMQ_PAIR );
-
-        std::cout << "Debug Receiver Connected: " << this->address << std::endl;
-        socket->bind(this->address.getFullAddress().c_str());
+        connect();
     }
 
     void DebugReceiver::createSocket(TeamType teamType) {
         setupAddress(teamType);
-
-        context = new zmq::context_t( 1 );
-        socket = new zmq::socket_t( *context, ZMQ_PAIR );
-
-        std::cout << "Debug Receiver Connected: " << address << std::endl;
-        socket->bind(address.getFullAddress().c_str());
+        connect();
     }
 
     Debug DebugReceiver::receiveDebug() {
@@ -50,6 +40,14 @@ namespace vss {
         }else{
             address = Address(DEFAULT_DEBUG_RECEIVE_ADDRESS, DEFAULT_DEBUG_BLUE_PORT);
         }
+    }
+
+    void DebugReceiver::connect() {
+        context = new zmq::context_t( 1 );
+        socket = new zmq::socket_t( *context, ZMQ_PAIR );
+
+        std::cout << "Debug Receiver Connected: " << address << std::endl;
+        socket->bind(address.getFullAddress().c_str());
     }
 
 }

@@ -23,6 +23,8 @@ namespace vss{
         State receiveState(FieldTransformationType) override;
 
     protected:
+        void connect();
+
         zmq::context_t *context;
         zmq::socket_t *socket;
         Address address;

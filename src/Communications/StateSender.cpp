@@ -14,20 +14,11 @@ namespace vss{
 
     void StateSender::createSocket(Address address) {
         this->address = address;
-
-        context = new zmq::context_t( 1 );
-        socket = new zmq::socket_t( *context, ZMQ_PUB );
-
-        std::cout << "State Sender Connected: " << this->address << std::endl;
-        socket->bind(address.getFullAddress().c_str());
+        connect();
     }
 
     void StateSender::createSocket(){
-        context = new zmq::context_t( 1 );
-        socket = new zmq::socket_t( *context, ZMQ_PUB );
-
-        std::cout << "State Sender Connected: " << address << std::endl;
-        socket->bind(address.getFullAddress().c_str());
+        connect();
     }
 
     void StateSender::sendState(State state){
@@ -41,6 +32,14 @@ namespace vss{
         memcpy ((void *) request.data (), msg_str.c_str(), msg_str.size());
 
         socket->send( request );
+    }
+
+    void StateSender::connect() {
+        context = new zmq::context_t( 1 );
+        socket = new zmq::socket_t( *context, ZMQ_PUB );
+
+        std::cout << "State Sender Connected: " << address << std::endl;
+        socket->bind(address.getFullAddress().c_str());
     }
 
 }

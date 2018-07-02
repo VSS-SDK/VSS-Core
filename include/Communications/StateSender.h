@@ -19,6 +19,8 @@ namespace vss{
         void sendState(State) override;
 
     protected:
+        void connect();
+
         zmq::context_t *context;
         zmq::socket_t *socket;
         Address address;

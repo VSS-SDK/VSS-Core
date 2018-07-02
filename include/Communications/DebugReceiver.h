@@ -22,6 +22,7 @@ namespace vss {
 
     protected:
         void setupAddress(TeamType);
+        void connect();
 
         zmq::context_t *context;
         zmq::socket_t *socket;

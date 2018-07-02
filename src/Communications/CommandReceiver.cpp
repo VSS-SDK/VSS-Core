@@ -14,21 +14,12 @@ namespace vss{
 
     void CommandReceiver::createSocket(Address address) {
         this->address = address;
-        context = new zmq::context_t( 1 );
-        socket = new zmq::socket_t( *context, ZMQ_PAIR );
-
-        std::cout << "Command Receiver Connected: " << this->address << std::endl;
-        socket->bind(this->address.getFullAddress().c_str());
+        connect();
     }
 
     void CommandReceiver::createSocket(TeamType teamType) {
         setupAddress(teamType);
-
-        context = new zmq::context_t( 1 );
-        socket = new zmq::socket_t( *context, ZMQ_PAIR );
-
-        std::cout << "Command Receiver Connected: " << address << std::endl;
-        socket->bind(address.getFullAddress().c_str());
+        connect();
     }
 
     Command CommandReceiver::receiveCommand() {
@@ -50,6 +41,12 @@ namespace vss{
             address = Address(DEFAULT_COMMAND_RECEIVE_ADDRESS, DEFAULT_COMMAND_BLUE_PORT);
             std::cout << "Blue Team Receiver Connected: " << address.getFullAddress() << std::endl;
         }
+    }
+
+    void CommandReceiver::connect() {
+        context = new zmq::context_t( 1 );
+        socket = new zmq::socket_t( *context, ZMQ_PAIR );
+        socket->bind(address.getFullAddress().c_str());
     }
 
 }

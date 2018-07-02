@@ -14,23 +14,11 @@ namespace vss {
 
     void ControlReceiver::createSocket(Address address) {
         this->address = address;
-        context = new zmq::context_t( 1 );
-        socket = new zmq::socket_t( *context, ZMQ_SUB );
-
-        std::cout << "Control Receiver Connected: " << address << std::endl;
-        socket->connect(address.getFullAddress().c_str());
-
-        socket->setsockopt( ZMQ_SUBSCRIBE, "", 0 );
+        connect();
     }
 
     void ControlReceiver::createSocket() {
-        context = new zmq::context_t( 1 );
-        socket = new zmq::socket_t( *context, ZMQ_SUB );
-
-        std::cout << "Control Receiver Connected: " << address << std::endl;
-        socket->connect(address.getFullAddress().c_str());
-
-        socket->setsockopt( ZMQ_SUBSCRIBE, "", 0 );
+        connect();
     }
 
     Control ControlReceiver::receiveControl() {
@@ -43,6 +31,15 @@ namespace vss {
         userControl.ParseFromString( msg_str );
 
         return vss::ControlMapper::userControlToControl(userControl);
+    }
+
+    void ControlReceiver::connect() {
+        context = new zmq::context_t( 1 );
+        socket = new zmq::socket_t( *context, ZMQ_SUB );
+
+        std::cout << "Control Receiver Connected: " << address << std::endl;
+        socket->connect(address.getFullAddress().c_str());
+        socket->setsockopt( ZMQ_SUBSCRIBE, "", 0 );
     }
 
 }

@@ -19,23 +19,11 @@ namespace vss{
 
     void StateReceiver::createSocket(Address address) {
         this->address = address;
-        context = new zmq::context_t( 1 );
-        socket = new zmq::socket_t( *context, ZMQ_SUB );
-
-        std::cout << "State Receiver Connected: " << this->address << std::endl;
-        socket->connect(address.getFullAddress().c_str());
-
-        socket->setsockopt( ZMQ_SUBSCRIBE, "", 0 );
+        connect();
     }
 
     void StateReceiver::createSocket(){
-        context = new zmq::context_t( 1 );
-        socket = new zmq::socket_t( *context, ZMQ_SUB );
-
-        std::cout << "State Receiver Connected: " << address << std::endl;
-        socket->connect(address.getFullAddress().c_str());
-
-        socket->setsockopt( ZMQ_SUBSCRIBE, "", 0 );
+        connect();
     }
 
     State StateReceiver::receiveState(FieldTransformationType userTransformation){
@@ -53,6 +41,15 @@ namespace vss{
         }
 
         return state;
+    }
+
+    void StateReceiver::connect() {
+        context = new zmq::context_t( 1 );
+        socket = new zmq::socket_t( *context, ZMQ_SUB );
+
+        std::cout << "State Receiver Connected: " << address << std::endl;
+        socket->connect(address.getFullAddress().c_str());
+        socket->setsockopt( ZMQ_SUBSCRIBE, "", 0 );
     }
 
 }
