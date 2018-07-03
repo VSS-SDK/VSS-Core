@@ -35,7 +35,7 @@ namespace vss {
         looksForTimeExecutionType = false;
         looksForEnvironmentType = false;
 
-        stdinConfiguration.validConfiguration = false;
+        stdinConfiguration.isValidConfiguration = false;
     }
 
     ExecutionConfig StdinInterpreter::extractExecutionConfig(int argc, char **argv) {
@@ -185,8 +185,8 @@ namespace vss {
         }
 
         if(vm.count("yellow_command_port")){
-            stdinConfiguration.commandYellowSenderAddress.setPort(vm["state_port"].as<int>());
-            stdinConfiguration.commandYellowReceiverAddress.setPort(vm["state_port"].as<int>());
+            stdinConfiguration.commandYellowSenderAddress.setPort(vm["yellow_command_port"].as<int>());
+            stdinConfiguration.commandYellowReceiverAddress.setPort(vm["yellow_command_port"].as<int>());
         }
 
         if(vm.count("blue_command_port")){
@@ -224,7 +224,7 @@ namespace vss {
             stdinConfiguration.environmentType = toEnvironmentType(vm["environment_type"].as<std::string>());
 
 
-        stdinConfiguration.validConfiguration = true;
+        stdinConfiguration.isValidConfiguration = true;
     }
 
 };

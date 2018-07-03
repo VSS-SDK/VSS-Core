@@ -38,7 +38,7 @@ namespace vss {
         TimeExecutionType timeExecutionType;
         EnvironmentType environmentType;
 
-        bool validConfiguration;
+        bool isValidConfiguration;
     };
 
 }
