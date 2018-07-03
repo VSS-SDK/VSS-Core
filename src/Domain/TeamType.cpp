@@ -4,6 +4,7 @@
 
 #include <string>
 #include <Domain/TeamType.h>
+#include <iostream>
 
 namespace vss {
 
