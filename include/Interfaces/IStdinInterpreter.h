@@ -13,30 +13,30 @@ namespace vss {
     public:
         virtual ExecutionConfig extractExecutionConfig(int argc, char **argv) = 0;
 
-        bool looksForStateReceiverAddress;
-        bool looksForStateSenderAddress;
-        bool looksForYellowCommandReceiverAddress;
-        bool looksForYellowCommandSenderAddress;
-        bool looksForYellowDebugReceiverAddress;
-        bool looksForYellowDebugSenderAddress;
-        bool looksForBlueCommandReceiverAddress;
-        bool looksForBlueCommandSenderAddress;
-        bool looksForBlueDebugReceiverAddress;
-        bool looksForBlueDebugSenderAddress;
-        bool looksForControlReceiverAddress;
-        bool looksForControlSenderAddress;
+        bool onStateRecvAddr;
+        bool onStateSendAddr;
+        bool onYellowCmdRecvAddr;
+        bool onYellowCmdSendAddr;
+        bool onYellowDebugRecvAddr;
+        bool onYellowDebugSendAddr;
+        bool onBlueCmdRecvAddr;
+        bool onBlueCmdSendAddr;
+        bool onBlueDebugRecvAddr;
+        bool onBlueDebugSendAddr;
+        bool onCtrlRecvAddr;
+        bool onCtrlSendAddr;
 
-        bool looksForStateCommunicationPort;
-        bool looksForYellowCommandCommunicationPort;
-        bool looksForYellowDebugCommunicationPort;
-        bool looksForBlueCommandCommunicationPort;
-        bool looksForBlueDebugCommunicationPort;
-        bool looksForControlCommunicationPort;
+        bool onStatePort;
+        bool onYellowCmdPort;
+        bool onYellowDebugPort;
+        bool onBlueCmdPort;
+        bool onBlueDebugPort;
+        bool onCtrlPort;
 
-        bool looksForTeamType;
-        bool looksForSideAttackType;
-        bool looksForTimeExecutionType;
-        bool looksForEnvironmentType;
+        bool onTeamType;
+        bool onSideAttackType;
+        bool onTimeExecutionType;
+        bool onEnvironmentType;
     };
 
 };

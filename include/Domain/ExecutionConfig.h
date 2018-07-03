@@ -19,19 +19,19 @@ namespace vss {
 
         friend std::ostream& operator<<(std::ostream& os, const ExecutionConfig& state);
 
-        Address stateReceiverAddress;
-        Address stateSenderAddress;
-        Address commandYellowReceiverAddress;
-        Address commandYellowSenderAddress;
-        Address debugYellowReceiverAddress;
-        Address debugYellowSenderAddress;
-        Address commandBlueReceiverAddress;
-        Address commandBlueSenderAddress;
-        Address debugBlueReceiverAddress;
-        Address debugBlueSenderAddress;
+        Address stateRecvAddr;
+        Address stateSendAddr;
+        Address cmdYellowRecvAddr;
+        Address cmdYellowSendAddr;
+        Address debugYellowRecvAddr;
+        Address debugYellowSendAddr;
+        Address cmdBlueRecvAddr;
+        Address cmdBlueSendAddr;
+        Address debugBlueRecvAddr;
+        Address debugBlueSendAddr;
 
-        Address controlReceiverAddress;
-        Address controlSenderAddress;
+        Address ctrlRecvAddr;
+        Address ctrlSendAddr;
 
         TeamType teamType;
         SideAttackType sideAttackType;

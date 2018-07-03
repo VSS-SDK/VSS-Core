@@ -10,30 +10,30 @@
 namespace vss {
 
     StdinInterpreter::StdinInterpreter() {
-        looksForStateReceiverAddress = false;
-        looksForStateSenderAddress = false;
-        looksForYellowCommandReceiverAddress = false;
-        looksForYellowCommandSenderAddress = false;
-        looksForYellowDebugReceiverAddress = false;
-        looksForYellowDebugSenderAddress = false;
-        looksForBlueCommandReceiverAddress = false;
-        looksForBlueCommandSenderAddress = false;
-        looksForBlueDebugReceiverAddress = false;
-        looksForBlueDebugSenderAddress = false;
-        looksForControlReceiverAddress = false;
-        looksForControlSenderAddress = false;
+        onStateRecvAddr = false;
+        onStateSendAddr = false;
+        onYellowCmdRecvAddr = false;
+        onYellowCmdSendAddr = false;
+        onYellowDebugRecvAddr = false;
+        onYellowDebugSendAddr = false;
+        onBlueCmdRecvAddr = false;
+        onBlueCmdSendAddr = false;
+        onBlueDebugRecvAddr = false;
+        onBlueDebugSendAddr = false;
+        onCtrlRecvAddr = false;
+        onCtrlSendAddr = false;
 
-        looksForStateCommunicationPort = false;
-        looksForYellowCommandCommunicationPort = false;
-        looksForYellowDebugCommunicationPort = false;
-        looksForBlueCommandCommunicationPort = false;
-        looksForBlueDebugCommunicationPort = false;
-        looksForControlCommunicationPort = false;
+        onStatePort = false;
+        onYellowCmdPort = false;
+        onYellowDebugPort = false;
+        onBlueCmdPort = false;
+        onBlueDebugPort = false;
+        onCtrlPort = false;
 
-        looksForTeamType = false;
-        looksForSideAttackType = false;
-        looksForTimeExecutionType = false;
-        looksForEnvironmentType = false;
+        onTeamType = false;
+        onSideAttackType = false;
+        onTimeExecutionType = false;
+        onEnvironmentType = false;
 
         stdinConfiguration.isValidConfiguration = false;
     }
@@ -71,74 +71,74 @@ namespace vss {
         desc.add_options()("help,h", "");
 
         // ADDRESS
-        if(looksForStateSenderAddress)
+        if(onStateSendAddr)
             desc.add_options()("state_send_address", boost::program_options::value<std::string>()->default_value(DEFAULT_STATE_SEND_ADDRESS), "");
 
-        if(looksForStateReceiverAddress)
+        if(onStateRecvAddr)
             desc.add_options()("state_receive_address", boost::program_options::value<std::string>()->default_value(DEFAULT_STATE_RECEIVE_ADDRESS), "");
 
-        if(looksForYellowCommandSenderAddress)
+        if(onYellowCmdSendAddr)
             desc.add_options()("yellow_command_send_address", boost::program_options::value<std::string>()->default_value(DEFAULT_COMMAND_SEND_ADDRESS), "");
 
-        if(looksForYellowCommandReceiverAddress)
+        if(onYellowCmdRecvAddr)
             desc.add_options()("yellow_command_receive_address", boost::program_options::value<std::string>()->default_value(DEFAULT_COMMAND_RECEIVE_ADDRESS), "");
 
-        if(looksForYellowDebugSenderAddress)
+        if(onYellowDebugSendAddr)
             desc.add_options()("yellow_debug_send_address", boost::program_options::value<std::string>()->default_value(DEFAULT_DEBUG_SEND_ADDRESS), "");
 
-        if(looksForYellowDebugReceiverAddress)
+        if(onYellowDebugRecvAddr)
             desc.add_options()("yellow_debug_receive_address", boost::program_options::value<std::string>()->default_value(DEFAULT_DEBUG_RECEIVE_ADDRESS), "");
 
-        if(looksForBlueCommandSenderAddress)
+        if(onBlueCmdSendAddr)
             desc.add_options()("blue_command_send_address", boost::program_options::value<std::string>()->default_value(DEFAULT_COMMAND_SEND_ADDRESS), "");
 
-        if(looksForBlueCommandReceiverAddress)
+        if(onBlueCmdRecvAddr)
             desc.add_options()("blue_command_receive_address", boost::program_options::value<std::string>()->default_value(DEFAULT_COMMAND_RECEIVE_ADDRESS), "");
 
-        if(looksForBlueDebugSenderAddress)
+        if(onBlueDebugSendAddr)
             desc.add_options()("blue_debug_send_address", boost::program_options::value<std::string>()->default_value(DEFAULT_DEBUG_SEND_ADDRESS), "");
 
-        if(looksForBlueDebugReceiverAddress)
+        if(onBlueDebugRecvAddr)
             desc.add_options()("blue_debug_receive_address", boost::program_options::value<std::string>()->default_value(DEFAULT_DEBUG_RECEIVE_ADDRESS), "");
 
-        if(looksForControlSenderAddress)
+        if(onCtrlSendAddr)
             desc.add_options()("control_send_address", boost::program_options::value<std::string>()->default_value(DEFAULT_CONTROL_SEND_ADDRESS), "");
 
-        if(looksForControlReceiverAddress)
+        if(onCtrlRecvAddr)
             desc.add_options()("control_receive_address", boost::program_options::value<std::string>()->default_value(DEFAULT_CONTROL_RECEIVE_ADDRESS), "");
 
 
         // PORTS
-        if(looksForStateCommunicationPort)
+        if(onStatePort)
             desc.add_options()("state_port", boost::program_options::value<int>()->default_value(DEFAULT_STATE_PORT), "");
 
-        if(looksForYellowCommandCommunicationPort)
+        if(onYellowCmdPort)
             desc.add_options()("yellow_command_port", boost::program_options::value<int>()->default_value(DEFAULT_COMMAND_YELLOW_PORT), "");
 
-        if(looksForBlueCommandCommunicationPort)
+        if(onBlueCmdPort)
             desc.add_options()("blue_command_port", boost::program_options::value<int>()->default_value(DEFAULT_COMMAND_BLUE_PORT), "");
 
-        if(looksForYellowDebugCommunicationPort)
+        if(onYellowDebugPort)
             desc.add_options()("yellow_debug_port", boost::program_options::value<int>()->default_value(DEFAULT_DEBUG_YELLOW_PORT), "");
 
-        if(looksForBlueDebugCommunicationPort)
+        if(onBlueDebugPort)
             desc.add_options()("blue_debug_port", boost::program_options::value<int>()->default_value(DEFAULT_DEBUG_BLUE_PORT), "");
 
-        if(looksForControlCommunicationPort)
+        if(onCtrlPort)
             desc.add_options()("control_port", boost::program_options::value<int>()->default_value(DEFAULT_CONTROL_PORT), "");
 
 
         // Types
-        if(looksForTeamType)
+        if(onTeamType)
             desc.add_options()("team_type", boost::program_options::value<std::string>()->default_value("Yellow"), "");
 
-        if(looksForSideAttackType)
+        if(onSideAttackType)
             desc.add_options()("side_attack_type", boost::program_options::value<std::string>()->default_value("Left"), "");
 
-        if(looksForTimeExecutionType)
+        if(onTimeExecutionType)
             desc.add_options()("time_execution_type", boost::program_options::value<std::string>()->default_value("Normal"), "");
 
-        if(looksForEnvironmentType)
+        if(onEnvironmentType)
             desc.add_options()("environment_type", boost::program_options::value<std::string>()->default_value("Simulation"), "");
 
 
@@ -148,65 +148,65 @@ namespace vss {
     void StdinInterpreter::buildConfiguration(boost::program_options::variables_map vm) {
         // ADDRESS
         if(vm.count("state_send_address"))
-            stdinConfiguration.stateSenderAddress.setIp(vm["state_send_address"].as<std::string>());
+            stdinConfiguration.stateSendAddr.setIp(vm["state_send_address"].as<std::string>());
 
         if(vm.count("state_receive_address"))
-            stdinConfiguration.stateReceiverAddress.setIp(vm["state_receive_address"].as<std::string>());
+            stdinConfiguration.stateRecvAddr.setIp(vm["state_receive_address"].as<std::string>());
 
         if(vm.count("yellow_command_send_address"))
-            stdinConfiguration.commandYellowSenderAddress.setIp(vm["yellow_command_send_address"].as<std::string>());
+            stdinConfiguration.cmdYellowSendAddr.setIp(vm["yellow_command_send_address"].as<std::string>());
 
         if(vm.count("yellow_command_receive_address"))
-            stdinConfiguration.commandYellowReceiverAddress.setIp(vm["yellow_command_receive_address"].as<std::string>());
+            stdinConfiguration.cmdYellowRecvAddr.setIp(vm["yellow_command_receive_address"].as<std::string>());
 
         if(vm.count("yellow_debug_send_address"))
-            stdinConfiguration.debugYellowSenderAddress.setIp(vm["yellow_debug_send_address"].as<std::string>());
+            stdinConfiguration.debugYellowSendAddr.setIp(vm["yellow_debug_send_address"].as<std::string>());
 
         if(vm.count("yellow_debug_receive_address"))
-            stdinConfiguration.debugYellowReceiverAddress.setIp(vm["yellow_debug_receive_address"].as<std::string>());
+            stdinConfiguration.debugYellowRecvAddr.setIp(vm["yellow_debug_receive_address"].as<std::string>());
 
         if(vm.count("blue_command_send_address"))
-            stdinConfiguration.commandBlueSenderAddress.setIp(vm["blue_command_send_address"].as<std::string>());
+            stdinConfiguration.cmdBlueSendAddr.setIp(vm["blue_command_send_address"].as<std::string>());
 
         if(vm.count("blue_command_receive_address"))
-            stdinConfiguration.commandBlueReceiverAddress.setIp(vm["blue_command_receive_address"].as<std::string>());
+            stdinConfiguration.cmdBlueRecvAddr.setIp(vm["blue_command_receive_address"].as<std::string>());
 
         if(vm.count("blue_debug_send_address"))
-            stdinConfiguration.debugBlueSenderAddress.setIp(vm["blue_debug_send_address"].as<std::string>());
+            stdinConfiguration.debugBlueSendAddr.setIp(vm["blue_debug_send_address"].as<std::string>());
 
         if(vm.count("blue_debug_receive_address"))
-            stdinConfiguration.debugBlueReceiverAddress.setIp(vm["blue_debug_receive_address"].as<std::string>());
+            stdinConfiguration.debugBlueRecvAddr.setIp(vm["blue_debug_receive_address"].as<std::string>());
 
 
         // PORTS
         if(vm.count("state_port")){
-            stdinConfiguration.stateSenderAddress.setPort(vm["state_port"].as<int>());
-            stdinConfiguration.stateReceiverAddress.setPort(vm["state_port"].as<int>());
+            stdinConfiguration.stateSendAddr.setPort(vm["state_port"].as<int>());
+            stdinConfiguration.stateRecvAddr.setPort(vm["state_port"].as<int>());
         }
 
         if(vm.count("yellow_command_port")){
-            stdinConfiguration.commandYellowSenderAddress.setPort(vm["yellow_command_port"].as<int>());
-            stdinConfiguration.commandYellowReceiverAddress.setPort(vm["yellow_command_port"].as<int>());
+            stdinConfiguration.cmdYellowSendAddr.setPort(vm["yellow_command_port"].as<int>());
+            stdinConfiguration.cmdYellowRecvAddr.setPort(vm["yellow_command_port"].as<int>());
         }
 
         if(vm.count("blue_command_port")){
-            stdinConfiguration.commandBlueSenderAddress.setPort(vm["blue_command_port"].as<int>());
-            stdinConfiguration.commandBlueReceiverAddress.setPort(vm["blue_command_port"].as<int>());
+            stdinConfiguration.cmdBlueSendAddr.setPort(vm["blue_command_port"].as<int>());
+            stdinConfiguration.cmdBlueRecvAddr.setPort(vm["blue_command_port"].as<int>());
         }
 
         if(vm.count("yellow_debug_port")){
-            stdinConfiguration.debugYellowSenderAddress.setPort(vm["yellow_debug_port"].as<int>());
-            stdinConfiguration.debugYellowReceiverAddress.setPort(vm["yellow_debug_port"].as<int>());
+            stdinConfiguration.debugYellowSendAddr.setPort(vm["yellow_debug_port"].as<int>());
+            stdinConfiguration.debugYellowRecvAddr.setPort(vm["yellow_debug_port"].as<int>());
         }
 
         if(vm.count("blue_debug_port")){
-            stdinConfiguration.debugBlueSenderAddress.setPort(vm["blue_debug_port"].as<int>());
-            stdinConfiguration.debugBlueReceiverAddress.setPort(vm["blue_debug_port"].as<int>());
+            stdinConfiguration.debugBlueSendAddr.setPort(vm["blue_debug_port"].as<int>());
+            stdinConfiguration.debugBlueRecvAddr.setPort(vm["blue_debug_port"].as<int>());
         }
 
         if(vm.count("control_port")){
-            stdinConfiguration.controlSenderAddress.setPort(vm["control_port"].as<int>());
-            stdinConfiguration.controlReceiverAddress.setPort(vm["control_port"].as<int>());
+            stdinConfiguration.ctrlSendAddr.setPort(vm["control_port"].as<int>());
+            stdinConfiguration.ctrlRecvAddr.setPort(vm["control_port"].as<int>());
         }
 
 

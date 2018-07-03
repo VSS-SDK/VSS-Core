@@ -16,112 +16,112 @@ namespace vss {
     }
 
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onStateRecvAddr() {
-        stdinInterpreter->looksForStateReceiverAddress = true;
+        stdinInterpreter->onStateRecvAddr = true;
         return this;
     }
 
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onStateSendAddr() {
-        stdinInterpreter->looksForStateSenderAddress = true;
+        stdinInterpreter->onStateSendAddr = true;
         return this;
     }
 
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onYellowCmdRecvAddr() {
-        stdinInterpreter->looksForYellowCommandReceiverAddress = true;
+        stdinInterpreter->onYellowCmdRecvAddr = true;
         return this;
     }
 
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onYellowCmdSendAddr() {
-        stdinInterpreter->looksForYellowCommandSenderAddress = true;
+        stdinInterpreter->onYellowCmdSendAddr = true;
         return this;
     }
 
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onYellowDebugRecvAddr() {
-        stdinInterpreter->looksForYellowDebugReceiverAddress = true;
+        stdinInterpreter->onYellowDebugRecvAddr = true;
         return this;
     }
 
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onYellowDebugSendAddr() {
-        stdinInterpreter->looksForYellowDebugSenderAddress = true;
+        stdinInterpreter->onYellowDebugSendAddr = true;
         return this;
     }
 
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onBlueCmdRecvAddr() {
-        stdinInterpreter->looksForBlueCommandReceiverAddress = true;
+        stdinInterpreter->onBlueCmdRecvAddr = true;
         return this;
     }
 
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onBlueCmdSendAddr() {
-        stdinInterpreter->looksForBlueCommandSenderAddress = true;
+        stdinInterpreter->onBlueCmdSendAddr = true;
         return this;
     }
 
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onBlueDebugRecvAddr() {
-        stdinInterpreter->looksForBlueDebugReceiverAddress = true;
+        stdinInterpreter->onBlueDebugRecvAddr = true;
         return this;
     }
 
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onBlueDebugSendAddr() {
-        stdinInterpreter->looksForBlueDebugSenderAddress = true;
+        stdinInterpreter->onBlueDebugSendAddr = true;
         return this;
     }
 
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onCtrlRecvAddr() {
-        stdinInterpreter->looksForControlReceiverAddress = true;
+        stdinInterpreter->onCtrlRecvAddr = true;
         return this;
     }
 
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onCtrlSendAddr() {
-        stdinInterpreter->looksForControlSenderAddress = true;
+        stdinInterpreter->onCtrlSendAddr = true;
         return this;
     }
 
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onTeamType() {
-        stdinInterpreter->looksForTeamType = true;
+        stdinInterpreter->onTeamType = true;
         return this;
     }
 
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onYellowCmdPort() {
-        stdinInterpreter->looksForYellowCommandCommunicationPort = true;
+        stdinInterpreter->onYellowCmdPort = true;
         return this;
     }
 
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onYellowDebugPort() {
-        stdinInterpreter->looksForYellowDebugCommunicationPort = true;
+        stdinInterpreter->onYellowDebugPort = true;
         return this;
     }
 
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onBlueCmdPort() {
-        stdinInterpreter->looksForBlueCommandCommunicationPort = true;
+        stdinInterpreter->onBlueCmdPort = true;
         return this;
     }
 
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onBlueDebugPort() {
-        stdinInterpreter->looksForBlueDebugCommunicationPort = true;
+        stdinInterpreter->onBlueDebugPort = true;
         return this;
     }
 
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onCtrlPort() {
-        stdinInterpreter->looksForControlCommunicationPort = true;
+        stdinInterpreter->onCtrlPort = true;
         return this;
     }
 
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onSideAttackType() {
-        stdinInterpreter->looksForSideAttackType = true;
+        stdinInterpreter->onSideAttackType = true;
         return this;
     }
 
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onTimeExecutionType() {
-        stdinInterpreter->looksForTimeExecutionType = true;
+        stdinInterpreter->onTimeExecutionType = true;
         return this;
     }
 
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onStatePort() {
-        stdinInterpreter->looksForStateCommunicationPort = true;
+        stdinInterpreter->onStatePort = true;
         return this;
     }
 
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onEnvironmentType() {
-        stdinInterpreter->looksForEnvironmentType = true;
+        stdinInterpreter->onEnvironmentType = true;
         return this;
     }
 
