@@ -15,14 +15,17 @@ namespace vss {
 
         bool onStateRecvAddr;
         bool onStateSendAddr;
+
         bool onYellowCmdRecvAddr;
         bool onYellowCmdSendAddr;
         bool onYellowDebugRecvAddr;
         bool onYellowDebugSendAddr;
+
         bool onBlueCmdRecvAddr;
         bool onBlueCmdSendAddr;
         bool onBlueDebugRecvAddr;
         bool onBlueDebugSendAddr;
+
         bool onCtrlRecvAddr;
         bool onCtrlSendAddr;
 

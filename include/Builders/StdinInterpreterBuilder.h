@@ -40,7 +40,7 @@ namespace vss {
         IStdinInterpreterBuilder* onTimeExecutionType() override;
         IStdinInterpreterBuilder* onEnvironmentType() override;
 
-    private:
+    protected:
         IStdinInterpreter *stdinInterpreter;
     };
 

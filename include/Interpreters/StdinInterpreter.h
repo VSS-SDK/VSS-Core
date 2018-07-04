@@ -16,7 +16,7 @@ namespace vss {
 
         ExecutionConfig extractExecutionConfig(int argc, char **argv) override;
 
-    private:
+    protected:
         ExecutionConfig stdinConfiguration;
 
         boost::program_options::options_description buildOptions();

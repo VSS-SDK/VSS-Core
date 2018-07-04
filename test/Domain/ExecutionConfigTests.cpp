@@ -36,6 +36,8 @@ TEST(ExecutionConfig_Constructor, WhenDefaultBuilded_ShouldBeZero){
     EXPECT_EQ(executionConfig.ctrlSendAddr.getPort(), vss::DEFAULT_CONTROL_PORT);
     EXPECT_EQ(executionConfig.ctrlRecvAddr.getIp(), vss::DEFAULT_CONTROL_RECEIVE_ADDRESS);
     EXPECT_EQ(executionConfig.ctrlRecvAddr.getPort(), vss::DEFAULT_CONTROL_PORT);
+
+    EXPECT_EQ(executionConfig.isValidConfiguration, false);
 }
 
 TEST(ExecutionConfig_cout, WhenCoutShouldPrintRight){
