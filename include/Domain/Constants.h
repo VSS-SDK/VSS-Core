@@ -22,13 +22,15 @@ namespace vss {
     const int MAX_RANDOM_PATH_SIZE = 10;
     const int MAX_RANDOM_TEAM_SIZE = 11;
     const int MAX_RANDOM_WHEEL_COMMAND = 10;
+    const int MAX_RANDOM_IP_VALUE = 255;
+    const int MAX_RANDOM_PORT_VALUE = 20000;
 
     // Communication
     const int DEFAULT_STATE_PORT = 5555;
     const int DEFAULT_COMMAND_YELLOW_PORT = 5556;
     const int DEFAULT_COMMAND_BLUE_PORT = 5557;
     const int DEFAULT_DEBUG_YELLOW_PORT = 5558;
-    const int DEFAULT_DEBUG_BLUE_PORT = 5550;
+    const int DEFAULT_DEBUG_BLUE_PORT = 5559;
     const int DEFAULT_CONTROL_PORT = 5560;
     const std::string DEFAULT_STATE_SEND_ADDRESS = "tcp://*";
     const std::string DEFAULT_STATE_RECEIVE_ADDRESS = "tcp://localhost";

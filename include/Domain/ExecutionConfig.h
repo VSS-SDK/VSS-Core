@@ -17,14 +17,16 @@ namespace vss {
     public:
         ExecutionConfig();
 
-        friend std::ostream& operator<<(std::ostream& os, const ExecutionConfig& state);
+        friend std::ostream& operator<<(std::ostream& os, const ExecutionConfig& executionConfig);
 
         Address stateRecvAddr;
         Address stateSendAddr;
+
         Address cmdYellowRecvAddr;
         Address cmdYellowSendAddr;
         Address debugYellowRecvAddr;
         Address debugYellowSendAddr;
+
         Address cmdBlueRecvAddr;
         Address cmdBlueSendAddr;
         Address debugBlueRecvAddr;

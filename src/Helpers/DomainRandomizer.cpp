@@ -12,55 +12,56 @@
 #include <Domain/Debug.h>
 #include <Domain/Control.h>
 #include <protos/command.pb.h>
+#include <Domain/Address.h>
 
 namespace vss {
 
     namespace DomainRandomizer {
 
-        vss::Point createRandomPoint() {
+        Point createRandomPoint() {
             srand(static_cast<unsigned int>(time(NULL)));
 
-            vss::Point point;
+            Point point;
 
-            point.x = rand() % vss::MAX_COORDINATE_X;
-            point.y = rand() % vss::MAX_COORDINATE_Y;
+            point.x = rand() % MAX_COORDINATE_X;
+            point.y = rand() % MAX_COORDINATE_Y;
 
             return point;
         }
 
-        vss::Pose createRandomPose() {
+        Pose createRandomPose() {
             srand(static_cast<unsigned int>(time(NULL)));
 
-            vss::Pose pose;
+            Pose pose;
 
-            pose.x = rand() % vss::MAX_COORDINATE_X;
-            pose.y = rand() % vss::MAX_COORDINATE_Y;
-            pose.angle = rand() % vss::MAX_ANGLE_VALUE;
+            pose.x = rand() % MAX_COORDINATE_X;
+            pose.y = rand() % MAX_COORDINATE_Y;
+            pose.angle = rand() % MAX_ANGLE_VALUE;
 
             return pose;
         }
 
-        vss::Ball createRandomBall() {
+        Ball createRandomBall() {
             srand(static_cast<unsigned int>(time(NULL)));
 
-            vss::Ball ball;
+            Ball ball;
 
-            ball.x = rand() % vss::MAX_COORDINATE_X;
-            ball.y = rand() % vss::MAX_COORDINATE_Y;
+            ball.x = rand() % MAX_COORDINATE_X;
+            ball.y = rand() % MAX_COORDINATE_Y;
             ball.speedX = (rand() % MAX_RANDOM_VELOCITY) * (rand()%2 == 0 ? -1 : 1);
             ball.speedY = (rand() % MAX_RANDOM_VELOCITY) * (rand()%2 == 0 ? -1 : 1);
 
             return ball;
         }
 
-        vss::Robot createRandomRobot() {
+        Robot createRandomRobot() {
             srand(static_cast<unsigned int>(time(NULL)));
 
-            vss::Robot robot;
+            Robot robot;
 
-            robot.x = rand() % vss::MAX_COORDINATE_X;
-            robot.y = rand() % vss::MAX_COORDINATE_Y;
-            robot.angle = rand() % vss::MAX_ANGLE_VALUE;
+            robot.x = rand() % MAX_COORDINATE_X;
+            robot.y = rand() % MAX_COORDINATE_Y;
+            robot.angle = rand() % MAX_ANGLE_VALUE;
             robot.speedX = (rand() % MAX_RANDOM_VELOCITY) * (rand()%2 == 0 ? -1 : 1);
             robot.speedY = (rand() % MAX_RANDOM_VELOCITY) * (rand()%2 == 0 ? -1 : 1);
             robot.speedAngle = (rand() % MAX_RANDOM_VELOCITY) * (rand()%2 == 0 ? -1 : 1);
@@ -68,9 +69,9 @@ namespace vss {
             return robot;
         }
 
-        vss::Path createRandomPath() {
+        Path createRandomPath() {
             srand(static_cast<unsigned int>(time(NULL)));
-            vss::Path path;
+            Path path;
 
             auto size = static_cast<unsigned int>(rand() % MAX_RANDOM_PATH_SIZE);
 
@@ -81,9 +82,9 @@ namespace vss {
             return path;
         }
 
-        vss::State createRandomState(){
+        State createRandomState(){
             srand(static_cast<unsigned int>(time(NULL)));
-            vss::State state;
+            State state;
 
             auto sizeTeamYellow = static_cast<unsigned int>(rand() % MAX_RANDOM_TEAM_SIZE);
             auto sizeTeamBlue = static_cast<unsigned int>(rand() % MAX_RANDOM_TEAM_SIZE);
@@ -100,9 +101,9 @@ namespace vss {
             return state;
         }
 
-        vss::WheelsCommand createRandomWheelsCommand() {
+        WheelsCommand createRandomWheelsCommand() {
             srand(static_cast<unsigned int>(time(NULL)));
-            vss::WheelsCommand wheelsCommand;
+            WheelsCommand wheelsCommand;
 
             wheelsCommand.leftVel = (rand() % MAX_RANDOM_WHEEL_COMMAND) * (rand()%2 == 0 ? -1 : 1);
             wheelsCommand.rightVel = (rand() % MAX_RANDOM_WHEEL_COMMAND) * (rand()%2 == 0 ? -1 : 1);
@@ -110,9 +111,9 @@ namespace vss {
             return wheelsCommand;
         }
 
-        vss::Command createRandomCommand() {
+        Command createRandomCommand() {
             srand(static_cast<unsigned int>(time(NULL)));
-            vss::Command command;
+            Command command;
 
             auto size = static_cast<unsigned int>(rand() % MAX_RANDOM_TEAM_SIZE);
 
@@ -123,9 +124,9 @@ namespace vss {
             return command;
         }
 
-        vss::Debug createRandomDebug() {
+        Debug createRandomDebug() {
             srand(static_cast<unsigned int>(time(NULL)));
-            vss::Debug debug;
+            Debug debug;
 
             auto robotsAmount = static_cast<unsigned int>(rand() % MAX_RANDOM_TEAM_SIZE);
 
@@ -138,9 +139,9 @@ namespace vss {
             return debug;
         }
 
-        vss::Control createRandomControl() {
+        Control createRandomControl() {
             srand(static_cast<unsigned int>(time(NULL)));
-            vss::Control control;
+            Control control;
 
             control.paused = (rand()%2 == 0);
             control.ball = createRandomBall();
@@ -153,6 +154,15 @@ namespace vss {
             }
 
             return control;
+        }
+
+        Address createRandomAddress() {
+            srand(static_cast<unsigned int>(time(NULL)));
+            std::stringstream ss;
+
+            ss << (rand() % MAX_RANDOM_IP_VALUE) << "." << (rand() % MAX_RANDOM_IP_VALUE) << "." << (rand() % MAX_RANDOM_IP_VALUE) << "." << (rand() % MAX_RANDOM_IP_VALUE);
+
+            return Address(ss.str(), (rand() % MAX_RANDOM_PORT_VALUE));
         }
 
         vss_command::Robot_Command createRandomRobotCommand(){

@@ -25,7 +25,6 @@ namespace vss {
 
         std::string getFullAddress();
 
-    protected:
         std::string ip;
         int port;
     };
