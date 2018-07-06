@@ -737,3 +737,295 @@ TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnEnvironmentTypeAndNotSen
 
     EXPECT_FALSE(executionConfig.isValidConfiguration);
 }
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnStateSendAddrAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onStateSendAddr = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--state_send_addr"), const_cast<char *>("tcp://192.168.0.100"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.stateSendAddr.getIp(), "tcp://192.168.0.100");
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnStateRecvAddrAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onStateRecvAddr = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--state_recv_addr"), const_cast<char *>("tcp://192.168.0.100"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.stateRecvAddr.getIp(), "tcp://192.168.0.100");
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnYellowCmdSendAddrAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onYellowCmdSendAddr = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--yellow_cmd_send_addr"), const_cast<char *>("tcp://192.168.0.100"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.cmdYellowSendAddr.getIp(), "tcp://192.168.0.100");
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnYellowCmdRecvAddrAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onYellowCmdRecvAddr = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--yellow_cmd_recv_addr"), const_cast<char *>("tcp://192.168.0.100"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.cmdYellowRecvAddr.getIp(), "tcp://192.168.0.100");
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnYellowDebugSendAddrAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onYellowDebugSendAddr = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--yellow_debug_send_addr"), const_cast<char *>("tcp://192.168.0.100"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.debugYellowSendAddr.getIp(), "tcp://192.168.0.100");
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnYellowDebugRecvAddrAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onYellowDebugRecvAddr = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--yellow_debug_recv_addr"), const_cast<char *>("tcp://192.168.0.100"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.debugYellowRecvAddr.getIp(), "tcp://192.168.0.100");
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnBlueCmdSendAddrAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onBlueCmdSendAddr = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--blue_cmd_send_addr"), const_cast<char *>("tcp://192.168.0.100"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.cmdBlueSendAddr.getIp(), "tcp://192.168.0.100");
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnBlueCmdRecvAddrAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onBlueCmdRecvAddr = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--blue_cmd_recv_addr"), const_cast<char *>("tcp://192.168.0.100"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.cmdBlueRecvAddr.getIp(), "tcp://192.168.0.100");
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnBlueDebugSendAddrAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onBlueDebugSendAddr = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--blue_debug_send_addr"), const_cast<char *>("tcp://192.168.0.100"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.debugBlueSendAddr.getIp(), "tcp://192.168.0.100");
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnBlueDebugRecvAddrAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onBlueDebugRecvAddr = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--blue_debug_recv_addr"), const_cast<char *>("tcp://192.168.0.100"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.debugBlueRecvAddr.getIp(), "tcp://192.168.0.100");
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnCtrlSendAddrAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onCtrlSendAddr = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--ctrl_send_addr"), const_cast<char *>("tcp://192.168.0.100"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.ctrlSendAddr.getIp(), "tcp://192.168.0.100");
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnCtrlRecvAddrAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onCtrlRecvAddr = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--ctrl_recv_addr"), const_cast<char *>("tcp://192.168.0.100"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.ctrlRecvAddr.getIp(), "tcp://192.168.0.100");
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnStatePortAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onStatePort = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--state_port"), const_cast<char *>("666"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.stateSendAddr.getPort(), 666);
+    EXPECT_EQ(executionConfig.stateRecvAddr.getPort(), 666);
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnYellowCmdPortAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onYellowCmdPort = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--yellow_cmd_port"), const_cast<char *>("666"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.cmdYellowSendAddr.getPort(), 666);
+    EXPECT_EQ(executionConfig.cmdYellowRecvAddr.getPort(), 666);
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnBlueCmdPortAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onBlueCmdPort = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--blue_cmd_port"), const_cast<char *>("666"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.cmdBlueSendAddr.getPort(), 666);
+    EXPECT_EQ(executionConfig.cmdBlueRecvAddr.getPort(), 666);
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnYellowDebugPortAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onYellowDebugPort = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--yellow_debug_port"), const_cast<char *>("666"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.debugYellowSendAddr.getPort(), 666);
+    EXPECT_EQ(executionConfig.debugYellowRecvAddr.getPort(), 666);
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnBlueDebugPortAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onBlueDebugPort = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--blue_debug_port"), const_cast<char *>("666"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.debugBlueSendAddr.getPort(), 666);
+    EXPECT_EQ(executionConfig.debugBlueRecvAddr.getPort(), 666);
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnCtrlPortAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onCtrlPort = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--ctrl_port"), const_cast<char *>("666"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.ctrlSendAddr.getPort(), 666);
+    EXPECT_EQ(executionConfig.ctrlRecvAddr.getPort(), 666);
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnTeamTypeAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onTeamType = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--team_type"), const_cast<char *>("Blue"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.teamType, vss::TeamType::Blue);
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnSideAttackTypeAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onSideAttackType = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--side_attack_type"), const_cast<char *>("Right"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.sideAttackType, vss::SideAttackType::Right);
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnTimeExecutionTypeAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onTimeExecutionType = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--time_execution_type"), const_cast<char *>("Fast"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.timeExecutionType, vss::TimeExecutionType::Fast);
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnEnvironmentTypeAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onEnvironmentType = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--environment_type"), const_cast<char *>("Real"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.environmentType, vss::EnvironmentType::Real);
+}

@@ -180,6 +180,12 @@ namespace vss {
         if(vm.count("blue_debug_recv_addr"))
             stdinConfiguration.debugBlueRecvAddr.setIp(vm["blue_debug_recv_addr"].as<std::string>());
 
+        if(vm.count("ctrl_send_addr"))
+            stdinConfiguration.ctrlSendAddr.setIp(vm["ctrl_send_addr"].as<std::string>());
+
+        if(vm.count("ctrl_recv_addr"))
+            stdinConfiguration.ctrlRecvAddr.setIp(vm["ctrl_recv_addr"].as<std::string>());
+
 
         // PORTS
         if(vm.count("state_port")){
