@@ -35,10 +35,10 @@ namespace vss{
 
     void CommandReceiver::setupAddress(TeamType teamType) {
         if(teamType == TeamType::Yellow){
-            address = Address(DEFAULT_COMMAND_RECEIVE_ADDRESS, DEFAULT_COMMAND_YELLOW_PORT);
+            address = Address(DEFAULT_CMD_RECV_ADDR, DEFAULT_CMD_YELLOW_PORT);
             std::cout << "Yellow Team Receiver Connected: " << address.getFullAddress() << std::endl;
         }else{
-            address = Address(DEFAULT_COMMAND_RECEIVE_ADDRESS, DEFAULT_COMMAND_BLUE_PORT);
+            address = Address(DEFAULT_CMD_RECV_ADDR, DEFAULT_CMD_BLUE_PORT);
             std::cout << "Blue Team Receiver Connected: " << address.getFullAddress() << std::endl;
         }
     }

@@ -36,9 +36,9 @@ namespace vss {
 
     void DebugSender::setupAddress(TeamType teamType) {
         if(teamType == TeamType::Yellow){
-            address = Address(DEFAULT_DEBUG_SEND_ADDRESS, DEFAULT_DEBUG_YELLOW_PORT);
+            address = Address(DEFAULT_DEBUG_SEND_ADDR, DEFAULT_DEBUG_YELLOW_PORT);
         }else{
-            address = Address(DEFAULT_DEBUG_SEND_ADDRESS, DEFAULT_DEBUG_BLUE_PORT);
+            address = Address(DEFAULT_DEBUG_SEND_ADDR, DEFAULT_DEBUG_BLUE_PORT);
         }
     }
 

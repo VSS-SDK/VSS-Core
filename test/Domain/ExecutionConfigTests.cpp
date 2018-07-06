@@ -9,33 +9,33 @@
 TEST(ExecutionConfig_Constructor, WhenDefaultBuilded_ShouldBeZero){
     vss::ExecutionConfig executionConfig;
 
-    EXPECT_EQ(executionConfig.stateSendAddr.getIp(), vss::DEFAULT_STATE_SEND_ADDRESS);
+    EXPECT_EQ(executionConfig.stateSendAddr.getIp(), vss::DEFAULT_STATE_SEND_ADDR);
     EXPECT_EQ(executionConfig.stateSendAddr.getPort(), vss::DEFAULT_STATE_PORT);
-    EXPECT_EQ(executionConfig.stateRecvAddr.getIp(), vss::DEFAULT_STATE_RECEIVE_ADDRESS);
+    EXPECT_EQ(executionConfig.stateRecvAddr.getIp(), vss::DEFAULT_STATE_RECV_ADDR);
     EXPECT_EQ(executionConfig.stateRecvAddr.getPort(), vss::DEFAULT_STATE_PORT);
 
-    EXPECT_EQ(executionConfig.cmdYellowRecvAddr.getIp(), vss::DEFAULT_COMMAND_RECEIVE_ADDRESS);
-    EXPECT_EQ(executionConfig.cmdYellowRecvAddr.getPort(), vss::DEFAULT_COMMAND_YELLOW_PORT);
-    EXPECT_EQ(executionConfig.cmdYellowSendAddr.getIp(), vss::DEFAULT_COMMAND_SEND_ADDRESS);
-    EXPECT_EQ(executionConfig.cmdYellowSendAddr.getPort(), vss::DEFAULT_COMMAND_YELLOW_PORT);
-    EXPECT_EQ(executionConfig.debugYellowRecvAddr.getIp(), vss::DEFAULT_DEBUG_RECEIVE_ADDRESS);
+    EXPECT_EQ(executionConfig.cmdYellowRecvAddr.getIp(), vss::DEFAULT_CMD_RECV_ADDR);
+    EXPECT_EQ(executionConfig.cmdYellowRecvAddr.getPort(), vss::DEFAULT_CMD_YELLOW_PORT);
+    EXPECT_EQ(executionConfig.cmdYellowSendAddr.getIp(), vss::DEFAULT_CMD_SEND_ADDR);
+    EXPECT_EQ(executionConfig.cmdYellowSendAddr.getPort(), vss::DEFAULT_CMD_YELLOW_PORT);
+    EXPECT_EQ(executionConfig.debugYellowRecvAddr.getIp(), vss::DEFAULT_DEBUG_RECV_ADDR);
     EXPECT_EQ(executionConfig.debugYellowRecvAddr.getPort(), vss::DEFAULT_DEBUG_YELLOW_PORT);
-    EXPECT_EQ(executionConfig.debugYellowSendAddr.getIp(), vss::DEFAULT_DEBUG_SEND_ADDRESS);
+    EXPECT_EQ(executionConfig.debugYellowSendAddr.getIp(), vss::DEFAULT_DEBUG_SEND_ADDR);
     EXPECT_EQ(executionConfig.debugYellowSendAddr.getPort(), vss::DEFAULT_DEBUG_YELLOW_PORT);
 
-    EXPECT_EQ(executionConfig.cmdBlueRecvAddr.getIp(), vss::DEFAULT_COMMAND_RECEIVE_ADDRESS);
-    EXPECT_EQ(executionConfig.cmdBlueRecvAddr.getPort(), vss::DEFAULT_COMMAND_BLUE_PORT);
-    EXPECT_EQ(executionConfig.cmdBlueSendAddr.getIp(), vss::DEFAULT_COMMAND_SEND_ADDRESS);
-    EXPECT_EQ(executionConfig.cmdBlueSendAddr.getPort(), vss::DEFAULT_COMMAND_BLUE_PORT);
-    EXPECT_EQ(executionConfig.debugBlueRecvAddr.getIp(), vss::DEFAULT_DEBUG_RECEIVE_ADDRESS);
+    EXPECT_EQ(executionConfig.cmdBlueRecvAddr.getIp(), vss::DEFAULT_CMD_RECV_ADDR);
+    EXPECT_EQ(executionConfig.cmdBlueRecvAddr.getPort(), vss::DEFAULT_CMD_BLUE_PORT);
+    EXPECT_EQ(executionConfig.cmdBlueSendAddr.getIp(), vss::DEFAULT_CMD_SEND_ADDR);
+    EXPECT_EQ(executionConfig.cmdBlueSendAddr.getPort(), vss::DEFAULT_CMD_BLUE_PORT);
+    EXPECT_EQ(executionConfig.debugBlueRecvAddr.getIp(), vss::DEFAULT_DEBUG_RECV_ADDR);
     EXPECT_EQ(executionConfig.debugBlueRecvAddr.getPort(), vss::DEFAULT_DEBUG_BLUE_PORT);
-    EXPECT_EQ(executionConfig.debugBlueSendAddr.getIp(), vss::DEFAULT_DEBUG_SEND_ADDRESS);
+    EXPECT_EQ(executionConfig.debugBlueSendAddr.getIp(), vss::DEFAULT_DEBUG_SEND_ADDR);
     EXPECT_EQ(executionConfig.debugBlueSendAddr.getPort(), vss::DEFAULT_DEBUG_BLUE_PORT);
 
-    EXPECT_EQ(executionConfig.ctrlSendAddr.getIp(), vss::DEFAULT_CONTROL_SEND_ADDRESS);
-    EXPECT_EQ(executionConfig.ctrlSendAddr.getPort(), vss::DEFAULT_CONTROL_PORT);
-    EXPECT_EQ(executionConfig.ctrlRecvAddr.getIp(), vss::DEFAULT_CONTROL_RECEIVE_ADDRESS);
-    EXPECT_EQ(executionConfig.ctrlRecvAddr.getPort(), vss::DEFAULT_CONTROL_PORT);
+    EXPECT_EQ(executionConfig.ctrlSendAddr.getIp(), vss::DEFAULT_CTRL_SEND_ADDR);
+    EXPECT_EQ(executionConfig.ctrlSendAddr.getPort(), vss::DEFAULT_CTRL_PORT);
+    EXPECT_EQ(executionConfig.ctrlRecvAddr.getIp(), vss::DEFAULT_CTRL_RECV_ADDR);
+    EXPECT_EQ(executionConfig.ctrlRecvAddr.getPort(), vss::DEFAULT_CTRL_PORT);
 
     EXPECT_EQ(executionConfig.isValidConfiguration, false);
 }

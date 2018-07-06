@@ -8,21 +8,21 @@
 namespace vss {
 
     ExecutionConfig::ExecutionConfig() {
-        stateSendAddr = Address(DEFAULT_STATE_SEND_ADDRESS, DEFAULT_STATE_PORT);
-        stateRecvAddr = Address(DEFAULT_STATE_RECEIVE_ADDRESS, DEFAULT_STATE_PORT);
+        stateSendAddr = Address(DEFAULT_STATE_SEND_ADDR, DEFAULT_STATE_PORT);
+        stateRecvAddr = Address(DEFAULT_STATE_RECV_ADDR, DEFAULT_STATE_PORT);
 
-        cmdYellowSendAddr = Address(DEFAULT_COMMAND_SEND_ADDRESS, DEFAULT_COMMAND_YELLOW_PORT);
-        cmdYellowRecvAddr = Address(DEFAULT_COMMAND_RECEIVE_ADDRESS, DEFAULT_COMMAND_YELLOW_PORT);
-        debugYellowSendAddr = Address(DEFAULT_DEBUG_SEND_ADDRESS, DEFAULT_DEBUG_YELLOW_PORT);
-        debugYellowRecvAddr = Address(DEFAULT_DEBUG_RECEIVE_ADDRESS, DEFAULT_DEBUG_YELLOW_PORT);
+        cmdYellowSendAddr = Address(DEFAULT_CMD_SEND_ADDR, DEFAULT_CMD_YELLOW_PORT);
+        cmdYellowRecvAddr = Address(DEFAULT_CMD_RECV_ADDR, DEFAULT_CMD_YELLOW_PORT);
+        debugYellowSendAddr = Address(DEFAULT_DEBUG_SEND_ADDR, DEFAULT_DEBUG_YELLOW_PORT);
+        debugYellowRecvAddr = Address(DEFAULT_DEBUG_RECV_ADDR, DEFAULT_DEBUG_YELLOW_PORT);
 
-        cmdBlueSendAddr = Address(DEFAULT_COMMAND_SEND_ADDRESS, DEFAULT_COMMAND_BLUE_PORT);
-        cmdBlueRecvAddr = Address(DEFAULT_COMMAND_RECEIVE_ADDRESS, DEFAULT_COMMAND_BLUE_PORT);
-        debugBlueSendAddr = Address(DEFAULT_DEBUG_SEND_ADDRESS, DEFAULT_DEBUG_BLUE_PORT);
-        debugBlueRecvAddr = Address(DEFAULT_DEBUG_RECEIVE_ADDRESS, DEFAULT_DEBUG_BLUE_PORT);
+        cmdBlueSendAddr = Address(DEFAULT_CMD_SEND_ADDR, DEFAULT_CMD_BLUE_PORT);
+        cmdBlueRecvAddr = Address(DEFAULT_CMD_RECV_ADDR, DEFAULT_CMD_BLUE_PORT);
+        debugBlueSendAddr = Address(DEFAULT_DEBUG_SEND_ADDR, DEFAULT_DEBUG_BLUE_PORT);
+        debugBlueRecvAddr = Address(DEFAULT_DEBUG_RECV_ADDR, DEFAULT_DEBUG_BLUE_PORT);
 
-        ctrlSendAddr = Address(DEFAULT_CONTROL_SEND_ADDRESS, DEFAULT_CONTROL_PORT);
-        ctrlRecvAddr = Address(DEFAULT_CONTROL_RECEIVE_ADDRESS, DEFAULT_CONTROL_PORT);
+        ctrlSendAddr = Address(DEFAULT_CTRL_SEND_ADDR, DEFAULT_CTRL_PORT);
+        ctrlRecvAddr = Address(DEFAULT_CTRL_RECV_ADDR, DEFAULT_CTRL_PORT);
 
         teamType = TeamType::Yellow;
         sideAttackType = SideAttackType::Left;

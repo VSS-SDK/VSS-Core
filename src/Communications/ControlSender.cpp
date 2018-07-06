@@ -9,7 +9,7 @@
 namespace vss {
 
     ControlSender::ControlSender() {
-        address = Address(DEFAULT_CONTROL_SEND_ADDRESS, DEFAULT_CONTROL_PORT);
+        address = Address(DEFAULT_CTRL_SEND_ADDR, DEFAULT_CTRL_PORT);
     }
 
     void ControlSender::createSocket(Address address) {

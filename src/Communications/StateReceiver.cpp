@@ -14,7 +14,7 @@
 namespace vss{
 
     StateReceiver::StateReceiver(){
-        address = Address(DEFAULT_STATE_RECEIVE_ADDRESS, DEFAULT_STATE_PORT);
+        address = Address(DEFAULT_STATE_RECV_ADDR, DEFAULT_STATE_PORT);
     }
 
     void StateReceiver::createSocket(Address address) {

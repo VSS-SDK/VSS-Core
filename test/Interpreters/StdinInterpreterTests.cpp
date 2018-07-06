@@ -4,6 +4,7 @@
 
 #include <googletest/googletest/include/gtest/gtest.h>
 #include <Interpreters/StdinInterpreter.h>
+#include <Domain/Constants.h>
 
 TEST(StdinInterpreter_Constructor, WhenDefaultBuilded_ShouldBeFalse){
     vss::StdinInterpreter stdinInterpreter;
@@ -35,4 +36,440 @@ TEST(StdinInterpreter_Constructor, WhenDefaultBuilded_ShouldBeFalse){
     EXPECT_EQ(stdinInterpreter.onSideAttackType, false);
     EXPECT_EQ(stdinInterpreter.onTimeExecutionType, false);
     EXPECT_EQ(stdinInterpreter.onEnvironmentType, false);
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenAllConfigsAreFalseAnHelp_ShouldPrintOnlyHelp){
+    vss::StdinInterpreter stdinInterpreter;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnStateRecvAddrIsTrueAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onStateRecvAddr = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --state_recv_addr arg (=" << vss::DEFAULT_STATE_RECV_ADDR << ")" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnStateSendAddrIsTrueAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onStateSendAddr = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --state_send_addr arg (=" << vss::DEFAULT_STATE_SEND_ADDR << ")" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnYellowCmdRecvAddrIsTrueAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onYellowCmdRecvAddr = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --yellow_cmd_recv_addr arg (=" << vss::DEFAULT_CMD_RECV_ADDR << ")" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnYellowCmdSendAddrIsTrueAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onYellowCmdSendAddr = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --yellow_cmd_send_addr arg (=" << vss::DEFAULT_CMD_SEND_ADDR << ")" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnYellowDebugRecvAddrIsTrueAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onYellowDebugRecvAddr = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --yellow_debug_recv_addr arg (=" << vss::DEFAULT_CMD_RECV_ADDR << ")" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnYellowDebugSendAddrIsTrueAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onYellowDebugSendAddr = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --yellow_debug_send_addr arg (=" << vss::DEFAULT_CMD_SEND_ADDR << ")" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnBlueCmdRecvAddrIsTrueAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onBlueCmdRecvAddr = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --blue_cmd_recv_addr arg (=" << vss::DEFAULT_CMD_RECV_ADDR << ")" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnBlueCmdSendAddrIsTrueAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onBlueCmdSendAddr = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --blue_cmd_send_addr arg (=" << vss::DEFAULT_CMD_SEND_ADDR << ")" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnBlueDebugRecvAddrIsTrueAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onBlueDebugRecvAddr = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --blue_debug_recv_addr arg (=" << vss::DEFAULT_CMD_RECV_ADDR << ")" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnBlueDebugSendAddrIsTrueAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onBlueDebugSendAddr = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --blue_debug_send_addr arg (=" << vss::DEFAULT_CMD_SEND_ADDR << ")" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnCtrlRecvAddrIsTrueAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onCtrlRecvAddr = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --ctrl_recv_addr arg (=" << vss::DEFAULT_CTRL_RECV_ADDR << ")" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnCtrlSendAddrIsTrueAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onCtrlSendAddr = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --ctrl_send_addr arg (=" << vss::DEFAULT_CTRL_SEND_ADDR << ")" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnStatePortIsTrueAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onStatePort = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --state_port arg (=" << vss::DEFAULT_STATE_PORT << ")" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnYellowCmdPortAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onYellowCmdPort = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --yellow_cmd_port arg (=" << vss::DEFAULT_CMD_YELLOW_PORT << ")" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnYellowDebugPortAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onYellowDebugPort = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --yellow_debug_port arg (=" << vss::DEFAULT_DEBUG_YELLOW_PORT << ")" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnBlueCmdPortAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onBlueCmdPort = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --blue_cmd_port arg (=" << vss::DEFAULT_CMD_BLUE_PORT << ")" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnBlueDebugPortAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onBlueDebugPort = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --blue_debug_port arg (=" << vss::DEFAULT_DEBUG_BLUE_PORT << ")" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnCtrlPortAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onCtrlPort = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --ctrl_port arg (=" << vss::DEFAULT_CTRL_PORT << ")" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnTeamTypeAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onTeamType = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --team_type arg (=" << vss::toDescription(vss::DEFAULT_TEAM_TYPE) << ")" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnSideAttackTypeAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onSideAttackType = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --side_attack_type arg (=" << vss::toDescription(vss::DEFAULT_SIDE_ATTACK_TYPE) << ")" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnTimeExecutionTypeAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onTimeExecutionType = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --time_execution_type arg (=" << vss::toDescription(vss::DEFAULT_TIME_EXECUTION_TYPE) << ")" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnEnvironmentTypeAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onEnvironmentType = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --environment_type arg (=" << vss::toDescription(vss::DEFAULT_ENVIRONMENT_TYPE) << ")" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
 }

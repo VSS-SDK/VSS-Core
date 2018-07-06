@@ -9,7 +9,7 @@
 namespace vss{
 
     StateSender::StateSender(){
-        address = Address(DEFAULT_STATE_SEND_ADDRESS, DEFAULT_STATE_PORT);
+        address = Address(DEFAULT_STATE_SEND_ADDR, DEFAULT_STATE_PORT);
     }
 
     void StateSender::createSocket(Address address) {

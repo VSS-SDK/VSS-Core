@@ -9,7 +9,7 @@
 namespace vss {
 
     ControlReceiver::ControlReceiver() {
-        address = Address(DEFAULT_CONTROL_RECEIVE_ADDRESS, DEFAULT_CONTROL_PORT);
+        address = Address(DEFAULT_CTRL_RECV_ADDR, DEFAULT_CTRL_PORT);
     }
 
     void ControlReceiver::createSocket(Address address) {
