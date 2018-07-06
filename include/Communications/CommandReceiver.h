@@ -14,15 +14,17 @@ namespace vss {
     public:
         CommandReceiver();
 
+        void createSocket(Address) override;
         void createSocket(TeamType) override;
         Command receiveCommand() override;
 
     protected:
+        void setupAddress(TeamType);
+        void connect();
+
         zmq::context_t *context;
         zmq::socket_t *socket;
-        std::string address;
-
-        void SetupAddress(TeamType);
+        Address address;
     };
 
 }

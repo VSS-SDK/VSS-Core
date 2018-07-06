@@ -14,14 +14,16 @@ namespace vss {
     public:
         ControlSender();
 
+        void createSocket(Address) override;
         void createSocket() override;
         void sendControl(Control) override;
-        void setAddress(std::string) override;
 
     protected:
+        void connect();
+
         zmq::context_t *context;
         zmq::socket_t *socket;
-        std::string address;
+        Address address;
     };
 
 }

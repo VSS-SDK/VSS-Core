@@ -5,12 +5,17 @@
 #ifndef VSS_CORE_TEAMS_H
 #define VSS_CORE_TEAMS_H
 
+#include <string>
+
 namespace vss {
 
     enum TeamType{
         Yellow = 0,
         Blue = 1
     };
+
+    std::string toDescription(TeamType);
+    TeamType toTeamType(std::string);
 
 }
 

@@ -4,21 +4,21 @@
 
 #include <Communications/ControlReceiver.h>
 #include <Helpers/ControlMapper.h>
+#include <Domain/Constants.h>
 
 namespace vss {
 
     ControlReceiver::ControlReceiver() {
-        address = "tcp://localhost:5560";
+        address = Address(DEFAULT_CTRL_RECV_ADDR, DEFAULT_CTRL_PORT);
+    }
+
+    void ControlReceiver::createSocket(Address address) {
+        this->address = address;
+        connect();
     }
 
     void ControlReceiver::createSocket() {
-        context = new zmq::context_t( 1 );
-        socket = new zmq::socket_t( *context, ZMQ_SUB );
-
-        std::cout << "Connecting Client Multicast Receiver: " << address << std::endl;
-        socket->connect( address.c_str());
-
-        socket->setsockopt( ZMQ_SUBSCRIBE, "", 0 );
+        connect();
     }
 
     Control ControlReceiver::receiveControl() {
@@ -33,8 +33,13 @@ namespace vss {
         return vss::ControlMapper::userControlToControl(userControl);
     }
 
-    void ControlReceiver::setAddress(std::string address) {
-        this->address = address;
+    void ControlReceiver::connect() {
+        context = new zmq::context_t( 1 );
+        socket = new zmq::socket_t( *context, ZMQ_SUB );
+
+        std::cout << "Control Receiver Connected: " << address << std::endl;
+        socket->connect(address.getFullAddress().c_str());
+        socket->setsockopt( ZMQ_SUBSCRIBE, "", 0 );
     }
 
 }

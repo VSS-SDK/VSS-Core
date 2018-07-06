@@ -4,21 +4,22 @@
 
 #include <Communications/CommandReceiver.h>
 #include <Helpers/CommandMapper.h>
+#include <Domain/Constants.h>
 
 namespace vss{
 
     CommandReceiver::CommandReceiver() {
-        address = "";
+        address = Address();
+    }
+
+    void CommandReceiver::createSocket(Address address) {
+        this->address = address;
+        connect();
     }
 
     void CommandReceiver::createSocket(TeamType teamType) {
-        SetupAddress(teamType);
-
-        context = new zmq::context_t( 1 );
-        socket = new zmq::socket_t( *context, ZMQ_PAIR );
-
-        std::cout << "Connecting Server Receiver Team 1: " << address << std::endl;
-        socket->bind( address.c_str());
+        setupAddress(teamType);
+        connect();
     }
 
     Command CommandReceiver::receiveCommand() {
@@ -32,11 +33,20 @@ namespace vss{
         return CommandMapper::globalCommandsToCommand(globalCommands);
     }
 
-    void CommandReceiver::SetupAddress(TeamType teamType) {
-        if(teamType == TeamType::Yellow)
-            address = "tcp://*:5556";
-        else
-            address = "tcp://*:5557";
+    void CommandReceiver::setupAddress(TeamType teamType) {
+        if(teamType == TeamType::Yellow){
+            address = Address(DEFAULT_CMD_RECV_ADDR, DEFAULT_CMD_YELLOW_PORT);
+            std::cout << "Yellow Team Receiver Connected: " << address.getFullAddress() << std::endl;
+        }else{
+            address = Address(DEFAULT_CMD_RECV_ADDR, DEFAULT_CMD_BLUE_PORT);
+            std::cout << "Blue Team Receiver Connected: " << address.getFullAddress() << std::endl;
+        }
+    }
+
+    void CommandReceiver::connect() {
+        context = new zmq::context_t( 1 );
+        socket = new zmq::socket_t( *context, ZMQ_PAIR );
+        socket->bind(address.getFullAddress().c_str());
     }
 
 }

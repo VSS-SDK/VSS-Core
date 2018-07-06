@@ -4,19 +4,21 @@
 
 #include <Communications/ControlSender.h>
 #include <Helpers/ControlMapper.h>
+#include <Domain/Constants.h>
 
 namespace vss {
 
     ControlSender::ControlSender() {
-        address = "tcp://*:5560";
+        address = Address(DEFAULT_CTRL_SEND_ADDR, DEFAULT_CTRL_PORT);
+    }
+
+    void ControlSender::createSocket(Address address) {
+        this->address = address;
+        connect();
     }
 
     void ControlSender::createSocket() {
-        context = new zmq::context_t( 1 );
-        socket = new zmq::socket_t( *context, ZMQ_PUB );
-
-        std::cout << "Connecting Server Multicast Sender: " << address << std::endl;
-        socket->bind( address.c_str());
+        connect();
     }
 
     void ControlSender::sendControl(Control control) {
@@ -30,8 +32,12 @@ namespace vss {
         socket->send( request );
     }
 
-    void ControlSender::setAddress(std::string address) {
-        this->address = address;
+    void ControlSender::connect() {
+        context = new zmq::context_t( 1 );
+        socket = new zmq::socket_t( *context, ZMQ_PUB );
+
+        std::cout << "Control Sender Connected: " << address << std::endl;
+        socket->bind(address.getFullAddress().c_str());
     }
 
 }

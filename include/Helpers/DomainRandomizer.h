@@ -13,22 +13,24 @@
 #include <Domain/Path.h>
 #include <Domain/Debug.h>
 #include <Domain/Control.h>
+#include <Domain/Address.h>
 #include <protos/command.pb.h>
 
 namespace vss {
 
     namespace DomainRandomizer {
 
-        vss::Point createRandomPoint();
-        vss::Pose createRandomPose();
-        vss::Ball createRandomBall();
-        vss::Robot createRandomRobot();
-        vss::Path createRandomPath();
-        vss::State createRandomState();
-        vss::WheelsCommand createRandomWheelsCommand();
-        vss::Command createRandomCommand();
-        vss::Debug createRandomDebug();
-        vss::Control createRandomControl();
+        Point createRandomPoint();
+        Pose createRandomPose();
+        Ball createRandomBall();
+        Robot createRandomRobot();
+        Path createRandomPath();
+        State createRandomState();
+        WheelsCommand createRandomWheelsCommand();
+        Command createRandomCommand();
+        Debug createRandomDebug();
+        Control createRandomControl();
+        Address createRandomAddress();
 
         vss_command::Robot_Command createRandomRobotCommand();
         vss_command::Global_Commands createRandomGlobalCommands();

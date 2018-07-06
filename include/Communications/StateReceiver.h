@@ -18,15 +18,16 @@ namespace vss{
     public:
         StateReceiver();
 
+        void createSocket(Address) override;
         void createSocket() override;
-        void setAddress(std::string) override;
         State receiveState(FieldTransformationType) override;
 
     protected:
+        void connect();
+
         zmq::context_t *context;
         zmq::socket_t *socket;
-
-        std::string address;
+        Address address;
     };
 
 }

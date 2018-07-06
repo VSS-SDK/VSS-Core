@@ -3,20 +3,22 @@
 //
 
 #include <Helpers/StateMapper.h>
+#include <Domain/Constants.h>
 #include "Communications/StateSender.h"
 
 namespace vss{
 
     StateSender::StateSender(){
-        address = "tcp://*:5555";
+        address = Address(DEFAULT_STATE_SEND_ADDR, DEFAULT_STATE_PORT);
+    }
+
+    void StateSender::createSocket(Address address) {
+        this->address = address;
+        connect();
     }
 
     void StateSender::createSocket(){
-        context = new zmq::context_t( 1 );
-        socket = new zmq::socket_t( *context, ZMQ_PUB );
-
-        std::cout << "Connecting Server Multicast Sender: " << address << std::endl;
-        socket->bind( address.c_str());
+        connect();
     }
 
     void StateSender::sendState(State state){
@@ -32,8 +34,12 @@ namespace vss{
         socket->send( request );
     }
 
-    void StateSender::setAddress(std::string address) {
-        this->address = address;
+    void StateSender::connect() {
+        context = new zmq::context_t( 1 );
+        socket = new zmq::socket_t( *context, ZMQ_PUB );
+
+        std::cout << "State Sender Connected: " << address << std::endl;
+        socket->bind(address.getFullAddress().c_str());
     }
 
 }

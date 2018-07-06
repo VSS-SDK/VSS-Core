@@ -4,22 +4,23 @@
 
 #include <iostream>
 #include <Helpers/DebugMapper.h>
+#include <Domain/Constants.h>
 #include "Communications/DebugSender.h"
 
 namespace vss {
 
     DebugSender::DebugSender() {
-        address = "";
+        address = Address();
+    }
+
+    void DebugSender::createSocket(Address address) {
+        this->address = address;
+        connect();
     }
 
     void DebugSender::createSocket(TeamType teamType) {
-        SetupAddress(teamType);
-
-        context = new zmq::context_t( 1 );
-        socket = new zmq::socket_t( *context, ZMQ_PAIR );
-
-        std::cout << "Connecting Server Sender Debug Team 1: " << address << "(yellow team)" << std::endl << std::endl;
-        socket->connect( address.c_str());
+        setupAddress(teamType);
+        connect();
     }
 
     void DebugSender::sendDebug(Debug debug) {
@@ -33,11 +34,20 @@ namespace vss {
         socket->send( request );
     }
 
-    void DebugSender::SetupAddress(TeamType teamType) {
-        if(teamType == TeamType::Yellow)
-            address = "tcp://localhost:5558";
-        else
-            address = "tcp://localhost:5559";
+    void DebugSender::setupAddress(TeamType teamType) {
+        if(teamType == TeamType::Yellow){
+            address = Address(DEFAULT_DEBUG_SEND_ADDR, DEFAULT_DEBUG_YELLOW_PORT);
+        }else{
+            address = Address(DEFAULT_DEBUG_SEND_ADDR, DEFAULT_DEBUG_BLUE_PORT);
+        }
+    }
+
+    void DebugSender::connect() {
+        context = new zmq::context_t( 1 );
+        socket = new zmq::socket_t( *context, ZMQ_PAIR );
+
+        std::cout << "Debug Sender Connected: " << address << std::endl;
+        socket->connect(address.getFullAddress().c_str());
     }
 
 }
