@@ -28,6 +28,8 @@ namespace vss {
         sideAttackType = SideAttackType::Left;
         timeExecutionType = TimeExecutionType::Normal;
         environmentType = EnvironmentType::Simulation;
+
+        isValidConfiguration = false;
     }
 
     std::ostream &operator<<(std::ostream &os, const ExecutionConfig &executionConfig) {
