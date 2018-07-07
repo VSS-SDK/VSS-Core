@@ -4,7 +4,7 @@
 [![Slack](https://img.shields.io/badge/Slack-Channel-551a8b.svg)][slack]
 
 O VSS-Core é uma biblioteca open-source que faz parte do VSS-SDK.
-Contém interfaces de comunicação entre os projetos do SDK, modelos que representam o domínio do problema de futebol de robôs e métodos uteis. Os pacotes traferam utilizando ZeroMQ e são serializados utilizando Protobuf.
+Contém interfaces de comunicação entre os projetos do SDK, modelos que representam o domínio do problema de futebol de robôs e métodos uteis. Os pacotes trafegam utilizando ZeroMQ e são serializados utilizando Protobuf.
 
 Documentação [Wiki][wiki].
 
