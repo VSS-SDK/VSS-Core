@@ -17,14 +17,17 @@ namespace vss {
 
         IStdinInterpreterBuilder* onStateRecvAddr() override;
         IStdinInterpreterBuilder* onStateSendAddr() override;
+
         IStdinInterpreterBuilder* onYellowCmdRecvAddr() override;
         IStdinInterpreterBuilder* onYellowCmdSendAddr() override;
         IStdinInterpreterBuilder* onYellowDebugRecvAddr() override;
         IStdinInterpreterBuilder* onYellowDebugSendAddr() override;
+
         IStdinInterpreterBuilder* onBlueCmdRecvAddr() override;
         IStdinInterpreterBuilder* onBlueCmdSendAddr() override;
         IStdinInterpreterBuilder* onBlueDebugRecvAddr() override;
         IStdinInterpreterBuilder* onBlueDebugSendAddr() override;
+
         IStdinInterpreterBuilder* onCtrlRecvAddr() override;
         IStdinInterpreterBuilder* onCtrlSendAddr() override;
 
@@ -39,6 +42,10 @@ namespace vss {
         IStdinInterpreterBuilder* onSideAttackType() override;
         IStdinInterpreterBuilder* onTimeExecutionType() override;
         IStdinInterpreterBuilder* onEnvironmentType() override;
+        IStdinInterpreterBuilder* onDurationType() override;
+        IStdinInterpreterBuilder* onMatchFinishType() override;
+
+        IStdinInterpreterBuilder* onTeamInitialPositionPath() override;
 
     protected:
         IStdinInterpreter *stdinInterpreter;

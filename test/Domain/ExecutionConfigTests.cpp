@@ -67,6 +67,10 @@ TEST(ExecutionConfig_cout, WhenCoutShouldPrintRight){
     mock_output << "sideAttackType: " << toDescription(executionConfig.sideAttackType) << std::endl;
     mock_output << "timeExecutionType: " << toDescription(executionConfig.timeExecutionType) << std::endl;
     mock_output << "environmentType: " << toDescription(executionConfig.environmentType) << std::endl;
+    mock_output << "durationType: " << toDescription(executionConfig.durationType) << std::endl;
+    mock_output << "matchFinishType: " << toDescription(executionConfig.matchFinishType) << std::endl;
+
+    mock_output << "teamInitialPositionPath: " << executionConfig.teamInitialPositionPath << std::endl;
 
     EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
 }

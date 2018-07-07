@@ -24,10 +24,13 @@ namespace vss {
         ctrlSendAddr = Address(DEFAULT_CTRL_SEND_ADDR, DEFAULT_CTRL_PORT);
         ctrlRecvAddr = Address(DEFAULT_CTRL_RECV_ADDR, DEFAULT_CTRL_PORT);
 
-        teamType = TeamType::Yellow;
-        sideAttackType = SideAttackType::Left;
-        timeExecutionType = TimeExecutionType::Normal;
-        environmentType = EnvironmentType::Simulation;
+        teamType = DEFAULT_TEAM_TYPE;
+        sideAttackType = DEFAULT_SIDE_ATTACK_TYPE;
+        timeExecutionType = DEFAULT_TIME_EXECUTION_TYPE;
+        environmentType = DEFAULT_ENVIRONMENT_TYPE;
+        durationType = DEFAULT_DURATION_TYPE;
+        matchFinishType = DEFAULT_MATCH_FINISH_TYPE;
+        teamInitialPositionPath = "";
 
         isValidConfiguration = false;
     }
@@ -53,6 +56,10 @@ namespace vss {
         os << "sideAttackType: " << toDescription(executionConfig.sideAttackType) << std::endl;
         os << "timeExecutionType: " << toDescription(executionConfig.timeExecutionType) << std::endl;
         os << "environmentType: " << toDescription(executionConfig.environmentType) << std::endl;
+        os << "durationType: " << toDescription(executionConfig.durationType) << std::endl;
+        os << "matchFinishType: " << toDescription(executionConfig.matchFinishType) << std::endl;
+
+        os << "teamInitialPositionPath: " << executionConfig.teamInitialPositionPath << std::endl;
 
         return os;
     }

@@ -9,33 +9,37 @@
 TEST(StdinInterpreter_Constructor, WhenDefaultBuilded_ShouldBeFalse){
     vss::StdinInterpreter stdinInterpreter;
 
-    EXPECT_EQ(stdinInterpreter.onStateRecvAddr, false);
-    EXPECT_EQ(stdinInterpreter.onStateSendAddr, false);
+    EXPECT_FALSE(stdinInterpreter.onStateRecvAddr);
+    EXPECT_FALSE(stdinInterpreter.onStateSendAddr);
 
-    EXPECT_EQ(stdinInterpreter.onYellowCmdRecvAddr, false);
-    EXPECT_EQ(stdinInterpreter.onYellowCmdSendAddr, false);
-    EXPECT_EQ(stdinInterpreter.onYellowDebugRecvAddr, false);
-    EXPECT_EQ(stdinInterpreter.onYellowDebugSendAddr, false);
+    EXPECT_FALSE(stdinInterpreter.onYellowCmdRecvAddr);
+    EXPECT_FALSE(stdinInterpreter.onYellowCmdSendAddr);
+    EXPECT_FALSE(stdinInterpreter.onYellowDebugRecvAddr);
+    EXPECT_FALSE(stdinInterpreter.onYellowDebugSendAddr);
 
-    EXPECT_EQ(stdinInterpreter.onBlueCmdRecvAddr, false);
-    EXPECT_EQ(stdinInterpreter.onBlueCmdSendAddr, false);
-    EXPECT_EQ(stdinInterpreter.onBlueDebugRecvAddr, false);
-    EXPECT_EQ(stdinInterpreter.onBlueDebugSendAddr, false);
+    EXPECT_FALSE(stdinInterpreter.onBlueCmdRecvAddr);
+    EXPECT_FALSE(stdinInterpreter.onBlueCmdSendAddr);
+    EXPECT_FALSE(stdinInterpreter.onBlueDebugRecvAddr);
+    EXPECT_FALSE(stdinInterpreter.onBlueDebugSendAddr);
 
-    EXPECT_EQ(stdinInterpreter.onCtrlRecvAddr, false);
-    EXPECT_EQ(stdinInterpreter.onCtrlSendAddr, false);
+    EXPECT_FALSE(stdinInterpreter.onCtrlRecvAddr);
+    EXPECT_FALSE(stdinInterpreter.onCtrlSendAddr);
 
-    EXPECT_EQ(stdinInterpreter.onStatePort, false);
-    EXPECT_EQ(stdinInterpreter.onYellowCmdPort, false);
-    EXPECT_EQ(stdinInterpreter.onYellowDebugPort, false);
-    EXPECT_EQ(stdinInterpreter.onBlueCmdPort, false);
-    EXPECT_EQ(stdinInterpreter.onBlueDebugPort, false);
-    EXPECT_EQ(stdinInterpreter.onCtrlPort, false);
+    EXPECT_FALSE(stdinInterpreter.onStatePort);
+    EXPECT_FALSE(stdinInterpreter.onYellowCmdPort);
+    EXPECT_FALSE(stdinInterpreter.onYellowDebugPort);
+    EXPECT_FALSE(stdinInterpreter.onBlueCmdPort);
+    EXPECT_FALSE(stdinInterpreter.onBlueDebugPort);
+    EXPECT_FALSE(stdinInterpreter.onCtrlPort);
 
-    EXPECT_EQ(stdinInterpreter.onTeamType, false);
-    EXPECT_EQ(stdinInterpreter.onSideAttackType, false);
-    EXPECT_EQ(stdinInterpreter.onTimeExecutionType, false);
-    EXPECT_EQ(stdinInterpreter.onEnvironmentType, false);
+    EXPECT_FALSE(stdinInterpreter.onTeamType);
+    EXPECT_FALSE(stdinInterpreter.onSideAttackType);
+    EXPECT_FALSE(stdinInterpreter.onTimeExecutionType);
+    EXPECT_FALSE(stdinInterpreter.onEnvironmentType);
+    EXPECT_FALSE(stdinInterpreter.onDurationType);
+    EXPECT_FALSE(stdinInterpreter.onMatchFinishType);
+
+    EXPECT_FALSE(stdinInterpreter.onTeamInitialPositionPath);
 }
 
 TEST(StdinInterpreter_extractExecutionConfig, WhenAllConfigsAreFalseAnHelp_ShouldPrintOnlyHelp){
@@ -474,6 +478,63 @@ TEST(StdinInterpreter_extractExecutionConfig, WhenOnEnvironmentTypeAnHelp_Should
     EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
 }
 
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnDurationTypeAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onDurationType = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --duration_type arg (=" << vss::toDescription(vss::DEFAULT_DURATION_TYPE) << ")" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnMatchFinishTypeAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onMatchFinishType = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --match_finish_type arg (=" << vss::toDescription(vss::DEFAULT_MATCH_FINISH_TYPE) << ")" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenOnTeamInitialPositionPathAnHelp_ShouldPrintOption){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onTeamInitialPositionPath = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--help"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    testing::internal::CaptureStdout();
+    stdinInterpreter.extractExecutionConfig(argc, argv);
+    std::string output = testing::internal::GetCapturedStdout();
+
+    std::stringstream mock_output;
+    mock_output << "Options:" << std::endl;
+    mock_output << "  -h [ --help ] " << std::endl;
+    mock_output << "  --initial_position_path arg (=file.csv)" << std::endl << std::endl;
+
+    EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
+}
+
 TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnStateSendAddrAndNotSendValue_ShouldBreak){
     vss::StdinInterpreter stdinInterpreter;
     stdinInterpreter.onStateSendAddr = true;
@@ -731,6 +792,42 @@ TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnEnvironmentTypeAndNotSen
     stdinInterpreter.onEnvironmentType = true;
 
     char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--environment_type"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_FALSE(executionConfig.isValidConfiguration);
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnDurationTypeAndNotSendValue_ShouldBreak){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onDurationType = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--duration_type"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_FALSE(executionConfig.isValidConfiguration);
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnMatchFinishTypeAndNotSendValue_ShouldBreak){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onMatchFinishType = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--match_finish_type"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_FALSE(executionConfig.isValidConfiguration);
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnTeamInitialPositionPathAndNotSendValue_ShouldBreak){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onTeamInitialPositionPath = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--initial_position_path"), NULL};
     int argc = sizeof(argv) / sizeof(char*) - 1;
 
     auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
@@ -1028,4 +1125,44 @@ TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnEnvironmentTypeAndSendVa
 
     EXPECT_TRUE(executionConfig.isValidConfiguration);
     EXPECT_EQ(executionConfig.environmentType, vss::EnvironmentType::Real);
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnDurationTypeAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onDurationType = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--duration_type"), const_cast<char *>("UnlimitedMinutes"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.durationType, vss::DurationType::UnlimitedMinutes);
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnMatchFinishTypeAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onMatchFinishType = true;
+
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--match_finish_type"), const_cast<char *>("TimeUp"), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.matchFinishType, vss::MatchFinishType::TimeUp);
+}
+
+TEST(StdinInterpreter_extractExecutionConfig, WhenSendOnTeamInitialPositionPathAndSendValue_ShouldApply){
+    vss::StdinInterpreter stdinInterpreter;
+    stdinInterpreter.onTeamInitialPositionPath = true;
+
+    std::string file = "new_file.csv";
+    char *argv[] = {const_cast<char *>("vss"), const_cast<char *>("--initial_position_path"), const_cast<char *>(file.c_str()), NULL};
+    int argc = sizeof(argv) / sizeof(char*) - 1;
+
+    auto executionConfig = stdinInterpreter.extractExecutionConfig(argc, argv);
+
+    EXPECT_TRUE(executionConfig.isValidConfiguration);
+    EXPECT_EQ(executionConfig.teamInitialPositionPath, file);
 }

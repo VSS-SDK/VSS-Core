@@ -37,6 +37,10 @@ namespace vss {
         virtual IStdinInterpreterBuilder* onSideAttackType() = 0;
         virtual IStdinInterpreterBuilder* onTimeExecutionType() = 0;
         virtual IStdinInterpreterBuilder* onEnvironmentType() = 0;
+        virtual IStdinInterpreterBuilder* onDurationType() = 0;
+        virtual IStdinInterpreterBuilder* onMatchFinishType() = 0;
+
+        virtual IStdinInterpreterBuilder* onTeamInitialPositionPath() = 0;
     };
 
 };

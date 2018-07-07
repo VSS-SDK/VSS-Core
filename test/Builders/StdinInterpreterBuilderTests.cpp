@@ -9,33 +9,37 @@ TEST(StdinInterpreterBuilder_buildInterpreter, ShouldReturnAllFalse){
     vss::StdinInterpreterBuilder stdinInterpreterBuilder;
 
     auto stdinInterpreter = stdinInterpreterBuilder.buildInterpreter();
-    EXPECT_EQ(stdinInterpreter->onStateRecvAddr, false);
-    EXPECT_EQ(stdinInterpreter->onStateSendAddr, false);
+    EXPECT_FALSE(stdinInterpreter->onStateRecvAddr);
+    EXPECT_FALSE(stdinInterpreter->onStateSendAddr);
 
-    EXPECT_EQ(stdinInterpreter->onYellowCmdRecvAddr, false);
-    EXPECT_EQ(stdinInterpreter->onYellowCmdSendAddr, false);
-    EXPECT_EQ(stdinInterpreter->onYellowDebugRecvAddr, false);
-    EXPECT_EQ(stdinInterpreter->onYellowDebugSendAddr, false);
+    EXPECT_FALSE(stdinInterpreter->onYellowCmdRecvAddr);
+    EXPECT_FALSE(stdinInterpreter->onYellowCmdSendAddr);
+    EXPECT_FALSE(stdinInterpreter->onYellowDebugRecvAddr);
+    EXPECT_FALSE(stdinInterpreter->onYellowDebugSendAddr);
 
-    EXPECT_EQ(stdinInterpreter->onBlueCmdRecvAddr, false);
-    EXPECT_EQ(stdinInterpreter->onBlueCmdSendAddr, false);
-    EXPECT_EQ(stdinInterpreter->onBlueDebugRecvAddr, false);
-    EXPECT_EQ(stdinInterpreter->onBlueDebugSendAddr, false);
+    EXPECT_FALSE(stdinInterpreter->onBlueCmdRecvAddr);
+    EXPECT_FALSE(stdinInterpreter->onBlueCmdSendAddr);
+    EXPECT_FALSE(stdinInterpreter->onBlueDebugRecvAddr);
+    EXPECT_FALSE(stdinInterpreter->onBlueDebugSendAddr);
 
-    EXPECT_EQ(stdinInterpreter->onCtrlRecvAddr, false);
-    EXPECT_EQ(stdinInterpreter->onCtrlSendAddr, false);
+    EXPECT_FALSE(stdinInterpreter->onCtrlRecvAddr);
+    EXPECT_FALSE(stdinInterpreter->onCtrlSendAddr);
 
-    EXPECT_EQ(stdinInterpreter->onStatePort, false);
-    EXPECT_EQ(stdinInterpreter->onYellowCmdPort, false);
-    EXPECT_EQ(stdinInterpreter->onYellowDebugPort, false);
-    EXPECT_EQ(stdinInterpreter->onBlueCmdPort, false);
-    EXPECT_EQ(stdinInterpreter->onBlueDebugPort, false);
-    EXPECT_EQ(stdinInterpreter->onCtrlPort, false);
+    EXPECT_FALSE(stdinInterpreter->onStatePort);
+    EXPECT_FALSE(stdinInterpreter->onYellowCmdPort);
+    EXPECT_FALSE(stdinInterpreter->onYellowDebugPort);
+    EXPECT_FALSE(stdinInterpreter->onBlueCmdPort);
+    EXPECT_FALSE(stdinInterpreter->onBlueDebugPort);
+    EXPECT_FALSE(stdinInterpreter->onCtrlPort);
 
-    EXPECT_EQ(stdinInterpreter->onTeamType, false);
-    EXPECT_EQ(stdinInterpreter->onSideAttackType, false);
-    EXPECT_EQ(stdinInterpreter->onTimeExecutionType, false);
-    EXPECT_EQ(stdinInterpreter->onEnvironmentType, false);
+    EXPECT_FALSE(stdinInterpreter->onTeamType);
+    EXPECT_FALSE(stdinInterpreter->onSideAttackType);
+    EXPECT_FALSE(stdinInterpreter->onTimeExecutionType);
+    EXPECT_FALSE(stdinInterpreter->onEnvironmentType);
+    EXPECT_FALSE(stdinInterpreter->onDurationType);
+    EXPECT_FALSE(stdinInterpreter->onMatchFinishType);
+
+    EXPECT_FALSE(stdinInterpreter->onTeamInitialPositionPath);
 }
 
 TEST(StdinInterpreterBuilder_onStateRecvAddr, ShouldReturnThisAndSetValue){
@@ -158,16 +162,6 @@ TEST(StdinInterpreterBuilder_onCtrlSendAddr, ShouldReturnThisAndSetValue){
     EXPECT_EQ(configured->onCtrlSendAddr, true);
 }
 
-TEST(StdinInterpreterBuilder_onTeamType, ShouldReturnThisAndSetValue){
-    vss::StdinInterpreterBuilder stdinInterpreterBuilder;
-
-    auto raw = stdinInterpreterBuilder.buildInterpreter();
-    EXPECT_EQ(raw->onTeamType, false);
-
-    auto configured = stdinInterpreterBuilder.onTeamType()->buildInterpreter();
-    EXPECT_EQ(configured->onTeamType, true);
-}
-
 TEST(StdinInterpreterBuilder_onYellowCmdPort, ShouldReturnThisAndSetValue){
     vss::StdinInterpreterBuilder stdinInterpreterBuilder;
 
@@ -218,6 +212,16 @@ TEST(StdinInterpreterBuilder_onCtrlPort, ShouldReturnThisAndSetValue){
     EXPECT_EQ(configured->onCtrlPort, true);
 }
 
+TEST(StdinInterpreterBuilder_onTeamType, ShouldReturnThisAndSetValue){
+    vss::StdinInterpreterBuilder stdinInterpreterBuilder;
+
+    auto raw = stdinInterpreterBuilder.buildInterpreter();
+    EXPECT_EQ(raw->onTeamType, false);
+
+    auto configured = stdinInterpreterBuilder.onTeamType()->buildInterpreter();
+    EXPECT_EQ(configured->onTeamType, true);
+}
+
 TEST(StdinInterpreterBuilder_onSideAttackType, ShouldReturnThisAndSetValue){
     vss::StdinInterpreterBuilder stdinInterpreterBuilder;
 
@@ -236,6 +240,36 @@ TEST(StdinInterpreterBuilder_onTimeExecutionType, ShouldReturnThisAndSetValue){
 
     auto configured = stdinInterpreterBuilder.onTimeExecutionType()->buildInterpreter();
     EXPECT_EQ(configured->onTimeExecutionType, true);
+}
+
+TEST(StdinInterpreterBuilder_onDurationType, ShouldReturnThisAndSetValue){
+    vss::StdinInterpreterBuilder stdinInterpreterBuilder;
+
+    auto raw = stdinInterpreterBuilder.buildInterpreter();
+    EXPECT_EQ(raw->onDurationType, false);
+
+    auto configured = stdinInterpreterBuilder.onDurationType()->buildInterpreter();
+    EXPECT_EQ(configured->onDurationType, true);
+}
+
+TEST(StdinInterpreterBuilder_onMatchFinishType, ShouldReturnThisAndSetValue){
+    vss::StdinInterpreterBuilder stdinInterpreterBuilder;
+
+    auto raw = stdinInterpreterBuilder.buildInterpreter();
+    EXPECT_EQ(raw->onMatchFinishType, false);
+
+    auto configured = stdinInterpreterBuilder.onMatchFinishType()->buildInterpreter();
+    EXPECT_EQ(configured->onMatchFinishType, true);
+}
+
+TEST(StdinInterpreterBuilder_onTeamInitialPositionPath, ShouldReturnThisAndSetValue){
+    vss::StdinInterpreterBuilder stdinInterpreterBuilder;
+
+    auto raw = stdinInterpreterBuilder.buildInterpreter();
+    EXPECT_EQ(raw->onTeamInitialPositionPath, false);
+
+    auto configured = stdinInterpreterBuilder.onTeamInitialPositionPath()->buildInterpreter();
+    EXPECT_EQ(configured->onTeamInitialPositionPath, true);
 }
 
 TEST(StdinInterpreterBuilder_onStatePort, ShouldReturnThisAndSetValue){

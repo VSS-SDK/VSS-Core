@@ -10,6 +10,8 @@
 #include "Domain/SideAttackType.h"
 #include "Domain/TimeExecutionType.h"
 #include "Domain/EnvironmentType.h"
+#include "DurationType.h"
+#include "MatchFinishType.h"
 
 namespace vss {
 
@@ -19,6 +21,7 @@ namespace vss {
 
         friend std::ostream& operator<<(std::ostream& os, const ExecutionConfig& executionConfig);
 
+        // Communications
         Address stateRecvAddr;
         Address stateSendAddr;
 
@@ -35,10 +38,16 @@ namespace vss {
         Address ctrlRecvAddr;
         Address ctrlSendAddr;
 
+        // Enums
         TeamType teamType;
         SideAttackType sideAttackType;
         TimeExecutionType timeExecutionType;
         EnvironmentType environmentType;
+        DurationType durationType;
+        MatchFinishType matchFinishType;
+
+        // Others
+        std::string teamInitialPositionPath;
 
         bool isValidConfiguration;
     };
