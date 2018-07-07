@@ -125,4 +125,19 @@ namespace vss {
         return this;
     }
 
+    IStdinInterpreterBuilder *StdinInterpreterBuilder::onDurationType() {
+        stdinInterpreter->onDurationType = true;
+        return this;
+    }
+
+    IStdinInterpreterBuilder *StdinInterpreterBuilder::onMatchFinishType() {
+        stdinInterpreter->onMatchFinishType = true;
+        return this;
+    }
+
+    IStdinInterpreterBuilder *StdinInterpreterBuilder::onTeamInitialPositionPath() {
+        stdinInterpreter->onTeamInitialPositionPath = true;
+        return this;
+    }
+
 };

@@ -37,6 +37,10 @@ namespace vss {
         onSideAttackType = false;
         onTimeExecutionType = false;
         onEnvironmentType = false;
+        onDurationType = false;
+        onMatchFinishType = false;
+
+        onTeamInitialPositionPath = false;
 
         stdinConfiguration.isValidConfiguration = false;
     }
@@ -144,6 +148,17 @@ namespace vss {
         if(onEnvironmentType)
             desc.add_options()("environment_type", boost::program_options::value<std::string>()->default_value(toDescription(DEFAULT_ENVIRONMENT_TYPE)), "");
 
+        if(onDurationType)
+            desc.add_options()("duration_type", boost::program_options::value<std::string>()->default_value(toDescription(DEFAULT_DURATION_TYPE)), "");
+
+        if(onMatchFinishType)
+            desc.add_options()("match_finish_type", boost::program_options::value<std::string>()->default_value(toDescription(DEFAULT_MATCH_FINISH_TYPE)), "");
+
+
+        // Others
+        if(onTeamInitialPositionPath)
+            desc.add_options()("initial_position_path", boost::program_options::value<std::string>()->default_value("file.csv"), "");
+
 
         return desc;
     }
@@ -231,6 +246,17 @@ namespace vss {
 
         if(vm.count("environment_type"))
             stdinConfiguration.environmentType = toEnvironmentType(vm["environment_type"].as<std::string>());
+
+        if(vm.count("duration_type"))
+            stdinConfiguration.durationType = toDurationType(vm["duration_type"].as<std::string>());
+
+        if(vm.count("match_finish_type"))
+            stdinConfiguration.matchFinishType = toMatchFinishType(vm["match_finish_type"].as<std::string>());
+
+
+        // OTHERS
+        if(vm.count("initial_position_path"))
+            stdinConfiguration.teamInitialPositionPath = vm["initial_position_path"].as<std::string>();
 
 
         stdinConfiguration.isValidConfiguration = true;

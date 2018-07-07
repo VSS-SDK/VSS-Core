@@ -6,10 +6,12 @@
 #define VSS_CORE_CONSTANTS_H
 
 #include "string"
-#include "TeamType.h"
-#include "SideAttackType.h"
-#include "TimeExecutionType.h"
-#include "EnvironmentType.h"
+#include "Domain/TeamType.h"
+#include "Domain/SideAttackType.h"
+#include "Domain/TimeExecutionType.h"
+#include "Domain/EnvironmentType.h"
+#include "Domain/DurationType.h"
+#include "Domain/MatchFinishType.h"
 
 namespace vss {
 
@@ -50,6 +52,9 @@ namespace vss {
     const SideAttackType DEFAULT_SIDE_ATTACK_TYPE = SideAttackType::Left;
     const TimeExecutionType DEFAULT_TIME_EXECUTION_TYPE = TimeExecutionType::Normal;
     const EnvironmentType DEFAULT_ENVIRONMENT_TYPE = EnvironmentType::Simulation;
+    const DurationType  DEFAULT_DURATION_TYPE = DurationType::TenMinutes;
+    const MatchFinishType DEFAULT_MATCH_FINISH_TYPE = MatchFinishType::TenGoalsDifference;
+
 }
 
 #endif //VSS_CORE_CONSTANTS_H

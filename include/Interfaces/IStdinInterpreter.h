@@ -40,6 +40,10 @@ namespace vss {
         bool onSideAttackType;
         bool onTimeExecutionType;
         bool onEnvironmentType;
+        bool onDurationType;
+        bool onMatchFinishType;
+
+        bool onTeamInitialPositionPath;
     };
 
 };
