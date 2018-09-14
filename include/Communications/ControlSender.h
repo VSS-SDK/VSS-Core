@@ -14,6 +14,7 @@ namespace vss {
     public:
         ControlSender();
 
+        void createSocket(ExecutionConfig&) override;
         void createSocket(Address) override;
         void createSocket() override;
         void sendControl(Control) override;

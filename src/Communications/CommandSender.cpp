@@ -4,12 +4,19 @@
 
 #include <Helpers/CommandMapper.h>
 #include <Domain/Constants.h>
+#include <Communications/CommandSender.h>
+
 #include "Communications/CommandSender.h"
 
 namespace vss{
 
     CommandSender::CommandSender(){
         address = Address();
+    }
+
+    void CommandSender::createSocket(ExecutionConfig &exeConfig) {
+        setupAddress(exeConfig);
+        connect();
     }
 
     void CommandSender::createSocket(Address address) {
@@ -39,6 +46,16 @@ namespace vss{
             std::cout << "Yellow Team Sender Connected: " << address.getFullAddress() << std::endl;
         }else{
             address = Address(DEFAULT_CMD_SEND_ADDR, DEFAULT_CMD_BLUE_PORT);
+            std::cout << "Blue Team Sender Connected: " << address.getFullAddress() << std::endl;
+        }
+    }
+
+    void CommandSender::setupAddress(ExecutionConfig &exeConfig) {
+        if(exeConfig.teamType == TeamType::Yellow){
+            address = exeConfig.cmdYellowSendAddr;
+            std::cout << "Yellow Team Sender Connected: " << address.getFullAddress() << std::endl;
+        }else{
+            address = exeConfig.cmdBlueRecvAddr;
             std::cout << "Blue Team Sender Connected: " << address.getFullAddress() << std::endl;
         }
     }

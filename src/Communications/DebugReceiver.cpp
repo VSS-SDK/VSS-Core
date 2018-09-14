@@ -12,6 +12,11 @@ namespace vss {
         address = Address();
     }
 
+    void DebugReceiver::createSocket(ExecutionConfig &exeConfig) {
+        setupAddress(exeConfig);
+        connect();
+    }
+
     void DebugReceiver::createSocket(Address address) {
         this->address = address;
         connect();
@@ -39,6 +44,14 @@ namespace vss {
             address = Address(DEFAULT_DEBUG_RECV_ADDR, DEFAULT_DEBUG_YELLOW_PORT);
         }else{
             address = Address(DEFAULT_DEBUG_RECV_ADDR, DEFAULT_DEBUG_BLUE_PORT);
+        }
+    }
+
+    void DebugReceiver::setupAddress(ExecutionConfig &exeConfig) {
+        if(exeConfig.teamType == TeamType::Yellow){
+            address = exeConfig.debugYellowRecvAddr;
+        }else{
+            address = exeConfig.debugBlueRecvAddr;
         }
     }
 

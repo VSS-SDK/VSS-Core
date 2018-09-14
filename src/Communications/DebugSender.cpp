@@ -5,12 +5,19 @@
 #include <iostream>
 #include <Helpers/DebugMapper.h>
 #include <Domain/Constants.h>
+#include <Communications/DebugSender.h>
+
 #include "Communications/DebugSender.h"
 
 namespace vss {
 
     DebugSender::DebugSender() {
         address = Address();
+    }
+
+    void DebugSender::createSocket(ExecutionConfig &exeConfig) {
+        setupAddress(exeConfig);
+        connect();
     }
 
     void DebugSender::createSocket(Address address) {
@@ -35,11 +42,17 @@ namespace vss {
     }
 
     void DebugSender::setupAddress(TeamType teamType) {
-        if(teamType == TeamType::Yellow){
+        if(teamType == TeamType::Yellow)
             address = Address(DEFAULT_DEBUG_SEND_ADDR, DEFAULT_DEBUG_YELLOW_PORT);
-        }else{
+        else
             address = Address(DEFAULT_DEBUG_SEND_ADDR, DEFAULT_DEBUG_BLUE_PORT);
-        }
+    }
+
+    void DebugSender::setupAddress(ExecutionConfig &exeConfig) {
+        if(exeConfig.teamType == TeamType::Yellow)
+            address = exeConfig.debugYellowSendAddr;
+        else
+            address = exeConfig.debugBlueSendAddr;
     }
 
     void DebugSender::connect() {

@@ -12,6 +12,11 @@ namespace vss{
         address = Address();
     }
 
+    void CommandReceiver::createSocket(ExecutionConfig &exeConfig) {
+        setupAddress(exeConfig);
+        connect();
+    }
+
     void CommandReceiver::createSocket(Address address) {
         this->address = address;
         connect();
@@ -39,6 +44,16 @@ namespace vss{
             std::cout << "Yellow Team Receiver Connected: " << address.getFullAddress() << std::endl;
         }else{
             address = Address(DEFAULT_CMD_RECV_ADDR, DEFAULT_CMD_BLUE_PORT);
+            std::cout << "Blue Team Receiver Connected: " << address.getFullAddress() << std::endl;
+        }
+    }
+
+    void CommandReceiver::setupAddress(ExecutionConfig &exeConfig) {
+        if(exeConfig.teamType == TeamType::Yellow){
+            address = exeConfig.cmdYellowRecvAddr;
+            std::cout << "Yellow Team Receiver Connected: " << address.getFullAddress() << std::endl;
+        }else{
+            address = exeConfig.cmdBlueRecvAddr;
             std::cout << "Blue Team Receiver Connected: " << address.getFullAddress() << std::endl;
         }
     }

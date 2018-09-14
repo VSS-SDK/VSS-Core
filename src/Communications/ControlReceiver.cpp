@@ -12,6 +12,11 @@ namespace vss {
         address = Address(DEFAULT_CTRL_RECV_ADDR, DEFAULT_CTRL_PORT);
     }
 
+    void ControlReceiver::createSocket(ExecutionConfig &exeConfig) {
+        this->address = exeConfig.ctrlRecvAddr;
+        connect();
+    }
+
     void ControlReceiver::createSocket(Address address) {
         this->address = address;
         connect();

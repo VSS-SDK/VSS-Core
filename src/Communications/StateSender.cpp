@@ -4,12 +4,19 @@
 
 #include <Helpers/StateMapper.h>
 #include <Domain/Constants.h>
+#include <Communications/StateSender.h>
+
 #include "Communications/StateSender.h"
 
 namespace vss{
 
     StateSender::StateSender(){
         address = Address(DEFAULT_STATE_SEND_ADDR, DEFAULT_STATE_PORT);
+    }
+
+    void StateSender::createSocket(ExecutionConfig &exeConfig) {
+        this->address = exeConfig.stateSendAddr;
+        connect();
     }
 
     void StateSender::createSocket(Address address) {

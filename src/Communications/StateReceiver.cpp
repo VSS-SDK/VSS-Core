@@ -8,6 +8,8 @@
 
 #include <Helpers/CoordinateTransformer.h>
 #include <Domain/Constants.h>
+#include <Communications/StateReceiver.h>
+
 #include "Communications/StateReceiver.h"
 #include "Helpers/StateMapper.h"
 
@@ -15,6 +17,11 @@ namespace vss{
 
     StateReceiver::StateReceiver(){
         address = Address(DEFAULT_STATE_RECV_ADDR, DEFAULT_STATE_PORT);
+    }
+
+    void StateReceiver::createSocket(ExecutionConfig &exeConfig) {
+        this->address = exeConfig.stateRecvAddr;
+        connect();
     }
 
     void StateReceiver::createSocket(Address address) {

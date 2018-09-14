@@ -16,12 +16,14 @@ namespace vss {
     public:
         CommandSender();
 
+        void createSocket(ExecutionConfig&) override;
         void createSocket(Address) override;
         void createSocket(TeamType) override;
         void sendCommand(Command) override;
 
     protected:
         void setupAddress(TeamType);
+        void setupAddress(ExecutionConfig&);
         void connect();
 
         zmq::context_t *context;

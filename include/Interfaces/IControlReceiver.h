@@ -6,12 +6,14 @@
 #define VSS_CORE_ICONTROLRECEIVER_H
 
 #include <Domain/Address.h>
+#include <Domain/ExecutionConfig.h>
 #include "Domain/Control.h"
 
 namespace vss {
 
     class IControlReceiver {
     public:
+        virtual void createSocket(ExecutionConfig&) = 0;
         virtual void createSocket(Address) = 0;
         virtual void createSocket() = 0;
         virtual Control receiveControl() = 0;

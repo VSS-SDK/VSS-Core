@@ -16,12 +16,14 @@ namespace vss {
     public:
         DebugReceiver();
 
+        void createSocket(ExecutionConfig&) override;
         void createSocket(Address) override;
         void createSocket(TeamType) override;
         Debug receiveDebug() override;
 
     protected:
         void setupAddress(TeamType);
+        void setupAddress(ExecutionConfig&);
         void connect();
 
         zmq::context_t *context;
