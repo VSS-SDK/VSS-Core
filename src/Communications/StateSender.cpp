@@ -4,8 +4,6 @@
 
 #include <Helpers/StateMapper.h>
 #include <Domain/Constants.h>
-#include <Communications/StateSender.h>
-
 #include "Communications/StateSender.h"
 
 namespace vss{
