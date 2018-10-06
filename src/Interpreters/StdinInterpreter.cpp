@@ -11,20 +11,14 @@ namespace vss {
 
     StdinInterpreter::StdinInterpreter() {
         onStateRecvAddr = false;
-        onStateSendAddr = false;
 
-        onYellowCmdRecvAddr = false;
         onYellowCmdSendAddr = false;
-        onYellowDebugRecvAddr = false;
         onYellowDebugSendAddr = false;
 
-        onBlueCmdRecvAddr = false;
         onBlueCmdSendAddr = false;
-        onBlueDebugRecvAddr = false;
         onBlueDebugSendAddr = false;
 
         onCtrlRecvAddr = false;
-        onCtrlSendAddr = false;
 
         onStatePort = false;
         onYellowCmdPort = false;
@@ -78,38 +72,20 @@ namespace vss {
         desc.add_options()("help,h", "");
 
         // ADDRESS
-        if(onStateSendAddr)
-            desc.add_options()("state_send_addr", boost::program_options::value<std::string>()->default_value(DEFAULT_STATE_SEND_ADDR), "");
-
         if(onStateRecvAddr)
             desc.add_options()("state_recv_addr", boost::program_options::value<std::string>()->default_value(DEFAULT_STATE_RECV_ADDR), "");
 
         if(onYellowCmdSendAddr)
             desc.add_options()("yellow_cmd_send_addr", boost::program_options::value<std::string>()->default_value(DEFAULT_CMD_SEND_ADDR), "");
 
-        if(onYellowCmdRecvAddr)
-            desc.add_options()("yellow_cmd_recv_addr", boost::program_options::value<std::string>()->default_value(DEFAULT_CMD_RECV_ADDR), "");
-
         if(onYellowDebugSendAddr)
             desc.add_options()("yellow_debug_send_addr", boost::program_options::value<std::string>()->default_value(DEFAULT_DEBUG_SEND_ADDR), "");
-
-        if(onYellowDebugRecvAddr)
-            desc.add_options()("yellow_debug_recv_addr", boost::program_options::value<std::string>()->default_value(DEFAULT_DEBUG_RECV_ADDR), "");
 
         if(onBlueCmdSendAddr)
             desc.add_options()("blue_cmd_send_addr", boost::program_options::value<std::string>()->default_value(DEFAULT_CMD_SEND_ADDR), "");
 
-        if(onBlueCmdRecvAddr)
-            desc.add_options()("blue_cmd_recv_addr", boost::program_options::value<std::string>()->default_value(DEFAULT_CMD_RECV_ADDR), "");
-
         if(onBlueDebugSendAddr)
             desc.add_options()("blue_debug_send_addr", boost::program_options::value<std::string>()->default_value(DEFAULT_DEBUG_SEND_ADDR), "");
-
-        if(onBlueDebugRecvAddr)
-            desc.add_options()("blue_debug_recv_addr", boost::program_options::value<std::string>()->default_value(DEFAULT_DEBUG_RECV_ADDR), "");
-
-        if(onCtrlSendAddr)
-            desc.add_options()("ctrl_send_addr", boost::program_options::value<std::string>()->default_value(DEFAULT_CTRL_SEND_ADDR), "");
 
         if(onCtrlRecvAddr)
             desc.add_options()("ctrl_recv_addr", boost::program_options::value<std::string>()->default_value(DEFAULT_CTRL_RECV_ADDR), "");
@@ -165,38 +141,20 @@ namespace vss {
 
     void StdinInterpreter::buildConfiguration(boost::program_options::variables_map vm) {
         // ADDRESS
-        if(vm.count("state_send_addr"))
-            stdinConfiguration.stateSendAddr.setIp(vm["state_send_addr"].as<std::string>());
-
         if(vm.count("state_recv_addr"))
             stdinConfiguration.stateRecvAddr.setIp(vm["state_recv_addr"].as<std::string>());
 
         if(vm.count("yellow_cmd_send_addr"))
             stdinConfiguration.cmdYellowSendAddr.setIp(vm["yellow_cmd_send_addr"].as<std::string>());
 
-        if(vm.count("yellow_cmd_recv_addr"))
-            stdinConfiguration.cmdYellowRecvAddr.setIp(vm["yellow_cmd_recv_addr"].as<std::string>());
-
         if(vm.count("yellow_debug_send_addr"))
             stdinConfiguration.debugYellowSendAddr.setIp(vm["yellow_debug_send_addr"].as<std::string>());
-
-        if(vm.count("yellow_debug_recv_addr"))
-            stdinConfiguration.debugYellowRecvAddr.setIp(vm["yellow_debug_recv_addr"].as<std::string>());
 
         if(vm.count("blue_cmd_send_addr"))
             stdinConfiguration.cmdBlueSendAddr.setIp(vm["blue_cmd_send_addr"].as<std::string>());
 
-        if(vm.count("blue_cmd_recv_addr"))
-            stdinConfiguration.cmdBlueRecvAddr.setIp(vm["blue_cmd_recv_addr"].as<std::string>());
-
         if(vm.count("blue_debug_send_addr"))
             stdinConfiguration.debugBlueSendAddr.setIp(vm["blue_debug_send_addr"].as<std::string>());
-
-        if(vm.count("blue_debug_recv_addr"))
-            stdinConfiguration.debugBlueRecvAddr.setIp(vm["blue_debug_recv_addr"].as<std::string>());
-
-        if(vm.count("ctrl_send_addr"))
-            stdinConfiguration.ctrlSendAddr.setIp(vm["ctrl_send_addr"].as<std::string>());
 
         if(vm.count("ctrl_recv_addr"))
             stdinConfiguration.ctrlRecvAddr.setIp(vm["ctrl_recv_addr"].as<std::string>());

@@ -14,17 +14,11 @@ namespace vss {
         virtual IStdinInterpreter* buildInterpreter() = 0;
 
         virtual IStdinInterpreterBuilder* onStateRecvAddr() = 0;
-        virtual IStdinInterpreterBuilder* onStateSendAddr() = 0;
-        virtual IStdinInterpreterBuilder* onYellowCmdRecvAddr() = 0;
         virtual IStdinInterpreterBuilder* onYellowCmdSendAddr() = 0;
-        virtual IStdinInterpreterBuilder* onYellowDebugRecvAddr() = 0;
         virtual IStdinInterpreterBuilder* onYellowDebugSendAddr() = 0;
-        virtual IStdinInterpreterBuilder* onBlueCmdRecvAddr() = 0;
         virtual IStdinInterpreterBuilder* onBlueCmdSendAddr() = 0;
-        virtual IStdinInterpreterBuilder* onBlueDebugRecvAddr() = 0;
         virtual IStdinInterpreterBuilder* onBlueDebugSendAddr() = 0;
         virtual IStdinInterpreterBuilder* onCtrlRecvAddr() = 0;
-        virtual IStdinInterpreterBuilder* onCtrlSendAddr() = 0;
 
         virtual IStdinInterpreterBuilder* onStatePort() = 0;
         virtual IStdinInterpreterBuilder* onYellowCmdPort() = 0;

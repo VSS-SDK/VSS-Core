@@ -20,23 +20,8 @@ namespace vss {
         return this;
     }
 
-    IStdinInterpreterBuilder *StdinInterpreterBuilder::onStateSendAddr() {
-        stdinInterpreter->onStateSendAddr = true;
-        return this;
-    }
-
-    IStdinInterpreterBuilder *StdinInterpreterBuilder::onYellowCmdRecvAddr() {
-        stdinInterpreter->onYellowCmdRecvAddr = true;
-        return this;
-    }
-
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onYellowCmdSendAddr() {
         stdinInterpreter->onYellowCmdSendAddr = true;
-        return this;
-    }
-
-    IStdinInterpreterBuilder *StdinInterpreterBuilder::onYellowDebugRecvAddr() {
-        stdinInterpreter->onYellowDebugRecvAddr = true;
         return this;
     }
 
@@ -45,18 +30,8 @@ namespace vss {
         return this;
     }
 
-    IStdinInterpreterBuilder *StdinInterpreterBuilder::onBlueCmdRecvAddr() {
-        stdinInterpreter->onBlueCmdRecvAddr = true;
-        return this;
-    }
-
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onBlueCmdSendAddr() {
         stdinInterpreter->onBlueCmdSendAddr = true;
-        return this;
-    }
-
-    IStdinInterpreterBuilder *StdinInterpreterBuilder::onBlueDebugRecvAddr() {
-        stdinInterpreter->onBlueDebugRecvAddr = true;
         return this;
     }
 
@@ -67,11 +42,6 @@ namespace vss {
 
     IStdinInterpreterBuilder *StdinInterpreterBuilder::onCtrlRecvAddr() {
         stdinInterpreter->onCtrlRecvAddr = true;
-        return this;
-    }
-
-    IStdinInterpreterBuilder *StdinInterpreterBuilder::onCtrlSendAddr() {
-        stdinInterpreter->onCtrlSendAddr = true;
         return this;
     }
 

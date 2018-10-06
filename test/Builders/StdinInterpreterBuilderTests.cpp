@@ -10,20 +10,14 @@ TEST(StdinInterpreterBuilder_buildInterpreter, ShouldReturnAllFalse){
 
     auto stdinInterpreter = stdinInterpreterBuilder.buildInterpreter();
     EXPECT_FALSE(stdinInterpreter->onStateRecvAddr);
-    EXPECT_FALSE(stdinInterpreter->onStateSendAddr);
 
-    EXPECT_FALSE(stdinInterpreter->onYellowCmdRecvAddr);
     EXPECT_FALSE(stdinInterpreter->onYellowCmdSendAddr);
-    EXPECT_FALSE(stdinInterpreter->onYellowDebugRecvAddr);
     EXPECT_FALSE(stdinInterpreter->onYellowDebugSendAddr);
 
-    EXPECT_FALSE(stdinInterpreter->onBlueCmdRecvAddr);
     EXPECT_FALSE(stdinInterpreter->onBlueCmdSendAddr);
-    EXPECT_FALSE(stdinInterpreter->onBlueDebugRecvAddr);
     EXPECT_FALSE(stdinInterpreter->onBlueDebugSendAddr);
 
     EXPECT_FALSE(stdinInterpreter->onCtrlRecvAddr);
-    EXPECT_FALSE(stdinInterpreter->onCtrlSendAddr);
 
     EXPECT_FALSE(stdinInterpreter->onStatePort);
     EXPECT_FALSE(stdinInterpreter->onYellowCmdPort);
@@ -52,26 +46,6 @@ TEST(StdinInterpreterBuilder_onStateRecvAddr, ShouldReturnThisAndSetValue){
     EXPECT_EQ(configured->onStateRecvAddr, true);
 }
 
-TEST(StdinInterpreterBuilder_onStateSendAddr, ShouldReturnThisAndSetValue){
-    vss::StdinInterpreterBuilder stdinInterpreterBuilder;
-
-    auto raw = stdinInterpreterBuilder.buildInterpreter();
-    EXPECT_EQ(raw->onStateSendAddr, false);
-
-    auto configured = stdinInterpreterBuilder.onStateSendAddr()->buildInterpreter();
-    EXPECT_EQ(configured->onStateSendAddr, true);
-}
-
-TEST(StdinInterpreterBuilder_onYellowCmdRecvAddr, ShouldReturnThisAndSetValue){
-    vss::StdinInterpreterBuilder stdinInterpreterBuilder;
-
-    auto raw = stdinInterpreterBuilder.buildInterpreter();
-    EXPECT_EQ(raw->onYellowCmdRecvAddr, false);
-
-    auto configured = stdinInterpreterBuilder.onYellowCmdRecvAddr()->buildInterpreter();
-    EXPECT_EQ(configured->onYellowCmdRecvAddr, true);
-}
-
 TEST(StdinInterpreterBuilder_onYellowCmdSendAddr, ShouldReturnThisAndSetValue){
     vss::StdinInterpreterBuilder stdinInterpreterBuilder;
 
@@ -80,16 +54,6 @@ TEST(StdinInterpreterBuilder_onYellowCmdSendAddr, ShouldReturnThisAndSetValue){
 
     auto configured = stdinInterpreterBuilder.onYellowCmdSendAddr()->buildInterpreter();
     EXPECT_EQ(configured->onYellowCmdSendAddr, true);
-}
-
-TEST(StdinInterpreterBuilder_onYellowDebugRecvAddr, ShouldReturnThisAndSetValue){
-    vss::StdinInterpreterBuilder stdinInterpreterBuilder;
-
-    auto raw = stdinInterpreterBuilder.buildInterpreter();
-    EXPECT_EQ(raw->onYellowDebugRecvAddr, false);
-
-    auto configured = stdinInterpreterBuilder.onYellowDebugRecvAddr()->buildInterpreter();
-    EXPECT_EQ(configured->onYellowDebugRecvAddr, true);
 }
 
 TEST(StdinInterpreterBuilder_onYellowDebugSendAddr, ShouldReturnThisAndSetValue){
@@ -102,16 +66,6 @@ TEST(StdinInterpreterBuilder_onYellowDebugSendAddr, ShouldReturnThisAndSetValue)
     EXPECT_EQ(configured->onYellowDebugSendAddr, true);
 }
 
-TEST(StdinInterpreterBuilder_onBlueCmdRecvAddr, ShouldReturnThisAndSetValue){
-    vss::StdinInterpreterBuilder stdinInterpreterBuilder;
-
-    auto raw = stdinInterpreterBuilder.buildInterpreter();
-    EXPECT_EQ(raw->onBlueCmdRecvAddr, false);
-
-    auto configured = stdinInterpreterBuilder.onBlueCmdRecvAddr()->buildInterpreter();
-    EXPECT_EQ(configured->onBlueCmdRecvAddr, true);
-}
-
 TEST(StdinInterpreterBuilder_onBlueCmdSendAddr, ShouldReturnThisAndSetValue){
     vss::StdinInterpreterBuilder stdinInterpreterBuilder;
 
@@ -120,16 +74,6 @@ TEST(StdinInterpreterBuilder_onBlueCmdSendAddr, ShouldReturnThisAndSetValue){
 
     auto configured = stdinInterpreterBuilder.onBlueCmdSendAddr()->buildInterpreter();
     EXPECT_EQ(configured->onBlueCmdSendAddr, true);
-}
-
-TEST(StdinInterpreterBuilder_onBlueDebugRecvAddr, ShouldReturnThisAndSetValue){
-    vss::StdinInterpreterBuilder stdinInterpreterBuilder;
-
-    auto raw = stdinInterpreterBuilder.buildInterpreter();
-    EXPECT_EQ(raw->onBlueDebugRecvAddr, false);
-
-    auto configured = stdinInterpreterBuilder.onBlueDebugRecvAddr()->buildInterpreter();
-    EXPECT_EQ(configured->onBlueDebugRecvAddr, true);
 }
 
 TEST(StdinInterpreterBuilder_onBlueDebugSendAddr, ShouldReturnThisAndSetValue){
@@ -150,16 +94,6 @@ TEST(StdinInterpreterBuilder_onCtrlRecvAddr, ShouldReturnThisAndSetValue){
 
     auto configured = stdinInterpreterBuilder.onCtrlRecvAddr()->buildInterpreter();
     EXPECT_EQ(configured->onCtrlRecvAddr, true);
-}
-
-TEST(StdinInterpreterBuilder_onCtrlSendAddr, ShouldReturnThisAndSetValue){
-    vss::StdinInterpreterBuilder stdinInterpreterBuilder;
-
-    auto raw = stdinInterpreterBuilder.buildInterpreter();
-    EXPECT_EQ(raw->onCtrlSendAddr, false);
-
-    auto configured = stdinInterpreterBuilder.onCtrlSendAddr()->buildInterpreter();
-    EXPECT_EQ(configured->onCtrlSendAddr, true);
 }
 
 TEST(StdinInterpreterBuilder_onYellowCmdPort, ShouldReturnThisAndSetValue){

@@ -16,20 +16,14 @@ namespace vss {
         IStdinInterpreter* buildInterpreter() override;
 
         IStdinInterpreterBuilder* onStateRecvAddr() override;
-        IStdinInterpreterBuilder* onStateSendAddr() override;
 
-        IStdinInterpreterBuilder* onYellowCmdRecvAddr() override;
         IStdinInterpreterBuilder* onYellowCmdSendAddr() override;
-        IStdinInterpreterBuilder* onYellowDebugRecvAddr() override;
         IStdinInterpreterBuilder* onYellowDebugSendAddr() override;
 
-        IStdinInterpreterBuilder* onBlueCmdRecvAddr() override;
         IStdinInterpreterBuilder* onBlueCmdSendAddr() override;
-        IStdinInterpreterBuilder* onBlueDebugRecvAddr() override;
         IStdinInterpreterBuilder* onBlueDebugSendAddr() override;
 
         IStdinInterpreterBuilder* onCtrlRecvAddr() override;
-        IStdinInterpreterBuilder* onCtrlSendAddr() override;
 
         IStdinInterpreterBuilder* onStatePort() override;
         IStdinInterpreterBuilder* onYellowCmdPort() override;
