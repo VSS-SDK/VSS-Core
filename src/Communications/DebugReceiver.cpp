@@ -19,6 +19,7 @@ namespace vss {
 
     void DebugReceiver::createSocket(Address address) {
         this->address = address;
+        std::cout << "Debug Receiver Connected: " << address.getFullAddress() << std::endl;
         connect();
     }
 
@@ -63,8 +64,6 @@ namespace vss {
         try {
             context = new zmq::context_t( 1 );
             socket = new zmq::socket_t( *context, ZMQ_PAIR );
-
-            std::cout << "Debug Receiver Connected: " << address << std::endl;
             socket->bind(address.getFullAddress().c_str());
         }
         catch(zmq::error_t& e) {

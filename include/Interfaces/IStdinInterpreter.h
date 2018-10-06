@@ -14,20 +14,14 @@ namespace vss {
         virtual ExecutionConfig extractExecutionConfig(int argc, char **argv) = 0;
 
         bool onStateRecvAddr;
-        bool onStateSendAddr;
 
-        bool onYellowCmdRecvAddr;
         bool onYellowCmdSendAddr;
-        bool onYellowDebugRecvAddr;
         bool onYellowDebugSendAddr;
 
-        bool onBlueCmdRecvAddr;
         bool onBlueCmdSendAddr;
-        bool onBlueDebugRecvAddr;
         bool onBlueDebugSendAddr;
 
         bool onCtrlRecvAddr;
-        bool onCtrlSendAddr;
 
         bool onStatePort;
         bool onYellowCmdPort;

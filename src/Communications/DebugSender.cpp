@@ -22,6 +22,7 @@ namespace vss {
 
     void DebugSender::createSocket(Address address) {
         this->address = address;
+        std::cout << "Debug Sender Connected: " << address.getFullAddress() << std::endl;
         connect();
     }
 
@@ -42,17 +43,23 @@ namespace vss {
     }
 
     void DebugSender::setupAddress(TeamType teamType) {
-        if(teamType == TeamType::Yellow)
+        if(teamType == TeamType::Yellow){
             address = Address(DEFAULT_DEBUG_SEND_ADDR, DEFAULT_DEBUG_YELLOW_PORT);
-        else
+            std::cout << "Yellow Debug Sender Connected: " << address.getFullAddress() << std::endl;
+        }else{
             address = Address(DEFAULT_DEBUG_SEND_ADDR, DEFAULT_DEBUG_BLUE_PORT);
+            std::cout << "Blue Debug Sender Connected: " << address.getFullAddress() << std::endl;
+        }
     }
 
     void DebugSender::setupAddress(ExecutionConfig &exeConfig) {
-        if(exeConfig.teamType == TeamType::Yellow)
+        if(exeConfig.teamType == TeamType::Yellow){
             address = exeConfig.debugYellowSendAddr;
-        else
+            std::cout << "Yellow Debug Sender Connected: " << address.getFullAddress() << std::endl;
+        }else{
             address = exeConfig.debugBlueSendAddr;
+            std::cout << "Blue Debug Sender Connected: " << address.getFullAddress() << std::endl;
+        }
     }
 
     void DebugSender::connect() {
@@ -60,7 +67,6 @@ namespace vss {
             context = new zmq::context_t( 1 );
             socket = new zmq::socket_t( *context, ZMQ_PAIR );
 
-            std::cout << "Debug Sender Connected: " << address << std::endl;
             socket->connect(address.getFullAddress().c_str());
         }
         catch(zmq::error_t& e) {
