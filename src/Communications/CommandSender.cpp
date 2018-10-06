@@ -4,6 +4,8 @@
 
 #include <Helpers/CommandMapper.h>
 #include <Domain/Constants.h>
+#include <Communications/CommandSender.h>
+
 #include "Communications/CommandSender.h"
 
 namespace vss{
@@ -12,8 +14,14 @@ namespace vss{
         address = Address();
     }
 
+    void CommandSender::createSocket(ExecutionConfig &exeConfig) {
+        setupAddress(exeConfig);
+        connect();
+    }
+
     void CommandSender::createSocket(Address address) {
         this->address = address;
+        std::cout << "Team Sender Connected: " << address.getFullAddress() << std::endl;
         connect();
     }
 
@@ -43,10 +51,30 @@ namespace vss{
         }
     }
 
+    void CommandSender::setupAddress(ExecutionConfig &exeConfig) {
+        if(exeConfig.teamType == TeamType::Yellow){
+            address = exeConfig.cmdYellowSendAddr;
+            std::cout << "Yellow Team Sender Connected: " << address.getFullAddress() << std::endl;
+        }else{
+            address = exeConfig.cmdBlueRecvAddr;
+            std::cout << "Blue Team Sender Connected: " << address.getFullAddress() << std::endl;
+        }
+    }
+
     void CommandSender::connect() {
-        context = new zmq::context_t(1);
-        socket = new zmq::socket_t(*context, ZMQ_PAIR);
-        socket->connect(address.getFullAddress().c_str());
+        try {
+            context = new zmq::context_t(1);
+            socket = new zmq::socket_t(*context, ZMQ_PAIR);
+            socket->connect(address.getFullAddress().c_str());
+        }
+        catch(zmq::error_t& e) {
+            std::cout << "Error: " << e.what() << " " << this->address.getFullAddress() << std::endl;
+            throw e;
+        }
+    }
+
+    void CommandSender::closeSocket() {
+        socket->close();
     }
 
 }

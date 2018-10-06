@@ -8,6 +8,8 @@
 
 #include <Helpers/CoordinateTransformer.h>
 #include <Domain/Constants.h>
+#include <Communications/StateReceiver.h>
+
 #include "Communications/StateReceiver.h"
 #include "Helpers/StateMapper.h"
 
@@ -15,6 +17,11 @@ namespace vss{
 
     StateReceiver::StateReceiver(){
         address = Address(DEFAULT_STATE_RECV_ADDR, DEFAULT_STATE_PORT);
+    }
+
+    void StateReceiver::createSocket(ExecutionConfig &exeConfig) {
+        this->address = exeConfig.stateRecvAddr;
+        connect();
     }
 
     void StateReceiver::createSocket(Address address) {
@@ -44,12 +51,22 @@ namespace vss{
     }
 
     void StateReceiver::connect() {
-        context = new zmq::context_t( 1 );
-        socket = new zmq::socket_t( *context, ZMQ_SUB );
+        try {
+            context = new zmq::context_t( 1 );
+            socket = new zmq::socket_t( *context, ZMQ_SUB );
 
-        std::cout << "State Receiver Connected: " << address << std::endl;
-        socket->connect(address.getFullAddress().c_str());
-        socket->setsockopt( ZMQ_SUBSCRIBE, "", 0 );
+            std::cout << "State Receiver Connected: " << address << std::endl;
+            socket->connect(address.getFullAddress().c_str());
+            socket->setsockopt( ZMQ_SUBSCRIBE, "", 0 );
+        }
+        catch(zmq::error_t& e) {
+            std::cout << "Error: " << e.what() << " " << this->address.getFullAddress() << std::endl;
+            throw e;
+        }
+    }
+
+    void StateReceiver::closeSocket() {
+        socket->close();
     }
 
 }

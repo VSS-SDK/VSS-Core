@@ -14,8 +14,10 @@ namespace vss{
     public:
         StateSender();
 
+        void createSocket(ExecutionConfig&) override;
         void createSocket(Address) override;
         void createSocket() override;
+        void closeSocket() override;
         void sendState(State) override;
 
     protected:

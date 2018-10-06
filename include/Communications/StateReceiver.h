@@ -10,6 +10,7 @@
 #define _INTERFACE_CORE_H_
 
 #include <Interfaces/IStateReceiver.h>
+#include <Domain/ExecutionConfig.h>
 #include "zmq.hpp"
 
 namespace vss{
@@ -18,8 +19,10 @@ namespace vss{
     public:
         StateReceiver();
 
+        void createSocket(ExecutionConfig&) override;
         void createSocket(Address) override;
         void createSocket() override;
+        void closeSocket() override;
         State receiveState(FieldTransformationType) override;
 
     protected:

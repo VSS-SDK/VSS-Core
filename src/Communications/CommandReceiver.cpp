@@ -12,8 +12,14 @@ namespace vss{
         address = Address();
     }
 
+    void CommandReceiver::createSocket(ExecutionConfig &exeConfig) {
+        setupAddress(exeConfig);
+        connect();
+    }
+
     void CommandReceiver::createSocket(Address address) {
         this->address = address;
+        std::cout << "Team Receiver Connected: " << address.getFullAddress() << std::endl;
         connect();
     }
 
@@ -43,10 +49,30 @@ namespace vss{
         }
     }
 
+    void CommandReceiver::setupAddress(ExecutionConfig &exeConfig) {
+        if(exeConfig.teamType == TeamType::Yellow){
+            address = exeConfig.cmdYellowRecvAddr;
+            std::cout << "Yellow Team Receiver Connected: " << address.getFullAddress() << std::endl;
+        }else{
+            address = exeConfig.cmdBlueRecvAddr;
+            std::cout << "Blue Team Receiver Connected: " << address.getFullAddress() << std::endl;
+        }
+    }
+
     void CommandReceiver::connect() {
-        context = new zmq::context_t( 1 );
-        socket = new zmq::socket_t( *context, ZMQ_PAIR );
-        socket->bind(address.getFullAddress().c_str());
+        try {
+            context = new zmq::context_t( 1 );
+            socket = new zmq::socket_t( *context, ZMQ_PAIR );
+            socket->bind(address.getFullAddress().c_str());
+        }
+        catch(zmq::error_t& e) {
+            std::cout << "Error: " << e.what() << " " << this->address.getFullAddress() << std::endl;
+            throw e;
+        }
+    }
+
+    void CommandReceiver::closeSocket() {
+        socket->close();
     }
 
 }

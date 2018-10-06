@@ -6,6 +6,7 @@
 #define VSS_CORE_IDEBUGSENDER_H
 
 #include <Domain/Address.h>
+#include <Domain/ExecutionConfig.h>
 #include "Domain/TeamType.h"
 #include "Domain/Debug.h"
 
@@ -13,8 +14,10 @@ namespace vss {
 
     class IDebugSender {
     public:
+        virtual void createSocket(ExecutionConfig&) = 0;
         virtual void createSocket(Address) = 0;
         virtual void createSocket(TeamType) = 0;
+        virtual void closeSocket() = 0;
         virtual void sendDebug(Debug) = 0;
     };
 

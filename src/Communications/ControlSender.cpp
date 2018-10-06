@@ -12,6 +12,11 @@ namespace vss {
         address = Address(DEFAULT_CTRL_SEND_ADDR, DEFAULT_CTRL_PORT);
     }
 
+    void ControlSender::createSocket(ExecutionConfig &exeConfig) {
+        this->address = exeConfig.ctrlSendAddr;
+        connect();
+    }
+
     void ControlSender::createSocket(Address address) {
         this->address = address;
         connect();
@@ -33,11 +38,21 @@ namespace vss {
     }
 
     void ControlSender::connect() {
-        context = new zmq::context_t( 1 );
-        socket = new zmq::socket_t( *context, ZMQ_PUB );
+        try {
+            context = new zmq::context_t( 1 );
+            socket = new zmq::socket_t( *context, ZMQ_PUB );
 
-        std::cout << "Control Sender Connected: " << address << std::endl;
-        socket->bind(address.getFullAddress().c_str());
+            std::cout << "Control Sender Connected: " << address << std::endl;
+            socket->bind(address.getFullAddress().c_str());
+        }
+        catch(zmq::error_t& e) {
+            std::cout << "Error: " << e.what() << " " << this->address.getFullAddress() << std::endl;
+            throw e;
+        }
+    }
+
+    void ControlSender::closeSocket() {
+        socket->close();
     }
 
 }

@@ -12,6 +12,11 @@ namespace vss{
         address = Address(DEFAULT_STATE_SEND_ADDR, DEFAULT_STATE_PORT);
     }
 
+    void StateSender::createSocket(ExecutionConfig &exeConfig) {
+        this->address = exeConfig.stateSendAddr;
+        connect();
+    }
+
     void StateSender::createSocket(Address address) {
         this->address = address;
         connect();
@@ -35,11 +40,21 @@ namespace vss{
     }
 
     void StateSender::connect() {
-        context = new zmq::context_t( 1 );
-        socket = new zmq::socket_t( *context, ZMQ_PUB );
+        try {
+            context = new zmq::context_t( 1 );
+            socket = new zmq::socket_t( *context, ZMQ_PUB );
 
-        std::cout << "State Sender Connected: " << address << std::endl;
-        socket->bind(address.getFullAddress().c_str());
+            std::cout << "State Sender Connected: " << address << std::endl;
+            socket->bind(address.getFullAddress().c_str());
+        }
+        catch(zmq::error_t& e) {
+            std::cout << "Error: " << e.what() << " " << this->address.getFullAddress() << std::endl;
+            throw e;
+        }
+    }
+
+    void StateSender::closeSocket() {
+        socket->close();
     }
 
 }
