@@ -19,6 +19,7 @@ namespace vss {
         void createSocket(ExecutionConfig&) override;
         void createSocket(Address) override;
         void createSocket(TeamType) override;
+        void closeSocket() override;
         void sendCommand(Command) override;
 
     protected:

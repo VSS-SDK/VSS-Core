@@ -60,11 +60,21 @@ namespace vss {
     }
 
     void DebugReceiver::connect() {
-        context = new zmq::context_t( 1 );
-        socket = new zmq::socket_t( *context, ZMQ_PAIR );
+        try {
+            context = new zmq::context_t( 1 );
+            socket = new zmq::socket_t( *context, ZMQ_PAIR );
 
-        std::cout << "Debug Receiver Connected: " << address << std::endl;
-        socket->bind(address.getFullAddress().c_str());
+            std::cout << "Debug Receiver Connected: " << address << std::endl;
+            socket->bind(address.getFullAddress().c_str());
+        }
+        catch(zmq::error_t& e) {
+            std::cout << "Error: " << e.what() << " " << this->address.getFullAddress() << std::endl;
+            throw e;
+        }
+    }
+
+    void DebugReceiver::closeSocket() {
+        socket->close();
     }
 
 }

@@ -16,6 +16,7 @@ namespace vss {
         virtual void createSocket(ExecutionConfig&) = 0;
         virtual void createSocket(Address) = 0;
         virtual void createSocket() = 0;
+        virtual void closeSocket() = 0;
         virtual void sendControl(Control) = 0;
     };
 

@@ -22,6 +22,7 @@ namespace vss{
         void createSocket(ExecutionConfig&) override;
         void createSocket(Address) override;
         void createSocket() override;
+        void closeSocket() override;
         State receiveState(FieldTransformationType) override;
 
     protected:
