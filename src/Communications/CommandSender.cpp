@@ -21,6 +21,7 @@ namespace vss{
 
     void CommandSender::createSocket(Address address) {
         this->address = address;
+        std::cout << "Team Sender Connected: " << address.getFullAddress() << std::endl;
         connect();
     }
 

@@ -42,16 +42,20 @@ namespace vss {
     void DebugReceiver::setupAddress(TeamType teamType) {
         if(teamType == TeamType::Yellow){
             address = Address(DEFAULT_DEBUG_RECV_ADDR, DEFAULT_DEBUG_YELLOW_PORT);
+            std::cout << "Yellow Debug Receiver Connected: " << address.getFullAddress() << std::endl;
         }else{
             address = Address(DEFAULT_DEBUG_RECV_ADDR, DEFAULT_DEBUG_BLUE_PORT);
+            std::cout << "Blue Debug Receiver Connected: " << address.getFullAddress() << std::endl;
         }
     }
 
     void DebugReceiver::setupAddress(ExecutionConfig &exeConfig) {
         if(exeConfig.teamType == TeamType::Yellow){
             address = exeConfig.debugYellowRecvAddr;
+            std::cout << "Yellow Debug Receiver Connected: " << address.getFullAddress() << std::endl;
         }else{
             address = exeConfig.debugBlueRecvAddr;
+            std::cout << "Blue Debug Receiver Connected: " << address.getFullAddress() << std::endl;
         }
     }
 

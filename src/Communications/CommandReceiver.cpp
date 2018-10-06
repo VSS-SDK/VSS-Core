@@ -19,6 +19,7 @@ namespace vss{
 
     void CommandReceiver::createSocket(Address address) {
         this->address = address;
+        std::cout << "Team Receiver Connected: " << address.getFullAddress() << std::endl;
         connect();
     }
 
