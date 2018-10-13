@@ -37,3 +37,33 @@ TEST(Point_cout, WhenCoutShouldPrintRight){
 
     EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
 }
+
+TEST(Point_minus, ShouldSubtractCorrectly){
+    auto first = vss::DomainRandomizer::createRandomPoint();
+    auto second = vss::DomainRandomizer::createRandomPoint();
+
+    auto result = first - second;
+
+    EXPECT_EQ(result.x, first.x - second.x);
+    EXPECT_EQ(result.y, first.y - second.y);
+}
+
+TEST(Point_plus, ShouldAddCorrectly){
+    auto first = vss::DomainRandomizer::createRandomPoint();
+    auto second = vss::DomainRandomizer::createRandomPoint();
+
+    auto result = first + second;
+
+    EXPECT_EQ(result.x, first.x + second.x);
+    EXPECT_EQ(result.y, first.y + second.y);
+}
+
+TEST(Point_equals, ShouldCompareCorrectly){
+    auto value = vss::DomainRandomizer::createRandomPoint();
+
+    EXPECT_EQ(value, value);
+    EXPECT_NE(value, vss::Point(value.x+1, value.y));
+    EXPECT_NE(value, vss::Point(value.x, value.y+1));
+    EXPECT_NE(value, vss::Point(value.x-1, value.y));
+    EXPECT_NE(value, vss::Point(value.x, value.y-1));
+}
