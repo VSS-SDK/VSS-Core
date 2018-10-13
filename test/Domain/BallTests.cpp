@@ -43,3 +43,41 @@ TEST(Ball_cout, WhenCoutShouldPrintRight){
 
     EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
 }
+
+TEST(Ball_minus, ShouldSubtractCorrectly){
+    auto first = vss::DomainRandomizer::createRandomBall();
+    auto second = vss::DomainRandomizer::createRandomBall();
+
+    auto result = first - second;
+
+    EXPECT_EQ(result.x, first.x - second.x);
+    EXPECT_EQ(result.y, first.y - second.y);
+    EXPECT_EQ(result.speedX, first.speedX - second.speedX);
+    EXPECT_EQ(result.speedY, first.speedY - second.speedY);
+}
+
+TEST(Ball_plus, ShouldAddCorrectly){
+    auto first = vss::DomainRandomizer::createRandomBall();
+    auto second = vss::DomainRandomizer::createRandomBall();
+
+    auto result = first + second;
+
+    EXPECT_EQ(result.x, first.x + second.x);
+    EXPECT_EQ(result.y, first.y + second.y);
+    EXPECT_EQ(result.speedX, first.speedX + second.speedX);
+    EXPECT_EQ(result.speedY, first.speedY + second.speedY);
+}
+
+TEST(Ball_equals, ShouldCompareCorrectly){
+    auto value = vss::DomainRandomizer::createRandomBall();
+
+    EXPECT_EQ(value, value);
+    EXPECT_NE(value, vss::Ball(value.x+1, value.y, value.speedX, value.speedY));
+    EXPECT_NE(value, vss::Ball(value.x, value.y+1, value.speedX, value.speedY));
+    EXPECT_NE(value, vss::Ball(value.x, value.y, value.speedX+1, value.speedY));
+    EXPECT_NE(value, vss::Ball(value.x, value.y, value.speedX, value.speedY+1));
+    EXPECT_NE(value, vss::Ball(value.x-1, value.y, value.speedX, value.speedY));
+    EXPECT_NE(value, vss::Ball(value.x, value.y-1, value.speedX, value.speedY));
+    EXPECT_NE(value, vss::Ball(value.x, value.y, value.speedX-1, value.speedY));
+    EXPECT_NE(value, vss::Ball(value.x, value.y, value.speedX, value.speedY-1));
+}

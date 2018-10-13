@@ -15,6 +15,10 @@ namespace vss {
         Pose(float x, float y, float angle);
 
         friend std::ostream& operator<<(std::ostream& os, const Pose& pose);
+        friend bool operator==(const Pose& lhs, const Pose& rhs);
+        friend bool operator!=(const Pose& lhs, const Pose& rhs);
+        friend Pose operator-(const Pose& lhs, const Pose& rhs);
+        friend Pose operator+(const Pose& lhs, const Pose& rhs);
 
         float angle;
     };

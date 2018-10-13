@@ -11,6 +11,10 @@ namespace vss {
         Ball(float x, float y, float speedX, float speedY);
 
         friend std::ostream& operator<<(std::ostream& os, const Ball& ball);
+        friend bool operator==(const Ball& lhs, const Ball& rhs);
+        friend bool operator!=(const Ball& lhs, const Ball& rhs);
+        friend Ball operator-(const Ball& lhs, const Ball& rhs);
+        friend Ball operator+(const Ball& lhs, const Ball& rhs);
 
         float speedX;
         float speedY;

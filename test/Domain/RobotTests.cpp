@@ -50,3 +50,49 @@ TEST(Robot_cout, WhenCoutShouldPrintRight){
 
     EXPECT_STREQ(mock_output.str().c_str(), output.c_str());
 }
+
+TEST(Robot_minus, ShouldSubtractCorrectly){
+    auto first = vss::DomainRandomizer::createRandomRobot();
+    auto second = vss::DomainRandomizer::createRandomRobot();
+
+    auto result = first - second;
+
+    EXPECT_EQ(result.x, first.x - second.x);
+    EXPECT_EQ(result.y, first.y - second.y);
+    EXPECT_EQ(result.angle, first.angle - second.angle);
+    EXPECT_EQ(result.speedX, first.speedX - second.speedX);
+    EXPECT_EQ(result.speedY, first.speedY - second.speedY);
+    EXPECT_EQ(result.speedAngle, first.speedAngle - second.speedAngle);
+}
+
+TEST(Robot_plus, ShouldAddCorrectly){
+    auto first = vss::DomainRandomizer::createRandomRobot();
+    auto second = vss::DomainRandomizer::createRandomRobot();
+
+    auto result = first + second;
+
+    EXPECT_EQ(result.x, first.x + second.x);
+    EXPECT_EQ(result.y, first.y + second.y);
+    EXPECT_EQ(result.angle, first.angle + second.angle);
+    EXPECT_EQ(result.speedX, first.speedX + second.speedX);
+    EXPECT_EQ(result.speedY, first.speedY + second.speedY);
+    EXPECT_EQ(result.speedAngle, first.speedAngle + second.speedAngle);
+}
+
+TEST(Robot_equals, ShouldCompareCorrectly){
+    auto value = vss::DomainRandomizer::createRandomRobot();
+
+    EXPECT_EQ(value, value);
+    EXPECT_NE(value, vss::Robot(value.x+1, value.y, value.angle, value.speedX, value.speedY, value.speedAngle));
+    EXPECT_NE(value, vss::Robot(value.x, value.y+1, value.angle, value.speedX, value.speedY, value.speedAngle));
+    EXPECT_NE(value, vss::Robot(value.x, value.y, value.angle+1, value.speedX, value.speedY, value.speedAngle));
+    EXPECT_NE(value, vss::Robot(value.x, value.y, value.angle, value.speedX+1, value.speedY, value.speedAngle));
+    EXPECT_NE(value, vss::Robot(value.x, value.y, value.angle, value.speedX, value.speedY+1, value.speedAngle));
+    EXPECT_NE(value, vss::Robot(value.x, value.y, value.angle, value.speedX, value.speedY, value.speedAngle+1));
+    EXPECT_NE(value, vss::Robot(value.x-1, value.y, value.angle, value.speedX, value.speedY, value.speedAngle));
+    EXPECT_NE(value, vss::Robot(value.x, value.y-1, value.angle, value.speedX, value.speedY, value.speedAngle));
+    EXPECT_NE(value, vss::Robot(value.x, value.y, value.angle-1, value.speedX, value.speedY, value.speedAngle));
+    EXPECT_NE(value, vss::Robot(value.x, value.y, value.angle, value.speedX-1, value.speedY, value.speedAngle));
+    EXPECT_NE(value, vss::Robot(value.x, value.y, value.angle, value.speedX, value.speedY-1, value.speedAngle));
+    EXPECT_NE(value, vss::Robot(value.x, value.y, value.angle, value.speedX, value.speedY, value.speedAngle-1));
+}

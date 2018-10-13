@@ -20,5 +20,33 @@ namespace vss {
         return os << "Point(" << point.x << ", " << point.y << ")";
     }
 
+    bool operator==(const Point &lhs, const Point &rhs) {
+        if(lhs.x != rhs.x)
+            return false;
+
+        if(lhs.y != rhs.y)
+            return false;
+
+        return true;
+    }
+
+    bool operator!=(const Point &lhs, const Point &rhs) {
+        if(lhs.x != rhs.x)
+            return true;
+
+        if(lhs.y != rhs.y)
+            return true;
+
+        return false;
+    }
+
+    Point operator-(const Point &lhs, const Point &rhs) {
+        return Point(lhs.x - rhs.x, lhs.y - rhs.y);
+    }
+
+    Point operator+(const Point &lhs, const Point &rhs) {
+        return Point(lhs.x + rhs.x, lhs.y + rhs.y);
+    }
+
 }
 
