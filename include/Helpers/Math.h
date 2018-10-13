@@ -11,7 +11,9 @@ namespace vss {
 
     namespace Math {
 
-        float distance( const vss::Point &t1, const vss::Point &t2 );
+        float distance(const vss::Point &t1, const vss::Point &t2);
+        float angleBetween(const vss::Point &t1, const vss::Point &t2);
+        float radianBetween(const vss::Point &t1, const vss::Point &t2);
 
     }
 
