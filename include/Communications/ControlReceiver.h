@@ -13,6 +13,7 @@ namespace vss {
     class ControlReceiver : public IControlReceiver {
     public:
         ControlReceiver();
+        ~ControlReceiver() override;
 
         void createSocket(ExecutionConfig&) override;
         void createSocket(Address) override;

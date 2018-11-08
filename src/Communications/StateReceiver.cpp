@@ -19,6 +19,12 @@ namespace vss{
         address = Address(DEFAULT_STATE_RECV_ADDR, DEFAULT_STATE_PORT);
     }
 
+    StateReceiver::~StateReceiver() {
+        socket->close();
+        delete socket;
+        delete context;
+    }
+
     void StateReceiver::createSocket(ExecutionConfig &exeConfig) {
         this->address = exeConfig.stateRecvAddr;
         connect();

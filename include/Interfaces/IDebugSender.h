@@ -7,6 +7,7 @@
 
 #include <Domain/Address.h>
 #include <Domain/ExecutionConfig.h>
+#include <zmq.hpp>
 #include "Domain/TeamType.h"
 #include "Domain/Debug.h"
 
@@ -19,7 +20,20 @@ namespace vss {
         virtual void createSocket(TeamType) = 0;
         virtual void closeSocket() = 0;
         virtual void sendDebug(Debug) = 0;
+
+        virtual ~IDebugSender();
+
+    protected:
+        zmq::context_t *context;
+        zmq::socket_t *socket;
+        Address address;
     };
+
+    IDebugSender::~IDebugSender() {
+        socket->close();
+        delete socket;
+        delete context;
+    }
 
 }
 

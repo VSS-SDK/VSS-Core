@@ -13,6 +13,7 @@ namespace vss {
     class CommandReceiver : public ICommandReceiver {
     public:
         CommandReceiver();
+        ~CommandReceiver() override;
 
         void createSocket(ExecutionConfig&) override;
         void createSocket(Address) override;
@@ -24,10 +25,6 @@ namespace vss {
         void setupAddress(TeamType);
         void setupAddress(ExecutionConfig&);
         void connect();
-
-        zmq::context_t *context;
-        zmq::socket_t *socket;
-        Address address;
     };
 
 }

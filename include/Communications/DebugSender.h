@@ -13,6 +13,7 @@ namespace vss {
     class DebugSender : public IDebugSender {
     public:
         DebugSender();
+        ~DebugSender() override;
 
         void createSocket(ExecutionConfig&) override;
         void createSocket(Address) override;

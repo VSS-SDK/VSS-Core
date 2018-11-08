@@ -7,6 +7,7 @@
 
 #include <Domain/Address.h>
 #include <Domain/ExecutionConfig.h>
+#include <zmq.hpp>
 #include "Domain/Control.h"
 
 namespace vss {
@@ -18,7 +19,20 @@ namespace vss {
         virtual void createSocket() = 0;
         virtual void closeSocket() = 0;
         virtual void sendControl(Control) = 0;
+
+        virtual ~IControlSender();
+
+    protected:
+        zmq::context_t *context;
+        zmq::socket_t *socket;
+        Address address;
     };
+
+    IControlSender::~IControlSender() {
+        socket->close();
+        delete socket;
+        delete context;
+    }
 
 }
 

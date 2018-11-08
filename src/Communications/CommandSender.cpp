@@ -14,6 +14,12 @@ namespace vss{
         address = Address();
     }
 
+    CommandSender::~CommandSender() {
+        socket->close();
+        delete socket;
+        delete context;
+    }
+
     void CommandSender::createSocket(ExecutionConfig &exeConfig) {
         setupAddress(exeConfig);
         connect();

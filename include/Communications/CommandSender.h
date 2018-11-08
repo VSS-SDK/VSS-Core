@@ -15,6 +15,7 @@ namespace vss {
     class CommandSender : public ICommandSender {
     public:
         CommandSender();
+        ~CommandSender() override;
 
         void createSocket(ExecutionConfig&) override;
         void createSocket(Address) override;

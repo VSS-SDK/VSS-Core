@@ -15,6 +15,12 @@ namespace vss {
         address = Address();
     }
 
+    DebugSender::~DebugSender() {
+        socket->close();
+        delete socket;
+        delete context;
+    }
+
     void DebugSender::createSocket(ExecutionConfig &exeConfig) {
         setupAddress(exeConfig);
         connect();

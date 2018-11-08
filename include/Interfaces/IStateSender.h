@@ -9,6 +9,7 @@
 #include <Domain/ExecutionConfig.h>
 #include "Domain/State.h"
 #include "iostream"
+#include <zmq.hpp>
 
 namespace vss {
 
@@ -19,7 +20,21 @@ namespace vss {
         virtual void createSocket() = 0;
         virtual void closeSocket() = 0;
         virtual void sendState(State) = 0;
+
+        virtual ~IStateSender();
+
+    protected:
+        zmq::context_t *context;
+        zmq::socket_t *socket;
+        Address address;
+
     };
+
+    IStateSender::~IStateSender() {
+        socket->close();
+        delete socket;
+        delete context;
+    }
 
 }
 

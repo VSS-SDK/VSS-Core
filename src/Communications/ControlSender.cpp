@@ -12,6 +12,12 @@ namespace vss {
         address = Address(DEFAULT_CTRL_SEND_ADDR, DEFAULT_CTRL_PORT);
     }
 
+    ControlSender::~ControlSender() {
+        socket->close();
+        delete socket;
+        delete context;
+    }
+
     void ControlSender::createSocket(ExecutionConfig &exeConfig) {
         this->address = exeConfig.ctrlSendAddr;
         connect();

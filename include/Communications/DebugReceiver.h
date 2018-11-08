@@ -15,6 +15,7 @@ namespace vss {
     class DebugReceiver : public IDebugReceiver {
     public:
         DebugReceiver();
+        ~DebugReceiver() override;
 
         void createSocket(ExecutionConfig&) override;
         void createSocket(Address) override;

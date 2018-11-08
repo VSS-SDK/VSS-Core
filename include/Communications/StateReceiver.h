@@ -18,6 +18,7 @@ namespace vss{
     class StateReceiver : public IStateReceiver {
     public:
         StateReceiver();
+        ~StateReceiver() override;
 
         void createSocket(ExecutionConfig&) override;
         void createSocket(Address) override;

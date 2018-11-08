@@ -13,6 +13,7 @@ namespace vss {
     class ControlSender : public IControlSender {
     public:
         ControlSender();
+        ~ControlSender() override;
 
         void createSocket(ExecutionConfig&) override;
         void createSocket(Address) override;

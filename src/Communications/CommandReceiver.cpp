@@ -12,6 +12,12 @@ namespace vss{
         address = Address();
     }
 
+    CommandReceiver::~CommandReceiver() {
+        socket->close();
+        delete socket;
+        delete context;
+    }
+
     void CommandReceiver::createSocket(ExecutionConfig &exeConfig) {
         setupAddress(exeConfig);
         connect();

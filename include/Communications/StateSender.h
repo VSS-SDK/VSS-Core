@@ -13,6 +13,7 @@ namespace vss{
     class StateSender : public IStateSender  {
     public:
         StateSender();
+        ~StateSender() override;
 
         void createSocket(ExecutionConfig&) override;
         void createSocket(Address) override;
