@@ -3,10 +3,8 @@
 [![Trello](https://img.shields.io/badge/Trello-SDK-blue.svg)][vss-sdk-trello]
 [![Slack](https://img.shields.io/badge/Slack-Channel-551a8b.svg)][slack]
 
-O VSS-Core é uma biblioteca open-source que faz parte do VSS-SDK.
+O VSS-Core (C++) é uma biblioteca open-source que faz parte do VSS-SDK.
 Contém interfaces de comunicação entre os projetos do SDK, modelos que representam o domínio do problema de futebol de robôs e métodos uteis. Os pacotes trafegam utilizando ZeroMQ e são serializados utilizando Protobuf.
-
-Documentação [Wiki][wiki].
 
 Mais informações podem ser encontradas em [VSS-SDK][vss-sdk].
 
@@ -24,18 +22,18 @@ $ ./tests
 ```
 
 ## VSS-Samples
-Versão em C++: [VSS-SampleCpp][samplecpp]
+> Versão em C++: [VSS-SampleCpp][samplecpp]
 
-Versão em Python: [VSS-SamplePy][samplepy]
+> Versão em Python: [VSS-SamplePy][samplepy]
 
-Versão em Rust: [VSS-SampleRust][samplerust]
+> Versão em Rust: [VSS-SampleRust][samplerust]
 
 ## VSS-Cores
-Versão em C++: [VSS-CoreCpp][corecpp]
+> Versão em C++: [VSS-CoreCpp][corecpp]
 
-Versão em Python: [VSS-CorePy][corepy]
+>Versão em Python: [VSS-CorePy][corepy]
 
-Versão em Rust: [VSS-CoreRust][corerust]
+> Versão em Rust: [VSS-CoreRust][corerust]
 
 # Licença
 
@@ -44,7 +42,7 @@ Esse código está sob licença [GNU GENERAL PUBLIC LICENSE Version 3][gpl3], cu
 Você pode utilizar esse código. Caso o faça, nos informe.
 
 [gpl3]: http://www.gnu.org/licenses/gpl-3.0/
-[vss-sdk]: http://sirlab.github.io/VSS-SDK
+[vss-sdk]: https://vss-sdk.github.io
 [samplecpp]: https://github.com/VSS-SDK/VSS-SampleCpp
 [samplepy]: https://github.com/VSS-SDK/VSS-SamplePy
 [samplerust]: https://github.com/VSS-SDK/VSS-SampleRust
