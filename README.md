@@ -23,8 +23,19 @@ $ cd build
 $ ./tests
 ```
 
-## Exemplos
-Exemplo em C++: [VSS-SampleCpp][samplecpp]
+## VSS-Samples
+Versão em C++: [VSS-SampleCpp][samplecpp]
+
+Versão em Python: [VSS-SamplePy][samplepy]
+
+Versão em Rust: [VSS-SampleRust][samplerust]
+
+## VSS-Cores
+Versão em C++: [VSS-CoreCpp][corecpp]
+
+Versão em Python: [VSS-CorePy][corepy]
+
+Versão em Rust: [VSS-CoreRust][corerust]
 
 # Licença
 
@@ -34,7 +45,12 @@ Você pode utilizar esse código. Caso o faça, nos informe.
 
 [gpl3]: http://www.gnu.org/licenses/gpl-3.0/
 [vss-sdk]: http://sirlab.github.io/VSS-SDK
-[samplecpp]: https://github.com/SIRLab/VSS-SampleCpp
+[samplecpp]: https://github.com/VSS-SDK/VSS-SampleCpp
+[samplepy]: https://github.com/VSS-SDK/VSS-SamplePy
+[samplerust]: https://github.com/VSS-SDK/VSS-SampleRust
+[corecpp]: https://github.com/VSS-SDK/VSS-Core
+[corepy]: https://github.com/VSS-SDK/VSS-CorePy
+[corerust]: https://github.com/VSS-SDK/VSS-CoreRust
 [travis]: https://travis-ci.com/VSS-SDK/VSS-Core
 [vss-sdk-trello]: https://trello.com/b/b4dVV6ug/vss-sdk
 [slack]: https://vss-sdk.slack.com
