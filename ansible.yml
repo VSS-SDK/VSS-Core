@@ -1,0 +1,41 @@
+- hosts: localhost
+  become: true
+  user: remy
+  connection: ssh
+
+  tasks:
+    - name: Install C++ compiling tools
+      apt:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - pkg-config
+        - g++
+        - cmake
+      #when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+    - name: Install ZMQ
+      apt:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - libzmq5
+        - libzmq3-dev
+      #when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+    - name: Install Protobuf
+      apt:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - protobuf-compiler
+        - libprotobuf-dev
+      #when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+    - name: Install Boost
+      apt:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - libboost-all-dev
+      #when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
