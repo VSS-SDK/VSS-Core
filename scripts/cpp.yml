@@ -1,4 +1,4 @@
-- name: Install C++ compiling tools
-    apt:
-      name: ['g++', 'cmake']
-      state: latest
+  tasks:
+      apt:
+        name: ['g++', 'cmake']
+        state: latest

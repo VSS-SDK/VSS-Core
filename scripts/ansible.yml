@@ -3,10 +3,9 @@
   user: remy
   connection: ssh
 
-
-
   tasks:
-    - include_tasks: cpp.yml
+    - name: Install C++ compiling tools
+      include_tasks: cpp.yml
       when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
     - name: Install PkgConf
