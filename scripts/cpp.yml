@@ -1,4 +1,0 @@
-  tasks:
-      apt:
-        name: ['g++', 'cmake']
-        state: latest

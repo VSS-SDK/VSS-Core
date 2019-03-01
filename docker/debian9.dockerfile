@@ -11,6 +11,7 @@ WORKDIR /vss-core-debian9
 RUN chmod +x /vss-core-debian9/configure.sh
 RUN chmod +x /vss-core-debian9/entrypoint.sh
 RUN chmod +x /vss-core-debian9/scripts/protos.sh
+RUN chmod +x /vss-core-debian9/scripts/base.sh
 
 # Executa a instalação na criação dos containers
 RUN /vss-core-debian9/configure.sh development
