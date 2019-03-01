@@ -1,7 +1,11 @@
 FROM debian:9
 
-# Instala o CMAKE
+# Instala Base
 RUN apt-get update
+RUN apt-get install -y python-pip python-dev
+
+# Instala Ansible
+RUN pip install ansible==2.7.8.0
 
 # Copia tudo para o container
 COPY . /vss-core-debian9
