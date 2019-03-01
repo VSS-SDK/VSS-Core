@@ -1,0 +1,9 @@
+- name: DEB PADRAO
+  include_tasks: deb.yml
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == 'Linuxmint'
+  
+- name: RPM PADRAO
+  include_tasks: rpm.yml
+  when: ansible_distribution == 'CentOS' 
+
+# vim:ft=ansible :

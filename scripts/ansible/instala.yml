@@ -1,0 +1,7 @@
+- name: Aguarde verificando conexao.
+  connection: local
+  hosts: localhost
+  roles:
+    - common
+    #- docker
+# vim:ft=ansible :

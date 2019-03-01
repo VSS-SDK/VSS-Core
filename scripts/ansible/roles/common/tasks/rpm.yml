@@ -1,0 +1,11 @@
+- name: RPM | Desativando SELINUX
+  selinux: state=disabled
+
+- name: RPM | Instalando epel CentOS7
+  yum: name=epel-release state=latest
+  when: ansible_distribution == 'CentOS' and ansible_distribution_version == '7'
+
+- name: RPM | Instalando pacotes CentOS7
+  yum: name={{ cent7 }} state=latest update_cache=yes
+
+# vim:ft=ansible :

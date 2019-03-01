@@ -1,0 +1,39 @@
+deb_padrao:
+  - cmake 
+  - g++ 
+  - git
+  - libboost-all-dev
+  - libprotobuf-dev 
+  - protobuf-compiler 
+
+deb9:
+  - pkgconf
+  - libzmq5
+  - libzmq3-dev
+
+mint18:
+  - pkg-config
+  - libzmqpp3
+  - libzmqpp-dev 
+
+ubu14:
+  - pkg-config 
+  - libzmqpp3 
+  - libzmqpp-dev 
+
+ubu16:
+  - pkgconf
+  - libzmq5
+  - libzmq3-dev 
+
+ubu18:
+  - pkg-config 
+  - libzmq5 
+  - libzmq3-dev 
+
+cent7:
+  - "@Development tools"
+  - cmake
+  - git
+
+# vim:ft=ansible :
