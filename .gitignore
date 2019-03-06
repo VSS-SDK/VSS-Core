@@ -47,3 +47,4 @@
 .idea/*
 build/*
 cmake-build-debug/*
+*.retry

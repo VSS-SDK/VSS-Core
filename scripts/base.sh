@@ -20,16 +20,6 @@ CMAKE_INSTALL () {
     cd ..
 }
 
-INSTALL_BASE() {
-    apt-get update && apt-get upgrade
-    apt-get -y install lsb-release git
-
-    DISTRO=`lsb_release -si`
-    RELEASE=`lsb_release -sr`
-    RELEASE_DEBIAN=`lsb_release -sr | cut -c1-1`
-    ARCHITECTURE=`uname -m`
-}
-
 INIT_SUBMODULES() {
     git submodule init;
     git submodule update;

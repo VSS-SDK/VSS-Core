@@ -6,11 +6,11 @@ services:
   - docker
 
 script:
-  - sudo docker build -f Dockerfile.ubuntu16 -t vss-core-ubuntu16 .
+  - sudo docker build -f docker/ubuntu16.dockerfile -t vss-core-ubuntu16 .
   - sudo docker run vss-core-ubuntu16 test
-  - sudo docker build -f Dockerfile.debian9 -t vss-core-debian9 .
-  - sudo docker run vss-core-debian9 test
-  - sudo docker build -f Dockerfile.ubuntu18 -t vss-core-ubuntu18 .
+  - sudo docker build -f docker/debian9.dockerfile -t vss-core-debian9.dockerfile .
+  - sudo docker run vss-core-debian9.dockerfile test
+  - sudo docker build -f docker/ubuntu18.dockerfile -t vss-core-ubuntu18 .
   - sudo docker run vss-core-ubuntu18 test
 
 notifications:
