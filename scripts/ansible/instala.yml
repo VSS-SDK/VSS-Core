@@ -1,6 +1,7 @@
 - name: Aguarde verificando conexao.
   connection: local
   hosts: localhost
+  become: yes
   roles:
     - common
     #- docker
